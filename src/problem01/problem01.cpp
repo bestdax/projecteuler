@@ -10,7 +10,7 @@ https://projecteuler.net/problem=1
 dax 2023/04/20 12:14:30
 */
 
-#include "euler01.h"
+#include "problem01.h"
 
 long Solution::sum_of_multiples(int cap)
 {

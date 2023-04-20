@@ -1,4 +1,4 @@
-#include "euler01.h"
+#include "problem01.h"
 
 int main(int argc, char *argv[])
 {

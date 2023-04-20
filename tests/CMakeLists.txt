@@ -1,4 +1,9 @@
-add_executable(test01 test01.cpp ../src/problem01/euler01.cpp)
-target_include_directories(test01 PUBLIC ../googletest/googletest/include)
-target_link_libraries(test01 gtest_main)
-
+file(
+  GLOB SUBDIRS
+  RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
+  *)
+foreach(SUBDIR ${SUBDIRS})
+  if(IS_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${SUBDIR})
+    add_subdirectory(${SUBDIR})
+  endif()
+endforeach()
