@@ -46,3 +46,7 @@ _deps
 [Dd]ebug
 [Bb]uild
 [Rr]elease
+googletest
+
+.DS_Store
+.cache

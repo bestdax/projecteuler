@@ -1,0 +1,87 @@
+%!TEX program = lualatex
+\documentclass{ctexart}
+\usepackage{amsmath, amssymb, amsthm, mathtools}
+\usepackage[a4paper, margin=2cm]{geometry}
+\usepackage[dvipsnames]{xcolor}
+% \usepackage{indentfirst}
+
+\hfuzz=2pt
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[outputdir=build]{minted}
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{minted}
+\newtcblisting{cpp}{listing engine=minted, minted language=cpp, minted style=autumn, listing only}
+\newtcolorbox{tablebox}[1]{width=\textwidth, right=0mm, left=0mm, top=0mm, bottom=0mm, boxsep=0mm, before title=\strut, halign
+title=center,  valign=center, title=#1, halign=center, colframe=green!70!blue!50}
+
+% tikz settings
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, shapes.misc, calc}
+\usepackage[hypcap=false]{caption}
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{operation} = [align=center, rectangle, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=4cm, minimum height=1cm, align=center, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+
+
+% for tables
+% \usepackage{array}
+\usepackage{tabularx}
+% \usepackage{tabulary}
+\usepackage{colortbl}
+\usepackage{booktabs}
+\usepackage{multirow}
+% \usepackage{enumitem}
+\usepackage{csquotes}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{definition}{定义}
+\newtheorem{theorem}{定理}
+\newtheorem{example}{例}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\eqrefl}[1]{
+\foreach \eq in {#1}
+{
+  \eqref{\eq}，
+}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{hyperref}
+\hypersetup{
+colorlinks = true,
+linkcolor= blue!50!green,
+urlcolor = magenta,
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% filter warnings
+\usepackage{silence}
+\WarningFilter{latexfont}{Font shape}
+\WarningFilter{latexfont}{Some font}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\author{dax}
+\title{Project Euler Tutorial}
+\date{2023/05/24}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\include{problem01}
+\include{problem02}
+\include{problem54}
+\include{problem55}
+\include{problem56}
+\include{problem57}
+\include{problem58}
+\include{problem59}
+\include{problem60}
+\include{problem61}
+\include{problem62}
+\include{problem63}
+\include{problem64}
+\include{problem65}
+\include{problem66}
+\include{problem67}
+\include{problem68}
+\include{problem69}
+\end{document}
