@@ -1,13 +1,12 @@
 #pragma once
 #include <iostream>
-#include <string>
 #include <cmath>
-#include <vector>
 
 class Solution
 {
 public:
-	int largest_prime_factor(long number);
+	bool is_palindrome(long number);
+	long largest_palindrome(int digits);
 	void answer();
 
 };
