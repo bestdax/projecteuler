@@ -13,12 +13,43 @@ dax 2023-04-21 12:52:04
 */
 
 #include "problem.h"
-#include "number.h"
 
+bool Solution::is_prime(long number)
+{
+	if(number < 2) return false;
+
+	int root = std::round(std::sqrt(number));
+
+	for(int i = 2; i <= root; i++)
+	{
+		if(number % i == 0) return false;
+	}
+
+	return true;
+}
+
+std::vector<int> Solution::prime_factors(long number)
+{
+	std::vector<int> pf{};
+
+	if(number < 2) return pf;
+
+	for(int i = 2; i <= number; ++i)
+	{
+		if(is_prime(i) && number % i == 0)
+		{
+			pf.push_back(i);
+			number /= i;
+			i = 2;
+		}
+	}
+
+	return pf;
+}
 
 int Solution::largest_prime_factor(long number)
 {
-	auto pf = dax::prime_factors(number);
+	auto pf = prime_factors(number);
 	return *(pf.end() - 1);
 }
 
