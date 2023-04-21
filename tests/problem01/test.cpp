@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "problem01.h"
+#include "problem.h"
 
 Solution solution;
 TEST(EULER01, SUM_OF_MULTIPLES)

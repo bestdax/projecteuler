@@ -1,4 +1,4 @@
-#include "problem02.h"
+#include "problem.h"
 
 int main(int argc, char *argv[])
 {
