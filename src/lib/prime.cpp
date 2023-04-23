@@ -1,4 +1,5 @@
-#include "tools.h"
+#include "prime.h"
+#include <iostream>
 
 bool is_prime(long number)
 {
@@ -32,3 +33,4 @@ std::vector<int> prime_factors(long number)
 
 	return pf;
 }
+

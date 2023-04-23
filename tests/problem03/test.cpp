@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 #include "problem.h"
-#include "tools.h"
+#include "prime.h"
 
 Solution solution;
 
