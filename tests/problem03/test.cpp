@@ -1,21 +1,22 @@
 #include "gtest/gtest.h"
 #include "problem.h"
+#include "tools.h"
 
 Solution solution;
 
 TEST(EULER03, IS_PRIME)
 {
-	EXPECT_TRUE(solution.is_prime(2));
-	EXPECT_TRUE(solution.is_prime(3));
-	EXPECT_TRUE(solution.is_prime(5));
-	EXPECT_FALSE(solution.is_prime(4));
-	EXPECT_FALSE(solution.is_prime(33));
+	EXPECT_TRUE(is_prime(2));
+	EXPECT_TRUE(is_prime(3));
+	EXPECT_TRUE(is_prime(5));
+	EXPECT_FALSE(is_prime(4));
+	EXPECT_FALSE(is_prime(33));
 }
 
 TEST(EULER03, PRIME_FACTORS)
 {
 	std::vector<int> pf{5, 7, 13, 29};
-	EXPECT_EQ(solution.prime_factors(13195), pf);
+	EXPECT_EQ(prime_factors(13195), pf);
 }
 
 TEST(EULER03, LARGEST_PRIME_FACTOR)
