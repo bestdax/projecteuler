@@ -26,7 +26,7 @@ std::vector<int> prime_factors(long number)
 		{
 			pf.push_back(i);
 			number /= i;
-			i = 2;
+			i = 1;
 		}
 	}
 
