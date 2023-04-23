@@ -48,7 +48,6 @@ unsigned long Solution::lcm(unsigned a, unsigned b)
 		if(it != pf_b.end()) pf_b.erase(it);
 	}
 
-	// std::merge(pf_a.begin(), pf_a.end(), pf_b.begin(), pf_b.end(), pf_a.begin());
 	unsigned long ret{1};
 	ret = std::accumulate(pf_a.begin(), pf_a.end(), ret, [](int x, int y)
 	{
@@ -58,11 +57,10 @@ unsigned long Solution::lcm(unsigned a, unsigned b)
 	{
 		return x * y;
 	});
-	std::cout << ret;
 	return ret;
 }
 
 void Solution::answer()
 {
-	std::cout << "The answer is: " << "" << std::endl;
+	std::cout << "The answer is: " << lcm_of_range2(20) << std::endl;
 }
