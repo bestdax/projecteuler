@@ -26,8 +26,43 @@ dax 2023-04-23 17:12:45
 */
 #include "problem.h"
 
-void Solution::answer()
+unsigned long Solution::nth_triangle_number(unsigned n)
 {
-	std::cout << "The answer is: " << "" << std::endl;
+	unsigned long ntn{};
+
+	for(unsigned i{1}; i <= n; ++i)
+		ntn += i;
+
+	return ntn;
+}
+unsigned Solution::number_of_divisors(unsigned long n)
+{
+	unsigned count = 0;
+	unsigned root = std::round(std::sqrt(n));
+
+	for(unsigned i{1}; i <= root; ++i)
+		if(n % i == 0) count += 2;
+
+	if(root * root == n) count--;
+
+	return count;
 }
 
+unsigned long Solution::triangle_number_with_over_n_divisors(unsigned n)
+{
+	unsigned nth{1};
+
+	while(true)
+	{
+		unsigned long triangle_number = nth_triangle_number(nth);
+		unsigned nod = number_of_divisors(triangle_number);
+
+		if(nod > n) return  triangle_number;
+		else nth++;
+	}
+}
+
+void Solution::answer()
+{
+	std::cout << "The answer is: " << triangle_number_with_over_n_divisors(500) << std::endl;
+}
