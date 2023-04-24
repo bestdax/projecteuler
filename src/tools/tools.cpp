@@ -264,16 +264,14 @@ LargeNumber LargeNumber::operator-(const LargeNumber& other) const
 	return difference;
 }
 
-// LargeNumber LargeNumber::operator-(long number) const
-// {
-// 	std::cout << "here I am" << std::endl;
-// 	std::cout << *this << std::endl;
-// 	std::cout << number << std::endl;
-// 	return (*this - LargeNumber(number));
-// }
-
 LargeNumber LargeNumber::operator*(const LargeNumber &other) const
 {
 	LargeNumber product{""};
+
+	if(this->sign != other.sign) product.sign = '-';
+	else product.sign = '+';
+
+
+
 	return product;
 }

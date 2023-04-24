@@ -16,7 +16,6 @@ public:
 	LargeNumber operator+(const LargeNumber &other) const;
 	LargeNumber operator+=(LargeNumber &other);
 	LargeNumber operator-(const LargeNumber &other) const;
-	// LargeNumber operator-(long number) const;
 	LargeNumber operator-=(const LargeNumber &other);
 	LargeNumber operator*(const LargeNumber &other) const;
 	LargeNumber operator*=(const LargeNumber &other);
@@ -31,6 +30,7 @@ public:
 	bool operator==(const LargeNumber &other) const;
 	bool operator>(const LargeNumber &other) const;
 	bool operator!=(const LargeNumber &other) const;
+	LargeNumber& operator--();
 
 
 public:
