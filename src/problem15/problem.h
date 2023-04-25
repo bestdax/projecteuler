@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cmath>
 #include <string>
-#include "tools.h"
+#include "longint.h"
 
 class Solution
 {

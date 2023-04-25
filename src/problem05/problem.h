@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <numeric>
-#include "tools.h"
+#include "prime.h"
 #include <algorithm>
 
 class Solution

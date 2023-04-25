@@ -5,20 +5,20 @@ Solution solution;
 
 TEST(EULER15, LARGE_NUMBER_ADDITION)
 {
-	EXPECT_EQ(LargeNumber(5) + 5, LargeNumber(10));
-	EXPECT_EQ(LargeNumber(5) - 5, LargeNumber(0));
-	EXPECT_EQ(LargeNumber(5) - 1, LargeNumber(4));
+	EXPECT_EQ(Longint(5) + 5, Longint(10));
+	EXPECT_EQ(Longint(5) - 5, Longint(0));
+	EXPECT_EQ(Longint(5) - 1, Longint(4));
 }
 TEST(EULER15, LARGE_NUMBER_LESS)
 {
-	LargeNumber a{1};
-	LargeNumber b{999};
-	LargeNumber c{-1};
-	LargeNumber d{-100};
+	Longint a{1};
+	Longint b{999};
+	Longint c{-1};
+	Longint d{-100};
 	EXPECT_FALSE(a > 100);
 	EXPECT_TRUE(a != b);
 	EXPECT_FALSE(c < d);
-	EXPECT_TRUE(d == LargeNumber(-100));
+	EXPECT_TRUE(d == Longint(-100));
 }
 
 

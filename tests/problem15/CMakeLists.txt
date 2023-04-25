@@ -4,7 +4,7 @@ add_executable(${targetname} test.cpp ${PROJECT_SOURCE_DIR}/src/${CURRENT_DIR_NA
 target_include_directories(${targetname} PUBLIC ${PROJECT_SOURCE_DIR}/googletest/googletest/include)
 target_include_directories(${targetname} PUBLIC ${PROJECT_SOURCE_DIR}/src/${CURRENT_DIR_NAME}/)
 
-target_include_directories(${targetname} PUBLIC ${PROJECT_SOURCE_DIR}/src/tools)
-target_link_directories(${targetname} PUBLIC ${PROJECT_BINARY_DIR}/src/tools)
-target_link_libraries(${targetname} gtest_main tools)
+target_include_directories(${targetname} PUBLIC ${PROJECT_SOURCE_DIR}/src/lib)
+target_link_directories(${targetname} PUBLIC ${PROJECT_BINARY_DIR}/src/lib)
+target_link_libraries(${targetname} gtest_main longint)
 
