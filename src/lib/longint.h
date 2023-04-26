@@ -1,47 +1,50 @@
 #include <string>
 #include <iostream>
+#include <iomanip>
 
-class Longint
+class lint
 {
 public:
-	Longint();
-	Longint(std::string digit_string);
-	Longint(long num);
-	Longint operator+(const Longint &other) const;
-	Longint& operator+=(const Longint &other);
-	Longint operator-(const Longint &other) const;
-	Longint& operator-=(const Longint &other);
-	Longint operator*(const Longint &other) const;
-	Longint& operator*=(const Longint &other);
-	Longint operator/(const Longint &other) const;
-	Longint& operator/=(const Longint &other);
-	void operator=(const Longint &other);
-	friend std::ostream& operator<<(std::ostream& os, const Longint& obj)
+	lint();
+	lint(std::string digit_string);
+	lint(long num);
+	lint(lint& other);
+	lint operator+(const lint &other) const;
+	lint& operator+=(const lint &other);
+	lint operator-(const lint &other) const;
+	lint& operator-();
+	lint& operator-=(const lint &other);
+	lint operator*(const lint &other) const;
+	lint& operator*=(const lint &other);
+	lint operator/(const lint &other) const;
+	lint& operator/=(const lint &other);
+	lint& operator=(const lint &other);
+	friend std::ostream& operator<<(std::ostream& os, const lint& obj)
 	{
-		return os << obj.sign << obj._number;
+		return os << obj.number();
 	}
-	~Longint();
+	~lint();
 
-	bool operator<(const Longint &other) const;
-	bool operator==(const Longint &other) const;
-	bool operator>(const Longint &other) const;
-	bool operator!=(const Longint &other) const;
-	Longint& operator--();
-	Longint operator--(int);
-	Longint& operator++();
-	Longint operator++(int);
+	bool operator<(const lint &other) const;
+	bool operator==(const lint &other) const;
+	bool operator>(const lint &other) const;
+	bool operator!=(const lint &other) const;
+	lint& operator--();
+	lint operator--(int);
+	lint& operator++();
+	lint operator++(int);
 
 
 public:
 	std::string number() const;
 	unsigned size() const;
-	Longint factorial(unsigned n);
-	void print(std::string which);
+	lint factorial(unsigned n);
+	bool borrow(unsigned index);
 
 private:
+	void set_number(std::string num_str);
 	std::string _number;
 	char sign;
 	char get_digit(unsigned index) const;
-	bool borrow(unsigned index);
 
 };

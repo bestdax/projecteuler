@@ -16,8 +16,8 @@ dax 2023/04/23 21:40:15
 unsigned long Solution::factorial(unsigned n)
 {
 	unsigned long f{1};
-	Longint a{"1"};
-	Longint b{"11"};
+	lint a{"1"};
+	lint b{"11"};
 
 	for(unsigned i = 1; i <= n; ++i)
 	{

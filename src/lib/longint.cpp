@@ -1,116 +1,113 @@
 #include "longint.h"
 
-void Longint::print(std::string which)
-{
-	if(which == "number") std::cout << "created from number contructor" << std::endl;
-	else if(which == "default") std::cout << "created from default constructor" << std::endl;
-	else std::cout << "created from string constructor" << std::endl;
-
-	std::cout << this << '\t' << *this << std::endl;
-}
 // default constructor
-Longint::Longint()
+lint::lint()
 {
 	sign = '+';
-	_number = "0";
+	this->set_number("");
+}
+void lint::set_number(std::string num_str)
+{
+	this->_number = num_str;
+	std::cout << "set number to: " << std::quoted(num_str) << std::endl;
 }
 
-Longint::~Longint()
+lint::~lint()
 {
-	print("default");
-	std::cout << this << '\t' << *this <<  "object destoried" << std::endl;
 }
+
+// copy constructor
+lint::lint(lint& other): _number(other._number), sign(other.sign)
+{
+	std::cout << "in copy constructor, set number to " << *this << std::endl;
+}
+
 
 // construct with std::string
-Longint::Longint(std::string digit_string)
+lint::lint(std::string digit_string)
 {
-	print("string");
-
 	if(digit_string.starts_with('-'))
 	{
 		sign = '-';
-		_number = digit_string.substr(1);
+		this->set_number(digit_string.substr(1));
 	}
 	else if(digit_string.starts_with('+'))
 	{
 		sign = '+';
-		_number = digit_string.substr(1);
+		this->set_number(digit_string.substr(1));
 	}
 	else
 	{
 		sign = '+';
-		_number = digit_string;
+		this->set_number(digit_string);
 	}
 }
 
 // construct with number
-Longint::Longint(long num)
+lint::lint(long num)
 {
-	print("number");
-
 	if(num < 0)
 	{
-		_number = std::to_string(-num);
-		sign = '-';
+		this->set_number(std::to_string(-num));
+		this->sign = '-';
 	}
 	else
 	{
-		_number = std::to_string(num);
-		sign = '+';
+		this->set_number(std::to_string(num));
+		this->sign = '+';
 	}
 }
 
-unsigned Longint::size() const
+unsigned lint::size() const
 {
 	return this->_number.size();
 }
 
-Longint& Longint::operator++()
+lint& lint::operator++()
 {
 	*this = *this + 1;
 	return *this;
 }
 
-Longint Longint::operator++(int)
+lint lint::operator++(int)
 {
 	auto temp = *this;
 	*this = *this + 1;
 	return temp;
 }
 
-Longint& Longint::operator--()
+lint& lint::operator--()
 {
 	*this = *this - 1;
 	return *this;
 }
 
-Longint Longint::operator--(int)
+lint lint::operator--(int)
 {
 	auto temp = *this;
 	*this = *this - 1;
 	return temp;
 }
 
-Longint& Longint::operator+=(const Longint& other)
+lint& lint::operator+=(const lint& other)
 {
 	*this = *this + other;
 	return *this;
 }
-Longint& Longint::operator-=(const Longint& other)
+lint& lint::operator-=(const lint& other)
 {
 	*this = *this - other;
 	return *this;
 }
 
-
-Longint& Longint::operator*=(const Longint &other)
+lint& lint::operator*=(const lint &other)
 {
 	*this = *this * other;
 	return *this;
 }
 
 // operator <
-bool Longint::operator<(const Longint& other) const
+bool lint::operator<(const lint& other) const
 {
 	if(this->sign == '+' && other.sign == '+')
 	{
@@ -120,7 +117,9 @@ bool Longint::operator<(const Longint& other) const
 		{
 			for(unsigned i{}; i < this->size(); ++i)
 			{
-				if(*(this->_number.begin() + i) < * (other._number.begin() + i)) return true;
+				if(*(this->_number.begin() + i) < (*(other._number.begin() + i))) return true;
+
+				if(*(this->_number.begin() + i) > (*(other._number.begin() + i))) return false;
 			}
 
 			return false;
@@ -145,6 +144,8 @@ bool Longint::operator<(const Longint& other) const
 			for(unsigned i{}; i < this->size(); ++i)
 			{
 				if(*(this->_number.begin() + i) > * (other._number.begin() + i)) return true;
+
+				if(*(this->_number.begin() + i) < * (other._number.begin() + i)) return false;
 			}
 
 			return false;
@@ -155,129 +156,169 @@ bool Longint::operator<(const Longint& other) const
 }
 
 // output number;
-std::string Longint::number() const
+std::string lint::number() const
 {
-	return this->sign + this->_number;
+	if(this->_number.empty()) return "0";
+
+	return this->sign == '-' ? this->sign + this->_number : this->_number;
 }
 
 // operator ==
-bool Longint::operator==(const Longint &other) const
+bool lint::operator==(const lint &other) const
 {
 	if(this->_number == other._number && this->sign == other.sign) return true;
 	else return false;
 }
 
-bool Longint::operator>(const Longint &other) const
+bool lint::operator>(const lint &other) const
 {
-	if(!(*this == other || *this < other)) return true;
+	bool result;
 
-	return false;
+	if(*this == other) result = false;
+	else if(*this < other) result = false;
+	else
+		result =  true;
+
+	return result;
 }
-bool Longint::operator!=(const Longint &other) const
+bool lint::operator!=(const lint &other) const
 {
 	if(*this == other) return false;
 
 	return true;
 }
 
-char Longint::get_digit(unsigned index) const
+char lint::get_digit(unsigned index) const
 {
 	return index < this->size() ? *(this->_number.crbegin() + index) : '0';
 }
 
-Longint Longint::operator+(const Longint& other) const
+lint lint::operator+(const lint& other) const
 {
-	Longint sum{""};
+	std::cout << "In operator+" << std::endl;
+	lint sum;
 
-	if(other.sign == '-')
+	if(this->sign == other.sign)
 	{
-		auto temp = other;
-		temp.sign = '+';
-		sum = *this - temp;
+		unsigned length = std::max(this->size(), other.size());
+		bool carry = false;
+
+		for(unsigned i{}; i < length; ++i)
+		{
+			char char_digit_a = this->get_digit(i);
+			char char_digit_b = other.get_digit(i);
+			char char_digit_sum = char_digit_a + char_digit_b - 48;
+
+			if(carry) char_digit_sum++;
+
+			carry = (char_digit_sum - 48) / 10;
+			char_digit_sum = (char_digit_sum - 48) % 10 + 48;
+			sum._number.insert(0, 1, char_digit_sum);
+		}
+
+		if(carry) sum._number.insert(0, 1, '1');
+
+		sum.sign = this->sign;
 		return sum;
 	}
-
-	unsigned length = std::max(this->size(), other.size());
-	bool carry = false;
-
-	for(unsigned i{}; i < length; ++i)
+	else
 	{
-		char char_digit_a = this->get_digit(i);
-		char char_digit_b = other.get_digit(i);
-		char char_digit_sum = char_digit_a + char_digit_b - 48;
-
-		if(carry) char_digit_sum++;
-
-		carry = (char_digit_sum - 48) / 10;
-		char_digit_sum = (char_digit_sum - 48) % 10 + 48;
-		sum._number.insert(0, 1, char_digit_sum);
+		if(this->sign == '-')
+		{
+			lint temp(this->_number);
+			sum = other - temp;
+			return sum;
+		}
+		else
+		{
+			lint temp(this->_number);
+			temp.sign = '+';
+			sum = *this - temp;
+			return sum;
+		}
 	}
-
-	if(carry) sum._number.insert(0, 1, '1');
-
-	return sum;
 }
 
-bool Longint::borrow(unsigned index)
+bool lint::borrow(unsigned index)
 {
+	std::cout << *this << '\t' << index << std::endl;
+
 	for(unsigned i = index; i < this->size(); ++i)
 	{
-		if(this->get_digit(i) != 0)
+		std::cout << "-----" <<  *this << std::endl;
+		auto it = this->_number.rbegin() + i;
+
+		if(this->get_digit(i) != '0')
 		{
-			*(this->_number.rbegin() + i)--;
+			std::cout << "upper" << std::endl;
+			--(*it);
 			return true;
 		}
 		else
 		{
-			*(this->_number.rbegin() + i) = '9';
-			this->borrow(i + 1);
+			std::cout << "lower" << std::endl;
+			*it = '9';
 		}
 	}
 
 	return false;
 }
 
-// operator -
-Longint Longint::operator-(const Longint& other) const
+lint& lint::operator-()
 {
-	Longint difference{""};
+	this->sign = this->sign == '-' ? '+' : '-';
+	return *this;
+}
 
-	// if this _number is minus, use addtion method and put a minus sign
-	if(this->sign == '-')
+// operator -
+lint lint::operator-(const lint& other) const
+{
+	std::cout << "In operator-" << std::endl;
+	std::cout << "*this: " << *this << std::endl;
+	std::cout << "other: " << other << std::endl;
+	lint difference;
+
+	if(this->sign == '+' && other.sign == '-')
 	{
-		difference = *this + other;
-		difference.sign = '-';
-		return difference;
+		std::cout << "+-" << std::endl;
+		lint temp(other._number);
+		return *this + temp;
 	}
-
-	// if the other _number is minus, use addtion method
-	if(other.sign == '-')
+	else if(this->sign == '-' && other.sign == '+')
 	{
-		auto temp = other;
-		temp.sign = '+';
-		difference = *this + temp;
-		return difference;
+		std::cout << "--" << std::endl;
+		lint temp(this->_number);
+		return -(temp + other);
+	}
+	else if(this->sign == '-' && other.sign == '-')
+	{
+		std::cout << "--" << std::endl;
+		lint temp1(this->_number);
+		lint temp2(other._number);
+		return temp2 - temp1;
 	}
 
 	// if this _number less than the other, reverse them and put a minus sign
+	std::cout << "++" << std::endl;
+
 	if(*this < other)
 	{
-		auto temp = other;
-		difference = temp - *this;
-		difference.sign = '-';
-		return difference;
+		return -(other - *this);
 	}
 
 	// big _number minus small _number
 	unsigned length = std::max(this->size(), other.size());
-	Longint temp{""};
-	temp = *this;
+	std::cout << "contruct temp with this->_number: " << std::endl;
+	lint temp(this->_number);
 
 	for(unsigned i{}; i < length; ++i)
 	{
 		char char_digit_a = temp.get_digit(i);
+		std::cout << "char_digit_a: " << char_digit_a << std::endl;
 		char char_digit_b = other.get_digit(i);
+		std::cout << "char_digit_b: " << char_digit_b << std::endl;
 		int digit_diff = char_digit_a - char_digit_b;
+		std::cout << "digit_diff: " << digit_diff << std::endl;
 
 		if(digit_diff < 0 && temp.borrow(i + i))
 		{
@@ -285,20 +326,21 @@ Longint Longint::operator-(const Longint& other) const
 		}
 
 		char char_digit_diff = digit_diff + 48;
+		std::cout << "char_digit_diff: " << char_digit_diff << std::endl;
 		difference._number.insert(0, 1, char_digit_diff);
+		std::cout << "difference: " << difference << std::endl;
 	}
 
+	std::cout << "difference: " << difference << std::endl;
 	return difference;
 }
 
-Longint Longint::operator*(const Longint &other) const
+lint lint::operator*(const lint &other) const
 {
-	Longint product{""};
-	Longint count{""};
-	Longint multiplicand = *this;
-	multiplicand.sign = '+';
-	Longint multiplier = other;
-	multiplier.sign = '+';
+	lint product;
+	lint count;
+	lint multiplicand(this->_number);
+	lint multiplier(this->_number);
 
 	while(count < multiplier)
 	{
@@ -311,25 +353,37 @@ Longint Longint::operator*(const Longint &other) const
 	return product;
 }
 
-void Longint::operator=(const Longint& other)
+lint& lint::operator=(const lint& other)
 {
-	this->_number = other._number;
+	if(*this == other) return *this;
+
+	this->set_number(other._number);
 	this->sign = other.sign;
+	return *this;
 }
 
-Longint Longint::operator/(const Longint& other) const
+lint lint::operator/(const lint& other) const
 {
-	Longint quotient{""};
-	Longint divident = *this;
-	divident.sign = '+';
-	Longint divisor = other;
-	divisor.sign = '+';
-	// while(divident > divisor)
+	std::cout << "initializing quotient" << std::endl;
+	lint quotient;
+	std::cout << "initializing divident" << std::endl;
+	lint divident(this->_number);
+	std::cout << "initializing divisor" << std::endl;
+	lint divisor(other._number);
+	int count = 0;
+
+	while(divident > divisor)
 	{
+		std::cout << "doing ++quotient" << std::endl;
+		++quotient;
+		std::cout << "doing divident -= divisor" << std::endl;
 		divident -= divisor;
-		divident -= divisor;
-		divident -= divisor;
-		// quotient += 1;
+		count++;
+
+		if(count > 4) break;
+
+		std::cout << "divident: " << divident << std::endl;
+		std::cout << divident << " > " << divisor << '\t' << (divident > divisor) << std::endl;
 	}
 
 	if(this->sign != other.sign) quotient.sign = '-';
@@ -337,9 +391,9 @@ Longint Longint::operator/(const Longint& other) const
 	return quotient;
 }
 
-Longint Longint::factorial(unsigned n)
+lint lint::factorial(unsigned n)
 {
-	Longint f{1};
+	lint f{1};
 
 	for(unsigned i = 1; i <= n; ++i)
 	{
