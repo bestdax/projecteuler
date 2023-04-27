@@ -269,9 +269,7 @@ bool lint::borrow(unsigned index)
 		if(this->get_digit(i) != '0')
 		{
 			--(*it);
-
-			if(*it == '0') this->_number = this->_number.substr(1);
-
+			this->trim();
 			return true;
 		}
 		else
@@ -328,7 +326,7 @@ lint lint::operator-(const lint& other) const
 		char char_digit_b = other.get_digit(i);
 		int digit_diff = char_digit_a - char_digit_b;
 
-		if(digit_diff < 0 && temp.borrow(i + i))
+		if(digit_diff < 0 && temp.borrow(i + 1))
 		{
 			digit_diff += 10;
 		}
@@ -371,15 +369,26 @@ lint& lint::operator=(const lint& other)
 lint lint::operator/(const lint& other) const
 {
 	lint quotient;
-	lint divident(this->_number);
+	lint divident;
 	lint divisor(other._number);
-	int count = 0;
+	unsigned steps = this->size() - other.size() + 1;
+	divident = this->_number.substr(0, other.size());
 
-	while(divident >= divisor)
+	for(unsigned i = 0; i < steps; ++i)
 	{
-		++quotient;
-		divident -= divisor;
-		count++;
+		quotient *= 10;
+
+		while(divident >= divisor)
+		{
+			++quotient;
+			divident -= divisor;
+		}
+
+		if(i != steps - 1)
+		{
+			divident *= 10;
+			divident += this->_number[divisor.size() + i] - 48;
+		}
 	}
 
 	if(this->sign != other.sign) quotient.sign = '-';
