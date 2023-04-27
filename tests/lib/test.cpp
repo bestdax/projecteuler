@@ -19,6 +19,7 @@ TEST(LINT, COMP)
 	EXPECT_FALSE(lint(88) > lint(100));
 	EXPECT_TRUE(lint(50) > lint(15));
 	EXPECT_TRUE(lint(1999) != -999);
+	EXPECT_TRUE(lint(710) >= 6);
 }
 
 TEST(LINT, UNARY_MINUS)
@@ -44,10 +45,13 @@ TEST(LINT, TRIM)
 // {
 // 	lint l(100);
 // 	lint d(122);
-// 	EXPECT_TRUE(l.borrow(0));
-// 	EXPECT_EQ(l, 99);
-// 	EXPECT_TRUE(d.borrow(1));
-// 	EXPECT_EQ(d, 112);
+// 	lint e(710);
+// 	// EXPECT_TRUE(l.borrow(0));
+// 	// EXPECT_EQ(l, 99);
+// 	// EXPECT_TRUE(d.borrow(1));
+// 	// EXPECT_EQ(d, 112);
+// 	EXPECT_TRUE(e.borrow(1));
+// 	EXPECT_EQ(e, 700);
 // }
 
 TEST(LINT, SUBTRUCTION)
@@ -57,6 +61,7 @@ TEST(LINT, SUBTRUCTION)
 	EXPECT_EQ(lint(3) - lint(-5), 8);
 	EXPECT_EQ(lint(-3) - lint(-5), 2);
 	EXPECT_EQ(lint(50) - lint(5), 45);
+	EXPECT_EQ(lint(710) - lint(6), 704);
 }
 
 TEST(LINT, INCREAEMENT)
@@ -79,6 +84,9 @@ TEST(LINT, PLUS_MINUS_EQUAL)
 	EXPECT_EQ(a, -1);
 	b += 3898;
 	EXPECT_EQ(b, 5097);
+	a = lint(710);
+	a -= 6;
+	EXPECT_EQ(a, 704);
 }
 
 TEST(LINT, MULTIPLY)
@@ -97,7 +105,9 @@ TEST(LIB, LONGINT_FACTORAIL)
 TEST(LINT, DIVISION)
 {
 	EXPECT_EQ(lint(50) / lint(5), lint(10));
-	// EXPECT_EQ(lint(99) / 10, 9);
+	EXPECT_EQ(lint(99) / 10, 9);
+	EXPECT_EQ(lint(720) / lint(6), 120);
+	EXPECT_EQ(lint(115577800) / 8899, 12987);
 }
 
 
