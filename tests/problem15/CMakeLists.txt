@@ -6,5 +6,5 @@ target_include_directories(${targetname} PUBLIC ${PROJECT_SOURCE_DIR}/src/${CURR
 
 target_include_directories(${targetname} PUBLIC ${PROJECT_SOURCE_DIR}/src/lib)
 target_link_directories(${targetname} PUBLIC ${PROJECT_BINARY_DIR}/src/lib)
-target_link_libraries(${targetname} gtest_main longint)
+target_link_libraries(${targetname} gtest_main lint)
 
