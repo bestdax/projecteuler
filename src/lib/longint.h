@@ -41,6 +41,8 @@ public:
 	std::string number() const;
 	unsigned size() const;
 	lint factorial();
+	lint power(unsigned n);
+	lint digit_sum();
 
 private:
 	bool borrow(unsigned index);
