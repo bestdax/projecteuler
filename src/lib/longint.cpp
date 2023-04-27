@@ -67,7 +67,10 @@ lint::lint(long num)
 	}
 	else
 	{
-		this->set_number(std::to_string(num));
+		if(num == 0) this->set_number("");
+		else
+			this->set_number(std::to_string(num));
+
 		this->sign = '+';
 	}
 }
@@ -409,4 +412,26 @@ lint lint::factorial()
 	}
 
 	return f;
+}
+
+lint lint::power(unsigned n)
+{
+	lint result{1};
+
+	for(unsigned i = 0; i < n; ++i)
+	{
+		result *= *this;
+	}
+
+	return result;
+}
+
+lint lint::digit_sum()
+{
+	lint sum;
+
+	for(auto d : this->_number)
+		sum += d - 48;
+
+	return sum;
 }
