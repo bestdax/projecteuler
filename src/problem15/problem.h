@@ -7,8 +7,7 @@
 class Solution
 {
 public:
-	unsigned long factorial(unsigned n);
-	unsigned long path_number(unsigned grid_size);
+	lint path_number(unsigned grid_size);
 	void answer();
 
 };
