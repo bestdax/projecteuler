@@ -26,8 +26,10 @@ public:
 	~lint();
 
 	bool operator<(const lint &other) const;
+	bool operator<=(const lint &other) const;
 	bool operator==(const lint &other) const;
 	bool operator>(const lint &other) const;
+	bool operator>=(const lint &other) const;
 	bool operator!=(const lint &other) const;
 	lint& operator--();
 	lint operator--(int);
@@ -38,10 +40,11 @@ public:
 public:
 	std::string number() const;
 	unsigned size() const;
-	lint factorial(unsigned n);
-	bool borrow(unsigned index);
+	lint factorial();
 
 private:
+	bool borrow(unsigned index);
+	void trim(); // trim zeros in the front;
 	void set_number(std::string num_str);
 	std::string _number;
 	char sign;

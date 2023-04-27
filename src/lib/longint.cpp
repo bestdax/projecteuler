@@ -9,17 +9,29 @@ lint::lint()
 void lint::set_number(std::string num_str)
 {
 	this->_number = num_str;
-	std::cout << "set number to: " << std::quoted(num_str) << std::endl;
 }
 
 lint::~lint()
 {
 }
 
+void lint::trim()
+{
+	auto pos = this->_number.find_first_not_of('0');
+
+	if(pos != this->_number.npos)
+	{
+		this->_number = this->_number.substr(pos);
+	}
+	else
+	{
+		this->_number = "";
+	}
+}
+
 // copy constructor
 lint::lint(lint& other): _number(other._number), sign(other.sign)
 {
-	std::cout << "in copy constructor, set number to " << *this << std::endl;
 }
 
 
@@ -41,6 +53,8 @@ lint::lint(std::string digit_string)
 		sign = '+';
 		this->set_number(digit_string);
 	}
+
+	this->trim();
 }
 
 // construct with number
@@ -181,6 +195,15 @@ bool lint::operator>(const lint &other) const
 
 	return result;
 }
+bool lint::operator>=(const lint &other) const
+{
+	return *this > other || *this == other;
+}
+
+bool lint::operator<=(const lint &other) const
+{
+	return *this < other || *this == other;
+}
 bool lint::operator!=(const lint &other) const
 {
 	if(*this == other) return false;
@@ -195,7 +218,6 @@ char lint::get_digit(unsigned index) const
 
 lint lint::operator+(const lint& other) const
 {
-	std::cout << "In operator+" << std::endl;
 	lint sum;
 
 	if(this->sign == other.sign)
@@ -231,8 +253,7 @@ lint lint::operator+(const lint& other) const
 		}
 		else
 		{
-			lint temp(this->_number);
-			temp.sign = '+';
+			lint temp(other._number);
 			sum = *this - temp;
 			return sum;
 		}
@@ -241,22 +262,20 @@ lint lint::operator+(const lint& other) const
 
 bool lint::borrow(unsigned index)
 {
-	std::cout << *this << '\t' << index << std::endl;
-
 	for(unsigned i = index; i < this->size(); ++i)
 	{
-		std::cout << "-----" <<  *this << std::endl;
 		auto it = this->_number.rbegin() + i;
 
 		if(this->get_digit(i) != '0')
 		{
-			std::cout << "upper" << std::endl;
 			--(*it);
+
+			if(*it == '0') this->_number = this->_number.substr(1);
+
 			return true;
 		}
 		else
 		{
-			std::cout << "lower" << std::endl;
 			*it = '9';
 		}
 	}
@@ -273,33 +292,26 @@ lint& lint::operator-()
 // operator -
 lint lint::operator-(const lint& other) const
 {
-	std::cout << "In operator-" << std::endl;
-	std::cout << "*this: " << *this << std::endl;
-	std::cout << "other: " << other << std::endl;
 	lint difference;
 
 	if(this->sign == '+' && other.sign == '-')
 	{
-		std::cout << "+-" << std::endl;
 		lint temp(other._number);
 		return *this + temp;
 	}
 	else if(this->sign == '-' && other.sign == '+')
 	{
-		std::cout << "--" << std::endl;
 		lint temp(this->_number);
 		return -(temp + other);
 	}
 	else if(this->sign == '-' && other.sign == '-')
 	{
-		std::cout << "--" << std::endl;
 		lint temp1(this->_number);
 		lint temp2(other._number);
 		return temp2 - temp1;
 	}
 
 	// if this _number less than the other, reverse them and put a minus sign
-	std::cout << "++" << std::endl;
 
 	if(*this < other)
 	{
@@ -308,17 +320,13 @@ lint lint::operator-(const lint& other) const
 
 	// big _number minus small _number
 	unsigned length = std::max(this->size(), other.size());
-	std::cout << "contruct temp with this->_number: " << std::endl;
 	lint temp(this->_number);
 
 	for(unsigned i{}; i < length; ++i)
 	{
 		char char_digit_a = temp.get_digit(i);
-		std::cout << "char_digit_a: " << char_digit_a << std::endl;
 		char char_digit_b = other.get_digit(i);
-		std::cout << "char_digit_b: " << char_digit_b << std::endl;
 		int digit_diff = char_digit_a - char_digit_b;
-		std::cout << "digit_diff: " << digit_diff << std::endl;
 
 		if(digit_diff < 0 && temp.borrow(i + i))
 		{
@@ -326,12 +334,10 @@ lint lint::operator-(const lint& other) const
 		}
 
 		char char_digit_diff = digit_diff + 48;
-		std::cout << "char_digit_diff: " << char_digit_diff << std::endl;
 		difference._number.insert(0, 1, char_digit_diff);
-		std::cout << "difference: " << difference << std::endl;
 	}
 
-	std::cout << "difference: " << difference << std::endl;
+	difference.trim();
 	return difference;
 }
 
@@ -340,7 +346,7 @@ lint lint::operator*(const lint &other) const
 	lint product;
 	lint count;
 	lint multiplicand(this->_number);
-	lint multiplier(this->_number);
+	lint multiplier(other._number);
 
 	while(count < multiplier)
 	{
@@ -364,26 +370,16 @@ lint& lint::operator=(const lint& other)
 
 lint lint::operator/(const lint& other) const
 {
-	std::cout << "initializing quotient" << std::endl;
 	lint quotient;
-	std::cout << "initializing divident" << std::endl;
 	lint divident(this->_number);
-	std::cout << "initializing divisor" << std::endl;
 	lint divisor(other._number);
 	int count = 0;
 
-	while(divident > divisor)
+	while(divident >= divisor)
 	{
-		std::cout << "doing ++quotient" << std::endl;
 		++quotient;
-		std::cout << "doing divident -= divisor" << std::endl;
 		divident -= divisor;
 		count++;
-
-		if(count > 4) break;
-
-		std::cout << "divident: " << divident << std::endl;
-		std::cout << divident << " > " << divisor << '\t' << (divident > divisor) << std::endl;
 	}
 
 	if(this->sign != other.sign) quotient.sign = '-';
@@ -391,13 +387,16 @@ lint lint::operator/(const lint& other) const
 	return quotient;
 }
 
-lint lint::factorial(unsigned n)
+lint lint::factorial()
 {
 	lint f{1};
 
-	for(unsigned i = 1; i <= n; ++i)
+	if(*this > 1)
 	{
-		f *= i;
+		for(lint i = 1; i <= *this; ++i)
+		{
+			f *= i;
+		}
 	}
 
 	return f;
