@@ -20,6 +20,7 @@ TEST(LINT, COMP)
 	EXPECT_TRUE(lint(50) > lint(15));
 	EXPECT_TRUE(lint(1999) != -999);
 	EXPECT_TRUE(lint(710) >= 6);
+	EXPECT_TRUE(lint() == lint(0));
 }
 
 TEST(LINT, UNARY_MINUS)
@@ -110,6 +111,16 @@ TEST(LINT, DIVISION)
 	EXPECT_EQ(lint(115577800) / 8899, 12987);
 }
 
+TEST(LINT, POWER)
+{
+	EXPECT_EQ(lint(2).power(15), 32768);
+}
+
+TEST(LINT, DIGIT_SUM)
+{
+	EXPECT_EQ(lint(32768).digit_sum(), 26);
+	EXPECT_EQ(lint().digit_sum(), 0);
+}
 
 
 
