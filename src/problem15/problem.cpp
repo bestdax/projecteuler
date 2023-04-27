@@ -13,33 +13,14 @@ dax 2023/04/23 21:40:15
 */
 #include "problem.h"
 
-unsigned long Solution::factorial(unsigned n)
+lint Solution::path_number(unsigned grid_size)
 {
-	unsigned long f{1};
-	lint a{"1"};
-	lint b{"11"};
+	lint l = 1;
 
-	for(unsigned i = 1; i <= n; ++i)
-	{
-		f *= i;
-	}
+	for(lint i = grid_size + 1; i <= grid_size * 2; ++i) l *= i;
 
-	return f;
+	return l / lint(grid_size).factorial();
 }
-unsigned long Solution::path_number(unsigned grid_size)
-{
-	unsigned long paths{1};
-	grid_size = 4;
-
-	for(unsigned i = grid_size + 1; i <= grid_size * 2; i += 2) paths *= i;
-
-	paths /= factorial(grid_size / 2);
-	paths *= std::pow(2, grid_size / 2);
-	return paths;
-}
-
-
-
 
 
 void Solution::answer()
