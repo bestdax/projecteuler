@@ -63,7 +63,7 @@ Solution::Solution()
 	};
 }
 
-int Solution::find_max_parents(unsigned row, unsigned col)
+int Solution::find_max_parent(unsigned row, unsigned col)
 {
 	if(row == 0) return 0;
 	else if(col == 0) return triangle[row - 1][col];
@@ -74,39 +74,24 @@ int Solution::find_max_parents(unsigned row, unsigned col)
 	}
 }
 
-std::vector<std::vector<int>> Solution::handled_row_by_row()
+void Solution::handle_row_by_row()
 {
-	std::vector<std::vector<int>> handled = triangle;
-
 	for(unsigned row = 0; row < triangle.size(); ++row)
 		for(unsigned col = 0; col < triangle[row].size(); ++col)
 		{
-			handled[row][col] = triangle[row][col] + find_max_parents(row, col);
+			triangle[row][col] = triangle[row][col] + find_max_parent(row, col);
 		}
-
-	return handled;
 }
 
-// int Solution::max_sum()
-// {
-// 	auto handled = handled_row_by_row();
-// 	auto last_row = handled[handled.size()];
-// 	return std::max_element(last_row.begin(), last_row.end());
-// }
+int Solution::max_sum()
+{
+	handle_row_by_row();
+	return *std::max_element(triangle.rbegin()->begin(), triangle.rbegin()->end());
+}
 
 void Solution::answer()
 {
-	auto handled = handled_row_by_row();
 
-	for(auto row : handled)
-	{
-		for(auto num : row)
-		{
-			std::cout << num << '\t';
-		}
 
-		std::cout << std::endl;
-	}
-
-	std::cout << "The answer is: " << "" << std::endl;
+	std::cout << "The answer is: " << max_sum() << std::endl;
 }
