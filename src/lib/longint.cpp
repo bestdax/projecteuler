@@ -30,7 +30,7 @@ void lint::trim()
 }
 
 // copy constructor
-lint::lint(lint& other): _number(other._number), sign(other.sign)
+lint::lint(const lint& other): _number(other._number), sign(other.sign)
 {
 }
 
