@@ -98,5 +98,5 @@ void Solution::turn()
 
 void Solution::answer()
 {
-	std::cout << "The answer is: " << fill_matrix() << std::endl;
+	std::cout << "The answer is: " << traverse_matrix() << std::endl;
 }
