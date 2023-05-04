@@ -8,7 +8,7 @@ public:
 	lint();
 	lint(std::string digit_string);
 	lint(long num);
-	lint(lint& other);
+	lint(const lint& other);
 	lint operator+(const lint &other) const;
 	lint& operator+=(const lint &other);
 	lint operator-(const lint &other) const;
