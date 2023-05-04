@@ -345,14 +345,18 @@ lint lint::operator-(const lint& other) const
 lint lint::operator*(const lint &other) const
 {
 	lint product;
-	lint count;
 	lint multiplicand(this->_number);
 	lint multiplier(other._number);
 
-	while(count < multiplier)
+	for(auto it = multiplier._number.rbegin(); it < multiplier._number.rend(); ++it)
 	{
-		product += multiplicand;
-		++count;
+		std::string n = this->_number + std::string(it - multiplier._number.rbegin(), '0');
+		auto temp_multiplicand = lint(n);
+
+		for(char c = 48; c < *it; ++c)
+		{
+			product += temp_multiplicand;
+		}
 	}
 
 	if(this->sign != other.sign) product.sign = '-';
