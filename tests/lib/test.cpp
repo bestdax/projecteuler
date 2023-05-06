@@ -1,6 +1,7 @@
 #include "gtest/gtest.h"
 #include "prime.h"
 #include "longint.h"
+#include "number.h"
 
 
 TEST(LINT, INIT)
@@ -120,6 +121,37 @@ TEST(LINT, DIGIT_SUM)
 {
 	EXPECT_EQ(lint(32768).digit_sum(), 26);
 	EXPECT_EQ(lint().digit_sum(), 0);
+}
+
+TEST(NUMBER, GET_DIGITS)
+{
+	std::vector<unsigned> d{1, 1, 1, 2, 3, 2, 3, 4};
+	EXPECT_EQ(get_digits(11123234), d);
+}
+
+TEST(NUMBER, DIGITS_TO_NUMBER)
+{
+	std::vector<unsigned> d{1, 2, 3, 4, 5, 0};
+	EXPECT_EQ(digits_to_number(d), 123450);
+}
+
+TEST(NUMBER, HAS_ZERO)
+{
+	EXPECT_TRUE(has_digit(112200, 0));
+	EXPECT_FALSE(has_digit(123456, 0));
+}
+
+TEST(NUMBER, HAS_SAME_DIGIT)
+{
+	EXPECT_TRUE(has_same_digit(12345, 56789));
+	EXPECT_FALSE(has_same_digit(12345, 6789));
+}
+
+TEST(NUMBER, CANCEL_SAME_DIGIT)
+{
+	std::vector<unsigned long> n{1, 3};
+	std::vector<unsigned long> t{16, 3};
+	EXPECT_EQ(cancel_same_digit(12456, 2345), t);
 }
 
 
