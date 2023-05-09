@@ -20,8 +20,22 @@ https://projecteuler.net/problem=33
 dax 2023-05-06 15:22:21
 */
 #include "problem.h"
+#include "number.h"
+
+void Solution::curious_fraction_pairs()
+{
+	for(size_t i = 11; i < 100; ++i)
+		for(size_t j = i + 1; j < 100; ++j)
+		{
+			if(has_zero(i) || has_zero(j)) continue;
+
+			if(!has_same_digit(i, j)) continue;
+
+			std::cout << i << '\t' << j << std::endl;
+		}
+}
 
 void Solution::answer()
 {
+	curious_fraction_pairs();
 }
-
