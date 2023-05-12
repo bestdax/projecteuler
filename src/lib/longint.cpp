@@ -405,6 +405,8 @@ lint lint::operator/(const lint& other) const
 
 lint lint::factorial()
 {
+	if(*this == 0) return *this;
+
 	lint f{1};
 
 	if(*this > 1)
