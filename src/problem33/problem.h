@@ -4,7 +4,7 @@
 class Solution
 {
 public:
-	void curious_fraction_pairs();
+	unsigned curious_fraction_pairs();
 	void answer();
 
 };

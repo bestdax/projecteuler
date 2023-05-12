@@ -21,21 +21,33 @@ dax 2023-05-06 15:22:21
 */
 #include "problem.h"
 #include "number.h"
+#include <numeric>
 
-void Solution::curious_fraction_pairs()
+unsigned Solution::curious_fraction_pairs()
 {
+	unsigned product_of_denominators{1};
+	unsigned product_of_numberator{1};
+
 	for(size_t i = 11; i < 100; ++i)
 		for(size_t j = i + 1; j < 100; ++j)
 		{
-			if(has_zero(i) || has_zero(j)) continue;
+			if(has_digit(i, 0) || has_digit(j, 0)) continue; // if has zero, continue the loop
 
 			if(!has_same_digit(i, j)) continue;
 
-			std::cout << i << '\t' << j << std::endl;
+			auto numbers_cancelled_same_digit = cancel_same_digit(i, j);
+
+			if(static_cast<double>(i) / j == static_cast<double>(numbers_cancelled_same_digit[0]) / numbers_cancelled_same_digit[1])
+			{
+				product_of_denominators *= j;
+				product_of_numberator *= i;
+			}
 		}
+
+	return product_of_denominators / std::gcd(product_of_denominators, product_of_numberator);
 }
 
 void Solution::answer()
 {
-	curious_fraction_pairs();
+	std::cout << "The answer is: " << curious_fraction_pairs() << std::endl;
 }
