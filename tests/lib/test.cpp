@@ -22,6 +22,7 @@ TEST(LINT, COMP)
 	EXPECT_TRUE(lint(1999) != -999);
 	EXPECT_TRUE(lint(710) >= 6);
 	EXPECT_TRUE(lint() == lint(0));
+	EXPECT_TRUE(lint() == 0);
 }
 
 TEST(LINT, UNARY_MINUS)
