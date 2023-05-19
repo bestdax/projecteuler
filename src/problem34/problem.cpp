@@ -17,54 +17,66 @@ dax 2023-05-12 16:22:54
 #include "problem.h"
 unsigned Solution::length()
 {
-	unsigned len = 1;
+    unsigned len = 1;
 
-	while(lint(10).power(len) < lint(9).factorial() * len)
-	{
-		++len;
-	}
+    while(lint(10).power(len) < lint(9).factorial() * len)
+    {
+        ++len;
+    }
 
-	return len;
+    return len;
+}
+
+lint Solution::sum_of_digit_factorial(lint number)
+{
+    lint sum{};
+
+    for (auto d : number.number())
+    {
+        sum += factorials[d - 48];
+    }
+
+    return sum;
 }
 
 bool Solution::is_curious(lint number)
 {
-	lint sum_of_digit_factorial{};
+    lint sum_of_digit_factorial{};
 
-	for(auto d : number.number())
-	{
-		sum_of_digit_factorial += lint(d - 48).factorial();
-	}
+    for(auto d : number.number())
+    {
+        sum_of_digit_factorial += factorials[d - 48];
 
-	return sum_of_digit_factorial == number;
+        if (sum_of_digit_factorial > number) return false;
+    }
+
+    return sum_of_digit_factorial == number;
 }
 
 lint Solution::sum_of_curious_number()
 {
-	lint sum{};
-	unsigned len = length();
-	lint cap = lint(9).factorial() * len;
-	std::cout << cap << std::endl;
-	lint n = 3;
+    lint sum{};
+    unsigned len = length();
+    lint cap = lint(10).power(len);
+    lint n = 3;
 
-	while(n <= cap)
-	{
-		auto digits = n.number();
-		lint sum_of_digit_factorial{};
+    while(n <= cap)
+    {
+        lint sum_of_digit_factorial{};
 
-		if(is_curious(n))
-		{
-			sum += n;
-			std::cout << n << '\t' << sum << std::endl;
-		}
+        if(is_curious(n))
+        {
+            sum += n;
+        }
 
-		++n;
-	}
+        ++n;
+    }
 
-	return sum;
+    return sum;
 }
+
 
 void Solution::answer()
 {
-	std::cout << "The answer is: " << sum_of_curious_number() << std::endl;
+    std::cout << "The answer is: " << sum_of_curious_number() << std::endl;
 }
