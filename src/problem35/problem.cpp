@@ -21,23 +21,34 @@ dax 2023-05-19 16:58:55
 
 bool Solution::is_circular_prime(unsigned number)
 {
-    auto len = size(number);
+	auto len = size(number);
 
-    for(unsigned i = 1; i < len; ++i)
-    {
-        if (is_prime(number))
-        {
-            number = rotate(number);
-        }
-        else
-            return false;
-    }
+	for(unsigned i = 1; i < len; ++i)
+	{
+		if(is_prime(number))
+		{
+			number = rotate(number);
+		}
+		else
+			return false;
+	}
 
-    return true;
+	return is_prime(number);
+}
 
+unsigned Solution::count_circular_prime(unsigned long cap)
+{
+	unsigned count{};
+
+	for(unsigned long i = 1; i < cap; ++i)
+	{
+		if(is_circular_prime(i)) ++count;
+	}
+
+	return count;
 }
 
 void Solution::answer()
 {
-    std::cout << "The answer is: " << "" << std::endl;
+	std::cout << "The answer is: " << count_circular_prime(1'000'000) << std::endl;
 }
