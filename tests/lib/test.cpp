@@ -162,7 +162,10 @@ TEST(NUMBER, CANCEL_SAME_DIGIT)
 
 TEST(NUMBER, ROTATE)
 {
-    EXPECT_EQ(rotate(2234), 4223);
+    EXPECT_EQ(rotate(2345), 5234);
+    EXPECT_EQ(rotate(5234), 4523);
+    EXPECT_EQ(rotate(4523), 3452);
+    EXPECT_EQ(rotate(3452), 2345);
 }
 
 
