@@ -160,6 +160,11 @@ TEST(NUMBER, CANCEL_SAME_DIGIT)
     EXPECT_EQ(cancel_same_digit(12456, 2345), t);
 }
 
+TEST(NUMBER, ROTATE)
+{
+    EXPECT_EQ(rotate(2234), 4223);
+}
+
 
 
 
