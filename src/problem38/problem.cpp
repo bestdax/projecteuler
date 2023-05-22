@@ -1,9 +1,6 @@
 /*
 Problem description:
 Pandigital multiples
-Toggle Pin=38
-
- Show HTML problem content
 Problem 38
 Take the number 192 and multiply it by each of 1, 2, and 3:
 
@@ -26,9 +23,46 @@ https://projecteuler.net/problem=38
 dax 2023-05-21 11:46:39
 */
 #include "problem.h"
+#include "number.h"
+
+unsigned Solution::pandigital_multiple(unsigned number)
+{
+	unsigned n = 2;
+
+	if(has_digit(number, 0) || has_same_digit(number))
+		return 0;
+	else
+	{
+		unsigned pm{number};
+
+		while(true)
+		{
+			if(has_same_digit(pm, number * n) || has_digit(number * n, 0) || has_same_digit(pm) || has_same_digit(number * n)) break;
+			else
+			{
+				pm = concatenate(pm, number * n);
+				++n;
+			}
+		}
+
+		return pm;
+	}
+}
+
+unsigned Solution::max_pandigital_multiple()
+{
+	unsigned max{0};
+
+	for(unsigned i = 1; i < 50'000; ++i)
+	{
+		auto pm = pandigital_multiple(i);
+		max = size(pm) == 9 && pm > max ? pm : max;
+	}
+
+	return max;
+}
 
 void Solution::answer()
 {
-	std::cout << "The answer is: " << "" << std::endl;
+	std::cout << "The answer is: " << max_pandigital_multiple() << std::endl;
 }
-
