@@ -5,5 +5,5 @@ target_include_directories(${targetname} PUBLIC ../../googletest/googletest/incl
 target_include_directories(${targetname} PUBLIC ../../src/${CURRENT_DIR_NAME}/)
 target_include_directories(${targetname} PUBLIC ${PROJECT_SOURCE_DIR}/src/lib)
 target_link_directories(${targetname} PRIVATE ${PROJECT_BINARY_DIR}/src/lib)
-target_link_libraries(${targetname} gtest_main prime)
+target_link_libraries(${targetname} gtest_main number)
 	

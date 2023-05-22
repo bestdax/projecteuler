@@ -4,6 +4,39 @@
 #include <cmath>
 #include <algorithm>
 
+bool is_prime(long number)
+{
+	if(number < 2) return false;
+
+	int root = std::round(std::sqrt(number));
+
+	for(int i = 2; i <= root; i++)
+	{
+		if(number % i == 0) return false;
+	}
+
+	return true;
+}
+
+std::vector<int> prime_factors(long number)
+{
+	std::vector<int> pf{};
+
+	if(number < 2) return pf;
+
+	for(int i = 2; i <= number; ++i)
+	{
+		if(is_prime(i) && number % i == 0)
+		{
+			pf.push_back(i);
+			number /= i;
+			i = 1;
+		}
+	}
+
+	return pf;
+}
+
 
 std::vector<unsigned> get_digits(unsigned long number)
 {
@@ -127,4 +160,24 @@ unsigned long concatenate(unsigned long number1, unsigned long number2)
 {
 	auto len = size(number2);
 	return number1 * std::pow(10, len) + number2;
+}
+
+bool is_n_pandigital(unsigned number)
+{
+	if(has_digit(number, 0)) return false;
+
+	if(has_same_digit(number)) return false;
+
+	auto len = size(number);
+
+	for(unsigned i = len + 1; i < 10; ++ i)
+		if(has_digit(number, i)) return false;
+
+	return true;
+}
+
+bool is_triangle_number(unsigned long number)
+{
+	auto n = std::round(std::sqrt(number * 2));
+	return n * (n + 1) == number * 2;
 }

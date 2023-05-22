@@ -1,5 +1,4 @@
 #include "gtest/gtest.h"
-#include "prime.h"
 #include "longint.h"
 #include "number.h"
 
@@ -179,6 +178,34 @@ TEST(NUMBER, HAS_SAME_DIGIT2)
 	EXPECT_FALSE(has_same_digit(2345));
 }
 
+TEST(NUMBER, IS_N_PANDIGITAL)
+{
+	EXPECT_TRUE(is_n_pandigital(1234));
+	EXPECT_TRUE(is_n_pandigital(23451));
+	EXPECT_TRUE(is_n_pandigital(987654321));
+	EXPECT_TRUE(is_n_pandigital(56813247));
+	EXPECT_FALSE(is_n_pandigital(2345));
+	EXPECT_FALSE(is_n_pandigital(1223));
+	EXPECT_FALSE(is_n_pandigital(34567));
+	EXPECT_FALSE(is_n_pandigital(654327));
+}
+
+
+TEST(NUMBER, IS_TRIANGLE_NUMBER)
+{
+	EXPECT_TRUE(is_triangle_number(1));
+	EXPECT_TRUE(is_triangle_number(3));
+	EXPECT_TRUE(is_triangle_number(6));
+	EXPECT_TRUE(is_triangle_number(10));
+	EXPECT_TRUE(is_triangle_number(15));
+	EXPECT_TRUE(is_triangle_number(21));
+	EXPECT_TRUE(is_triangle_number(28));
+	EXPECT_TRUE(is_triangle_number(36));
+	EXPECT_TRUE(is_triangle_number(45));
+	EXPECT_TRUE(is_triangle_number(55));
+	EXPECT_FALSE(is_triangle_number(2));
+	EXPECT_FALSE(is_triangle_number(56));
+}
 
 
 
