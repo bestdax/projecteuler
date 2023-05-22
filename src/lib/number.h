@@ -2,6 +2,8 @@
 #include <vector>
 #include <algorithm>
 
+bool is_prime(long number);
+std::vector<int> prime_factors(long number);
 std::vector<unsigned> get_digits(unsigned long number);
 unsigned long digits_to_number(std::vector<unsigned> digits);
 bool has_digit(unsigned long number, unsigned digit);
@@ -12,3 +14,5 @@ unsigned size(unsigned long number);
 unsigned long rotate(unsigned long number);
 bool is_palindrome(unsigned long number);
 unsigned long concatenate(unsigned long number1, unsigned long number2);
+bool is_n_pandigital(unsigned number);
+bool is_triangle_number(unsigned long number);
