@@ -2,6 +2,7 @@
 #include <iostream>
 #include <ostream>
 #include <cmath>
+#include <algorithm>
 
 
 std::vector<unsigned> get_digits(unsigned long number)
@@ -44,6 +45,19 @@ bool has_same_digit(unsigned long number1, unsigned long number2)
 		auto it = std::find(digits2.begin(), digits2.end(), d);
 
 		if(it != digits2.end()) return true;
+	}
+
+	return false;
+}
+
+bool has_same_digit(unsigned long number)
+{
+	auto digits = get_digits(number);
+	std::sort(digits.begin(), digits.end());
+
+	for(auto it = digits.begin(); it < digits.end() - 1; ++it)
+	{
+		if(*it == *(it + 1)) return true;
 	}
 
 	return false;
@@ -107,4 +121,10 @@ bool is_palindrome(unsigned long number)
 	}
 
 	return true;
+}
+
+unsigned long concatenate(unsigned long number1, unsigned long number2)
+{
+	auto len = size(number2);
+	return number1 * std::pow(10, len) + number2;
 }
