@@ -146,6 +146,20 @@ TEST(NUMBER, CANCEL_SAME_DIGIT)
 }
 
 
+TEST(NUMBER, IS_PENTAGONAL_NUMBER)
+{
+	EXPECT_TRUE(is_pentagonal_number(1));
+	EXPECT_TRUE(is_pentagonal_number(5));
+	EXPECT_TRUE(is_pentagonal_number(12));
+	EXPECT_TRUE(is_pentagonal_number(22));
+	EXPECT_TRUE(is_pentagonal_number(35));
+	EXPECT_TRUE(is_pentagonal_number(51));
+	EXPECT_TRUE(is_pentagonal_number(70));
+	EXPECT_TRUE(is_pentagonal_number(92));
+	EXPECT_TRUE(is_pentagonal_number(117));
+	EXPECT_TRUE(is_pentagonal_number(145));
+}
+
 
 
 

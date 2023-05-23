@@ -16,3 +16,4 @@ bool is_palindrome(unsigned long number);
 unsigned long concatenate(unsigned long number1, unsigned long number2);
 bool is_n_pandigital(unsigned number);
 bool is_triangle_number(unsigned long number);
+bool is_pentagonal_number(unsigned long number);
