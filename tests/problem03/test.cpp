@@ -15,7 +15,7 @@ TEST(EULER03, IS_PRIME)
 
 TEST(EULER03, PRIME_FACTORS)
 {
-	std::vector<int> pf{5, 7, 13, 29};
+	std::vector<unsigned> pf{5, 7, 13, 29};
 	EXPECT_EQ(prime_factors(13195), pf);
 }
 
