@@ -193,3 +193,19 @@ bool is_hexagonal_number(unsigned long number)
 	unsigned n = (std::sqrt(8 * number + 1) + 1) / 4;
 	return number == (2 * n * n - n);
 }
+
+bool is_odd(unsigned long number)
+{
+	return number % 2 != 0;
+}
+
+bool is_even(unsigned long number)
+{
+	return number % 2 == 0;
+}
+
+bool is_square(unsigned long number)
+{
+	unsigned long sqrt = std::round(std::sqrt(number));
+	return number == sqrt * sqrt;
+}
