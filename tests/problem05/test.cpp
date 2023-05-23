@@ -15,9 +15,9 @@ TEST(EULER05, LCM)
 
 TEST(TOOLS, PRIME_FACTORS)
 {
-	std::vector<int> a{2};
-	std::vector<int> b{2, 2};
-	std::vector<int> c{5, 7, 13, 29};
+	std::vector<unsigned> a{2};
+	std::vector<unsigned> b{2, 2};
+	std::vector<unsigned> c{5, 7, 13, 29};
 	EXPECT_EQ(prime_factors(13195), c);
 	EXPECT_EQ(prime_factors(2), a);
 	EXPECT_EQ(prime_factors(4), b);

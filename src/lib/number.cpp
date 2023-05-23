@@ -4,7 +4,7 @@
 #include <cmath>
 #include <algorithm>
 
-bool is_prime(long number)
+bool is_prime(unsigned long number)
 {
 	if(number < 2) return false;
 
@@ -18,9 +18,9 @@ bool is_prime(long number)
 	return true;
 }
 
-std::vector<int> prime_factors(long number)
+std::vector<unsigned> prime_factors(unsigned long number)
 {
-	std::vector<int> pf{};
+	std::vector<unsigned> pf{};
 
 	if(number < 2) return pf;
 
