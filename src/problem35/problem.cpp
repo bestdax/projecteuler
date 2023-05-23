@@ -16,7 +16,7 @@ https://projecteuler.net/problem=35
 dax 2023-05-19 16:58:55
 */
 #include "problem.h"
-#include "prime.h"
+#include "number.h"
 #include "number.h"
 
 bool Solution::is_circular_prime(unsigned number)

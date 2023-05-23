@@ -20,7 +20,7 @@ dax 2023-05-21 10:30:21
 #include "problem.h"
 #include <cmath>
 #include "number.h"
-#include "prime.h"
+#include "number.h"
 
 unsigned long Solution::truncate_from_left(unsigned long number)
 {

@@ -4,5 +4,5 @@ add_executable(${targetname} main.cpp problem.cpp)
 
 target_include_directories(${targetname} PUBLIC ${PROJECT_SOURCE_DIR}/src/lib)
 target_link_directories(${targetname} PUBLIC ${PROJECT_BINARY_DIR}/src/lib)
-target_link_libraries(${targetname} prime number)
+target_link_libraries(${targetname} number number)
 
