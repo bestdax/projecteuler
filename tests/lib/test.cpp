@@ -160,7 +160,14 @@ TEST(NUMBER, IS_PENTAGONAL_NUMBER)
 	EXPECT_TRUE(is_pentagonal_number(145));
 }
 
-
+TEST(NUMBER, IS_HEXAGONAL_NUMBER)
+{
+	EXPECT_TRUE(is_hexagonal_number(1));
+	EXPECT_TRUE(is_hexagonal_number(6));
+	EXPECT_TRUE(is_hexagonal_number(15));
+	EXPECT_TRUE(is_hexagonal_number(28));
+	EXPECT_TRUE(is_hexagonal_number(45));
+}
 
 
 int main(int argc, char *argv[])
