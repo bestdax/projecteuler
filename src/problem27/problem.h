@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include "prime.h"
+#include "number.h"
 
 class Solution
 {

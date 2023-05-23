@@ -1,5 +1,4 @@
 #include "gtest/gtest.h"
-#include "prime.h"
 #include "longint.h"
 #include "number.h"
 

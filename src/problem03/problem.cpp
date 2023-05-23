@@ -13,7 +13,7 @@ dax 2023-04-21 12:52:04
 */
 
 #include "problem.h"
-#include "prime.h"
+#include "number.h"
 
 
 int Solution::largest_prime_factor(long number)
