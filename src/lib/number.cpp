@@ -175,3 +175,9 @@ bool is_n_pandigital(unsigned number)
 
 	return true;
 }
+
+bool is_triangle_number(unsigned long number)
+{
+	auto n = std::round(std::sqrt(number * 2));
+	return n * (n + 1) == number * 2;
+}
