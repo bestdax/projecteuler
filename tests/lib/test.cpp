@@ -179,6 +179,18 @@ TEST(NUMBER, HAS_SAME_DIGIT2)
 	EXPECT_FALSE(has_same_digit(2345));
 }
 
+TEST(NUMBER, IS_N_PANDIGITAL)
+{
+	EXPECT_TRUE(is_n_pandigital(1234));
+	EXPECT_TRUE(is_n_pandigital(23451));
+	EXPECT_TRUE(is_n_pandigital(987654321));
+	EXPECT_TRUE(is_n_pandigital(56813247));
+	EXPECT_FALSE(is_n_pandigital(2345));
+	EXPECT_FALSE(is_n_pandigital(1223));
+	EXPECT_FALSE(is_n_pandigital(34567));
+	EXPECT_FALSE(is_n_pandigital(654327));
+}
+
 
 
 

@@ -128,3 +128,17 @@ unsigned long concatenate(unsigned long number1, unsigned long number2)
 	auto len = size(number2);
 	return number1 * std::pow(10, len) + number2;
 }
+
+bool is_n_pandigital(unsigned number)
+{
+	if(has_digit(number, 0)) return false;
+
+	if(has_same_digit(number)) return false;
+
+	auto len = size(number);
+
+	for(unsigned i = len + 1; i < 10; ++ i)
+		if(has_digit(number, i)) return false;
+
+	return true;
+}
