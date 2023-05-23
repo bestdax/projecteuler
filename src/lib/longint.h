@@ -35,6 +35,8 @@ public:
 	lint operator--(int);
 	lint& operator++();
 	lint operator++(int);
+	friend lint operator%(const lint &lhs, const lint &rhs);
+	lint operator%=(const lint &other);
 
 
 public:
