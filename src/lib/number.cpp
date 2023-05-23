@@ -181,3 +181,9 @@ bool is_triangle_number(unsigned long number)
 	auto n = std::round(std::sqrt(number * 2));
 	return n * (n + 1) == number * 2;
 }
+
+bool is_pentagonal_number(unsigned long number)
+{
+	unsigned n = (std::sqrt(24 * number + 1) + 1) / 6;
+	return number == n * (3 * n - 1) / 2;
+}
