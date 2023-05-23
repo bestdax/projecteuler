@@ -191,6 +191,22 @@ TEST(NUMBER, IS_N_PANDIGITAL)
 }
 
 
+TEST(NUMBER, IS_TRIANGLE_NUMBER)
+{
+	EXPECT_TRUE(is_triangle_number(1));
+	EXPECT_TRUE(is_triangle_number(3));
+	EXPECT_TRUE(is_triangle_number(6));
+	EXPECT_TRUE(is_triangle_number(10));
+	EXPECT_TRUE(is_triangle_number(15));
+	EXPECT_TRUE(is_triangle_number(21));
+	EXPECT_TRUE(is_triangle_number(28));
+	EXPECT_TRUE(is_triangle_number(36));
+	EXPECT_TRUE(is_triangle_number(45));
+	EXPECT_TRUE(is_triangle_number(55));
+	EXPECT_FALSE(is_triangle_number(2));
+	EXPECT_FALSE(is_triangle_number(56));
+}
+
 
 
 
