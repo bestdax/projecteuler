@@ -18,3 +18,6 @@ bool is_n_pandigital(unsigned number);
 bool is_triangle_number(unsigned long number);
 bool is_pentagonal_number(unsigned long number);
 bool is_hexagonal_number(unsigned long number);
+bool is_odd(unsigned long number);
+bool is_even(unsigned long number);
+bool is_square(unsigned long number);
