@@ -120,6 +120,12 @@ TEST(NUMBER, GET_DIGITS)
 	EXPECT_EQ(get_digits(11123234), d);
 }
 
+TEST(NUMBER, GET_UNIQUE_DIGITS)
+{
+	std::vector<unsigned> d{0, 1 , 2};
+	EXPECT_EQ(get_unique_digits(112200), d);
+}
+
 TEST(NUMBER, DIGITS_TO_NUMBER)
 {
 	std::vector<unsigned> d{1, 2, 3, 4, 5, 0};
