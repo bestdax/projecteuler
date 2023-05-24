@@ -14,6 +14,7 @@ unsigned size(unsigned long number);
 unsigned long rotate(unsigned long number);
 bool is_palindrome(unsigned long number);
 unsigned long concatenate(unsigned long number1, unsigned long number2);
+unsigned long concatenate(std::vector<unsigned long> numbers);
 bool is_n_pandigital(unsigned number);
 bool is_triangle_number(unsigned long number);
 bool is_pentagonal_number(unsigned long number);
