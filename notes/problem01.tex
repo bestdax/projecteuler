@@ -1,0 +1,47 @@
+\chapter{Multiples of 3 or 5}
+\section{Description}
+If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
+
+Find the sum of all the multiples of 3 or 5 below 1000.
+试试看中文能不能显示？
+\section{Flow Chart}
+
+\begin{center}
+	\begin{tikzpicture}[node distance=2cm]
+		\node (start) [startstop] {开始};
+		\node (in1) [io, right of=start, xshift=3cm] {输入一个上限cap};
+		\node (pro1) [operation, right of=in1, xshift=3cm] {n = 1\\
+			sum = 0};
+		\node (dec1) [decision, below of=pro1, yshift=-1cm] {n能被3\\
+			或者5整除};
+		\node (pro2) [yshift=-1cm, operation, below of = dec1] {sum += n;\\
+			++n;};
+		\node (dec2) [decision, below of=pro2, yshift=-.5cm] {n < cap};
+		\node (out1) [io, left of=dec2, xshift=-3cm] {输出数据};
+		\node (stop) [startstop, left of=out1, xshift=-3cm] {终止};
+
+		\draw [arrow] (start) -- (in1);
+		\draw [arrow] (in1) -- (pro1);
+		\draw [arrow] (pro1) -- (dec1);
+		\draw [arrow] (dec1) -- node[anchor=east] {Yes}(pro2);
+		\draw [arrow] (pro2) --  (dec2);
+		\draw [arrow] (dec2.west) -- node[above] {No} (out1);
+		\draw [arrow] (dec2.east) -| ([xshift=2cm]dec1.east) -- node[anchor=south east, text centered] {Yes} (dec1.east);
+		\draw [arrow] (out1) -- (stop);
+	\end{tikzpicture}
+	\captionof{figure}{Multiples of 3 or 5}
+\end{center}
+
+\section{Codes}
+\begin{cpp}
+	long Solution::sum_of_multiples(int cap)
+	{
+			long sum{};
+
+			for(int i{1}; i < cap; ++i)
+			{
+					if(i % 3 == 0 || i % 5 == 0) sum += i;
+				}
+			return sum;
+		}
+\end{cpp}

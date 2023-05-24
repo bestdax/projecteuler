@@ -52,6 +52,15 @@ std::vector<unsigned> get_digits(unsigned long number)
 	return digits;
 }
 
+std::vector<unsigned> get_unique_digits(unsigned long number)
+{
+	auto digits = get_digits(number);
+	std::sort(digits.begin(), digits.end());
+	auto last = std::unique(digits.begin(), digits.end());
+	digits.erase(last, digits.end());
+	return digits;
+}
+
 unsigned long digits_to_number(std::vector<unsigned> digits)
 {
 	unsigned long number{};

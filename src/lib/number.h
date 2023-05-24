@@ -5,6 +5,7 @@
 bool is_prime(unsigned long number);
 std::vector<unsigned> prime_factors(unsigned long number);
 std::vector<unsigned> get_digits(unsigned long number);
+std::vector<unsigned> get_unique_digits(unsigned long number);
 unsigned long digits_to_number(std::vector<unsigned> digits);
 bool has_digit(unsigned long number, unsigned digit);
 bool has_same_digit(unsigned long number1, unsigned long number2);
