@@ -441,3 +441,14 @@ lint lint::digit_sum()
 
 	return sum;
 }
+
+lint operator%(const lint &lhs, const lint &rhs)
+{
+	return lhs - (lhs / rhs) * rhs;
+}
+
+lint lint::operator%=(const lint &other)
+{
+	*this = *this % other;
+	return *this;
+}
