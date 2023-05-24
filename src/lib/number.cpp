@@ -161,6 +161,15 @@ unsigned long concatenate(unsigned long number1, unsigned long number2)
 	auto len = size(number2);
 	return number1 * std::pow(10, len) + number2;
 }
+unsigned long concatenate(std::vector<unsigned long> numbers)
+{
+	unsigned long number{};
+
+	for(auto n : numbers)
+		number = concatenate(number, n);
+
+	return number;
+}
 
 bool is_n_pandigital(unsigned number)
 {
