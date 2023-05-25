@@ -23,79 +23,98 @@ dax 2023-05-24 15:40:55
 #include "number.h"
 #include <algorithm>
 
-unsigned long Solution::replace(unsigned long number, unsigned index, unsigned digit)
+ulong Solution::replace_with_index(ulong number, uint index, uint digit)
 {
 	auto digits = get_digits(number);
 
 	if(index < digits.size()) digits[index] = digit;
 
-	std::cout << digits_to_number(digits) << std::endl;
 	return digits_to_number(digits);
 }
 
-unsigned long Solution::replace_with_position_list(unsigned long number, std::vector<unsigned> position_list,
-        unsigned digit)
+ulong Solution::replace_with_position(ulong number, uvec position_list,
+                                      uint digit)
 {
+	uint len = size(number);
+
 	for(auto it = position_list.begin(); it != position_list.end(); ++it)
 	{
 		if(*it == 1)
 		{
-			number = replace(number, it - position_list.begin(), digit);
+			auto size_diff = len - size(number);
+			number = replace_with_index(number, it - position_list.begin() - size_diff, digit);
 		}
 	}
 
 	return number;
 }
 
-std::vector<unsigned long> Solution::replace_with_same_digits(unsigned long prime_number)
+position_lists_type Solution::gen_position_lists(ulong number)
 {
-	std::vector<unsigned long> primes{prime_number};
-	auto digits = get_digits(prime_number);
+	position_lists_type positions;
+	auto digits = get_digits(number);
 
-	// n refers to how many digits will be replaced
-	for(unsigned n = 1; n < digits.size(); ++n)
+	for(auto d : digits)
 	{
-		// create a copy of digits
-		auto changed_digits = digits;
-		// create a list, position with 0 keeps unchanged, 1 to be replaced
-		std::vector<unsigned> positions;
+		uvec position(size(number), 0);
 
-		for(unsigned i = 0; i < digits.size(); ++i)
+		for(auto it = digits.begin(); it != digits.end(); ++it)
 		{
-			unsigned p = i < digits.size() - n ? 0 : 1;
-			positions.push_back(p);
+			if(d == *it) position[it - digits.begin()] = 1;
 		}
 
-		// d referes to the digit to replace
-		for(unsigned d = 0; d < 10; ++d)
+		positions.push_back(position);
+	}
+
+	return positions;
+}
+
+ulvec Solution::replace(ulong number)
+{
+	auto len = size(number);
+	ulvec numbers;
+
+	for(uint i = 0; i < 10; ++i)
+	{
+		auto pos_lists = gen_position_lists(len);
+
+		for(auto row : pos_lists)
 		{
-			do
-			{
-				for(auto p : positions) std::cout << p << '\t';
+			for(auto d : row)
+				std::cout << d << '\t';
 
-				std::cout << "n = " << n << std::endl;
+			std::cout << std::endl;
+		}
 
-				for(auto it = positions.begin(); it != positions.end(); ++it)
-				{
-					if(*it == 1)
-					{
-						if(changed_digits[it - positions.begin()] == d) break;
+		for(auto pos : pos_lists)
+		{
+			auto n = replace_with_position(number, pos, i);
 
-						changed_digits[it - positions.begin()] = d;
-					}
-				}
-
-				auto number = digits_to_number(changed_digits);
-
-				if(is_prime(number)) primes.push_back(number);
-			}
-			while(std::next_permutation(positions.begin(), positions.end()));
+			if(size(n) == len && is_prime(n))
+				numbers.push_back(replace_with_position(number, pos, i));
 		}
 	}
 
-	return primes;
+	std::sort(numbers.begin(), numbers.end());
+	auto last = std::unique(numbers.begin(), numbers.end());
+	numbers.erase(last);
+	return numbers;
 }
+
+
 void Solution::answer()
 {
-	std::cout << "The answer is: " << "" << std::endl;
+	ulong start = 10000;
+	ulvec numbers;
+
+	while(true)
+	{
+		numbers = replace(start);
+
+		if(numbers.size() == 8) break;
+
+		++start;
+	}
+
+	std::cout << "The answer is: " << numbers.front() << std::endl;
 }
