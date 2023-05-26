@@ -105,6 +105,15 @@ bool has_same_digit(unsigned long number)
 	return false;
 }
 
+bool has_exact_same_digits(unsigned long number1, unsigned long number2)
+{
+	if(has_same_digit(number1) || has_same_digit(number2)) return false;
+
+	auto digits1 = get_unique_digits(number1);
+	auto digits2 = get_unique_digits(number2);
+	return digits1 == digits2;
+}
+
 std::vector<unsigned long> cancel_same_digit(unsigned long number1, unsigned long number2)
 {
 	std::vector<unsigned long>numbers{number1, number2};
@@ -226,4 +235,46 @@ bool is_square(unsigned long number)
 {
 	unsigned long sqrt = std::round(std::sqrt(number));
 	return number == sqrt * sqrt;
+}
+
+unsigned long factorial(unsigned n)
+{
+	unsigned long f{1};
+
+	for(unsigned i = 1; i <= n; ++i)
+	{
+		f *= i;
+	}
+
+	return f;
+}
+
+unsigned long combination(unsigned n, unsigned r)
+{
+	unsigned long c = 1;
+	unsigned l = 1;
+
+	for(unsigned u = n; u > r; --u)
+	{
+		c *= u;
+
+		while(c % l == 0 && l <= n - r)
+		{
+			c /= l;
+			++l;
+		}
+	}
+
+	return c;
+}
+
+unsigned long permutation(unsigned n, unsigned r)
+{
+	// return factorial(n) / factorial(n - r);
+	unsigned long p = 1;
+
+	for(unsigned u = n; u > n - r; --u)
+		p *= u;
+
+	return p;
 }
