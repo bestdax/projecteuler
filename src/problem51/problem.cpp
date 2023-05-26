@@ -23,98 +23,57 @@ dax 2023-05-24 15:40:55
 #include "number.h"
 #include <algorithm>
 
-ulong Solution::replace_with_index(ulong number, uint index, uint digit)
+ulong Solution::replace(ulong number, uint old_digit, uint new_digit)
 {
 	auto digits = get_digits(number);
 
-	if(index < digits.size()) digits[index] = digit;
+	for(auto &d : digits)
+	{
+		if(d == old_digit) d = new_digit;
+	}
 
 	return digits_to_number(digits);
 }
 
-ulong Solution::replace_with_position(ulong number, uvec position_list,
-                                      uint digit)
+ulong Solution::find_prime_family(uint n)
 {
-	uint len = size(number);
+	ulong start = 10;
 
-	for(auto it = position_list.begin(); it != position_list.end(); ++it)
+	while(true)
 	{
-		if(*it == 1)
-		{
-			auto size_diff = len - size(number);
-			number = replace_with_index(number, it - position_list.begin() - size_diff, digit);
-		}
-	}
+		auto digits = get_unique_digits(start);
 
-	return number;
+		for(auto old_digit : digits)
+		{
+			ulvec family_members{};
+
+			for(uint new_digit = 0; new_digit < 10; ++new_digit)
+			{
+				auto after = replace(start, old_digit, new_digit);
+
+				if(size(after) != size(start)) continue;
+
+				if(is_prime(after) && std::find(family_members.begin(), family_members.end(), after) == family_members.end())
+					family_members.push_back(after);
+			}
+
+			if(family_members.size() == n)
+			{
+				for(auto member : family_members)
+					std::cout << member << '\t';
+
+				std::cout << std::endl;
+				return *std::min_element(family_members.begin(), family_members.end());
+			}
+		}
+
+		++start;
+	}
 }
 
-position_lists_type Solution::gen_position_lists(ulong number)
-{
-	position_lists_type positions;
-	auto digits = get_digits(number);
-
-	for(auto d : digits)
-	{
-		uvec position(size(number), 0);
-
-		for(auto it = digits.begin(); it != digits.end(); ++it)
-		{
-			if(d == *it) position[it - digits.begin()] = 1;
-		}
-
-		positions.push_back(position);
-	}
-
-	return positions;
-}
-
-ulvec Solution::replace(ulong number)
-{
-	auto len = size(number);
-	ulvec numbers;
-
-	for(uint i = 0; i < 10; ++i)
-	{
-		auto pos_lists = gen_position_lists(len);
-
-		for(auto row : pos_lists)
-		{
-			for(auto d : row)
-				std::cout << d << '\t';
-
-			std::cout << std::endl;
-		}
-
-		for(auto pos : pos_lists)
-		{
-			auto n = replace_with_position(number, pos, i);
-
-			if(size(n) == len && is_prime(n))
-				numbers.push_back(replace_with_position(number, pos, i));
-		}
-	}
-
-	std::sort(numbers.begin(), numbers.end());
-	auto last = std::unique(numbers.begin(), numbers.end());
-	numbers.erase(last);
-	return numbers;
-}
 
 
 void Solution::answer()
 {
-	ulong start = 10000;
-	ulvec numbers;
-
-	while(true)
-	{
-		numbers = replace(start);
-
-		if(numbers.size() == 8) break;
-
-		++start;
-	}
-
-	std::cout << "The answer is: " << numbers.front() << std::endl;
+	std::cout << "The answer is: " << find_prime_family(8) << std::endl;
 }
