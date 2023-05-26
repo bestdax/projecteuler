@@ -1,10 +1,11 @@
 %!TEX program = lualatex
-\documentclass{book}
+\documentclass{ctexbook}
 \usepackage[a4paper, margin=2cm]{geometry}
 \usepackage{indentfirst}
 
 \usepackage[outputdir=build]{minted}
 \usepackage[all]{tcolorbox}
+\newtcblisting{cpp}{listing engine=minted, minted language=cpp, minted style=autumn, listing only}
 
 % tikz settings
 \usepackage{tikz}
@@ -17,11 +18,22 @@
 \tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
 
 \usepackage{fontspec}
-\setmainfont[SlantedFont=STFangsong, BoldFont=Hiragino Sans GB]{STFangsong}
+% \setmainfont[SlantedFont=STFangsong, BoldFont=Hiragino Sans GB]{STFangsong}
+\setmainfont[SlantedFont=PingFang SC, BoldFont=PingFang SC]{PingFang SC}
+\setCJKmainfont[SlantedFont=PingFang SC]{PingFang SC}
 \setsansfont{PingFang SC}
 \setmonofont{Hack Nerd Font Mono}
 
-\newtcblisting{cpp}{listing engine=minted, minted language=cpp, minted style=autumn, listing only}
+\usepackage{amssymb}
+
+% for tables
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{colortbl}
+\setlength{\tabcolsep}{18pt}
+\renewcommand{\arraystretch}{2.5}
+
+
 
 \author{dax}
 \title{Project Euler Tutorial}
@@ -31,4 +43,5 @@
 \maketitle
 \include{problem01}
 \include{problem02}
+\include{problem54}
 \end{document}
