@@ -239,7 +239,7 @@ TEST(NUMBER, GET_DIGITS)
 
 TEST(NUMBER, GET_UNIQUE_DIGITS)
 {
-	std::vector<unsigned> d{0, 1 , 2};
+	std::vector<unsigned> d{0, 1, 2};
 	EXPECT_EQ(get_unique_digits(112200), d);
 }
 
@@ -266,6 +266,11 @@ TEST(NUMBER, CANCEL_SAME_DIGIT)
 	std::vector<unsigned long> n{1, 3};
 	std::vector<unsigned long> t{16, 3};
 	EXPECT_EQ(cancel_same_digit(12456, 2345), t);
+}
+
+TEST(NUMBER, HAS_EXACT_SAME_DIGITS)
+{
+	EXPECT_TRUE(has_exact_same_digits(125874, 251748));
 }
 
 TEST(NUMBER, ROTATE)
@@ -339,6 +344,23 @@ TEST(NUMBER, IS_HEXAGONAL_NUMBER)
 	EXPECT_TRUE(is_hexagonal_number(45));
 }
 
+TEST(NUMBER, FACTORIAL)
+{
+	EXPECT_EQ(factorial(0), 1);
+	EXPECT_EQ(factorial(5), 120);
+}
+
+TEST(NUMBER, COMBINATION)
+{
+	EXPECT_EQ(combination(5, 3), 10);
+	EXPECT_EQ(combination(23, 10), 1144066);
+	EXPECT_EQ(combination(23, 11), 1144066 * 13 / 11);
+}
+
+TEST(NUMBER, PERMUTATION)
+{
+	EXPECT_EQ(permutation(5, 3), 60);
+}
 
 int main(int argc, char *argv[])
 {
