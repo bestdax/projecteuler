@@ -9,10 +9,8 @@ typedef std::vector<uvec> position_lists_type;
 class Solution
 {
 public:
-	ulong replace_with_index(ulong number, uint index, uint digit);
-	ulong replace_with_position(ulong number, uvec position_list, uint digit);
-	position_lists_type gen_position_lists(ulong number);
-	ulvec replace(ulong number);
+	ulong replace(ulong number, uint old_digit, uint new_digit);
+	ulong find_prime_family(uint n);
 
 	void answer();
 
