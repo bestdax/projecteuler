@@ -3,25 +3,36 @@ Poker hands
 Problem 54
 In the card game poker, a hand consists of five cards and are ranked, from lowest to highest, in the following way:
 
-High Card: Highest value card.
+\rowcolors{0}{green!20}{white}
+\noindent
+\begin{tablebox}
 
-One Pair: Two cards of the same value.
+	{
+		\begin{tabularx}{\textwidth}{rX}
 
-Two Pairs: Two different pairs.
+			High Card       & Highest value card                            \\
 
-Three of a Kind: Three cards of the same value.
+			One Pair        & Two cards of the same value                   \\
 
-Straight: All cards are consecutive values.
+			Two Pairs       & Two different pairs                           \\
 
-Flush: All cards of the same suit.
+			Three of a Kind & Three cards of the same value                 \\
 
-Full House: Three of a kind and a pair.
+			Straight        & All cards are consecutive values              \\
 
-Four of a Kind: Four cards of the same value.
+			Flush           & All cards of the same suit                    \\
 
-Straight Flush: All cards are consecutive values of same suit.
+			Full House      & Three of a kind and a pair                    \\
 
-Royal Flush: Ten, Jack, Queen, King, Ace, in same suit.
+			Four of a Kind  & Four cards of the same value                  \\
+
+			Straight Flush  & All cards are consecutive values of same suit \\
+
+			Royal Flush     & Ten, Jack, Queen, King, Ace, in same suit     \\
+		\end{tabularx}
+	}
+\end{tablebox}
+
 
 The cards are valued in the order:
 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King, Ace.
@@ -33,40 +44,18 @@ compared, and so on.
 
 Consider the following five hands dealt to two players:
 
-\rowcolors{0}{black!20}{white}
-\begin{tabularx}{400pt}{|c|X|X|c|}
-	\hline
-	Hand & Player 1                    & Player 2 & Winner \\ \hline
-	1    & \parbox{4cm}{5H 5C 6S 7S                        \\ KD Pair of Fives}    & \parbox{4cm}{2C 3S 8S 8D TD \\  Pair of Eights}& Player2  \\ \hline
-	2    & \parbox{4cm}{5D 8C 9S JS AC                     \\ Highest card Ace}& \parbox{4cm}{2C 5C 7D 8S QH \\ Highest card Queen }& Player 1 \\ \hline
-	3	& 	2D 9C AS AH AC Three Aces & & \\ \hline
-	4	& 	2D 9C AS AH AC Three Aces & & \\ \hline
-	5	& 	2D 9C AS AH AC Three Aces & & \\ \hline
-\end{tabularx}
 
-
-3D 6D 7D TD QD
-Flush with Diamonds
-Player 2
-4	 	4D 6S 9H QH QC
-Pair of Queens
-Highest card Nine
-3D 6D 7H QD QS
-Pair of Queens
-Highest card Seven
-Player 1
-5	 	2H 2D 4C 4D 4S
-Full House
-With Three Fours
-3C 3D 3S 9S 9D
-Full House
-with Three Threes
-Player 1
+\begin{tablebox}{Examples}
+	\begin{tabularx}{\textwidth}{c X X c}
+		{\textbf{Hand}} & {\textbf{Player 1}}                                             & {\textbf{Player 2}}                                              & {\textbf{Winner}} \\
+		1               & 5H 5C 6S 7S KD \newline Pair of Fives                           & 2C 3S 8S 8D TD   \newline Pair of Eights                         & {Player 2}        \\
+		2               & 5D 8C 9S JS AC\newline Highest card Ace                         & 2C 5C 7D 8S QH\newline Highest card Queen                        & {Player 1}        \\
+		3               & 2D 9C AS AH AC\newline Three Aces                               & 3D 6D 7D TD QD\newline Flush with Diamonds                       & {Player 2}        \\
+		4               & 4D 6S 9H QH QC\newline Pair of Queens\newline Highest card Nine & 3D 6D 7H QD QS\newline Pair of Queens\newline Highest card Seven & {Player 1}        \\
+		5               & 2H 2D 4C 4D 4S\newline Full House With Three Fours              & 3C 3D 3S 9S 9D\newline Full House with Three Threes              & {Player 1}
+	\end{tabularx}
+\end{tablebox}
 The file, poker.txt, contains one-thousand random hands dealt to two players. Each line of the file contains ten cards (separated by a single space): the first five are Player 1's cards and the last five are Player 2's cards. You can assume that all hands are valid (no invalid characters or repeated cards), each player's hand is in no specific order, and in each hand there is a clear winner.
 
 How many hands does Player 1 win?
 
-\begin{tabular}{|c|}
-	\hline
-	行1 \newline 行2 \\ \hline
-\end{tabular}
