@@ -1,11 +1,14 @@
 %!TEX program = lualatex
 \documentclass{ctexbook}
+\usepackage{amsmath}
 \usepackage[a4paper, margin=2cm]{geometry}
 \usepackage{indentfirst}
 
 \usepackage[outputdir=build]{minted}
 \usepackage[all]{tcolorbox}
 \newtcblisting{cpp}{listing engine=minted, minted language=cpp, minted style=autumn, listing only}
+\newtcolorbox{tablebox}[1]{width=\textwidth, right=0mm, left=0mm, top=0mm, bottom=0mm, boxsep=0mm, before title=\strut, halign
+title=center,  valign=center, title=#1, halign=center}
 
 % tikz settings
 \usepackage{tikz}
@@ -18,9 +21,8 @@
 \tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
 
 \usepackage{fontspec}
-% \setmainfont[SlantedFont=STFangsong, BoldFont=Hiragino Sans GB]{STFangsong}
-\setmainfont[SlantedFont=PingFang SC, BoldFont=PingFang SC]{PingFang SC}
-\setCJKmainfont[SlantedFont=PingFang SC]{PingFang SC}
+\setmainfont[SlantedFont=PingFang SC, BoldFont=PingFang SC Medium, ItalicFont=PingFang SC thin]{PingFang SC}
+\setCJKmainfont[SlantedFont=PingFang SC, BoldFont=PingFang SC Medium, ItalicFont=PingFang SC Ultralight]{PingFang SC}
 \setsansfont{PingFang SC}
 \setmonofont{Hack Nerd Font Mono}
 
@@ -29,9 +31,12 @@
 % for tables
 \usepackage{array}
 \usepackage{tabularx}
+\usepackage{tabulary}
 \usepackage{colortbl}
-\setlength{\tabcolsep}{18pt}
-\renewcommand{\arraystretch}{2.5}
+\rowcolors{0}{green!20}{white}
+\usepackage{multirow}
+\setlength{\tabcolsep}{12pt}
+\renewcommand{\arraystretch}{1}
 
 
 
