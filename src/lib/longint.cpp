@@ -1,4 +1,5 @@
 #include "longint.h"
+#include <algorithm>
 
 // default constructor
 lint::lint()
@@ -451,4 +452,22 @@ lint lint::operator%=(const lint &other)
 {
 	*this = *this % other;
 	return *this;
+}
+
+bool lint::is_palindrome()
+{
+	std::string number_copy = _number;
+	std::reverse(number_copy.begin(), number_copy.end());
+
+	if(_number == number_copy) return true;
+	else return false;
+}
+
+lint lint::reverse()
+{
+	auto number_copy = _number;
+	std::reverse(number_copy.begin(), number_copy.end());
+	lint new_number = lint(number_copy);
+	new_number.sign = this->sign;
+	return new_number;
 }
