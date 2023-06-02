@@ -362,6 +362,17 @@ TEST(NUMBER, PERMUTATION)
 	EXPECT_EQ(permutation(5, 3), 60);
 }
 
+TEST(LINT, IS_PALINDROME)
+{
+	EXPECT_TRUE(lint(1001).is_palindrome());
+	EXPECT_FALSE(lint(1234521).is_palindrome());
+}
+
+TEST(LINT, REVERSE)
+{
+	EXPECT_EQ(lint(222333).reverse(), 333222);
+}
+
 int main(int argc, char *argv[])
 {
 	testing::InitGoogleTest();
