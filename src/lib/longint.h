@@ -45,6 +45,8 @@ public:
 	lint factorial();
 	lint power(unsigned n);
 	lint digit_sum();
+	bool is_palindrome();
+	lint reverse();
 
 private:
 	bool borrow(unsigned index);
