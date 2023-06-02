@@ -1,0 +1,52 @@
+\chapter{Lychrel Numbers}
+
+\section{Problem Description}
+If we take $47$, reverse and add,$47 + 74 = 121$, which is palindromic.
+
+Not all numbers produce palindromes so quickly. For example,
+\begin{align*}
+	349 + 943   & = 1292 \\
+	1292 + 2921 & = 4213 \\
+	4213 + 3124 & = 7337
+\end{align*}
+
+That is, $349$ took three iterations to arrive at a palindrome.
+
+Although no one has proved it yet, it is thought that some numbers, like $196$ 
+, never produce a palindrome. A number that never forms a palindrome through the reverse and add process is called a
+Lychrel number. Due to the theoretical nature of these numbers, and for the purpose of this problem, we shall assume
+that a number is Lychrel until proven otherwise. In addition you are given that for every number below ten-thousand, it
+will either (i) become a palindrome in less than fifty iterations, or, (ii) no one, with all the computing power that
+exists, has managed so far to map it to a palindrome. In fact, $10677$
+is the first number to be shown to require over fifty iterations before producing a palindrome:4668731596684224866951378664
+($53$ iterations, $28$ digits).
+
+Surprisingly, there are palindromic numbers that are themselves Lychrel numbers; the first example is $4994$.
+
+How many Lychrel numbers are there below ten-thousand?
+
+NOTE: Wording was modified slightly on 24 April 2007 to emphasise the theoretical nature of Lychrel numbers.
+
+\section{Flow Chart}
+
+\begin{tikzpicture}[node distance=2cm]
+  \node [startstop] (start) {开始};
+  \node [io, right of=start, xshift=4cm, text width=4cm] (io1) {输入一个考察的上限\\ 这里是10000};
+  \node [operation, text width=2cm, below of=io1] (op1) {count = 0;\\ i = 10;};
+  \node [decision, below of=op1, text width=2cm, yshift=-1cm] (dec1) {$i < 上限$};
+  \node [decision, below of=dec1, text width=2cm, yshift=-2cm] (dec2) {$i$ is lychrel number?};
+  \node [operation, below of=dec2, yshift=-1cm] (op2) {++count};
+  \node [operation, right of=dec2, xshift= 4cm] (op3) {++i};
+  \node [io, below of=op2] (io2) {输出count};
+  \node [startstop, right of=io2, xshift=4cm] (stop) {结束};
+
+  \draw[arrow] (start) -- (io1);
+  \draw[arrow] (io1) -- (op1);
+  \draw[arrow] (op1) -- (dec1);
+  \draw[arrow] (dec1) -- node[right]{yes} (dec2);
+  \draw[arrow] (dec1) -| node[right=.5cm, below=4cm]{no}([xshift=-2cm]io2.west) -- (io2);
+  \draw[arrow] (dec2) -- node[right]{yes} (op2);
+  \draw[arrow] (dec2) -- node[above]{no}(op3);
+  \draw[arrow] (op3) |- (dec1);
+  \draw[arrow] (io2) -- (stop);
+\end{tikzpicture}
