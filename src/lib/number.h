@@ -3,6 +3,7 @@
 #include <algorithm>
 
 bool is_prime(unsigned long number);
+unsigned long next_prime_larger_than(unsigned long number);
 std::vector<unsigned> prime_factors(unsigned long number);
 std::vector<unsigned> get_digits(unsigned long number);
 std::vector<unsigned> get_unique_digits(unsigned long number);
