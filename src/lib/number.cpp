@@ -8,6 +8,8 @@ bool is_prime(unsigned long number)
 {
 	if(number < 2) return false;
 
+	if(number % 2 == 0 || number % 5 == 0) return false;
+
 	int root = std::round(std::sqrt(number));
 
 	for(int i = 2; i <= root; i++)
@@ -16,6 +18,17 @@ bool is_prime(unsigned long number)
 	}
 
 	return true;
+}
+
+unsigned long next_prime_larger_than(unsigned long number)
+{
+	do
+	{
+		++number;
+
+		if(is_prime(number)) return number;
+	}
+	while(true);
 }
 
 std::vector<unsigned> prime_factors(unsigned long number)
