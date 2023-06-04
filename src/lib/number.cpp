@@ -90,6 +90,7 @@ bool has_digit(unsigned long number, unsigned digit)
 	return std::find(digits.begin(), digits.end(), digit) != digits.end();
 }
 
+// partial same
 bool has_same_digit(unsigned long number1, unsigned long number2)
 {
 	auto digits1 = get_digits(number1);
@@ -120,11 +121,21 @@ bool has_same_digit(unsigned long number)
 
 bool has_exact_same_digits(unsigned long number1, unsigned long number2)
 {
-	if(has_same_digit(number1) || has_same_digit(number2)) return false;
+	auto digits1 = get_digits(number1);
+	auto digits2 = get_digits(number2);
 
-	auto digits1 = get_unique_digits(number1);
-	auto digits2 = get_unique_digits(number2);
-	return digits1 == digits2;
+	if(digits1.size() != digits2.size()) return false;
+
+	std::sort(digits1.begin(), digits1.end());
+	std::sort(digits2.begin(), digits2.end());
+	auto size = digits1.size();
+
+	for(unsigned i = 0; i < size; ++i)
+	{
+		if(digits1[i] != digits2[i]) return false;
+	}
+
+	return true;
 }
 
 std::vector<unsigned long> cancel_same_digit(unsigned long number1, unsigned long number2)
@@ -218,7 +229,7 @@ bool is_n_pandigital(unsigned number)
 
 bool is_triangle_number(unsigned long number)
 {
-	auto n = std::round(std::sqrt(number * 2));
+	auto n = (std::round(std::sqrt(number * 8 + 1)) - 1) / 2;
 	return n * (n + 1) == number * 2;
 }
 
@@ -232,6 +243,18 @@ bool is_hexagonal_number(unsigned long number)
 {
 	unsigned n = (std::sqrt(8 * number + 1) + 1) / 4;
 	return number == (2 * n * n - n);
+}
+
+bool is_heptagonal_number(unsigned long number)
+{
+	unsigned n = (std::sqrt(40 * number + 9) + 3) / 10;
+	return n * (5 * n - 3) / 2 == number;
+}
+
+bool is_octagonal_number(unsigned long number)
+{
+	unsigned n = (std::sqrt(number * 3 + 1) + 1) / 3;
+	return n * (3 * n - 2) == number;
 }
 
 bool is_odd(unsigned long number)
