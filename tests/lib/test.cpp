@@ -373,6 +373,67 @@ TEST(LINT, REVERSE)
 	EXPECT_EQ(lint(222333).reverse(), 333222);
 }
 
+TEST(NUMBER, IS_HEPTAGONAL)
+{
+	EXPECT_TRUE(is_heptagonal_number(1));
+	EXPECT_TRUE(is_heptagonal_number(7));
+	EXPECT_TRUE(is_heptagonal_number(18));
+	EXPECT_TRUE(is_heptagonal_number(34));
+	EXPECT_TRUE(is_heptagonal_number(55));
+	EXPECT_TRUE(is_heptagonal_number(81));
+}
+
+TEST(NUMBER, IS_OCTAGONAL)
+{
+	EXPECT_TRUE(is_octagonal_number(1));
+	EXPECT_TRUE(is_octagonal_number(8));
+	EXPECT_TRUE(is_octagonal_number(21));
+	EXPECT_TRUE(is_octagonal_number(40));
+	EXPECT_TRUE(is_octagonal_number(65));
+	EXPECT_TRUE(is_octagonal_number(96));
+	EXPECT_TRUE(is_octagonal_number(1045));
+	EXPECT_TRUE(is_octagonal_number(1160));
+	EXPECT_TRUE(is_octagonal_number(1281));
+	EXPECT_TRUE(is_octagonal_number(1408));
+	EXPECT_TRUE(is_octagonal_number(1541));
+	EXPECT_TRUE(is_octagonal_number(1680));
+	EXPECT_TRUE(is_octagonal_number(1825));
+	EXPECT_TRUE(is_octagonal_number(1976));
+	EXPECT_TRUE(is_octagonal_number(2133));
+	EXPECT_TRUE(is_octagonal_number(2296));
+	EXPECT_TRUE(is_octagonal_number(2465));
+	EXPECT_TRUE(is_octagonal_number(2640));
+	EXPECT_TRUE(is_octagonal_number(2821));
+	EXPECT_TRUE(is_octagonal_number(3008));
+	EXPECT_TRUE(is_octagonal_number(3201));
+	EXPECT_TRUE(is_octagonal_number(3400));
+	EXPECT_TRUE(is_octagonal_number(3605));
+	EXPECT_TRUE(is_octagonal_number(3816));
+	EXPECT_TRUE(is_octagonal_number(4033));
+	EXPECT_TRUE(is_octagonal_number(4256));
+	EXPECT_TRUE(is_octagonal_number(4485));
+	EXPECT_TRUE(is_octagonal_number(4720));
+	EXPECT_TRUE(is_octagonal_number(4961));
+	EXPECT_TRUE(is_octagonal_number(5208));
+	EXPECT_TRUE(is_octagonal_number(5461));
+	EXPECT_TRUE(is_octagonal_number(5720));
+	EXPECT_TRUE(is_octagonal_number(5985));
+	EXPECT_TRUE(is_octagonal_number(6256));
+	EXPECT_TRUE(is_octagonal_number(6533));
+	EXPECT_TRUE(is_octagonal_number(6816));
+	EXPECT_TRUE(is_octagonal_number(7105));
+	EXPECT_TRUE(is_octagonal_number(7400));
+	EXPECT_TRUE(is_octagonal_number(7701));
+	EXPECT_TRUE(is_octagonal_number(8008));
+	EXPECT_TRUE(is_octagonal_number(8321));
+	EXPECT_TRUE(is_octagonal_number(8640));
+	EXPECT_TRUE(is_octagonal_number(8965));
+	EXPECT_TRUE(is_octagonal_number(9296));
+	EXPECT_TRUE(is_octagonal_number(9633));
+	EXPECT_TRUE(is_octagonal_number(9976));
+}
+
+
 int main(int argc, char *argv[])
 {
 	testing::InitGoogleTest();
