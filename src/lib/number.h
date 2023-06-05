@@ -27,6 +27,7 @@ bool is_octagonal_number(unsigned long number);
 bool is_odd(unsigned long number);
 bool is_even(unsigned long number);
 bool is_square(unsigned long number);
+bool is_cube(unsigned long number);
 unsigned long factorial(unsigned n);
 unsigned long combination(unsigned n, unsigned r);
 unsigned long permutation(unsigned n, unsigned r);
