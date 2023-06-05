@@ -273,6 +273,12 @@ bool is_square(unsigned long number)
 	return number == sqrt * sqrt;
 }
 
+bool is_cube(unsigned long number)
+{
+	unsigned long cube_root = std::cbrt(number);
+	return std::pow(cube_root, 3) == number;
+}
+
 unsigned long factorial(unsigned n)
 {
 	unsigned long f{1};
