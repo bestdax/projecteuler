@@ -433,6 +433,13 @@ TEST(NUMBER, IS_OCTAGONAL)
 	EXPECT_TRUE(is_octagonal_number(9976));
 }
 
+TEST(NUMBER, CUBE)
+{
+	EXPECT_TRUE(is_cube(8));
+	EXPECT_FALSE(is_cube(9));
+	
+}
+
 
 int main(int argc, char *argv[])
 {
