@@ -1,38 +1,27 @@
-\chapter{Poker hands}
-Poker hands
+\section{Poker hands}
 Problem 54
+
 In the card game poker, a hand consists of five cards and are ranked, from lowest to highest, in the following way:
 
-\rowcolors{0}{green!20}{white}
+\rowcolors{0}{green!5}{white}
 \noindent
-\begin{tablebox}
-
+\begin{tablebox}{\textsc{Poker Hands}}
 	{
+		\color{black!70} \sffamily
 		\begin{tabularx}{\textwidth}{rX}
-
 			High Card       & Highest value card                            \\
-
 			One Pair        & Two cards of the same value                   \\
-
 			Two Pairs       & Two different pairs                           \\
-
 			Three of a Kind & Three cards of the same value                 \\
-
 			Straight        & All cards are consecutive values              \\
-
 			Flush           & All cards of the same suit                    \\
-
 			Full House      & Three of a kind and a pair                    \\
-
 			Four of a Kind  & Four cards of the same value                  \\
-
 			Straight Flush  & All cards are consecutive values of same suit \\
-
 			Royal Flush     & Ten, Jack, Queen, King, Ace, in same suit     \\
 		\end{tabularx}
 	}
 \end{tablebox}
-
 
 The cards are valued in the order:
 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King, Ace.
@@ -44,8 +33,8 @@ compared, and so on.
 
 Consider the following five hands dealt to two players:
 
-
-\begin{tablebox}{Examples}
+\begin{tablebox}{\textsc{Examples}}
+	\color{black!70} \sffamily
 	\begin{tabularx}{\textwidth}{c X X c}
 		{\textbf{Hand}} & {\textbf{Player 1}}                                             & {\textbf{Player 2}}                                              & {\textbf{Winner}} \\
 		1               & 5H 5C 6S 7S KD \newline Pair of Fives                           & 2C 3S 8S 8D TD   \newline Pair of Eights                         & {Player 2}        \\
@@ -58,3 +47,5 @@ Consider the following five hands dealt to two players:
 The file, poker.txt, contains one-thousand random hands dealt to two players. Each line of the file contains ten cards (separated by a single space): the first five are Player 1's cards and the last five are Player 2's cards. You can assume that all hands are valid (no invalid characters or repeated cards), each player's hand is in no specific order, and in each hand there is a clear winner.
 
 How many hands does Player 1 win?
+
+\rowcolors{0}{}{}

@@ -6,5 +6,5 @@ project(project_euler VERSION 1.0)
 
 add_subdirectory(src)
 add_subdirectory(tests)
-add_subdirectory(googletest)
+add_subdirectory(external)
 
