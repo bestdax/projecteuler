@@ -1,8 +1,10 @@
 %!TEX program = lualatex
-\documentclass{ctexbook}
-\usepackage{amsmath}
+\documentclass{ctexart}
+\usepackage{amsmath, amssymb, mathtools}
 \usepackage[a4paper, margin=2cm]{geometry}
 \usepackage{indentfirst}
+
+\hfuzz=2pt
 
 \usepackage[outputdir=build]{minted}
 \usepackage[all]{tcolorbox}
@@ -20,13 +22,6 @@ title=center,  valign=center, title=#1, halign=center}
 \tikzstyle{arrow} = [thick,->,>=stealth]
 \tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
 
-\usepackage{fontspec}
-\setmainfont[SlantedFont=PingFang SC, BoldFont=PingFang SC Medium, ItalicFont=PingFang SC thin]{PingFang SC}
-\setCJKmainfont[SlantedFont=PingFang SC, BoldFont=PingFang SC Medium, ItalicFont=PingFang SC Ultralight]{PingFang SC}
-\setsansfont{PingFang SC}
-\setmonofont{Hack Nerd Font Mono}
-
-\usepackage{amssymb}
 
 % for tables
 \usepackage{array}
