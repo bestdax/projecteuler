@@ -1,24 +1,20 @@
-\chapter{Odd Period Square Roots}
-\section{Problem 64}
+\section{Odd Period Square Roots}
+\subsection{Problem 64}
 
 All square roots are periodic when written as continued fractions and can be written in the form:
+\begin{equation*}
+	\sqrt{N} = a_0 + \cfrac{1}{a_1 + \cfrac{1}{a_2 + \cfrac{1}{a_3 + \dots}}}
+\end{equation*}
 
-\[
-	\sqrt{N} = a_0 + \frac{1}{a_1 + \frac{1}{a_2 + \frac{1}{a3 + \dots}}}
-\]
-
-
-For example, let us consider $\sqrt{23}$:
-
-\begin{align*}
-	\sqrt{23} = 4 + \sqrt{23} - 4 = 4 + \frac{1}{\frac{1}{\sqrt{23}-4}} = 4 + \frac{1}{1 + \frac{\sqrt{23} - 3}{7}}
-\end{align*}
+For example, let us consider \( \sqrt{23} \):
+\begin{equation*}
+	\sqrt{23} = 4 + \sqrt{23} - 4 = 4 + \cfrac{1}{\cfrac{1}{\sqrt{23}-4}} = 4 + \cfrac{1}{1 + \cfrac{\sqrt{23} - 3}{7}}
+\end{equation*}
 
 If we continue we would get the following expansion:
-
-\begin{align*}
-	\sqrt{23} = 4 + \frac{1}{1 + \frac{1}{3 + \frac{1}{1 + \frac{1}{8 + \dots}}}}
-\end{align*}
+\begin{equation*}
+	\sqrt{23} = 4 + \cfrac{1}{1 + \cfrac{1}{3 + \cfrac{1}{1 + \cfrac{1}{8 + \dots}}}}
+\end{equation*}
 
 The process can be summarised as follows:
 
@@ -33,31 +29,23 @@ The process can be summarised as follows:
 	a_7 & = 1, \frac{7}{\sqrt{23} - 4}  = \frac{7(\sqrt{23} + 4)}{7}   = 8 + {\sqrt{23} -4}         \\
 \end{align*}
 
-It can be seen that the sequence is repeating. For conciseness, we use the notation $\sqrt{23} = [4;(1,3,1,8)]$, to
+It can be seen that the sequence is repeating. For conciseness, we use the notation \( \sqrt{23} = [4;(1,3,1,8)] \), to
 indicate that the block (1,3,1,8) repeats indefinitely.
 
 The first ten continued fraction representations of (irrational) square roots are:
+\begin{align*}
+	\sqrt{2}  & = [1;(2)],         & \text{period} & =1 \\
+	\sqrt{3}  & = [1;(1,2)],       & \text{period} & =2 \\
+	\sqrt{5}  & = [2;(4)],         & \text{period} & =1 \\
+	\sqrt{6}  & = [2;(2,4)],       & \text{period} & =2 \\
+	\sqrt{7}  & = [1;(1,1,1,4)],   & \text{period} & =4 \\
+	\sqrt{8}  & = [1;(1,4)],       & \text{period} & =2 \\
+	\sqrt{10} & = [1;(6)],         & \text{period} & =1 \\
+	\sqrt{11} & = [1;(3,5)],       & \text{period} & =2 \\
+	\sqrt{12} & = [1;(2,5)],       & \text{period} & =2 \\
+	\sqrt{13} & = [1;(1,1,1,1,6)], & \text{period} & =5 \\
+\end{align*}
 
-$\sqrt{2} = [1;(2)]$, period=$1$
+Exactly four continued fractions, for \( N \le 13 \), have an odd period.
 
-$\sqrt{3} = [1;(1, 2)]$, period=$2$
-
-$\sqrt{5} = [2;(4)]$, period=$1$
-
-$\sqrt{6} = [2;(2,4)]$, period=$2$
-
-$\sqrt{7} = [1;(1,1,1,4)]$, period=$4$
-
-$\sqrt{8} = [1;(1,4)]$, period=$2$
-
-$\sqrt{10} = [1;(6)]$, period=$1$
-
-$\sqrt{11} = [1;(3, 5)]$, period=$2$
-
-$\sqrt{12} = [1;(2,5)]$, period=$2$
-
-$\sqrt{13} = [1;(1,1,1,1,6)]$, period=$5$
-
-Exactly four continued fractions, for $N \le 13$, have an odd period.
-
-How many continued fractions for $N \le 10 000$ have an odd period?
+How many continued fractions for \( N \le 10 000 \) have an odd period?
