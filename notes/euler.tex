@@ -5,7 +5,12 @@
 \usepackage{indentfirst}
 
 \hfuzz=2pt
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% filter warnings
+\usepackage{silence}
+\WarningFilter{latexfont}{Font shape}
+\WarningFilter{latexfont}{Some font}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[outputdir=build]{minted}
 \usepackage[all]{tcolorbox}
 \newtcblisting{cpp}{listing engine=minted, minted language=cpp, minted style=autumn, listing only}
