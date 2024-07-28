@@ -6,7 +6,7 @@ class Solution
 {
 	public:
 		bool is_prime_brutal(unsigned long n);
-		unsigned get_prime_factors(unsigned long n);
+		unsigned get_the_greatest_prime_factor(unsigned long n);
 		void answer();
 
 	private:

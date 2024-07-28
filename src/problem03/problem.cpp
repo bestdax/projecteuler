@@ -17,7 +17,7 @@ bool Solution::is_prime_brutal(unsigned long n)
 	return true;
 }
 
-unsigned Solution::get_prime_factors(unsigned long n)
+unsigned Solution::get_the_greatest_prime_factor(unsigned long n)
 {
 	while(! is_prime_brutal(n))
 	{
@@ -39,5 +39,5 @@ unsigned Solution::get_prime_factors(unsigned long n)
 
 void Solution::answer()
 {
-	std::cout << "The answer is: " << get_prime_factors(600851475143) << std::endl;
+	std::cout << "The answer is: " << get_the_greatest_prime_factor(600851475143) << std::endl;
 }

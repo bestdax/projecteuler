@@ -5,5 +5,5 @@ Solution solution;
 
 TEST(euler03, prime)
 {
-	EXPECT_EQ(solution.get_prime_factors(13195), 29);
+	EXPECT_EQ(solution.get_the_greatest_prime_factor(13195), 29);
 }
