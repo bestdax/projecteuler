@@ -5,11 +5,14 @@ https://projecteuler.net/problem=3
 dax 2024-07-28 09:26:08
 */
 #include "problem.h"
-bool Solution::is_prime_brutal(unsigned long n)
+#include <cmath>
+bool Solution::is_prime(unsigned long n)
 {
 	if(n < 2) return false;
 
-	for(unsigned long i = 2; i < n; ++i)
+	auto root = std::floor(std::sqrt(n));
+
+	for(unsigned long i = 2; i <= root; ++i)
 	{
 		if(n % i == 0) return false;
 	}
@@ -19,11 +22,11 @@ bool Solution::is_prime_brutal(unsigned long n)
 
 unsigned Solution::get_the_greatest_prime_factor(unsigned long n)
 {
-	while(! is_prime_brutal(n))
+	while(! is_prime(n))
 	{
 		for(unsigned i = 2; i <= n; ++i)
 		{
-			if(is_prime_brutal(i) && n % i == 0)
+			if(is_prime(i) && n % i == 0)
 			{
 				prime_factors.push_back(i);
 				n = n / i;
