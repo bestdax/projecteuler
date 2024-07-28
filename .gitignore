@@ -46,3 +46,4 @@ _deps
 [Dd]ebug
 [Bb]uild
 [Rr]elease
+.cache/
