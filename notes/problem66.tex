@@ -1,5 +1,5 @@
-\chapter{Diophantine Equation}
-\section{Problem 66}
+\section{Diophantine Equation}
+\subsection{Problem 66}
 Consider quadratic Diophantine equations of the form:
 $x^2 - Dy^2 = 1$
 For example, when $D=13$, the minimal solution in $x$ is $649^2 - 13 \times 180^2 = 1$.
@@ -9,14 +9,103 @@ It can be assumed that there are no solutions in positive integers when $D$ is s
 By finding minimal solutions in $x$ for $D = \{2, 3, 5, 6, 7\}$, we obtain the following:
 
 \begin{align*}
-3^2 - 2 \times 2^2 &= 1\\
-2^2 - 3 \times 1^2 &= 1\\
-{\color{red}{\mathbf 9}}^2 - 5 \times 4^2 &= 1\\
-5^2 - 6 \times 2^2 &= 1\\
-8^2 - 7 \times 3^2 &= 1
+	3^2 - 2 \times 2^2                        & = 1 \\
+	2^2 - 3 \times 1^2                        & = 1 \\
+	{\color{red}{\mathbf 9}}^2 - 5 \times 4^2 & = 1 \\
+	5^2 - 6 \times 2^2                        & = 1 \\
+	8^2 - 7 \times 3^2                        & = 1
 \end{align*}
 
 Hence, by considering minimal solutions in
 $x$ for $D \le 7$, the largest $x$ is obtained when $D = 5$.
 
 Find the value of $D \le 1000$ in minimal solutions of $x$ for which the largest value of $x$ is obtained.
+
+\subsection{数学解法}
+\subsubsection{连分数}
+\begin{definition}
+	设 \( x_0, x_1, x_2, \dots \) 是一个无穷实数列， \( x_j > 0, j \ge 1 \)。 对缩写的 \( n \ge 0 \)， 我们把表示式
+	\begin{equation}\label{eq:cfrac}
+		\cfrac{1}{x_0 +
+			\cfrac{1}{x_1 +
+				\cfrac{1}{x_2 +
+					\cfrac{1}{x_3 +
+						\cfrac{1}{\ddots +
+							\cfrac{1}{x_n}
+						}}}}}
+	\end{equation}
+	称为\textbf{( \( n \) 阶)有限连分数}，它的值是一个实数。当 \( x_0, \dots, x_n
+	\)均为整数时称为($n$阶)\em{有限简单连分数}，它的值是一个有理分数。为书写方便，把有限连分数记作
+	\begin{equation}
+		\langle x_0,x_1,\dots,x_n\rangle.
+		\label{eq:ncfrac}
+	\end{equation}
+	设 \( 0 \le k \le n \) ， 我们把有限连分数
+	\begin{equation}
+		\langle x_0, x_1, \dots, \x_k\rangle
+		\label{eq:kcfrac}
+	\end{equation}
+	称为是有限连分数\eqref{eq:ncfrac}的第 \( k \)个渐进分数。当\eqref{eq:ncfrac}是有限简单连分数(即 \( x_0,\dots,x_n
+	\)均为整数)时，把 \( x_k(0 \le k \le n) \) 称为是它的第 \( k \)
+	个部分商。当式\eqref{eq:cfrac}(或\eqref{eq:ncfrac})中的 \( n \to \infty
+	\)时，我们把相应的表示式\eqref{eq:cfrac}(或\eqref{eq:cfrac})称为无限连分数，即表示式
+	\begin{equation}\label{eq:infcfrac}
+		x_0 + \cfrac{1}{x_1 +
+				\cfrac{1}{x_2 +
+					\cfrac{1}{x_3 +
+						\genfrac{}{}{0pt}{}{\vphantom{1}}{\ddots}
+					}}},
+	\end{equation}
+	或者简记为
+	\begin{equation}
+		\langle x_0, x_1, x_2, \dots\rangle.
+		\label{eq:abbrinfcfrac}
+	\end{equation}
+	当 \( x_j(j \ge 0) \)均为整数时，称\eqref{eq:infcfrac}(或\eqref{eq:abbrinfcfrac})为无限简单连分数。同样的，对任意
+	\( k \ge 0 \)，有限连分数\eqref{eq:kcfrac}称为是无限连分数\eqref{eq:infcfrac}(或\eqref{eq:abbrinfcfrac})的第 \( k
+	\)个渐近分数；当\eqref{eq:infcfrac}(或\eqref{eq:abbrinfcfrac})是无限简单连分数时， \( x_k(k \ge 0) \)称为是它的第
+	\( k \)个部分商。如果存在极限
+	\begin{equation}
+		\lim_{k\to\infty}\langle x_0,\dots,x_k\rangle = \theta,
+		\label{eq:cfraclim}
+	\end{equation}
+	那么，就说无限连分数\eqref{eq:infcfrac}(或\eqref{eq:abbrinfcfrac})是收敛的， \( \theta \)
+	称为是无限连分数\eqref{eq:infcfrac}(或\eqref{eq:abbrinfcfrac})的值，记作
+	\begin{equation}
+		\langle x_0,x_1,x_2,\dots\rangle = \theta,
+		\label{eq:infcfracvalue}
+	\end{equation}
+	或极限\eqref{eq:cfraclim}不存在，则说无限连分数\eqref{eq:infcfrac}(或\eqref{eq:abbrinfcfrac})是发散的。
+\end{definition}
+\begin{theorem}
+	设 \( x_0, x_1, x_2, \dots \)是无穷实数列， \( x_j > 0, j \ge 1 \)。那么，
+	\begin{enumerate}[label=\rm(\roman*)]
+		\item 对任意的整数 \( n \ge 1, r \ge 1 \)有
+		      \begin{flalign}
+			      \langle x_0,\dots,x_{n-1},x_n,\dots,x_{n+r}\rangle \nonumber &                                                                                        \\
+			                                                                   & = \langle x_0,\dots,x_{n-1},\langle x_n,\dots,x_{n+4}\rangle\rangle\nonumber           \\
+			                                                                   & = \langle x_0,\dots,x_{n-1}, x_{n} + 1 / \langle x_{n+1},\dots,x_{n+r}\rangle\rangle .
+		      \end{flalign}
+		      特别地有
+		      \begin{equation}
+			      \langle x_0, \dots, x_{n-1},x_n,x_{n+1}\rangle=\langle x_0,\dots,x_{n-1},x_n+1/x_{n+1}\rangle.
+		      \end{equation}
+		\item 对任意实数 \( \eta>0 \)及整数 \( n \ge 1 \)，
+		      \begin{gather}
+			      \langle x_0,\dots, x_{n-1}, x_n\rangle > \langle x_0,\dots,x_{n-1}, x_{n}+\eta\rangle, 2 \nmid n. \\
+			      \langle x_0,\dots, x_{n-1}, x_n\rangle < \langle x_0,\dots,x_{n-1},x_n + \eta\rangle, 2 \mid n.
+		      \end{gather}
+		\item 记
+		      \begin{equation}
+			      a^{(n)} = \langle x_0, \dots, x_n \rangle.
+		      \end{equation}
+		      我们有
+		      \begin{gather}
+			      a^{(n)} > a^{(n + r)}, 2 \nmid n, r \ge 1, \\
+			      a^{(n)} < a^{(n + r)}, 2 \mid n, r \ge 1, \\
+			      a^{(1)} > a^{(3)} > a^{(5)} > \dots > a^{2s - 1} > \dots, \\
+			      a^{(0)} < a^{(2)} < a^{(4)} < \dots < a^{2s} < \dots, \\
+			      a^{(2s-1)} > a^{(2t)}, s \ge 1, t \ge 0 .
+		      \end{gather}
+	\end{enumerate}
+\end{theorem}
