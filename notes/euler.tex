@@ -1,6 +1,6 @@
 %!TEX program = lualatex
 \documentclass{ctexart}
-\usepackage{amsmath, amssymb, mathtools}
+\usepackage{amsmath, amssymb, amsthm, mathtools}
 \usepackage[a4paper, margin=2cm]{geometry}
 \usepackage{indentfirst}
 
@@ -38,7 +38,10 @@ title=center,  valign=center, title=#1, halign=center, colframe=green!70!blue!50
 \setlength{\tabcolsep}{12pt}
 \renewcommand{\arraystretch}{1}
 \usepackage{hyperref}
-
+\usepackage{enumitem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{definition}{定义}[section]
+\newtheorem{theorem}{定理}[section]
 
 
 \author{dax}
