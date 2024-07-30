@@ -5,7 +5,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 project(project_name VERSION 1.0)
 include(CTest)
 
+set(DAX_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include)
+include_directories(${DAX_INCLUDE_DIR})
+
 add_subdirectory(src)
 add_subdirectory(tests)
 add_subdirectory(external)
+add_subdirectory(lib)
+
 
