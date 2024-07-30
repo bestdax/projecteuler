@@ -25,7 +25,7 @@ Find the value of $D \le 1000$ in minimal solutions of $x$ for which the largest
 \subsubsection{连分数}
 \begin{definition}
 	设 \( x_0, x_1, x_2, \dots \) 是一个无穷实数列， \( x_j > 0, j \ge 1 \)。 对缩写的 \( n \ge 0 \)， 我们把表示式
-	\begin{equation}\label{eq:cfrac}
+	\begin{equation}\label{eq:有限连分数定义}
 		\cfrac{1}{x_0 +
 			\cfrac{1}{x_1 +
 				\cfrac{1}{x_2 +
@@ -38,44 +38,45 @@ Find the value of $D \le 1000$ in minimal solutions of $x$ for which the largest
 	\)均为整数时称为($n$阶)\em{有限简单连分数}，它的值是一个有理分数。为书写方便，把有限连分数记作
 	\begin{equation}
 		\langle x_0,x_1,\dots,x_n\rangle.
-		\label{eq:ncfrac}
+		\label{eq:有限连分数定义简}
 	\end{equation}
 	设 \( 0 \le k \le n \) ， 我们把有限连分数
 	\begin{equation}
-		\langle x_0, x_1, \dots, \x_k\rangle
-		\label{eq:kcfrac}
+		\langle x_0, x_1, \dots, x_k\rangle
+		\label{eq:第k个渐近分数}
 	\end{equation}
-	称为是有限连分数\eqref{eq:ncfrac}的第 \( k \)个渐进分数。当\eqref{eq:ncfrac}是有限简单连分数(即 \( x_0,\dots,x_n
+	称为是有限连分数\eqref{eq:有限连分数定义简}的第 \( k \)个渐进分数。当\eqref{eq:有限连分数定义简}是有限简单连分数(即 \( x_0,\dots,x_n
 	\)均为整数)时，把 \( x_k(0 \le k \le n) \) 称为是它的第 \( k \)
-	个部分商。当式\eqref{eq:cfrac}(或\eqref{eq:ncfrac})中的 \( n \to \infty
-	\)时，我们把相应的表示式\eqref{eq:cfrac}(或\eqref{eq:cfrac})称为无限连分数，即表示式
-	\begin{equation}\label{eq:infcfrac}
+	个部分商。当式\eqref{eq:有限连分数定义}(或\eqref{eq:有限连分数定义简})中的 \( n \to \infty
+	\)时，我们把相应的表示式\eqref{eq:有限连分数定义}(或\eqref{eq:有限连分数定义简})称为无限连分数，即表示式
+	\begin{equation}\label{eq:无限连分数定义}
 		x_0 + \cfrac{1}{x_1 +
-				\cfrac{1}{x_2 +
-					\cfrac{1}{x_3 +
-						\genfrac{}{}{0pt}{}{\vphantom{1}}{\ddots}
-					}}},
+			\cfrac{1}{x_2 +
+				\cfrac{1}{x_3 +
+					\genfrac{}{}{0pt}{}{\vphantom{1}}{\ddots}
+				}}},
 	\end{equation}
 	或者简记为
 	\begin{equation}
 		\langle x_0, x_1, x_2, \dots\rangle.
-		\label{eq:abbrinfcfrac}
+		\label{eq:无限连分数定义简}
 	\end{equation}
-	当 \( x_j(j \ge 0) \)均为整数时，称\eqref{eq:infcfrac}(或\eqref{eq:abbrinfcfrac})为无限简单连分数。同样的，对任意
-	\( k \ge 0 \)，有限连分数\eqref{eq:kcfrac}称为是无限连分数\eqref{eq:infcfrac}(或\eqref{eq:abbrinfcfrac})的第 \( k
-	\)个渐近分数；当\eqref{eq:infcfrac}(或\eqref{eq:abbrinfcfrac})是无限简单连分数时， \( x_k(k \ge 0) \)称为是它的第
+	当 \( x_j(j \ge 0) \)均为整数时，称\eqref{eq:无限连分数定义}(或\eqref{eq:无限连分数定义简})为无限简单连分数。同样的，对任意
+	\( k \ge 0
+	\)，有限连分数\eqref{eq:有限连分数定义简}称为是无限连分数\eqref{eq:无限连分数定义}(或\eqref{eq:无限连分数定义简})的第 \( k
+	\)个渐近分数；当\eqref{eq:无限连分数定义}(或\eqref{eq:无限连分数定义简})是无限简单连分数时， \( x_k(k \ge 0) \)称为是它的第
 	\( k \)个部分商。如果存在极限
 	\begin{equation}
 		\lim_{k\to\infty}\langle x_0,\dots,x_k\rangle = \theta,
-		\label{eq:cfraclim}
+		\label{eq:无限连分数收敛}
 	\end{equation}
-	那么，就说无限连分数\eqref{eq:infcfrac}(或\eqref{eq:abbrinfcfrac})是收敛的， \( \theta \)
-	称为是无限连分数\eqref{eq:infcfrac}(或\eqref{eq:abbrinfcfrac})的值，记作
+	那么，就说无限连分数\eqref{eq:无限连分数定义}(或\eqref{eq:无限连分数定义简})是收敛的， \( \theta \)
+	称为是无限连分数\eqref{eq:无限连分数定义}(或\eqref{eq:无限连分数定义简})的值，记作
 	\begin{equation}
 		\langle x_0,x_1,x_2,\dots\rangle = \theta,
-		\label{eq:infcfracvalue}
+		\label{eq:无限连分数值}
 	\end{equation}
-	或极限\eqref{eq:cfraclim}不存在，则说无限连分数\eqref{eq:infcfrac}(或\eqref{eq:abbrinfcfrac})是发散的。
+	或极限\eqref{eq:无限连分数收敛}不存在，则说无限连分数\eqref{eq:无限连分数定义}(或\eqref{eq:无限连分数定义简})是发散的。
 \end{definition}
 \begin{theorem}
 	设 \( x_0, x_1, x_2, \dots \)是无穷实数列， \( x_j > 0, j \ge 1 \)。那么，
@@ -83,17 +84,21 @@ Find the value of $D \le 1000$ in minimal solutions of $x$ for which the largest
 		\item 对任意的整数 \( n \ge 1, r \ge 1 \)有
 		      \begin{flalign}
 			      \langle x_0,\dots,x_{n-1},x_n,\dots,x_{n+r}\rangle \nonumber &                                                                                        \\
-			                                                                   & = \langle x_0,\dots,x_{n-1},\langle x_n,\dots,x_{n+4}\rangle\rangle\nonumber           \\
+			                                                                   & = \langle x_0,\dots,x_{n-1},\langle x_n,\dots,x_{n+r}\rangle\rangle\nonumber           \\
 			                                                                   & = \langle x_0,\dots,x_{n-1}, x_{n} + 1 / \langle x_{n+1},\dots,x_{n+r}\rangle\rangle .
+			      \label{thrm01eq:01}
 		      \end{flalign}
 		      特别地有
 		      \begin{equation}
 			      \langle x_0, \dots, x_{n-1},x_n,x_{n+1}\rangle=\langle x_0,\dots,x_{n-1},x_n+1/x_{n+1}\rangle.
+			      \label{thrm01eq:02}
 		      \end{equation}
 		\item 对任意实数 \( \eta>0 \)及整数 \( n \ge 1 \)，
 		      \begin{gather}
-			      \langle x_0,\dots, x_{n-1}, x_n\rangle > \langle x_0,\dots,x_{n-1}, x_{n}+\eta\rangle, 2 \nmid n. \\
+			      \langle x_0,\dots, x_{n-1}, x_n\rangle > \langle x_0,\dots,x_{n-1}, x_{n}+\eta\rangle, 2 \nmid n.
+			      \label{thrm01eq:03} \\
 			      \langle x_0,\dots, x_{n-1}, x_n\rangle < \langle x_0,\dots,x_{n-1},x_n + \eta\rangle, 2 \mid n.
+			      \label{thrm01eq:04}
 		      \end{gather}
 		\item 记
 		      \begin{equation}
@@ -101,11 +106,121 @@ Find the value of $D \le 1000$ in minimal solutions of $x$ for which the largest
 		      \end{equation}
 		      我们有
 		      \begin{gather}
-			      a^{(n)} > a^{(n + r)}, 2 \nmid n, r \ge 1, \\
-			      a^{(n)} < a^{(n + r)}, 2 \mid n, r \ge 1, \\
-			      a^{(1)} > a^{(3)} > a^{(5)} > \dots > a^{2s - 1} > \dots, \\
-			      a^{(0)} < a^{(2)} < a^{(4)} < \dots < a^{2s} < \dots, \\
-			      a^{(2s-1)} > a^{(2t)}, s \ge 1, t \ge 0 .
+			      a^{(n)} > a^{(n + r)}, 2 \nmid n, r \ge 1, \label{thrm01eq:05}\\
+			      a^{(n)} < a^{(n + r)}, 2 \mid n, r \ge 1, \label{thrm01eq:06}\\
+			      a^{(1)} > a^{(3)} > a^{(5)} > \dots > a^{2s - 1} > \dots, \label{thrm01eq:07}\\
+			      a^{(0)} < a^{(2)} < a^{(4)} < \dots < a^{2s} < \dots, \label{thrm01eq:08}\\
+			      a^{(2s-1)} > a^{(2t)}, s \ge 1, t \ge 0 \label{thrm01eq:09}.
 		      \end{gather}
 	\end{enumerate}
+
 \end{theorem}
+\begin{proof}
+	式\eqref{thrm01eq:01}和\eqref{thrm01eq:02}直接由有限连分数的定义式\eqref{eq:有限连分数定义}和\eqref{eq:有限连分数定义简}推出。对
+	\( n \) 用归纳法来证式\eqref{thrm01eq:03}和\eqref{thrm01eq:04}，当 \( n=1 \)和 \( n=2
+	\)时，式\eqref{thrm01eq:03}和\eqref{thrm01eq:04}显然成立。假设当 \( n=2k-1 \)和 \( n=2k (k \ge
+	1)\)时式\eqref{thrm01eq:03}和\eqref{thrm01eq:04}都成立。当 \( n=2(k+1)-1=2k+1 \)时，由式\eqref{thrm01eq:01}知
+	\begin{equation*}
+		\langle x_0, \dots, x_{2k+1} \rangle = \langle x_0, x_1, \langle x_2, \dots, x_{2k+1} \rangle\rangle.
+	\end{equation*}
+	由假设式\eqref{thrm01eq:03}对 \( n = 2k -1 \)成立，所以
+	\begin{equation*}
+		\langle x_2, \dots, x_{2k}, x_{2k+1} \rangle > \langle x_2, \dots, x_{2k}, x_{2k+1} + \eta \rangle.
+	\end{equation*}
+	由上式及 \( n=2 \)时式\eqref{thrm01eq:04}成立就推出
+	\begin{equation*}
+		\langle x_0, x_1, \langle x_2, \dots, x_{2k}, x_{2k+1} + \eta \rangle\rangle < \langle x_0, x_1, \langle
+		x_2, \dots, x_{2k}, x_{2k+1} \rangle\rangle,
+	\end{equation*}
+	由此及式\eqref{thrm01eq:01}就推出当 \( n=2(k+1) - 1 \)时式\eqref{thrm01eq:03}成立。当 \( n=2(k+1) = 2k + 2
+	\)时，由式\eqref{thrm01eq:01}知
+	\begin{equation*}
+		\langle x_0, \dots, x_{2k+2} \rangle = \langle x_0, x_1, \langle x_2, \dots, x_{2k+2}\rangle\rangle.
+	\end{equation*}
+	由假设式\eqref{thrm01eq:04}对 \( n=2k \)成立，所以
+	\begin{equation*}
+		\langle x_2, \dots, x_{2k+1}, x_{2k+2} \rangle < \langle x_2, \dots, x_{2k+1}, x_{2k+2} + \eta \rangle.
+	\end{equation*}
+	由上式及 \( n=2 \)时式\eqref{thrm01eq:04}成立就推出
+	\begin{equation*}
+		\langle x_0, x_1, \langle x_2, \dots, x_{2k+1}, x_{2k+2} \rangle\rangle < \langle x_0, x_1, \langle x_2,
+		\dots, x_{2k+1}, x_{2k+2} + \eta\rangle\rangle.
+	\end{equation*}
+	由此及式\eqref{thrm01eq:01}就推出当 \( n=2(k+1)
+	\)时式\eqref{thrm01eq:04}成立，这就证明了式\eqref{thrm01eq:03}和\eqref{thrm01eq:04}对所有的 \( n \)都成立。
+	由式\eqref{thrm01eq:01}知
+	\begin{equation*}
+		a^{(n+r)} = \langle x_0, \dots, x_{n-1}, x_{n} + 1/\langle x_{n+1}, \dots, x_{n+r}\rangle\rangle.
+	\end{equation*}
+	由此及式\eqref{thrm01eq:03}和\eqref{thrm01eq:04}就分别推出式\eqref{thrm01eq:05}和\eqref{thrm01eq:06}。取 \( n=1,
+	r=2,4,6,\dots \)，从式\eqref{thrm01eq:05}就推出式\eqref{thrm01eq:07}。取 \( n=0, r=2,4,6,\dots
+	\)，从式\eqref{thrm01eq:06}就推出式\eqref{thrm01eq:08}。最后由式\eqref{thrm01eq:05}及式\eqref{thrm01eq:06}得
+	\begin{equation*}
+		a^{2s-1} > a^{2s-1 + 2t + 1} = a^{(2s+2t)}  > a^{(2t)},
+	\end{equation*}
+	这就证明了式\eqref{thrm01eq:09}。
+\end{proof}
+假设连分数
+\begin{equation}
+	\langle x_0, x_1, \dots, x_n \rangle  = P_n / Q_n, \qquad n \ge 0,
+\end{equation}
+推测应有递推关系式：
+\begin{align}\label{eq:递推}
+	\begin{cases}
+		P_n  = x_nP_{n-1} + P_{n-2}, \\
+		Q_n  = x_nQ_{n-1} + Q_{n-2}.
+	\end{cases}
+\end{align}
+
+\begin{theorem}
+	设 \( x_0, x_1, x_2, \dots \)是无穷实数列， \( x_j > 0, j \ge 1 \)。再设
+	\begin{equation}\label{thrm02eq:00}
+		P_{-2} = 0,\qquad P_{-1} = 1,\qquad Q_{-2} = 1,\qquad Q_{-1} = 0,
+	\end{equation}
+	以及当 \( n \ge 0 \)时， \( P_n, Q_n \)由递推关系公式\eqref{eq:递推}给出。那么，
+	\begin{align}
+		\langle x_0, \dots, x_n \rangle & = P_n / Q_n,  & n \ge \phantom{-}0. \label{thrm02eq:01} \\
+		P_nQ_{n-1} - P_{n-1}Q_n         & = (-1)^{n+1}, & n \ge -1,           \label{thrm02eq:02} \\
+		P_nQ_{n-2} - P_{n-2}Q_n         & = (-1)^nx_n,  & n \ge \phantom{-}0,\label{thrm02eq:03}
+	\end{align}
+	以及
+	\begin{align}
+		\langle x_0, \dots, x_{n-1}, x_n \rangle - \langle x_0, \dots, x_{n-1} \rangle
+		 & = (-1)^{n+1}(Q_nQ_{n-1})^{-1}, & n \ge 1, \label{thrm02eq:04} \\
+		\langle x_0, \dots,x_{n-2},  x_{n-1}, x_n \rangle - \langle x_0, \dots, x_{n-2} \rangle
+		 & = (-1)^{n}(Q_nQ_{n-2})^{-1},   & n \ge 2.\label{thrm02eq:05}
+	\end{align}
+\end{theorem}
+
+\begin{proof}
+	当 \( n = 0 \) 时， \( P_0 = x_0,\, Q_0 = 1 \)， 所以式\eqref{thrm02eq:01}成立。假设当 \( n = k(\ge 0) \)时\eqref{thrm02eq:01}成立。当 \( n = k + 1 \) 时，由式\eqref{thrm01eq:02}得
+	\begin{equation*}
+		\langle x_0, \dots, x_{k-1}, x_k, x_{k+1} \rangle = \langle x_0, \dots, x_{k-1}, x_k + 1/x_{k+1} \rangle,
+	\end{equation*}
+	由假设当 \( n = k \) 时式 \eqref{thrm02eq:01}成立及式\eqref{eq:递推}，就推出
+	\begin{align*}
+		\langle x_0, \dots, x_{k-1}, x_k, x_{k+1} \rangle
+		 & = \frac{(x_k + 1/x_{k+1})P_{k-1}+P_{k-2}}{(x_k + 1/x_{k+1})Q_{k-1} + Q_{k-2}}           \\
+		 & = \frac{x_{k+1}(x_kP_{k-1} + P_{k-2})+P_{k-1}}{x_{k+1}(x_kQ_{k-1} + Q_{k-2}) + Q_{k-1}} \\
+		 & = \frac{x_{k+1}P_k + P_{k-1}}{x_{k+1}Q_k + Q_{k-1}}                                     \\
+		 & = \frac{P_{k+1}}{Q_{k+1}}
+	\end{align*}
+	即当 \( n = k + 1 \)时式\eqref{thrm02eq:01}也成立。所以，式\eqref{thrm02eq:01}当 \( n \ge 0 \)时都成立。
+
+	当 \( n = -1 \)时，由式\eqref{thrm02eq:00}推出\eqref{thrm02eq:02}成立。当 \( n \ge 0 \)时，由式\eqref{eq:递推}可得 (消去 \( x_n \))
+	\begin{equation}
+		P_nQ_{n-1} - P_{n-1}Q_n = -(P_{n-1}Q_{n-2} - P_{n-2}Q_{n-1}).
+	\end{equation}
+	反复利用上式就推出
+	\begin{equation*}
+		P_nQ_{n-1} - P_{n-1}Q_n = (-1)^{n+1}(P_{-1}Q_{-2} - P_{-2}Q_{-1}).
+	\end{equation*}
+	由此及式\eqref{thrm02eq:00}就得到式\eqref{thrm02eq:02}。注意到当 \( n \ge 0 \)时 \( Q_n > 0 \)，
+	由式\eqref{thrm02eq:01}及\eqref{thrm02eq:02}，就推出式\eqref{thrm02eq:04}。
+	当 \( n \ge 0 \)时，由式\eqref{eq:递推}可得
+	\begin{equation}
+		P_nQ_{n-2} - P_{n-2}Q_n = (P_{n-1}Q_{n-2} - P_{n-2}Q_{n-1})x_n.
+	\end{equation}
+	由此及式\eqref{thrm02eq:02}就证明了式\eqref{thrm02eq:03}。注意到 \( n \ge 0 \)时 \( Q_n > 0
+	\)，由式\eqref{thrm02eq:01}及\eqref{thrm02eq:02}就推出式\eqref{thrm02eq:05}
+\end{proof}
