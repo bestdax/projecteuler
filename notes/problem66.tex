@@ -22,17 +22,74 @@ $x$ for $D \le 7$, the largest $x$ is obtained when $D = 5$.
 Find the value of $D \le 1000$ in minimal solutions of $x$ for which the largest value of $x$ is obtained.
 
 \subsection{数学解法}
-\subsubsection{连分数}
+\subsubsection{什么是连分数}\label{subsec:什么是连分数}
+连分数是一个很有用的工具。我们先来举几个例子，说明什么叫连分数以及它的用处.
+\begin{example}
+
+\end{example}
+例1 如果你手边没有平方根表，也没有计算器，那么能用 什么简单方法来求 \( \sqrt{11} \)的近似值？当然可以用通常的求平方根的
+方法，但下面的办法看来更方便.
+\begin{align}
+	             & 3 < \sqrt{11} <4,                                     \\
+	\sqrt{11}  = & 3 +（\sqrt{11}-3）                                    \\
+	=            & 3 + \frac{1}{(\sqrt{11}+3)/2} \nonumber               \\
+	=            & 3 + \cfrac{1}{3+(\sqrt{11}-3)/2}                      \\
+	=            & 3 + \cfrac{1}{3 + \cfrac{1}{\sqrt{11} + 3}} \nonumber \\
+	=            & 3 + \cfrac{1}{3 + \cfrac{1}{6 + (\sqrt{11} -3)}}.
+\end{align}
+
+重复这一过程就可得到
+\begin{align}
+	\sqrt{11} & =
+	3 + \cfrac{1}{3 +
+		\cfrac{1}{6 +
+			\cfrac{1}{3 +
+				(\sqrt{11} -3)/2
+	}}}           \\
+	          & =
+	3 + \cfrac{1}{3 +
+		\cfrac{1}{6 +
+			\cfrac{1}{3 +
+				\cfrac{1}{6 +
+					(\sqrt{11} -3)
+	}}}}          \\
+	          & =
+	3 + \cfrac{1}{3 +
+		\cfrac{1}{6 +
+			\cfrac{1}{3 +
+				\cfrac{1}{6 +
+					\cfrac{1}{3 +
+						(\sqrt{11} -3) / 2
+	}}}}}         \\
+	          & =
+	3 + \cfrac{1}{3 +
+		\cfrac{1}{6 +
+			\cfrac{1}{3 +
+				\cfrac{1}{6 +
+					\cfrac{1}{3 +
+						\cfrac{1}{6 +
+							(\sqrt{11} -3)
+	}}}}}}        \\
+	= \dots\dots. \nonumber
+\end{align}
+
+\begin{math}
+	\contfrac{3,3,6,3,6,3,6+(\sqrt{11}-3)}
+\end{math}
+\begin{math}
+	\contfrac{x_0, x_1, x_2, x_3}
+\end{math}
+
 \begin{definition}
 	设 \( x_0, x_1, x_2, \dots \) 是一个无穷实数列， \( x_j > 0, j \ge 1 \)。 对缩写的 \( n \ge 0 \)， 我们把表示式
 	\begin{equation}\label{eq:有限连分数定义}
-		\cfrac{1}{x_0 +
-			\cfrac{1}{x_1 +
-				\cfrac{1}{x_2 +
-					\cfrac{1}{x_3 +
-						\cfrac{1}{\ddots +
-							\cfrac{1}{x_n}
-						}}}}}
+		x_0 +
+		\cfrac{1}{x_1 +
+			\cfrac{1}{x_2 +
+				\cfrac{1}{x_3 +
+					\cfrac{1}{\ddots +
+						\cfrac{1}{x_n}
+					}}}}
 	\end{equation}
 	称为\textbf{( \( n \) 阶)有限连分数}，它的值是一个实数。当 \( x_0, \dots, x_n
 	\)均为整数时称为($n$阶)\em{有限简单连分数}，它的值是一个有理分数。为书写方便，把有限连分数记作
@@ -78,7 +135,7 @@ Find the value of $D \le 1000$ in minimal solutions of $x$ for which the largest
 	\end{equation}
 	或极限\eqref{eq:无限连分数收敛}不存在，则说无限连分数\eqref{eq:无限连分数定义}(或\eqref{eq:无限连分数定义简})是发散的。
 \end{definition}
-\begin{theorem}
+\begin{theorem}\label{thrm:大小}
 	设 \( x_0, x_1, x_2, \dots \)是无穷实数列， \( x_j > 0, j \ge 1 \)。那么，
 	\begin{enumerate}[label=\rm(\roman*)]
 		\item 对任意的整数 \( n \ge 1, r \ge 1 \)有
@@ -172,7 +229,7 @@ Find the value of $D \le 1000$ in minimal solutions of $x$ for which the largest
 	\end{cases}
 \end{align}
 
-\begin{theorem}
+\begin{theorem} \label{thrm:PQ}
 	设 \( x_0, x_1, x_2, \dots \)是无穷实数列， \( x_j > 0, j \ge 1 \)。再设
 	\begin{equation}\label{thrm02eq:00}
 		P_{-2} = 0,\qquad P_{-1} = 1,\qquad Q_{-2} = 1,\qquad Q_{-1} = 0,
@@ -224,3 +281,39 @@ Find the value of $D \le 1000$ in minimal solutions of $x$ for which the largest
 	由此及式\eqref{thrm02eq:02}就证明了式\eqref{thrm02eq:03}。注意到 \( n \ge 0 \)时 \( Q_n > 0
 	\)，由式\eqref{thrm02eq:01}及\eqref{thrm02eq:02}就推出式\eqref{thrm02eq:05}
 \end{proof}
+
+\subsection{有限简单连分数}
+\setcounter{equation}{0}
+\setcounter{theorem}{0}
+本节讨论有限简单连分数的性质及其与有理分数的关系。
+设 \( a_0, a_1, a_2, \dots \)是一个无限整数列， \( a_j \ge 1, j \ge 1 \)。记有限简单连分数
+\begin{equation}
+	\langle a_0, a_1, \dots, a_n \rangle = r^{(n)}, \quad n \ge 0. \label{eq:有限简单连分数}
+\end{equation}
+定义整数列 \( \left\{ h_n\right\} \)与 	\( \left\{k_n\right\} \)：
+\begin{equation}\label{eq:hk定义}
+	\begin{cases}
+		h_{-2} = 0,\, h_{-1} = 1,\, k_{-2} - 1,\, k_{-1} = 0, \\
+		h_n = a_nh_{n-1} + h_{n-2},\, k_n = a_nk_{n-1} + k_{n-2}, n \ge 0 .
+	\end{cases}
+\end{equation}
+显见， \( h_0 = a_0,\, h_1 = a_1a_0 + 1 \)，
+\begin{equation}
+	1 = k_0 \ge a_1 = k_1 < k_2 < \dots < k_n < \dots, \quad k_n \to + \infty .
+\end{equation}
+这里的 \( \left\{ a_j \right\} \)， \(\left\{ h_n \right\}\)， \(\left\{ k_n
+\right\}\)就相当于\S\ref{subsec:什么是连分数} 中的\eqref{thrm:PQ} \(\left\{ x_j \right\}\)， \(\left\{ P_n \right\}\)，
+\(\left\{ Q_n \right\}\)取整数的特殊情形，作为\S\ref{subsec:什么是连分数}的定理\ref{thrm:PQ}的特例就得到
+\begin{theorem}
+	有限简单连分数\eqref{eq:有限简单连分数}的值是有理分数，
+	\begin{equation}
+		r^{(n)} = \langle a_0, \dots, a_n \rangle = h_n/k_n,\, \left(h_n, k_n\right) = 1, n \ge 0,
+	\end{equation}
+	其中 \( h_n, k_n \)由式\eqref{eq:hk定义}给出。此外，还有
+	\begin{align}
+		h_nk_{n-1} - h_{n-1}k_n = (-1)^{n+1}, \qquad               & n \ge -1,           \\
+		h_nk_{n-2} - h_{n-2}k_n = (-1)^{n}a_n, \qquad              & n \ge \phantom{-}0, \\
+		r^{(n)} - r^{(n-1)} = (-1)^{n+1}(k_nk_{n-1})^{-1}, \qquad  & n \ge \phantom{-}1, \\
+		r^{(n)} - r^{(n-2)} = (-1)^{n}a_n(k_nk_{n-2})^{-1}, \qquad & n \ge \phantom{-}2.
+	\end{align}
+\end{theorem}
