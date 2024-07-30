@@ -1,0 +1,22 @@
+#include "number.h"
+#include "gtest/gtest.h"
+
+using namespace dax;
+TEST(number, isprime)
+{
+	EXPECT_TRUE(is_prime(2));
+	EXPECT_TRUE(is_prime(5));
+	EXPECT_FALSE(is_prime(4));
+	EXPECT_FALSE(is_prime(99));
+}
+
+TEST(number, gcd)
+{
+	EXPECT_EQ(gcd(4, 8), 4);
+	EXPECT_EQ(gcd(4, 12), 4);
+}
+
+TEST(number, lcm)
+{
+	EXPECT_EQ(lcm(12, 8), 24);
+}
