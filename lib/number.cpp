@@ -56,3 +56,23 @@ unsigned long dax::lcm(unsigned long a, unsigned long b)
 {
 	return a * b / dax::gcd(a, b);
 }
+
+std::vector<bool> dax::sieve_of_Eratosthenes(unsigned long limit)
+{
+	std::vector<bool> prime_status(limit + 1, true);
+	prime_status[0] = prime_status[1] = false;
+
+	for(unsigned long i = 2; i <= limit; ++i)
+	{
+		unsigned times =  2;
+		unsigned long product = times * i;
+
+		while(product <= limit)
+		{
+			prime_status[product] = false;
+			product = i * ++times;
+		}
+	}
+
+	return prime_status;
+}

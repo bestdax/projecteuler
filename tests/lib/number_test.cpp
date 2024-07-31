@@ -20,3 +20,16 @@ TEST(number, lcm)
 {
 	EXPECT_EQ(lcm(12, 8), 24);
 }
+
+TEST(number, sieve_of_Eratosthenes)
+{
+	EXPECT_TRUE(sieve_of_Eratosthenes(10)[3]);
+	EXPECT_TRUE(sieve_of_Eratosthenes(10)[2]);
+	EXPECT_TRUE(sieve_of_Eratosthenes(10)[5]);
+	EXPECT_TRUE(sieve_of_Eratosthenes(10)[7]);
+	EXPECT_FALSE(sieve_of_Eratosthenes(10)[4]);
+	EXPECT_FALSE(sieve_of_Eratosthenes(10)[6]);
+	EXPECT_FALSE(sieve_of_Eratosthenes(10)[8]);
+	EXPECT_FALSE(sieve_of_Eratosthenes(10)[9]);
+	EXPECT_FALSE(sieve_of_Eratosthenes(10)[10]);
+}
