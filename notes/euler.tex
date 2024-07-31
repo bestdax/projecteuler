@@ -36,12 +36,20 @@ title=center,  valign=center, title=#1, halign=center, colframe=green!70!blue!50
 \usepackage{multirow}
 \usepackage{hyperref}
 \usepackage{enumitem}
+\usepackage{csquotes}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newtheorem{definition}{定义}
 \newtheorem{theorem}{定理}
 \newtheorem{example}{例}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\eqrefl}[1]{
+\foreach \eq in {#1}
+{
+  \eqref{\eq}，
+}
+}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \author{dax}
 \title{Project Euler Tutorial}
 \date{2023/05/24}
