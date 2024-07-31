@@ -22,7 +22,7 @@ $x$ for $D \le 7$, the largest $x$ is obtained when $D = 5$.
 Find the value of $D \le 1000$ in minimal solutions of $x$ for which the largest value of $x$ is obtained.
 
 \subsection{数学解法}
-\subsubsection{什么是连分数}\label{subsec:什么是连分数}
+\subsubsection{什么是连分数}\label{subsec:连分数介绍}
 连分数是一个很有用的工具。我们先来举几个例子，说明什么叫连分数以及它的用处.
 \begin{example}\label{ex:开根号}
 	如果你手边没有平方根表，也没有计算器，那么能用 什么简单方法来求 \( \sqrt{11} \)的近似值？当然可以用通常的求平方根的
@@ -110,7 +110,7 @@ Find the value of $D \le 1000$ in minimal solutions of $x$ for which the largest
 	\)有什么关系？这就又提出了进一步的硏究课题。
 \end{example}
 
-\begin{example}
+\begin{example}\label{ex:化简分数}
 	一个分母、分子很大的分数用起来是很不方便的，如 \( 103993/33102 \)。 我们想找一个分母、分子较小的分数来近似它，
 	希望分母不要太大，但误差很小。利用例\ref{ex:开根号}的方法可得
 	\begin{align*}
@@ -416,8 +416,8 @@ x_n \to + \infty \)时，
 	1 = k_0 \ge a_1 = k_1 < k_2 < \dots < k_n < \dots, \quad k_n \to + \infty .
 \end{equation}
 这里的 \( \left\{ a_j \right\} \)， \(\left\{ h_n \right\}\)， \(\left\{ k_n
-\right\}\)就相当于\S\ref{subsec:什么是连分数} 中的\eqref{thrm:PQ} \(\left\{ x_j \right\}\)， \(\left\{ P_n \right\}\)，
-\(\left\{ Q_n \right\}\)取整数的特殊情形，作为\S\ref{subsec:什么是连分数}的定理\ref{thrm:PQ}的特例就得到
+\right\}\)就相当于\S\ref{subsec:连分数介绍} 中的\eqref{thrm:PQ} \(\left\{ x_j \right\}\)， \(\left\{ P_n \right\}\)，
+\(\left\{ Q_n \right\}\)取整数的特殊情形，作为\S\ref{subsec:连分数介绍}的定理\ref{thrm:PQ}的特例就得到
 \begin{theorem}
 	有限简单连分数\eqref{eq:有限简单连分数}的值是有理分数，
 	\begin{equation}
@@ -430,4 +430,45 @@ x_n \to + \infty \)时，
 		r^{(n)} - r^{(n-1)} = (-1)^{n+1}(k_nk_{n-1})^{-1}, \qquad  & n \ge \phantom{-}1, \\
 		r^{(n)} - r^{(n-2)} = (-1)^{n}a_n(k_nk_{n-2})^{-1}, \qquad & n \ge \phantom{-}2.
 	\end{align}
+	对于给定的一个不是整数的 有理分数 \( u_0 / u_1, u_1 \ge 2 \)，如何来得到它的有限简单连分数表示式呢？\S
+	\ref{subsec:连分数介绍}的例\ref{ex:化简分数}实际上已 经给出 了这种方法。利用第一章§5的辗转相除法可得：
+	\begin{equation}\label{eq:有限简单连分数辗转相除}
+		\begin{cases}
+			u_0 = b_0 u_1 + u_2, \hfill              0 < u_2 < u_1,     \\
+			u_1 = b_1 u_2 + u_3, \hfill              0 < u_3 < u_2,     \\
+			\begin{minipage}{0.4\textwidth}
+				\dotfill
+			\end{minipage}                              \\
+			u_{s-1} = b_{s-1} u_s + u_{s+1}, \hfill  0 < u_{s+1} < u_s, \\
+			u_s = b_s u_{s+1}. \hfill
+		\end{cases}
+	\end{equation}
+	由于 \( u_0 / u_1 \)不是整数，所有 \( s \ge 1 \)，以及 \( b_s \ge 2 \)。 设
+	\begin{equation}
+		\xi_j = u_j / u_{j+1}, \qquad 0 \le j \le s.
+	\end{equation}
+	由式\eqref{eq:有限简单连分数辗转相除}得
+	\begin{equation}
+		\begin{cases}
+			\xi_j = b_j + 1 / \xi_{j + 1} = \langle b_j, \xi_{j+1} \rangle, \qquad 0 \le j \le s \\
+			\xi_s = b_s.
+		\end{cases}
+	\end{equation}
+	利用\S \ref{subsec:连分数介绍}式\eqref{thrm01eq:01}得
+	\begin{align}
+		\xi_0 & = u_0 / u_1 = \langle b_0, \xi_1 \rangle = \langle b_0, \langle b_1, \xi_2 \rangle \rangle \nonumber \\
+		      & = \langle b_0, b_1, \xi_2 \rangle = \langle b_0, b_1, \langle b_2, \xi_3 \rangle \rangle   \nonumber \\
+		      & = \langle b_0, b_1, b_2, \xi_3 \rangle = \dots \nonumber                                             \\
+		      & = \langle b_0, b_1, \dots, b_{s-1}, \xi_s \rangle \nonumber                                          \\
+		      & = \langle b_0, b_1, \dots, b_s \rangle, \qquad b_s > 1. \label{eq:有限简单连分数表达式1}
+	\end{align}
+	这就得到了 \( \xi_0 = u_0 / u_1 \)的有限简单连分数表示式。由于 \( b_s \ge 2 \)，由\S \ref{subsec:连分数介绍}得
+	\begin{align}
+		\xi_0 & = u_0 / u_1 = \langle b_0, b_1, \dots, (b_s - 1) + 1/1 \rangle\nonumber                  \\
+		      & = \langle b_0, b_1, \dots, b_{s-1}, b_s - 1, 1 \rangle. \label{eq:有限简单连分数表达式2}
+	\end{align}
+	这样，有理分数 \( u_0 / u_1
+	\)就有两个有限简单连分数表示式\eqref{eq:有限简单连分数表达式1}和\eqref{eq:有限简单连分数表达式2}，\eqref{eq:有限简单连分数表达式1}的最后一个部分商是
+	\( b_s \ge 2
+	\)，\eqref{eq:有限简单连分数表达式2}的最后一个部分商为1。那么，是否会有别的的形式的表示式呢？回答是否定的。这就是下面的唯一性定理。
 \end{theorem}
