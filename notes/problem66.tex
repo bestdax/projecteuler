@@ -148,7 +148,7 @@ Find the value of $D \le 1000$ in minimal solutions of $x$ for which the largest
 	\)一个很精确的近似值。因而，我们可以试想从式\eqref{eq:根号11}所得的那些 \( \sqrt{11}
 	\)的近似分数中去寻找\eqref{eq:不定方程}的解。通过验算知，由分数 \( 199/60, 3970/1197 \)得出的
 	\begin{equation}
-	x=199,\quad y=60; \quad x=3970, \quad y=1197
+		x=199,\quad y=60; \quad x=3970, \quad y=1197
 	\end{equation}
 	是\eqref{eq:不定方程}的解，其它几个都不是。当然，从式\eqref{cf8}继续算下去得到的近似分数中还能找出解来。
 
@@ -291,11 +291,51 @@ Find the value of $D \le 1000$ in minimal solutions of $x$ for which the largest
 	\end{equation*}
 	这就证明了式\eqref{thrm01eq:09}。
 \end{proof}
-假设连分数
-\begin{equation}
-	\langle x_0, x_1, \dots, x_n \rangle  = P_n / Q_n, \qquad n \ge 0,
+下面要证明的性质是：如何给出一个明确的公式，用 \( x_0, x_1, \dots, x_n \)来表示连分数 \( \langle x_0, \dots, x_n \rangle
+\)的值。先来考虑几个具体表达式。
+\begin{align*}
+	\langle x_0 \rangle                & = \frac{x_0}{1},                                                              \\
+	\qquad \langle x_0, x_1 \rangle    & = x_0 + \frac{1}{x_1} = \frac{x_0x_1+1}{x_1},                                 \\
+	\langle x_0, x_1, x_2 \rangle      & = \langle x_0, x_1 + 1/x_2 \rangle = \frac{x_0(x_1 + 1/x_2) + 1}{x_1 + 1/x_2} \\
+	                                   & = \frac{(x_0x_1 + 1)x_2 + x_0}{x_1 x_2 + 1}                                   \\
+	\langle x_0, x_1, x_2, x_3 \rangle & = \langle x_0, x_1, x_2 +  1/x_3 \rangle                                      \\
+	                                   & = \frac{(x_0 x_1 + 1)(x_2 + 1 / x_3) + x_0}{x_1(x_2 + 1/x_3) + 1}             \\
+	                                   & = \frac{((x_0 x_1)x_2 + x_0)x_3 + (x_0 x_1 + 1)}{(x_1 x_2 + 1)x_3 + x_1}.
+\end{align*}
+因此，如果把 \( x_0, x_1, \dots \)看作是实变数，那么，
+\begin{equation}\label{eq:渐进分数}
+	\langle x_0, \dots, x_{n-1}, x_n \rangle = P_n / Q_n, \qquad n \ge 0,
 \end{equation}
-推测应有递推关系式：
+其中
+\begin{equation}
+	P_n = P_n(x_0, \dots, x_n), \qquad Q_n = Q_n(x_0, \dots, x_n)
+\end{equation}
+是变数 \( x_0, \dots, x_n \)的整系数多项式(事实上 \( Q_n \)与 \( x_0
+\)无关)，且对每个变数的方次至多为一次(为什么)。故而也可这样表示：
+\begin{equation}\label{eq:递推原形}
+	\langle x_0, \dots, x_{n-1}, x_n \rangle = \frac{K_{n-1}x_n + D_{n-1}}{H_{n-1}x_n + E_{n-1}}, \qquad n \ge 1,
+\end{equation}
+其中
+\begin{align*}
+	K_{n-1} = K_{n-1}(x_0, \dots, x_{n-1}),\qquad & H_{n-1} = H_{n-1} (x_0, \dots, x_{n-1}), \\
+	D_{n-1} = D_{n-1}(x_0, \dots, x_{n-1}),\qquad & E_{n-1} = E_{n-1} (x_0, \dots, x_{n-1}), \\
+\end{align*}
+都是变数 \( x_0, \dots, x_{n-1} \)的整系数多项式。在式\eqref{eq:递推原形}中，保持 \( x_0, \dots, x_{n-1} \)不变。令 \(
+x_n \to + \infty \)时，
+\begin{gather*}
+	\langle x_0, \dots, x_{n-1}, x_n \rangle \to \langle x_0, \dots, x_{n-1} \rangle = \frac{P_{n-1}}{Q_{n-1}}. \\
+	\frac{K_{n-1}x_n + D_{n-1}}{H_{n-1}x_n + E_{n-1}} \to \frac{K_{n-1}}{H_{n-1}}
+\end{gather*}
+令 \( x_n \to 0 \)时，
+\begin{gather*}
+	\langle x_0, \dots, x_{n-1}, x_n \rangle \to \langle x_0, \dots, x_{n-2} \rangle = \frac{P_{n-2}} {Q_{n-2}}, \\
+	\frac{K_{n-1}x_n + D_{n-1}}{H_{n-1}x_n + E_{n-1}} \to \frac{D_{n-1}}{E_{n-1}}
+\end{gather*}
+以上关系式告诉我们应该有
+\begin{equation}
+	K_{n-1} = P_{n-1}, \quad H_{n-1} = Q_{n-1}, \quad D_{n-1} = P_{n-2}, \quad E_{n-1} = Q_{n-2}.
+\end{equation}
+由此及式\eqrefl{eq:渐进分数,eq:递推原形}进一步推测应有递推关系式：
 \begin{align}\label{eq:递推}
 	\begin{cases}
 		P_n  = x_nP_{n-1} + P_{n-2}, \\
