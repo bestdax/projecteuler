@@ -24,55 +24,136 @@ Find the value of $D \le 1000$ in minimal solutions of $x$ for which the largest
 \subsection{数学解法}
 \subsubsection{什么是连分数}\label{subsec:什么是连分数}
 连分数是一个很有用的工具。我们先来举几个例子，说明什么叫连分数以及它的用处.
-\begin{example}
+\begin{example}\label{ex:开根号}
+	如果你手边没有平方根表，也没有计算器，那么能用 什么简单方法来求 \( \sqrt{11} \)的近似值？当然可以用通常的求平方根的
+	方法，但下面的办法看来更方便。
+	\begin{align}
+		             & 3 < \sqrt{11} <4,                                                 \\
+		\sqrt{11}  = & 3 +（\sqrt{11}-3）                                   \label{cf2}  \\
+		=            & 3 + \frac{1}{(\sqrt{11}+3)/2} \nonumber                           \\
+		=            & 3 + \cfrac{1}{3+(\sqrt{11}-3)/2}                      \label{cf3} \\
+		=            & 3 + \cfrac{1}{3 + \cfrac{1}{\sqrt{11} + 3}} \nonumber             \\
+		=            & 3 + \cfrac{1}{3 + \cfrac{1}{6 + (\sqrt{11} -3)}}.\label{cf4}
+	\end{align}
 
+	重复这一过程就可得到
+	\begin{align}
+		\sqrt{11} & =
+		3 + \cfrac{1}{3 +
+			\cfrac{1}{6 +
+				\cfrac{1}{3 +
+					(\sqrt{11} -3)/2
+		}}}          \label{cf5}  \\
+		          & =
+		3 + \cfrac{1}{3 +
+			\cfrac{1}{6 +
+				\cfrac{1}{3 +
+					\cfrac{1}{6 +
+						(\sqrt{11} -3)
+		}}}}          \label{cf6} \\
+		          & =
+		3 + \cfrac{1}{3 +
+			\cfrac{1}{6 +
+				\cfrac{1}{3 +
+					\cfrac{1}{6 +
+						\cfrac{1}{3 +
+							(\sqrt{11} -3) / 2
+		}}}}}        \label{cf7}  \\
+		          & =
+		3 + \cfrac{1}{3 +
+			\cfrac{1}{6 +
+				\cfrac{1}{3 +
+					\cfrac{1}{6 +
+						\cfrac{1}{3 +
+							\cfrac{1}{6 +
+								(\sqrt{11} -3)
+		}}}}}}        \label{cf8} \\
+		= \dots\dots. \nonumber
+	\end{align}
+	马上就会想到分别把式\eqrefl{cf2,cf3,cf4,cf5,cf6,cf7,cf8}中的无理数 \( (\sqrt{11} - 3) \) 或 \( (\sqrt{11} - 3)/2
+	\)去掉后所得到的\enquote{分数}值来作为 \( \sqrt{11} \)的\enquote{近似值}。容易算出，这些\enquote{近似值}依次为：
+	\begin{equation}\label{eq:根号11}
+		\sqrt{11} \approx 3, \frac{10}{3}, \frac{63}{19}, \frac{199}{60}, \frac{1257}{379}, \frac{3970}{1197},
+		\frac{25077}{7561}.
+	\end{equation}
+	用小数表示，这些\enquote{近似值}依次为(取八位小数)：
+	\begin{equation}
+		\sqrt{11} \approx 3,\: 3.33333333,\:3.31578947,\:3.316666666,\: 3.316622691,\: 3.31662489,\: 3.31662478.
+	\end{equation}
+	这些的确是很精确的近似值，因为实际上
+	\begin{equation}
+		\sqrt{11} = 3.31662479\dots.
+	\end{equation}
+	若取 \( 10 / 3 \)作近似值，就精确到 \( 2 / 10^2 \)；取 \( 63 / 19 \)就精确到 \( 9 / 10^4 \)；取 \( 199 / 60 \)就精确到
+	\( 42 / 10^6 \)；取 \( 1257 / 379 \)就精确到 \( 22 / 10^7 \)；取 \( 3970 / 1197 \)就精确到 \( 1 / 10^7 \)；取 \( 25077 /
+	7561\)就精确到 \( 1/10^8 \)。这些数据表明，这些近似值依次一个比一个更精确。此外，容易看出
+	\begin{equation}
+		3 < \frac{63}{19} < \frac{1257}{379} < \frac{25077}{7561} < \sqrt{11} < \frac{3970}{1197} < \frac{199}{60} <
+		\frac{10}{3}.
+	\end{equation}
+	这个例子表明，它提出了一个方法来构造一些特殊形式的 \enquote{分数}，作为无理数的近似值。因而也就提出了研究这种形式
+	\enquote{分数}的性质的新课题，以及从理论上研究无理数的这种形式的有理数逼近。另外，以上的过程不断的继续下去，就可以得到
+	一个无穷尽的\enquote{分数}表达式：
+	\begin{equation}
+		3 + \cfrac{1}{3 +
+			\cfrac{1}{6 +
+				\cfrac{1}{3 +
+					\cfrac{1}{6 +
+						\cfrac{1}{3 +
+							\cfrac{1}{6 +
+								\cfrac{1}{3 +
+									\cfrac{1}{6 +
+										\genfrac{}{}{0pt}{}{\phantom{1}}{\ddots}
+									}}}}}}}}
+	\end{equation}
+	这种表达式的确切含意是什么呢？能否定义它的\enquote{值}？如果能定义它的\enquote{值}，那么这\enquote{值}和 \( \sqrt{11}
+	\)有什么关系？这就又提出了进一步的硏究课题。
 \end{example}
-例1 如果你手边没有平方根表，也没有计算器，那么能用 什么简单方法来求 \( \sqrt{11} \)的近似值？当然可以用通常的求平方根的
-方法，但下面的办法看来更方便.
-\begin{align}
-	             & 3 < \sqrt{11} <4,                                     \\
-	\sqrt{11}  = & 3 +（\sqrt{11}-3）                                    \\
-	=            & 3 + \frac{1}{(\sqrt{11}+3)/2} \nonumber               \\
-	=            & 3 + \cfrac{1}{3+(\sqrt{11}-3)/2}                      \\
-	=            & 3 + \cfrac{1}{3 + \cfrac{1}{\sqrt{11} + 3}} \nonumber \\
-	=            & 3 + \cfrac{1}{3 + \cfrac{1}{6 + (\sqrt{11} -3)}}.
-\end{align}
 
-重复这一过程就可得到
-\begin{align}
-	\sqrt{11} & =
-	3 + \cfrac{1}{3 +
-		\cfrac{1}{6 +
-			\cfrac{1}{3 +
-				(\sqrt{11} -3)/2
-	}}}           \\
-	          & =
-	3 + \cfrac{1}{3 +
-		\cfrac{1}{6 +
-			\cfrac{1}{3 +
-				\cfrac{1}{6 +
-					(\sqrt{11} -3)
-	}}}}          \\
-	          & =
-	3 + \cfrac{1}{3 +
-		\cfrac{1}{6 +
-			\cfrac{1}{3 +
-				\cfrac{1}{6 +
-					\cfrac{1}{3 +
-						(\sqrt{11} -3) / 2
-	}}}}}         \\
-	          & =
-	3 + \cfrac{1}{3 +
-		\cfrac{1}{6 +
-			\cfrac{1}{3 +
-				\cfrac{1}{6 +
-					\cfrac{1}{3 +
-						\cfrac{1}{6 +
-							(\sqrt{11} -3)
-	}}}}}}        \\
-	= \dots\dots. \nonumber
-\end{align}
+\begin{example}
+	一个分母、分子很大的分数用起来是很不方便的，如 \( 103993/33102 \)。 我们想找一个分母、分子较小的分数来近似它，
+	希望分母不要太大，但误差很小。利用例\ref{ex:开根号}的方法可得
+	\begin{align*}
+		\frac{103993}{33102} & = 3 + \frac{4687}{33102} = 3 + \cfrac{1}{7 + \cfrac{293}{4687}}     \\
+		                     & = 3 + \cfrac{1}{7  + \cfrac{1}{15 + \cfrac{292}{293}}}              \\
+		                     & = 3 + \cfrac{1}{7  + \cfrac{1}{15 + \cfrac{1}{1 + \cfrac{1}{292}}}}
+	\end{align*}
+	类似于例\ref{ex:开根号}，我们扔掉这些\enquote{分数}中小于1的数 \(\displaystyle \frac{4687}{33102},\,\frac{293}{4687},\,
+	\frac{292}{293},\, \frac{1}{292}, \)用依次得到的
+	\begin{equation*}
+		3,\ 3 + \frac{1}{7} = \frac{22}{7},\ 3+ \cfrac{1}{7 + {\cfrac{1}{15}}} = \frac{333}{106},\ 3 + \cfrac{1}{7 +
+			\cfrac{1}{15 + \cfrac{1}{1}}} = \frac{355}{113}
+	\end{equation*}
+	来近似 \( 103993/33102 = 3.141592653\dots \)。由
+	\begin{equation*}
+		\frac{22}{7} = 3.14285714\dots,\ \frac{333}{106} = 3.14150943\dots,\ \frac{355}{113} = 3.14159292\dots,
+	\end{equation*}
+	推出它们的精确度依次为 \(  14/10^2,\, 13/10^4,\, 8/10^5,\, 3/10^7 \)。与它们的分母相比（依次为： \( 1,7,106,113
+	\)）精确度是很高的。事实上，这些都是圆周率\pi 的近似值， \( 22/7 \)是所谓\enquote{疏率}， \( 355/113 \)是\enquote{密率}。
 
+	这个例子表明，即使是一个分数把它表成这种形式的\enquote{分数} 也是有好处的。
+\end{example}
+
+\begin{example}
+	至今，除了试算具体数值，我们还没有方法来求解不定方程
+	\begin{equation}
+		x^2 - 11y^2 = 1, x > 0, y > 0. \label{eq:不定方程}
+	\end{equation}
+	这个不定方程可化为
+	\begin{align}
+		x - \sqrt{11}y          & = \frac{1}{x + \sqrt{11y}}, x > 0, y > 0. \nonumber \\
+		\frac{x}{y} - \sqrt{11} & = \frac{1}{y(x + \sqrt{11y})}, x > 0, y > 0.
+	\end{align}
+	这表明不定方程\eqref{eq:不定方程}的解 \( x, y \)所给出的分数 \( x/y \)是 \( \sqrt{11}
+	\)一个很精确的近似值。因而，我们可以试想从式\eqref{eq:根号11}所得的那些 \( \sqrt{11}
+	\)的近似分数中去寻找\eqref{eq:不定方程}的解。通过验算知，由分数 \( 199/60, 3970/1197 \)得出的
+	\begin{equation}
+	x=199,\quad y=60; \quad x=3970, \quad y=1197
+	\end{equation}
+	是\eqref{eq:不定方程}的解，其它几个都不是。当然，从式\eqref{cf8}继续算下去得到的近似分数中还能找出解来。
+
+	这个例子启示我们，通过研究这类新形式的\enquote{分数}，有可能找到求解形如\eqref{eq:不定方程}的一类不定方程的方法。
+\end{example}
 \begin{definition}
 	设 \( x_0, x_1, x_2, \dots \) 是一个无穷实数列， \( x_j > 0, j \ge 1 \)。 对缩写的 \( n \ge 0 \)， 我们把表示式
 	\begin{equation}\label{eq:有限连分数定义}
