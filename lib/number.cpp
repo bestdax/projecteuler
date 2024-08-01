@@ -1,5 +1,8 @@
 #include "number.h"
 #include <cmath>
+#include <iostream>
+#include <iomanip>
+#include <cmath>
 
 bool dax::is_prime(unsigned long n)
 {
@@ -57,6 +60,7 @@ unsigned long dax::lcm(unsigned long a, unsigned long b)
 	return a * b / dax::gcd(a, b);
 }
 
+// 埃氏筛法
 std::vector<bool> dax::sieve_of_Eratosthenes(unsigned long limit)
 {
 	std::vector<bool> prime_status(limit + 1, true);
@@ -75,4 +79,43 @@ std::vector<bool> dax::sieve_of_Eratosthenes(unsigned long limit)
 	}
 
 	return prime_status;
+}
+
+// 欧拉筛法
+std::vector<unsigned long> dax::sieve_of_Euler(unsigned long limit)
+{
+	std::vector<bool> prime_status(limit + 1, true);
+	prime_status[0] = prime_status[1] = false;
+	std::vector<unsigned long> primes{};
+
+	auto half = limit / 2;
+
+	for(unsigned long i = 2; i <= half; ++i)
+	{
+		// 如果是素数推进列表
+		if(prime_status[i])
+		{
+			primes.push_back(i);
+		}
+
+		for(auto p : primes)
+		{
+			auto q = p * i;
+
+			if(q < limit + 1)
+				prime_status[q] = false;
+			else
+				break;
+
+			if(i % p == 0) break;
+		}
+
+	}
+
+	for(unsigned long i = half; i < limit + 1; ++i)
+	{
+		if(prime_status[i]) primes.push_back(i);
+	}
+
+	return primes;
 }

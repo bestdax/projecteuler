@@ -33,3 +33,8 @@ TEST(number, sieve_of_Eratosthenes)
 	EXPECT_FALSE(sieve_of_Eratosthenes(10)[9]);
 	EXPECT_FALSE(sieve_of_Eratosthenes(10)[10]);
 }
+
+TEST(number, sieve_of_Euler)
+{
+	EXPECT_EQ(sieve_of_Euler(10)[3], 7);
+}
