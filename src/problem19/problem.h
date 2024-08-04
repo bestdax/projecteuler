@@ -20,21 +20,36 @@ class Date
 	public:
 		Date(): year(1900), month(Month::January), day(1), weekday(Weekday::Monday) {};
 
+		Date(unsigned year, Month month, unsigned day): year(year), month(month), day(day)
+		{
+			weekday = calculate_weekday();
+		};
+
+		Date(unsigned year, unsigned month, unsigned day): year(year), month(Month(month - 1)), day(day) {};
+
 		unsigned year;
 		Month month;
 		unsigned day;
 		Weekday weekday;
-		unsigned days_of_month(Date d);
-		bool is_leap_year();
+		static unsigned days_of_month(Date other);
+		static bool is_leap_year(unsigned y);
 		void next_day();
+		unsigned nth_day_of_the_year();
+		Weekday calculate_weekday();
+		unsigned days_from_19000101();
 
 		bool operator!=(Date other);
+
+		bool operator<(Date other);
+		bool operator=(Date other);
+		bool operator<=(Date other);
 };
+
+std::ostream& operator<<(std::ostream& os, Date date);
 
 class Solution
 {
 	public:
-		unsigned nth_day_of_the_year(Date);
 		void answer();
 
 };

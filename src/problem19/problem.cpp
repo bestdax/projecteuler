@@ -55,15 +55,15 @@ std::ostream& operator<<(std::ostream& os, Weekday weekday)
 	return os;
 }
 
-bool Date::is_leap_year()
+bool Date::is_leap_year(unsigned y)
 {
-	return year % 400 == 0 ||  year % 100 != 0 && year % 4 == 0;
+	return y % 400 == 0 ||  y % 100 != 0 && y % 4 == 0;
 }
 
-unsigned Date::days_of_month(Date d)
+unsigned Date::days_of_month(Date other)
 {
 	unsigned days{};
-	auto m = d.month;
+	auto m = other.month;
 
 	switch(m)
 	{
@@ -72,7 +72,7 @@ unsigned Date::days_of_month(Date d)
 		break;
 
 	case Month::February:
-		if(is_leap_year())
+		if(is_leap_year(other.year))
 			days = 29;
 		else days = 28;
 
@@ -122,14 +122,18 @@ unsigned Date::days_of_month(Date d)
 	return days;
 }
 
-// unsigned Solution::nth_day_of_the_year(Date d)
-// {
-// 	unsigned days{};
-// 	for(unsigned m=(Month::January); m < d.month; ++m)
-// 	{
-// 	}
-// }
-//
+unsigned Date::nth_day_of_the_year()
+{
+	unsigned days{};
+
+	for(unsigned m = 0; m < unsigned(month); ++m)
+	{
+		days += days_of_month(Date(year, Month(m), 1));
+	}
+
+	return days + day;
+}
+
 void Date::next_day()
 {
 	if(month == Month::December && day == 31)
@@ -150,7 +154,7 @@ void Date::next_day()
 		month = Month(unsigned(month) + 1);
 		day = 1;
 	}
-	else if(month == Month::February && (is_leap_year() && day == 29 || !is_leap_year() && day == 28))
+	else if(month == Month::February && (is_leap_year(year) && day == 29 || !is_leap_year(year) && day == 28))
 	{
 		month = Month(unsigned(month) + 1);
 		day = 1;
@@ -165,20 +169,67 @@ bool Date::operator!=(Date other)
 	return year != other.year || month != other.month || day != other.day;
 }
 
+unsigned Date::days_from_19000101()
+{
+	unsigned days{};
+
+	for(unsigned y = 1900; y < year; ++y)
+	{
+		if(is_leap_year(y)) days += 366;
+		else days += 365;
+
+	}
+
+	return days + nth_day_of_the_year();
+}
+
+Weekday Date::calculate_weekday()
+{
+	return Weekday((days_from_19000101()) % 7);
+}
+
+bool Date::operator<(Date other)
+{
+	if(year > other.year) return false;
+	else if(year < other.year) return true;
+	else
+	{
+		if(month < other.month) return true;
+		else if(month > other.month) return false;
+		else return day < other.day;
+	}
+}
+
+bool Date::operator=(Date other)
+{
+	return year == other.year && month == other.month && day == other.day;
+}
+
+bool Date::operator<=(Date other)
+{
+	return operator<(other) || operator=(other);
+}
+
+std::ostream& operator<<(std::ostream& os, Date date)
+{
+	os << date.year << '\t' << date.month << '\t' << date.day;
+	return os;
+}
+
 void Solution::answer()
 {
 	unsigned count{};
-	Date date;
+	Date start(1901, Month::January, 1);
+	Date end(2000, Month::December, 31);
 
-	while(date.year != 2000 || date.month != Month::December || date.day != 31)
+	while(start <= end)
 	{
-		if(date.day == 1 && date.weekday == Weekday::Sunday)
+		if(start.day == 1 && start.weekday == Weekday::Sunday)
 		{
 			++count;
-			std::cout << date.year << '\t' << date.month << '\t' << date.day << '\t' << date.weekday << std::endl;
 		}
 
-		date.next_day();
+		start.next_day();
 	}
 
 	std::cout << "The answer is: " << count << std::endl;
