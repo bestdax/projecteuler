@@ -123,13 +123,16 @@ std::vector<unsigned long> dax::sieve_of_Euler(unsigned long limit)
 // 富余数
 bool dax::is_abundant(unsigned long n)
 {
-	auto half = n / 2;
+	auto root = std::floor(std::sqrt(n));
 	unsigned long sum_of_proper_factors{};
 
-	for(unsigned long i = 1; i <= half; ++i)
+	for(unsigned long i = 2; i <= root; ++i)
 	{
-		if(n % i == 0) sum_of_proper_factors += i;
+		// 如果是方根的号就只加一个
+		if(n % i == 0) sum_of_proper_factors += (i + (i * i != n ? n / i : 0));
 	}
+
+	++sum_of_proper_factors;
 
 	return sum_of_proper_factors > n;
 }
