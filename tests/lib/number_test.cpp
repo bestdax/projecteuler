@@ -38,3 +38,8 @@ TEST(number, sieve_of_Euler)
 {
 	EXPECT_EQ(sieve_of_Euler(10)[3], 7);
 }
+
+TEST(number, abundant)
+{
+	EXPECT_TRUE(is_abundant(12));
+}

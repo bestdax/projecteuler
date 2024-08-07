@@ -119,3 +119,17 @@ std::vector<unsigned long> dax::sieve_of_Euler(unsigned long limit)
 
 	return primes;
 }
+
+// 富余数
+bool dax::is_abundant(unsigned long n)
+{
+	auto half = n / 2;
+	unsigned long sum_of_proper_factors{};
+
+	for(unsigned long i = 1; i <= half; ++i)
+	{
+		if(n % i == 0) sum_of_proper_factors += i;
+	}
+
+	return sum_of_proper_factors > n;
+}
