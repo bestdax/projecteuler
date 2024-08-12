@@ -2,6 +2,8 @@
 #include <algorithm>
 #include <numeric>
 #include <cmath>
+#include <string>
+#include <algorithm>
 
 namespace dax
 {
@@ -12,4 +14,5 @@ bool is_prime(unsigned long n);
 bool is_abundant(unsigned long n);
 std::vector<bool> sieve_of_Eratosthenes(unsigned long limit);
 std::vector<unsigned long> sieve_of_Euler(unsigned long limit);
+bool is_pandigital(unsigned n);
 };

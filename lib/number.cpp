@@ -136,3 +136,12 @@ bool dax::is_abundant(unsigned long n)
 
 	return sum_of_proper_factors > n;
 }
+
+// 全数字
+bool dax::is_pandigital(unsigned n)
+{
+	std::string pandigits = "123456789";
+	auto ns = std::to_string(n);
+	std::sort(ns.begin(), ns.end());
+	return ns == pandigits.substr(0, ns.size());
+}

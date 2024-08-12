@@ -43,3 +43,10 @@ TEST(number, abundant)
 {
 	EXPECT_TRUE(is_abundant(12));
 }
+
+TEST(number, pandigital)
+{
+	EXPECT_TRUE(is_pandigital(1234));
+	EXPECT_TRUE(is_pandigital(51234));
+	EXPECT_FALSE(is_pandigital(512534));
+}
