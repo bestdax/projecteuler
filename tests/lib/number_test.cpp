@@ -56,3 +56,10 @@ TEST(number, triangle)
 	EXPECT_TRUE(is_triangle(55));
 	EXPECT_FALSE(is_triangle(56));
 }
+
+TEST(number, pentagonal)
+{
+	EXPECT_TRUE(is_pentagonal(5));
+	EXPECT_TRUE(is_pentagonal(22));
+	EXPECT_FALSE(is_pentagonal(25));
+}

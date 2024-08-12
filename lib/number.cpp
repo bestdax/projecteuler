@@ -152,3 +152,10 @@ bool dax::is_triangle(unsigned long n)
 	unsigned long root = std::floor(std::sqrt(2 * n));
 	return root * (root + 1) == 2 * n;
 }
+
+// 五角形数
+bool dax::is_pentagonal(unsigned long n)
+{
+	unsigned long root = std::floor(std::sqrt(6 * n));
+	return root * (root + 1) == 6 * n;
+}
