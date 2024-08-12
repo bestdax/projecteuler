@@ -149,13 +149,13 @@ bool dax::is_pandigital(unsigned n)
 // 三角数
 bool dax::is_triangle(unsigned long n)
 {
-	unsigned long root = std::floor(std::sqrt(2 * n));
-	return root * (root + 1) == 2 * n;
+	unsigned long m = (std::sqrt(8 * n + 1) - 1) / 2;
+	return m * (m + 1) / 2 == n;
 }
 
 // 五角形数
 bool dax::is_pentagonal(unsigned long n)
 {
-	unsigned long root = std::floor(std::sqrt(6 * n));
-	return root * (root + 1) == 6 * n;
+	unsigned long m = (std::sqrt(24 * n + 1) + 1) / 6;
+	return m * (3 * m - 1) / 2 == n;
 }
