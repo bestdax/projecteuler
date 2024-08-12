@@ -32,6 +32,10 @@ std::vector<unsigned> dax::get_prime_factors(unsigned long n)
 		}
 	}
 
+	prime_factors.push_back(n);
+
+	return prime_factors;
+}
 	return prime_factors;
 }
 
