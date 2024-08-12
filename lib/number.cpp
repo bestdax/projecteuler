@@ -159,3 +159,10 @@ bool dax::is_pentagonal(unsigned long n)
 	unsigned long m = (std::sqrt(24 * n + 1) + 1) / 6;
 	return m * (3 * m - 1) / 2 == n;
 }
+
+// 平方
+bool dax::is_square(unsigned long n)
+{
+	auto root = std::floor(std::sqrt(n));
+	return root * root == n;
+}
