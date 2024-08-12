@@ -145,3 +145,10 @@ bool dax::is_pandigital(unsigned n)
 	std::sort(ns.begin(), ns.end());
 	return ns == pandigits.substr(0, ns.size());
 }
+
+// 三角数
+bool dax::is_triangle(unsigned long n)
+{
+	unsigned long root = std::floor(std::sqrt(2 * n));
+	return root * (root + 1) == 2 * n;
+}

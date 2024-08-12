@@ -15,4 +15,5 @@ bool is_abundant(unsigned long n);
 std::vector<bool> sieve_of_Eratosthenes(unsigned long limit);
 std::vector<unsigned long> sieve_of_Euler(unsigned long limit);
 bool is_pandigital(unsigned n);
+bool is_triangle(unsigned long n);
 };

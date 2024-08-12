@@ -50,3 +50,9 @@ TEST(number, pandigital)
 	EXPECT_TRUE(is_pandigital(51234));
 	EXPECT_FALSE(is_pandigital(512534));
 }
+
+TEST(number, triangle)
+{
+	EXPECT_TRUE(is_triangle(55));
+	EXPECT_FALSE(is_triangle(56));
+}
