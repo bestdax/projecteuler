@@ -36,6 +36,12 @@ std::vector<unsigned> dax::get_prime_factors(unsigned long n)
 
 	return prime_factors;
 }
+
+std::vector<unsigned> dax::get_unique_prime_factors(unsigned long n)
+{
+	auto prime_factors = dax::get_prime_factors(n);
+	auto last = std::unique(prime_factors.begin(), prime_factors.end());
+	prime_factors.erase(last, prime_factors.end());
 	return prime_factors;
 }
 
