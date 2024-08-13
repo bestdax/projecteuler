@@ -10,6 +10,7 @@ std::vector<unsigned long> Solution::replace_digit_and_get_primes(unsigned long 
 {
 	auto ns = std::to_string(n);
 	std::vector<unsigned long > results;
+	unsigned max_length{};
 
 	// 复制一份数字字符串，并去除重复数字
 	std::string uniquens(ns);
@@ -19,12 +20,11 @@ std::vector<unsigned long> Solution::replace_digit_and_get_primes(unsigned long 
 
 	std::string alldigits("0123456789");
 
-	for(auto d : alldigits)
+	for(auto c : uniquens)
 	{
-		unsigned max_length{};
 		std::vector<unsigned long> temp{};
 
-		for(auto c : uniquens)
+		for(auto d : alldigits)
 		{
 			if(c != d)
 			{
@@ -68,8 +68,12 @@ void Solution::answer()
 		if(families.size() == 7)
 		{
 			std::cout << "The answer is: " << p << std::endl;
+
+			for(auto item : families) std::cout << item << '\t';
+
 			break;
 		}
 
 	}
+
 }
