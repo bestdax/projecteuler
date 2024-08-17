@@ -174,12 +174,11 @@ class Hand
 		}
 
 		void print();
-
+		HandName name;
 	private:
 		void init_hand();
 		std::unordered_map<Rank, unsigned> rank_count;
 		std::vector<Card> cards;
-		HandName name;
 		unsigned long score{};
 };
 

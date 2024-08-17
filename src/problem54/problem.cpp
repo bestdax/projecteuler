@@ -2,6 +2,13 @@
 Problem page link:
 https://projecteuler.net/problem=54
 
+读取文件的时候，如果用getline函数，然后指定分隔符为空格的话，在行尾的时候会出错，C++会将\n一起读进来这样会造成一次读取两张牌
+用 inputstream >> stringvar 的方法，会默认将空白符做为分隔符
+
+另外，vector比较的时候是从左向右比较的，所以要将大牌放在左边，其实这个与打牌的一般人的习惯一样
+
+三元比较符<=>是个好方法，可以大大节约代码量
+
 dax 2024-08-15 15:22:56
 */
 #include "problem.h"
@@ -13,7 +20,7 @@ int operator-(Rank& lhs, Rank& rhs)
 
 void Hand::print()
 {
-	for(auto card: cards)
+	for(auto card : cards)
 	{
 		std::cout << card;
 	}
@@ -76,6 +83,8 @@ void Hand::init_hand()
 		name = HandName::OnePair;
 	else
 		name = HandName::HighCard;
+
+	std::reverse(cards.begin(), cards.end());
 }
 
 void Solution::read_hands()
@@ -108,7 +117,7 @@ void Solution::read_hands()
 
 	std::vector<Card> cards;
 
-	while(std::getline(file, str_card, ' '))
+	while(file >> str_card)
 	{
 		Card card;
 		card.rank = crmap[str_card[0]];
@@ -134,9 +143,13 @@ void Solution::answer()
 		if(*it > *(it + 1))
 		{
 			++count;
-			it->print();
-		 std::cout << std::endl;
 
+			if(it->name == (it + 1)->name)
+			{
+				it->print();
+				(it + 1) -> print();
+				std::cout << std::endl;
+			}
 		}
 	}
 
