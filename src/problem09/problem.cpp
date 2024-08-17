@@ -16,6 +16,7 @@ unsigned long Solution::find_abc_product()
 
 			if(a * a + b * b == c * c) return a * b * c;
 		}
+	return -1;
 }
 
 void Solution::answer()

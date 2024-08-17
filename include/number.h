@@ -19,4 +19,5 @@ bool is_pandigital(unsigned n);
 bool is_triangle(unsigned long n);
 bool is_pentagonal(unsigned long n);
 bool is_square(unsigned long n);
+bool is_palindrome(unsigned long n);
 };

@@ -63,3 +63,9 @@ TEST(number, pentagonal)
 	EXPECT_TRUE(is_pentagonal(22));
 	EXPECT_FALSE(is_pentagonal(25));
 }
+
+TEST(number, palindrome)
+{
+	EXPECT_TRUE(is_palindrome(1113111));
+	EXPECT_FALSE(is_palindrome(11134111));
+}

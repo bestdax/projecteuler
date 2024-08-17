@@ -176,3 +176,21 @@ bool dax::is_square(unsigned long n)
 	auto root = std::floor(std::sqrt(n));
 	return root * root == n;
 }
+
+// 回文数
+bool dax::is_palindrome(unsigned long n)
+{
+	std::string ns = std::to_string(n);
+	auto l = ns.begin();
+	auto r = 	ns.end() - 1;
+
+	while(l < r)
+	{
+		if(*l != *r) return false;
+
+		++l, --r;
+
+	}
+
+	return true;
+}
