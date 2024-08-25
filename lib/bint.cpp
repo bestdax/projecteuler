@@ -204,3 +204,9 @@ bint bint::reverse()
 	std::reverse(sn.begin(), sn.end());
 	return bint(sn);
 }
+
+bint& bint::operator+=(const bint& other)
+{
+	*this = *this + other;
+	return *this;
+}

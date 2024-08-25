@@ -20,3 +20,10 @@ TEST(bint, reverse)
 {
 	EXPECT_TRUE(bint(12345).reverse() == bint(54321));
 }
+
+TEST(bint, selfplus)
+{
+	bint a(13);
+	a += bint(5);
+	EXPECT_EQ(a, 18);
+}
