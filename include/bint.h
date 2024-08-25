@@ -28,4 +28,5 @@ class bint
 		friend std::ostream& operator<<(std::ostream& os, const bint& bigint);
 		bool is_palindrome();
 		bint reverse();
+		bint digtal_sum();
 };

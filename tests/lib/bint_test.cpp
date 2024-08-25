@@ -27,3 +27,8 @@ TEST(bint, selfplus)
 	a += bint(5);
 	EXPECT_EQ(a, 18);
 }
+
+TEST(bint, digital_sum)
+{
+	EXPECT_EQ(bint(12345).digtal_sum(), bint(15));
+}

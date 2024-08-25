@@ -210,3 +210,14 @@ bint& bint::operator+=(const bint& other)
 	*this = *this + other;
 	return *this;
 }
+
+bint bint::digtal_sum()
+{
+	auto sn = to_str();
+	bint dm;
+
+	for(auto c : sn)
+		dm += bint(c - '0');
+
+	return dm;
+}
