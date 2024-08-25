@@ -15,3 +15,8 @@ TEST(bint, palindrome)
 	EXPECT_TRUE(a.is_palindrome());
 	EXPECT_FALSE(bint("12343321").is_palindrome());
 }
+
+TEST(bint, reverse)
+{
+	EXPECT_TRUE(bint(12345).reverse() == bint(54321));
+}

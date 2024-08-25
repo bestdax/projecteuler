@@ -197,3 +197,10 @@ bool bint::is_palindrome()
 
 	return true;
 }
+
+bint bint::reverse()
+{
+	auto sn = to_str();
+	std::reverse(sn.begin(), sn.end());
+	return bint(sn);
+}
