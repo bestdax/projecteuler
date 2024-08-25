@@ -23,10 +23,12 @@ class bint
 		bint operator*(const bint& other) const;
 		bint& operator=(uint64_t num);
 		bint& operator+=(const bint& other);
-		auto operator<=>(const bint& other) const;
+		bint& operator++();
+		std::strong_ordering operator<=>(const bint& other) const;
 		bool operator==(const bint& other) const;
 		friend std::ostream& operator<<(std::ostream& os, const bint& bigint);
 		bool is_palindrome();
 		bint reverse();
 		bint digtal_sum();
+		bint& power(const bint& other);
 };

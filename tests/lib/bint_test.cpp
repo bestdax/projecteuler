@@ -32,3 +32,13 @@ TEST(bint, digital_sum)
 {
 	EXPECT_EQ(bint(12345).digtal_sum(), bint(15));
 }
+
+TEST(bint, compare)
+{
+	EXPECT_TRUE(bint(12) > bint(5));
+}
+
+TEST(bint, power)
+{
+	EXPECT_EQ(bint(2).power(3), bint(8));
+}

@@ -117,15 +117,17 @@ std::ostream& operator<<(std::ostream& os, const bint& bigint)
 	return os;
 }
 
-auto bint::operator<=>(const bint& other) const
+std::strong_ordering bint::operator<=>(const bint& other) const
 {
 	if(digits.size() != other.digits.size())
 		return digits.size() <=> other.digits.size();
 	else
 	{
-		for(unsigned i = digits.size() - 1; i >= 0; --i)
+		for(int i = digits.size() - 1; i >= 0; --i)
+		{
 			if(digits[i] != other.digits[i])
 				return digits[i] <=> other.digits[i];
+		}
 	}
 
 	return std::strong_ordering::equal;
@@ -220,4 +222,32 @@ bint bint::digtal_sum()
 		dm += bint(c - '0');
 
 	return dm;
+}
+
+bint& bint::operator++()
+{
+	*this += 1;
+	return *this;
+}
+
+bint& bint::power(const bint& other)
+{
+	if(other == 0)
+	{
+		*this = 1;
+		return *this;
+	}
+	else
+	{
+
+		bint prod(1);
+
+		for(bint i = 1; i <= other; ++i)
+		{
+			prod = prod * (*this);
+		}
+
+		*this = prod;
+		return *this;
+	}
 }
