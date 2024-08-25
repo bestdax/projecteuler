@@ -113,13 +113,38 @@ bint& bint::operator=(uint64_t num)
 
 std::ostream& operator<<(std::ostream& os, const bint& bigint)
 {
-	if(bigint.digits.empty())
+	os << bigint.to_str();
+	return os;
+}
+
+auto bint::operator<=>(const bint& other) const
+{
+	if(digits.size() != other.digits.size())
+		return digits.size() <=> other.digits.size();
+	else
 	{
-		return os << 0;
+		for(unsigned i = digits.size() - 1; i >= 0; --i)
+			if(digits[i] != other.digits[i])
+				return digits[i] <=> other.digits[i];
+	}
+
+	return std::strong_ordering::equal;
+}
+
+bool bint::operator==(const bint& other) const
+{
+	return digits == other.digits;
+}
+
+std::string bint::to_str() const
+{
+	if(digits.empty())
+	{
+		return "0";
 	}
 
 	std::vector<uint64_t> dec_digits;
-	bint current_value = bigint;
+	bint current_value = *this;
 
 	while(!current_value.digits.empty() && current_value.digits.back() > 0)
 	{

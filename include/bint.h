@@ -14,6 +14,7 @@ class bint
 		static const uint32_t DEC_BASE = 1000000000; // 10^9
 		void trim();
 	public:
+		std::string to_str() const;
 		bint() : digits(1, 0) {};
 
 		bint(uint64_t num);
