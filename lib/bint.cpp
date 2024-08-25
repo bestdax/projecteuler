@@ -161,31 +161,39 @@ std::string bint::to_str() const
 		current_value.trim();
 	}
 
-	os << dec_digits.back();
+	std::string sn;
+	// os << dec_digits.back();
 
-	for(int i = dec_digits.size() - 2; i >= 0; --i)
+	for(int i = dec_digits.size() - 1; i >= 0; --i)
 	{
-		os << std::setw(9) << std::setfill('0') << dec_digits[i];
+		auto temp = std::to_string(dec_digits[i]);
+
+		if(i != dec_digits.size() - 1)
+		{
+			temp = std::string(9 - temp.size(), '0') + temp;
+		}
+
+		sn += temp;
+
 	}
 
-	return os;
+	if(sn.empty()) sn = "0";
+
+	return sn;
 }
 
-auto bint::operator<=>(const bint& other) const
+bool bint::is_palindrome()
 {
-	if(digits.size() != other.digits.size())
-		return digits.size() <=> other.digits.size();
-	else
+	auto sn = to_str();
+	auto l = sn.begin();
+	auto r = sn.end() - 1;
+
+	while(l < r)
 	{
-		for(unsigned i = digits.size() - 1; i >= 0; --i)
-			if(digits[i] != other.digits[i])
-				return digits[i] <=> other.digits[i];
+		if(*l != *r) return false;
+
+		++l, --r;
 	}
 
-	return std::strong_ordering::equal;
-}
-
-bool bint::operator==(const bint& other) const
-{
-	return digits == other.digits;
+	return true;
 }

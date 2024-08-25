@@ -8,3 +8,10 @@ TEST(bint, test)
 	EXPECT_TRUE(a + b == bint("111111111011111111100"));
 	EXPECT_TRUE(a * b == bint("1219326311370217952237463801111263526900"));
 }
+
+TEST(bint, palindrome)
+{
+	bint a("11223344332211");
+	EXPECT_TRUE(a.is_palindrome());
+	EXPECT_FALSE(bint("12343321").is_palindrome());
+}
