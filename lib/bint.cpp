@@ -299,10 +299,14 @@ bint bint::operator-(const bint& other) const
 		{
 			result.digits[i] = BASE + digits[i] - other.digits[i];
 
-			if(borrow) --result;
+			if(borrow) result = result - 1;
+
+			borrow = true;
 		}
 		else
 			result.digits[i] =  digits[i] - other.digits[i];
 	}
+
+	return result;
 }
 
