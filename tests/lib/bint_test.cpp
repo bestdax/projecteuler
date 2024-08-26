@@ -47,3 +47,16 @@ TEST(bint, middle)
 {
 	EXPECT_EQ(bint(1111111111111111111).middle(), 555555555555555555);
 }
+
+TEST(bint, subtract)
+{
+	EXPECT_EQ(bint(12345) - 33, 12312);
+	EXPECT_EQ(bint((1 << 30)) - 1, 1073741823);
+}
+
+TEST(bint, divide)
+{
+	EXPECT_EQ(bint(123) / 4, 30);
+	EXPECT_EQ(bint("999999999999999999999")/ 314314314, 3181528665601);
+	EXPECT_EQ(bint("99")/ 3, 33);
+}

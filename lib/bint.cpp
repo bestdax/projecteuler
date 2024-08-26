@@ -320,3 +320,29 @@ bint bint::operator-(const bint& other) const
 	return result;
 }
 
+bint bint::operator/(const bint& other) const
+{
+	bint left, right = *this;
+	bint result = middle();
+
+	while(left + 1 < right)
+	{
+
+		if(result * other == *this) return result;
+
+		if(result * other < *this)
+		{
+			left = result;
+			result += (right - left).middle();
+		}
+		else
+		{
+			right = result;
+			result -= (right - left).middle();
+		}
+	}
+
+	if(result * other > *this) --result;
+
+	return result;
+}
