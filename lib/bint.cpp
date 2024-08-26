@@ -322,6 +322,8 @@ bint bint::operator-(const bint& other) const
 
 bint bint::operator/(const bint& other) const
 {
+	if(other == 0) throw std::runtime_error("除法错误：除数不能为零");
+
 	bint left, right = *this;
 	bint result = middle();
 
