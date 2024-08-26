@@ -230,7 +230,7 @@ bint& bint::operator++()
 	return *this;
 }
 
-bint& bint::power(const bint& other)
+bint bint::power(const bint& other)
 {
 	if(other == 0)
 	{
@@ -247,7 +247,6 @@ bint& bint::power(const bint& other)
 			prod = prod * (*this);
 		}
 
-		*this = prod;
-		return *this;
+		return prod;
 	}
 }

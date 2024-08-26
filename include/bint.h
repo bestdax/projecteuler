@@ -30,5 +30,5 @@ class bint
 		bool is_palindrome();
 		bint reverse();
 		bint digtal_sum();
-		bint& power(const bint& other);
+		bint power(const bint& other);
 };
