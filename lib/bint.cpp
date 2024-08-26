@@ -352,3 +352,30 @@ bint bint::operator%(const bint& other) const
 {
 	return *this - (*this / other) * other;
 }
+
+bint bint::sqrt() const
+{
+	bint l = 0;
+	bint r = *this;
+	bint root = middle();
+
+	while(l + 1 < r)
+	{
+		if(root * root == *this) return root;
+
+		if(root * root > * this)
+		{
+			r = root;
+			root -= (r - l).middle();
+		}
+		else
+		{
+			l = root;
+			root += (r - l).middle();
+		}
+	}
+
+	if(root * root > *this) --root;
+
+	return root;
+}
