@@ -379,3 +379,15 @@ bint bint::sqrt() const
 
 	return root;
 }
+
+bool bint::is_prime() const
+{
+	bint root = sqrt();
+
+	for(bint i = 2; i <= root; ++i)
+	{
+		if(*this % i == 0) return false;
+	}
+
+	return true;
+}

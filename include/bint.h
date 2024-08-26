@@ -35,6 +35,7 @@ class bint
 		bool operator==(const bint& other) const;
 		friend std::ostream& operator<<(std::ostream& os, const bint& bigint);
 		bool is_palindrome() const;
+		bool is_prime() const;
 		bint reverse() const;
 		bint digtal_sum() const;
 		bint power(const bint& other) const;

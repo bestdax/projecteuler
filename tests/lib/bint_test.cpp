@@ -70,3 +70,9 @@ TEST(bint, sqrt)
 {
 	EXPECT_EQ(bint("999999999999999999999").sqrt(), 31622776601);
 }
+
+TEST(bint, is_prime)
+{
+	EXPECT_TRUE(bint(2).is_prime());
+	EXPECT_TRUE(bint(97).is_prime());
+}
