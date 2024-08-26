@@ -28,6 +28,7 @@ class bint
 		bint& operator+=(const bint& other);
 		bint& operator-=(const bint& other);
 		bint& operator++();
+		bint& operator--();
 		std::strong_ordering operator<=>(const bint& other) const;
 		bool operator==(const bint& other) const;
 		friend std::ostream& operator<<(std::ostream& os, const bint& bigint);

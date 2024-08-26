@@ -236,6 +236,12 @@ bint& bint::operator++()
 	return *this;
 }
 
+bint& bint::operator--()
+{
+	*this -= 1;
+	return *this;
+}
+
 bint bint::power(const bint& other)
 {
 	if(other == 0)
