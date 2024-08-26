@@ -295,17 +295,27 @@ bint bint::operator-(const bint& other) const
 
 	for(int i = 0; i < digits.size(); ++i)
 	{
+		auto sub = i < other.digits.size() ? other.digits[i] : 0;
+
 		if(digits[i] < other.digits[i])
 		{
-			result.digits[i] = BASE + digits[i] - other.digits[i];
+			result.digits[i] = BASE + digits[i] - sub;
 
-			if(borrow) result = result - 1;
+			if(borrow) result.digits[i] -= 1;
 
 			borrow = true;
 		}
 		else
-			result.digits[i] =  digits[i] - other.digits[i];
+		{
+			result.digits[i] =  digits[i] - sub;
+
+			if(borrow) result.digits[i] -= 1;
+
+			borrow = false;
+		}
 	}
+
+	result.trim();
 
 	return result;
 }
