@@ -348,3 +348,8 @@ bint bint::operator/(const bint& other) const
 
 	return result;
 }
+
+bint bint::operator%(const bint& other) const
+{
+	return *this - (*this / other) * other;
+}

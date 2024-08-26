@@ -25,6 +25,7 @@ class bint
 		bint operator-(const bint& other) const;
 		bint operator*(const bint& other) const;
 		bint operator/(const bint& other) const;
+		bint operator%(const bint& other) const;
 		bint& operator=(uint64_t num);
 		bint& operator+=(const bint& other);
 		bint& operator-=(const bint& other);
