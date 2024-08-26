@@ -253,5 +253,5 @@ bint bint::power(const bint& other)
 
 bint bint::number_of_digits()
 {
-	return digits.size();
+	return to_str().size();
 }
