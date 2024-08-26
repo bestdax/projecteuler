@@ -184,7 +184,7 @@ std::string bint::to_str() const
 	return sn;
 }
 
-bool bint::is_palindrome()
+bool bint::is_palindrome() const
 {
 	auto sn = to_str();
 	auto l = sn.begin();
@@ -200,7 +200,7 @@ bool bint::is_palindrome()
 	return true;
 }
 
-bint bint::reverse()
+bint bint::reverse() const
 {
 	auto sn = to_str();
 	std::reverse(sn.begin(), sn.end());
@@ -219,7 +219,7 @@ bint& bint::operator-=(const bint& other)
 	return *this;
 }
 
-bint bint::digtal_sum()
+bint bint::digtal_sum() const
 {
 	auto sn = to_str();
 	bint dm;
@@ -242,12 +242,11 @@ bint& bint::operator--()
 	return *this;
 }
 
-bint bint::power(const bint& other)
+bint bint::power(const bint& other) const
 {
 	if(other == 0)
 	{
-		*this = 1;
-		return *this;
+		return 1;
 	}
 	else
 	{
@@ -263,7 +262,7 @@ bint bint::power(const bint& other)
 	}
 }
 
-bint bint::number_of_digits()
+bint bint::number_of_digits() const
 {
 	return to_str().size();
 }

@@ -34,9 +34,10 @@ class bint
 		std::strong_ordering operator<=>(const bint& other) const;
 		bool operator==(const bint& other) const;
 		friend std::ostream& operator<<(std::ostream& os, const bint& bigint);
-		bool is_palindrome();
-		bint reverse();
-		bint digtal_sum();
-		bint power(const bint& other);
-		bint number_of_digits();
+		bool is_palindrome() const;
+		bint reverse() const;
+		bint digtal_sum() const;
+		bint power(const bint& other) const;
+		bint number_of_digits() const;
+		bint sqrt() const;
 };
