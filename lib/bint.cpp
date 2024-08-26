@@ -273,3 +273,24 @@ bint bint::middle()  const
 	return m;
 }
 
+bint bint::operator-(const bint& other) const
+{
+	if(*this < other) throw std::runtime_error("减法错误：被减数小于减数");
+
+	bint result;
+	bool borrow{false};
+	result.digits.resize(digits.size(), 0);
+
+	for(int i = 0; i < digits.size(); ++i)
+	{
+		if(digits[i] < other.digits[i])
+		{
+			result.digits[i] = BASE + digits[i] - other.digits[i];
+
+			if(borrow) --result;
+		}
+		else
+			result.digits[i] =  digits[i] - other.digits[i];
+	}
+}
+

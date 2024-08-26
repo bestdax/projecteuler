@@ -22,6 +22,7 @@ class bint
 		bint(uint64_t num);
 		bint(const std::string& str);
 		bint operator+(const bint& other) const;
+		bint operator-(const bint& other) const;
 		bint operator*(const bint& other) const;
 		bint& operator=(uint64_t num);
 		bint& operator+=(const bint& other);
