@@ -17,6 +17,8 @@ class bint
 		std::string to_str() const;
 		bint() : digits(1, 0) {};
 
+		bint middle() const;
+
 		bint(uint64_t num);
 		bint(const std::string& str);
 		bint operator+(const bint& other) const;

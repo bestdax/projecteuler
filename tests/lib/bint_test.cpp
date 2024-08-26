@@ -42,3 +42,8 @@ TEST(bint, power)
 {
 	EXPECT_EQ(bint(2).power(3), bint(8));
 }
+
+TEST(bint, middle)
+{
+	EXPECT_EQ(bint(1111111111111111111).middle(), 555555555555555555);
+}

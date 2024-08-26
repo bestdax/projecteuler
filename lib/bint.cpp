@@ -255,3 +255,21 @@ bint bint::number_of_digits()
 {
 	return to_str().size();
 }
+
+bint bint::middle()  const
+{
+	bint m = *this;
+
+	uint32_t remainder{};
+
+	for(int i = m.digits.size() - 1; i >= 0; --i)
+	{
+
+		m.digits[i] += remainder * BASE;
+		remainder = m.digits[i] % 2;
+		m.digits[i] /= 2;
+	}
+
+	return m;
+}
+
