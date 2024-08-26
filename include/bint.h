@@ -31,4 +31,5 @@ class bint
 		bint reverse();
 		bint digtal_sum();
 		bint power(const bint& other);
+		bint number_of_digits();
 };

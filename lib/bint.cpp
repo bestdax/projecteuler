@@ -250,3 +250,8 @@ bint bint::power(const bint& other)
 		return prod;
 	}
 }
+
+bint bint::number_of_digits()
+{
+	return digits.size();
+}
