@@ -85,12 +85,15 @@ void Solution::decipher()
 				auto copy = ciphered;
 				auto pass = std::string("") + a + b + c;
 
-				for(unsigned n = 0; n <  ciphered.size(); ++n)
+				auto size = ciphered.size();
+
+				for(unsigned n = 0; n <  size; ++n)
 				{
 					copy[n] ^= pass[n % 3];
 				}
 
-				if(is_english(copy))
+				// if(is_english(copy))
+				if(copy.find(" the ") != std::string::npos)
 				{
 					std::cout << "possible key: " << pass << std::endl;
 					std::cout << "decrypted text: " << copy << std::endl;
