@@ -9,7 +9,7 @@ void measure_exe_time(Function func, Args... args)
 	func(args...);
 	auto end = std::chrono::high_resolution_clock::now();
 	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-	std::cout << "Function execute time: " << duration << std::endl;
+	std::cout << "Execution time: " << duration << std::endl;
 }
 
 template<typename Function>
@@ -19,5 +19,5 @@ void measure_exe_time(Function func)
 	func();
 	auto end = std::chrono::high_resolution_clock::now();
 	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-	std::cout << "Function execute time: " << duration << std::endl;
+	std::cout << "Execution time: " << duration << std::endl;
 }
