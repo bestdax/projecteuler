@@ -55,6 +55,8 @@ std::set<std::vector<unsigned long>> Solution::find_all_sets_with_n_members(unsi
 
 	while(n > 2)
 	{
+		std::set<std::vector<unsigned long>> level_sets;
+
 		for(auto& set : sets)
 		{
 			for(auto &p : primes)
@@ -63,12 +65,13 @@ std::set<std::vector<unsigned long>> Solution::find_all_sets_with_n_members(unsi
 				{
 					auto copy = set;
 					copy.push_back(p);
-					sets.insert(copy);
+					level_sets.insert(copy);
 				}
 			}
 		}
 
 		--n;
+		sets = level_sets;
 	}
 
 	return sets;
@@ -81,14 +84,11 @@ void Solution::answer()
 
 	for(auto&set : result)
 	{
-		if(set.size() == 5)
-		{
-			auto sum = std::accumulate(set.begin(), set.end(), 0);
+		auto sum = std::accumulate(set.begin(), set.end(), 0);
 
-			if(sum < min_sum)
-			{
-				min_sum = sum;
-			}
+		if(sum < min_sum)
+		{
+			min_sum = sum;
 		}
 	}
 
