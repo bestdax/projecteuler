@@ -194,3 +194,16 @@ bool dax::is_palindrome(unsigned long n)
 
 	return true;
 }
+
+unsigned dax::number_of_digits(unsigned long n)
+{
+	unsigned l{};
+
+	while(n > 0)
+	{
+		++l;
+		n /= 10;
+	}
+
+	return l;
+}

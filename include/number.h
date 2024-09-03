@@ -20,4 +20,5 @@ bool is_triangle(unsigned long n);
 bool is_pentagonal(unsigned long n);
 bool is_square(unsigned long n);
 bool is_palindrome(unsigned long n);
+unsigned number_of_digits(unsigned long n);
 };
