@@ -2,17 +2,14 @@
 \documentclass{ctexart}
 \usepackage{amsmath, amssymb, amsthm, mathtools}
 \usepackage[a4paper, margin=2cm]{geometry}
-\usepackage{indentfirst}
+\usepackage[dvipsnames]{xcolor}
+% \usepackage{indentfirst}
 
 \hfuzz=2pt
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% filter warnings
-\usepackage{silence}
-\WarningFilter{latexfont}{Font shape}
-\WarningFilter{latexfont}{Some font}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[outputdir=build]{minted}
-\usepackage[all]{tcolorbox}
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{minted}
 \newtcblisting{cpp}{listing engine=minted, minted language=cpp, minted style=autumn, listing only}
 \newtcolorbox{tablebox}[1]{width=\textwidth, right=0mm, left=0mm, top=0mm, bottom=0mm, boxsep=0mm, before title=\strut, halign
 title=center,  valign=center, title=#1, halign=center, colframe=green!70!blue!50}
@@ -29,13 +26,12 @@ title=center,  valign=center, title=#1, halign=center, colframe=green!70!blue!50
 
 
 % for tables
-\usepackage{array}
+% \usepackage{array}
 \usepackage{tabularx}
-\usepackage{tabulary}
+% \usepackage{tabulary}
 \usepackage{colortbl}
 \usepackage{multirow}
-\usepackage{hyperref}
-\usepackage{enumitem}
+% \usepackage{enumitem}
 \usepackage{csquotes}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newtheorem{definition}{定义}
@@ -48,6 +44,18 @@ title=center,  valign=center, title=#1, halign=center, colframe=green!70!blue!50
   \eqref{\eq}，
 }
 }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{hyperref}
+\hypersetup{
+colorlinks = true,
+linkcolor= blue!50!green,
+urlcolor = magenta,
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% filter warnings
+\usepackage{silence}
+\WarningFilter{latexfont}{Font shape}
+\WarningFilter{latexfont}{Some font}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \author{dax}
@@ -56,6 +64,7 @@ title=center,  valign=center, title=#1, halign=center, colframe=green!70!blue!50
 
 \begin{document}
 \maketitle
+\tableofcontents
 \include{problem01}
 \include{problem02}
 \include{problem54}
@@ -71,4 +80,5 @@ title=center,  valign=center, title=#1, halign=center, colframe=green!70!blue!50
 \include{problem64}
 \include{problem65}
 \include{problem66}
+\include{problem67}
 \end{document}

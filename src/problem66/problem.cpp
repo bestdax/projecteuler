@@ -10,66 +10,70 @@ dax 2023-06-09 16:06:21
 #include <vector>
 #include <algorithm>
 #include <map>
+bool operator==(const Remainder&lhs, const Remainder&rhs)
+{
+	return lhs.numerator == rhs.numerator && lhs.denominator == rhs.denominator;
+}
+
+ContinuedFractionOfSquareRoot::ContinuedFractionOfSquareRoot(unsigned long n)
+{
+	unsigned long a = std::floor(std::sqrt(n));
+	coefficients.push_back(a);
+	Remainder remainder{1, a};
+
+	while(std::find(remainders.begin(), remainders.end(), remainder) == remainders.end())
+	{
+		remainders.push_back(remainder);
+		auto last_remainder = remainders.back();
+		unsigned long coefficient = (a + last_remainder.denominator)  * last_remainder.numerator /
+		                            (n  - last_remainder.denominator * last_remainder.denominator);
+		coefficients.push_back(coefficient);
+		unsigned long numerator = (n - last_remainder.denominator*last_remainder.denominator) / last_remainder.numerator;
+		unsigned long denominator = coefficient * numerator - last_remainder.denominator;
+		remainder = Remainder{numerator, denominator};
+	}
+}
 
 void Solution::answer()
 {
-	unsigned long max = 0;
-	unsigned max_d;
-	std::map<unsigned long, unsigned long> square2root;
-	unsigned long max_root{1};
-	unsigned long max_square{1};
+	bint max;
+	unsigned d;
 
-	// for(unsigned i = 1; i < 100000; ++i)
-	// {
-	// 	unsigned long max_root = i;
-	// 	unsigned long max_square = i * i;
-	// 	square2root.insert(std::make_pair(max_square, max_root));
-	// }
-
-	for(unsigned d = 1; d <= 100; ++d)
+	for(unsigned n = 2; n <= 1000; ++n)
 	{
-		if(is_square(d)) continue;
-
-		bool notfound = true;
-		unsigned long y = 1;
-		unsigned long number;
-
-		while(notfound)
+		if(!is_square(n))
 		{
-			number = d * y * y + 1;
+			ContinuedFractionOfSquareRoot cf(n);
+			unsigned i = 0;
+			std::vector<bint> pn = {0, 1};
+			std::vector<bint> qn = {1, 0};
+			bint p = cf.coefficients[i];
+			bint q = 1;
+			pn.push_back(p);
+			qn.push_back(q);
 
-			if(number > max_square)
+			while(p * p != n * q * q + 1)
 			{
-				std::cout << number << '\t' << max_square << std::endl;
-				unsigned long cap = max_root * 2;
+				++i;
 
-				for(unsigned i = max_root + 1; i <= cap; ++i)
-				{
-					if(i % 1000 == 0) std::cout << "Inserting squares of base " << i << std::endl;
+				if(i == cf.coefficients.size())
+					i = 1;
 
-					++max_root;
-					max_square = max_root * max_root;
-					square2root.insert(std::make_pair(max_square, max_root));
-				}
+				p = cf.coefficients[i] * pn.back() + (*(pn.end() - 2));
+				q = cf.coefficients[i] * qn.back() + (*(qn.end() - 2));
+				pn.push_back(p);
+				qn.push_back(q);
 			}
 
-			if(square2root.contains(number))
+			if(pn.back() > max)
 			{
-				auto x = square2root[number];
-				std::cout << d << '\t' <<  y << '\t' << x << std::endl;
-
-				if(x > max)
-				{
-					max = x;
-					max_d = d;
-				}
-
-				notfound = false;
+				max = pn.back();
+				d = n;
 			}
 
-			++y;
+			// std::cout << pn.back() << '\t' << n << '\t' << qn.back() << '\t' <<  std::endl;
 		}
 	}
 
-	std::cout << "The answer is: " << max_d << std::endl;
+	std::cout << "The answer is: " << d << std::endl;
 }
