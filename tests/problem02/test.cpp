@@ -3,8 +3,7 @@
 
 Solution solution;
 
-TEST(eulerno, testname)
+TEST(euler02, sum_of_even_fibonacci)
 {
-
+	EXPECT_EQ(solution.sum_of_even_fibonacci(100), 44);
 }
-
