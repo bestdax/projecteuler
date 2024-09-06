@@ -10,7 +10,7 @@ unsigned Solution::sum_of_multipliers(unsigned limit)
 {
 	unsigned sum{};
 
-	for(unsigned i = 1; i < 1000; ++i)
+	for(unsigned i = 1; i < limit; ++i)
 	{
 		if(i % 3 == 0 || i % 5 == 0)
 			sum += i;
