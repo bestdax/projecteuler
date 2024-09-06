@@ -1,0 +1,29 @@
+\section{偶斐波那契数}
+\subsection{问题描述}
+\begin{tcolorbox}
+	斐波那契序列中的每一项是通过将前两项相加生成的。以 $1$ 和 $2$ 开始，前 10 项为：
+	$$1, 2, 3, 5, 8, 13, 21, 34, 55, 89, \dots$$
+
+	请考虑斐波那契序列中值不超过四百万的项，求其中偶数项的和。
+
+	\href{https://projecteuler.net/problem=2}{原题链接}
+\end{tcolorbox}
+
+\subsection{算法}
+\begin{algorithm}
+	\caption{偶斐波那契数}
+	\begin{algorithmic}[1]
+		\State \( a \gets 1 \)
+		\State \(b \gets 2 \)
+		\State \(\mathrm{sum} \gets 0 \)
+		\While{$  b \leqslant 4,000,000  $}
+		\If{$b \bmod 2 = 0$}
+		\State \( \mathrm{sum} \gets \mathrm{sum} + b \)
+		\EndIf
+		\State \( \mathrm{temp} \gets a + b \)
+		\State \( a \gets b \)
+		\State \( b \gets \mathrm{temp} \)
+		\EndWhile
+		\Return \( \mathrm{sum} \)
+	\end{algorithmic}
+\end{algorithm}
