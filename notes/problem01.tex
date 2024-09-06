@@ -1,9 +1,23 @@
 \section{3或5的倍数}
 \subsection{Problem Description}
 \begin{tcolorbox}
-如果我们列出所有小于10的自然数，这些数是3或5的倍数，我们会得到3、5、6和9。它们的和是23。
+	如果我们列出所有小于10的自然数，这些数是3或5的倍数，我们会得到3、5、6和9。它们的和是23。
 
-请找出所有小于1000的3或5的倍数的和。
+	请找出所有小于1000的3或5的倍数的和。
 
-\href{https://projecteuler.net/problem=1}{原问题链接}
+	\href{https://projecteuler.net/problem=1}{原问题链接}
 \end{tcolorbox}
+
+\subsection{算法}
+\begin{algorithm}
+	\caption{找到3或5的倍数的和}
+	\begin{algorithmic}
+		\State 初始化 sum $\gets 0$
+		\For{$i = 1$ \to $N-1$}
+		\If{$i \mod 3 = 0$ \textbf{or} $i \mod 5 = 0$}
+		\State sum $\gets$ sum + $i$
+		\EndIf
+		\EndFor
+		\Return sum
+	\end{algorithmic}
+\end{algorithm}
