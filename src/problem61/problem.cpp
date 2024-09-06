@@ -19,12 +19,12 @@ void Solution::answer()
 	// generate all ploygonal numbers
 	for(unsigned i = 1000; i < 10000; ++i)
 	{
-		if(is_triangle_number(i) ||
-		        is_square(i) ||
-		        is_pentagonal_number(i) ||
-		        is_hexagonal_number(i) ||
-		        is_heptagonal_number(i) ||
-		        is_octagonal_number(i))
+		if(dax::is_triangle_number(i) ||
+		        dax::is_square(i) ||
+		        dax::is_pentagonal_number(i) ||
+		        dax::is_hexagonal_number(i) ||
+		        dax::is_heptagonal_number(i) ||
+		        dax::is_octagonal_number(i))
 			numbers.push_back(i);
 	}
 
@@ -43,7 +43,7 @@ void Solution::answer()
 
 		for(auto row : lists)
 		{
-			if(size(row.back() % 100) != 2) continue; // if the third digit is zero, jump to next loop
+			if(dax::size(row.back() % 100) != 2) continue; // if the third digit is zero, jump to next loop
 
 			for(auto n : numbers)
 			{
@@ -76,7 +76,7 @@ void Solution::answer()
 
 				// if not in categories, push in and toggle pushed to true, one number can only be counted once
 
-				if(is_triangle_number(n))
+				if(dax::is_triangle_number(n))
 				{
 					if(std::find(categories.begin(), categories.end(), 3) == categories.end())
 					{
@@ -85,7 +85,7 @@ void Solution::answer()
 					}
 				}
 
-				if(is_square(n))
+				if(dax::is_square(n))
 				{
 					if(std::find(categories.begin(), categories.end(), 4) == categories.end())
 					{
@@ -94,7 +94,7 @@ void Solution::answer()
 					}
 				}
 
-				if(is_pentagonal_number(n))
+				if(dax::is_pentagonal_number(n))
 				{
 					if(std::find(categories.begin(), categories.end(), 5) == categories.end())
 					{
@@ -103,7 +103,7 @@ void Solution::answer()
 					}
 				}
 
-				if(is_hexagonal_number(n))
+				if(dax::is_hexagonal_number(n))
 				{
 					if(std::find(categories.begin(), categories.end(), 6) == categories.end())
 					{
@@ -112,7 +112,7 @@ void Solution::answer()
 					}
 				}
 
-				if(is_heptagonal_number(n))
+				if(dax::is_heptagonal_number(n))
 				{
 					if(std::find(categories.begin(), categories.end(), 7) == categories.end())
 					{
@@ -121,7 +121,7 @@ void Solution::answer()
 					}
 				}
 
-				if(is_octagonal_number(n))
+				if(dax::is_octagonal_number(n))
 				{
 					if(std::find(categories.begin(), categories.end(), 8) == categories.end())
 					{

@@ -29,15 +29,15 @@ bool Solution::is_goldbach_number(unsigned long number)
 {
 	for(unsigned long i = 2; i < number; ++i)
 	{
-		if(is_prime(i))
+		if(dax::is_prime(i))
 		{
 			auto remainder = number - i;
 
-			if(is_even(remainder))
+			if(dax::is_even(remainder))
 			{
 				remainder /= 2;
 
-				if(is_square(remainder)) return true;
+				if(dax::is_square(remainder)) return true;
 			}
 		}
 	}
@@ -53,7 +53,7 @@ unsigned long Solution::find_first_not_goldbach_number()
 		while(true)
 		{
 			number += 2;
-			if(!is_prime(number)) break;
+			if(!dax::is_prime(number)) break;
 		}
 	}
 	return number;

@@ -16,8 +16,3 @@ TEST(EULER23, IS_SUM_OF_TWO_ABUNDANTS)
 	EXPECT_FALSE(solution.is_sum_of_two_abundants(12));
 }
 
-int main(int argc, char *argv[])
-{
-	testing::InitGoogleTest();
-	return RUN_ALL_TESTS();
-}

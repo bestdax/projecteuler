@@ -30,7 +30,7 @@ unsigned Solution::traverse_matrix()
 		{
 			number += 2 * (nth_layer - 1);
 
-			if(is_prime(number)) ++diagonal_prime_count;
+			if(dax::is_prime(number)) ++diagonal_prime_count;
 		}
 
 		prime_ratio = static_cast<float>(diagonal_prime_count) / diagonal_count;

@@ -10,9 +10,4 @@ TEST(EULER18, FIND_MAX_PARENT)
 	EXPECT_EQ(solution.find_max_parent(14,0), 63);
 }
 
-int main(int argc, char *argv[])
-{
-	testing::InitGoogleTest();
-	return RUN_ALL_TESTS();
-}
 

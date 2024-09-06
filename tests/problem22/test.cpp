@@ -13,8 +13,3 @@ TEST(EULER22, CHAR_SUM)
 	EXPECT_EQ(solution.get_char_sum("COLIN"), 53);
 }
 
-int main(int argc, char *argv[])
-{
-	testing::InitGoogleTest();
-	return RUN_ALL_TESTS();
-}

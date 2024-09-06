@@ -21,19 +21,19 @@ dax 2023-05-19 16:58:55
 
 bool Solution::is_circular_prime(unsigned number)
 {
-	auto len = size(number);
+	auto len = dax::size(number);
 
 	for(unsigned i = 1; i < len; ++i)
 	{
-		if(is_prime(number))
+		if(dax::is_prime(number))
 		{
-			number = rotate(number);
+			number = dax::rotate(number);
 		}
 		else
 			return false;
 	}
 
-	return is_prime(number);
+	return dax::is_prime(number);
 }
 
 unsigned Solution::count_circular_prime(unsigned long cap)

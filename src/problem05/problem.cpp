@@ -38,8 +38,8 @@ unsigned long Solution::lcm_of_range2(unsigned range)
 
 unsigned long Solution::lcm(unsigned a, unsigned b)
 {
-	auto pf_a = prime_factors(a);
-	auto pf_b = prime_factors(b);
+	auto pf_a = dax::prime_factors(a);
+	auto pf_b = dax::prime_factors(b);
 
 	for(auto item : pf_a)
 	{

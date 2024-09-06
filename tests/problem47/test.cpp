@@ -15,8 +15,3 @@ TEST(EULER47, FIRST_NUMBER)
   EXPECT_EQ(solution.first_number(3), 644);
 }
 
-int main(int argc, char *argv[])
-{
-	testing::InitGoogleTest();
-	return RUN_ALL_TESTS();
-}

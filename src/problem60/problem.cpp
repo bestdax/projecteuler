@@ -17,10 +17,10 @@ bool is_group_primes(std::vector<unsigned long> &numbers)
 	for(auto it = numbers.begin(); it != numbers.end() - 1; ++it)
 		for(auto it_next = it + 1; it_next != numbers.end(); ++it_next)
 		{
-			if(!is_prime(concatenate(*it, *it_next)))
+			if(!dax::is_prime(dax::concatenate(*it, *it_next)))
 				return false;
 
-			if(!is_prime(concatenate(*it_next, *it)))
+			if(!dax::is_prime(dax::concatenate(*it_next, *it)))
 				return false;
 		}
 
@@ -63,7 +63,7 @@ void Solution::answer()
 
 						while(notfound)
 						{
-							next = next_prime_larger_than(next);
+							next = dax::next_prime_larger_than(next);
 							auto temp = first_four;
 							temp.push_back(next);
 

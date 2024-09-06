@@ -41,7 +41,7 @@ void Solution::answer()
 
 	for(unsigned n = 2; n <= 1000; ++n)
 	{
-		if(!is_square(n))
+		if(!dax::is_square(n))
 		{
 			ContinuedFractionOfSquareRoot cf(n);
 			unsigned i = 0;

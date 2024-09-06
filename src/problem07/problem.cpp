@@ -22,7 +22,7 @@ long Solution::nth_prime(int n)
 
 		while(true)
 		{
-			if(is_prime(i))
+			if(dax::is_prime(i))
 			{
 				count++;
 

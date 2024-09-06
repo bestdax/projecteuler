@@ -40,7 +40,7 @@ unsigned long Solution::first_number(unsigned n)
 	{
 		for(unsigned i = 0; i < n; ++i)
 		{
-			auto pf = prime_factors(number + i);
+			auto pf = dax::prime_factors(number + i);
 			unique(pf);
 
 			if(pf.size() != n)

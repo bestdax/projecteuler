@@ -13,9 +13,4 @@ TEST(EULER07, NTH_PRIME)
 	EXPECT_EQ(solution.nth_prime(6), 13);
 }
 
-int main(int argc, char *argv[])
-{
-	testing::InitGoogleTest();
-	return RUN_ALL_TESTS();
-}
 

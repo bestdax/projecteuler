@@ -19,7 +19,6 @@ dax 2023-04-30 09:15:15
 */
 #include "problem.h"
 
-
 std::string Solution::nth_permutation(std::string collection, unsigned n)
 {
 	unsigned count{};
@@ -66,10 +65,13 @@ void Solution::set_string(std::string col)
 {
 	collection = col;
 }
+
 void Solution::answer()
 {
 	std::cout << "The answer is: " << nth_permutation("0123456789", 1'000'000) << std::endl;
 	set_string("0123456789");
+
 	for(unsigned i{1}; i < 1'000'000; ++i) next_permutation();
+
 	std::cout << "The answer is: " << get_colllection() << std::endl;
 }

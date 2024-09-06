@@ -59,7 +59,7 @@ unsigned Solution::how_many_triangle_words()
 	{
 		auto value = compute_word_value(word);
 
-		if(is_triangle_number(value)) ++count;
+		if(dax::is_triangle_number(value)) ++count;
 	}
 
 	return count;

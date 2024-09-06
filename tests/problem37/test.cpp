@@ -14,8 +14,3 @@ TEST(EULER37, IS_TRUNCATABLE_PRIME)
 	EXPECT_TRUE(solution.is_truncatable_prime(3797));
 }
 
-int main(int argc, char *argv[])
-{
-	testing::InitGoogleTest();
-	return RUN_ALL_TESTS();
-}

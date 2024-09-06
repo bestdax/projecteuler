@@ -13,8 +13,3 @@ TEST(EULER46, IS_GOLDBACH_NUMBER)
 	EXPECT_TRUE(solution.is_goldbach_number(33));
 }
 
-int main(int argc, char *argv[])
-{
-	testing::InitGoogleTest();
-	return RUN_ALL_TESTS();
-}

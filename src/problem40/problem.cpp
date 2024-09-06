@@ -29,10 +29,10 @@ unsigned Solution::nth_digit(unsigned n)
 	while(number_of_digits < n)
 	{
 		++number;
-		number_of_digits += size(number);
+		number_of_digits += dax::size(number);
 	}
 
-	auto digits = get_digits(number);
+	auto digits = dax::get_digits(number);
 	return *(digits.end() - (number_of_digits - n) - 1);
 }
 

@@ -23,13 +23,13 @@ dax 2023-05-24 11:19:26
 
 std::vector<unsigned long> Solution::prime_permutations(unsigned long n)
 {
-	auto digits = get_digits(n);
+	auto digits = dax::get_digits(n);
 	std::vector<unsigned long> numbers{n};
 
 	while(std::next_permutation(digits.begin(), digits.end()))
 	{
-		if(is_prime(digits_to_number(digits)))
-			numbers.push_back(digits_to_number(digits));
+		if(dax::is_prime(dax::digits_to_number(digits)))
+			numbers.push_back(dax::digits_to_number(digits));
 	}
 
 	std::sort(numbers.begin(), numbers.end());
@@ -66,14 +66,14 @@ void Solution::answer()
 
 	for(unsigned i = 1000; i < 10000; ++i)
 	{
-		if(is_prime(i))
+		if(dax::is_prime(i))
 		{
 			auto numbers = prime_permutations(i);
 			auto sequence = pick_arithmetic_sequence(numbers);
 
 			if(!std::empty(sequence) && sequence[0] != 1487)
 			{
-				auto number = concatenate(sequence);
+				auto number = dax::concatenate(sequence);
 				std::cout << number << std::endl;
 				return;
 			}

@@ -16,9 +16,4 @@ TEST(EULER21, AMICABLE)
 	EXPECT_FALSE(solution.has_amicable(4));
 }
 
-int main(int argc, char *argv[])
-{
-	testing::InitGoogleTest();
-	return RUN_ALL_TESTS();
-}
 

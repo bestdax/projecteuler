@@ -42,7 +42,7 @@ unsigned long Solution::find_pairs_difference()
 		{
 			auto second = pentagonal_numbers.end() - 1;
 
-			if(is_pentagonal_number(*second - *first) && is_pentagonal_number(*first + *second))
+			if(dax::is_pentagonal_number(*second - *first) && dax::is_pentagonal_number(*first + *second))
 			{
 				std::cout << *first << '\t' << *second << std::endl;
 				return *second - *first;

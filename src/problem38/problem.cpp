@@ -29,7 +29,7 @@ unsigned Solution::pandigital_multiple(unsigned number)
 {
 	unsigned n = 2;
 
-	if(has_digit(number, 0) || has_same_digit(number))
+	if(dax::has_digit(number, 0) || dax::has_same_digit(number))
 		return 0;
 	else
 	{
@@ -37,10 +37,10 @@ unsigned Solution::pandigital_multiple(unsigned number)
 
 		while(true)
 		{
-			if(has_same_digit(pm, number * n) || has_digit(number * n, 0) || has_same_digit(pm) || has_same_digit(number * n)) break;
+			if(dax::has_same_digit(pm, number * n) || dax::has_digit(number * n, 0) || dax::has_same_digit(pm) || dax::has_same_digit(number * n)) break;
 			else
 			{
-				pm = concatenate(pm, number * n);
+				pm = dax::concatenate(pm, number * n);
 				++n;
 			}
 		}
@@ -56,7 +56,7 @@ unsigned Solution::max_pandigital_multiple()
 	for(unsigned i = 1; i < 50'000; ++i)
 	{
 		auto pm = pandigital_multiple(i);
-		max = size(pm) == 9 && pm > max ? pm : max;
+		max = dax::size(pm) == 9 && pm > max ? pm : max;
 	}
 
 	return max;

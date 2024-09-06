@@ -25,14 +25,14 @@ dax 2023-05-24 15:40:55
 
 ulong Solution::replace(ulong number, uint old_digit, uint new_digit)
 {
-	auto digits = get_digits(number);
+	auto digits = dax::get_digits(number);
 
 	for(auto &d : digits)
 	{
 		if(d == old_digit) d = new_digit;
 	}
 
-	return digits_to_number(digits);
+	return dax::digits_to_number(digits);
 }
 
 ulong Solution::find_prime_family(uint n)
@@ -41,7 +41,7 @@ ulong Solution::find_prime_family(uint n)
 
 	while(true)
 	{
-		auto digits = get_unique_digits(start);
+		auto digits = dax::get_unique_digits(start);
 
 		for(auto old_digit : digits)
 		{
@@ -51,9 +51,9 @@ ulong Solution::find_prime_family(uint n)
 			{
 				auto after = replace(start, old_digit, new_digit);
 
-				if(size(after) != size(start)) continue;
+				if(dax::size(after) != dax::size(start)) continue;
 
-				if(is_prime(after) && std::find(family_members.begin(), family_members.end(), after) == family_members.end())
+				if(dax::is_prime(after) && std::find(family_members.begin(), family_members.end(), after) == family_members.end())
 					family_members.push_back(after);
 			}
 

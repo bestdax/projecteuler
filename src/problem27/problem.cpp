@@ -47,7 +47,7 @@ int Solution::product_of_coefficients()
 		{
 			unsigned n = 0;
 
-			while(is_prime(quadratic_from(n, a, b)))
+			while(dax::is_prime(quadratic_from(n, a, b)))
 			{
 				++n;
 			}

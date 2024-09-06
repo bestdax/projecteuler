@@ -31,11 +31,11 @@ unsigned Solution::curious_fraction_pairs()
 	for(size_t i = 11; i < 100; ++i)
 		for(size_t j = i + 1; j < 100; ++j)
 		{
-			if(has_digit(i, 0) || has_digit(j, 0)) continue; // if has zero, continue the loop
+			if(dax::has_digit(i, 0) || dax::has_digit(j, 0)) continue; // if has zero, continue the loop
 
-			if(!has_same_digit(i, j)) continue;
+			if(!dax::has_same_digit(i, j)) continue;
 
-			auto numbers_cancelled_same_digit = cancel_same_digit(i, j);
+			auto numbers_cancelled_same_digit = dax::cancel_same_digit(i, j);
 
 			if(static_cast<double>(i) / j == static_cast<double>(numbers_cancelled_same_digit[0]) / numbers_cancelled_same_digit[1])
 			{

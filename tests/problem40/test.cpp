@@ -28,9 +28,4 @@ TEST(EULER40, NTH_DIGIT)
   EXPECT_EQ(solution.nth_digit(21), 5);
 }
 
-int main(int argc, char *argv[])
-{
-  testing::InitGoogleTest();
-  return RUN_ALL_TESTS();
-}
 

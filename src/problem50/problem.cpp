@@ -28,7 +28,7 @@ std::vector<unsigned long> Solution::gen_prime_list(unsigned long cap)
 	std::vector<unsigned long> primes;
 
 	for(unsigned long i = 2; i < cap; ++i)
-		if(is_prime(i)) primes.push_back(i);
+		if(dax::is_prime(i)) primes.push_back(i);
 
 	return primes;
 }
@@ -48,7 +48,7 @@ unsigned long Solution::consequtive_prime_sum(unsigned long cap)
 
 			if(sum > cap) break;
 
-			if(is_prime(sum))
+			if(dax::is_prime(sum))
 				target = sum;
 		}
 	}

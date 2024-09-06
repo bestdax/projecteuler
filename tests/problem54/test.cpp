@@ -37,8 +37,3 @@ TEST(HAND, IS_SAME_SUIT)
 	EXPECT_TRUE(hand4 < hand2);
 }
 
-int main(int argc, char *argv[])
-{
-	testing::InitGoogleTest();
-	return RUN_ALL_TESTS();
-}

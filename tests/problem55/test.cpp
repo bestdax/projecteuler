@@ -11,9 +11,4 @@ TEST(EULER55, IS_LYCHREL)
   EXPECT_FALSE(solution.is_lychrel(lint(47)));
 
 }
-int main(int argc, char *argv[])
-{
-  testing::InitGoogleTest();
-  return RUN_ALL_TESTS();
-}
 

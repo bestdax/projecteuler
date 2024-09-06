@@ -3,7 +3,7 @@
 #include "number.h"
 
 Solution solution;
-
+using namespace dax;
 TEST(EULER03, IS_PRIME)
 {
 	EXPECT_TRUE(is_prime(2));
@@ -24,8 +24,3 @@ TEST(EULER03, LARGEST_PRIME_FACTOR)
 	EXPECT_EQ(solution.largest_prime_factor(13195), 29);
 }
 
-int main(int argc, char *argv[])
-{
-	testing::InitGoogleTest();
-	return RUN_ALL_TESTS();
-}

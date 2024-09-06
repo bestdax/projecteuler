@@ -2,7 +2,7 @@
 #include "problem.h"
 
 Solution solution;
-
+using namespace dax;
 TEST(EULER05, LCM_OF_RANGE)
 {
 	EXPECT_EQ(solution.lcm_of_range(10), 2520);

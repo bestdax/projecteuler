@@ -9,8 +9,3 @@ TEST(EULER26, QUOTIENT)
 	EXPECT_EQ(solution.reciprocal(3), 3);
 }
 
-int main(int argc, char *argv[])
-{
-	testing::InitGoogleTest();
-	return RUN_ALL_TESTS();
-}

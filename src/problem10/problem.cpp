@@ -16,7 +16,7 @@ unsigned long Solution::summation_of_primes(int cap)
 	unsigned long sum{};
 	for(unsigned i = 2; i < cap; ++i)
 	{
-		if(is_prime(i)) sum += i;
+		if(dax::is_prime(i)) sum += i;
 	}
 	return sum;
 }

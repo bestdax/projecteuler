@@ -20,8 +20,3 @@ TEST(EULER24, NEXT_PERMUTATION)
 	EXPECT_STREQ(solution.get_colllection().c_str(), "24541234");
 }
 
-int main(int argc, char *argv[])
-{
-	testing::InitGoogleTest();
-	return RUN_ALL_TESTS();
-}

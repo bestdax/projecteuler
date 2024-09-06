@@ -31,9 +31,4 @@ TEST(EULER19, DAYS_FROM_1900)
 	EXPECT_EQ(solution.how_many_days_from_19000101(1901, 12, 31), 730);
 }
 
-int main(int argc, char *argv[])
-{
-	testing::InitGoogleTest();
-	return RUN_ALL_TESTS();
-}
 

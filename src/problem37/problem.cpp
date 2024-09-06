@@ -45,14 +45,14 @@ bool Solution::is_truncatable_prime(unsigned long number)
 {
 	if(number < 10) return false;
 
-	if(is_prime(number))
+	if(dax::is_prime(number))
 	{
 		auto part_from_left = truncate_from_left(number);
 		auto part_from_right = truncate_from_right(number);
 
 		while(part_from_left != 0 && part_from_right != 0)
 		{
-			if(!is_prime(part_from_right) || !is_prime(part_from_left)) return false;
+			if(!dax::is_prime(part_from_right) || !dax::is_prime(part_from_left)) return false;
 
 			part_from_left = truncate_from_left(part_from_left);
 			part_from_right = truncate_from_right(part_from_right);

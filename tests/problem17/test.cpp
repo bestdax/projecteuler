@@ -19,9 +19,4 @@ TEST(EULER17, COUNT)
 	EXPECT_EQ(solution.count(300), 12);
 }
 
-int main(int argc, char *argv[])
-{
-	testing::InitGoogleTest();
-	return RUN_ALL_TESTS();
-}
 

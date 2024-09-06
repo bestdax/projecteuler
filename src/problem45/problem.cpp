@@ -28,7 +28,7 @@ unsigned long Solution::find_next()
 	{
 		unsigned long number = (n * n + n) / 2;
 
-		if(is_pentagonal_number(number) && is_hexagonal_number(number)) return number;
+		if(dax::is_pentagonal_number(number) && dax::is_hexagonal_number(number)) return number;
 
 		++n;
 	}

@@ -25,11 +25,11 @@ void Solution::answer()
 	{
 		++start;
 
-		if(has_same_digit(start)) continue;
+		if(dax::has_same_digit(start)) continue;
 
 		for(unsigned n = 2; n < 7; ++n)
 		{
-			if(!has_exact_same_digits(start, start * n)) break;
+			if(!dax::has_exact_same_digits(start, start * n)) break;
 
 			if(n == 6) target = start;
 		}

@@ -21,7 +21,7 @@ dax 2023-05-20 17:13:17
 
 bool Solution::is_double_base_palindrome(unsigned number)
 {
-	if(is_palindrome(number))
+	if(dax::is_palindrome(number))
 	{
 		auto bit_string = std::bitset<32>(number).to_string();
 		auto begin = bit_string.begin();
