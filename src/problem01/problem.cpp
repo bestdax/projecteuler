@@ -8,5 +8,11 @@ dax 2024-09-06 16:33:46
 
 void Solution::answer()
 {
-	std::cout << "The answer is: " << "" << std::endl;
+	unsigned sum{};
+	for(unsigned i = 1; i < 1000; ++i)
+	{
+		if(i % 3 == 0 || i % 5 == 0)
+			sum += i;
+	}
+	std::cout << "The answer is: " << sum << std::endl;
 }
