@@ -1,0 +1,20 @@
+%!tex program = lualatex
+\documentclass{ctexart}
+\usepackage{xcolor}
+\ctexset{
+  section/name = {问题},
+  % section/number = {\zhnum{section}},
+  section/nameformat += {\sffamily},
+  section/numberformat += {\color{magenta}\Huge}
+}
+\usepackage{tcolorbox}
+
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks = true,
+  urlcolor = magenta,
+  linkcolor = cyan
+}
+\begin{document}
+\include{problem01}
+\end{document}
