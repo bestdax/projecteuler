@@ -4,7 +4,6 @@
 \usepackage{xcolor}
 \ctexset{
   section/name = {问题},
-  % section/number = {\zhnum{section}},
   section/nameformat += {\sffamily},
   section/numberformat += {\color{magenta}\Huge}
 }
@@ -12,10 +11,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{algorithm}
 \usepackage{algpseudocodex}
+\usepackage{caption}
+\captionsetup[algorithm]{name={算法}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{silence}
 \WarningFilter{latexfont}{Font shape}
 \WarningFilter{latexfont}{Size substitutions}
+\WarningFilter{latexfont}{Some font}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{hyperref}
 \hypersetup{
@@ -26,4 +28,5 @@
 \begin{document}
 \include{problem01}
 \include{problem02}
+\include{problem03}
 \end{document}
