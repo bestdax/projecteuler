@@ -21,14 +21,15 @@ bool dax::is_prime_improved(unsigned long n)
 
 	if(n % 2 == 0 || n % 3 == 0) return false;
 
-	auto root = std::floor(std::sqrt(n));
 	unsigned long i = 5;
+	unsigned long root = std::sqrt(n);
 
-	while(i <= root)
-	{
+	for(unsigned long i = 5; i <= root; i += 6)
 		if(n % i == 0 || n % (i + 2) == 0) return false;
 
-		i += 6;
+	return true;
+
+}
 
 std::vector<bool> dax::sieve_of_eratosthenes(unsigned long n)
 {
