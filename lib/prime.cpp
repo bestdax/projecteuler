@@ -3,15 +3,13 @@
 
 bool dax::is_prime(unsigned long n)
 {
-	if(n < 3) return n > 1;
+	if(n < 4) return n > 1;
 
-	auto root = std::floor(std::sqrt(n));
+	unsigned long root = std::sqrt(n);
 
 	for(unsigned i = 2; i <= root; ++i)
-	{
-		if(n % 2 == 0)
+		if(n % i == 0)
 			return false;
-	}
 
 	return true;
 }
