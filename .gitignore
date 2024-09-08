@@ -47,3 +47,4 @@ _deps
 [Bb]uild
 [Rr]elease
 .cache/
+.DS_Store
