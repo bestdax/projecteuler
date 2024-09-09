@@ -3,8 +3,7 @@
 
 Solution solution;
 
-TEST(eulerno, testname)
+TEST(euler07, nth_prime)
 {
-
+	EXPECT_EQ(solution.nth_prime(6), 13);
 }
-

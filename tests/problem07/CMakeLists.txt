@@ -5,7 +5,7 @@ if(BUILD_TESTING)
                             ${PROJECT_SOURCE_DIR}/src/${DIR_NAME}/problem.cpp)
   target_include_directories(${EXENAME}
                              PUBLIC ${PROJECT_SOURCE_DIR}/src/${DIR_NAME}/)
-  target_link_libraries(${EXENAME} gtest_main)
+  target_link_libraries(${EXENAME} gtest_main numbertools)
   include(GoogleTest)
   gtest_discover_tests(${EXENAME})
 endif()
