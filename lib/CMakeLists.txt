@@ -1,6 +1,6 @@
 file(
-  GLOB CPPFILES
-  RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
+  GLOB LIBFILES
+  ${CMAKE_CURRENT_SOURCE_DIR}
   *.cpp)
-message(${CPPFILES})
-add_library(numbertools SHARED ${CPPFILES})
+set(LIBFILES ${LIBFILES} CACHE STRING "Globbed lib source files")
+add_library(numbertools SHARED ${LIBFILES})
