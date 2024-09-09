@@ -1,0 +1,44 @@
+\section{最小公倍数}
+\subsection{问题描述}
+\begin{tcolorbox}
+	2520 是能够被 1 到 10 的每个数字整除的最小数字。
+
+	求最小的正整数，使得它能够被 1 到 20 的每个数字整除。
+\end{tcolorbox}
+
+\subsection{算法}
+最大公约数在STL中有提供，但是做为数学及编程的最基本的内容，还是有必要自己写一下的。
+
+\textbf{数学原理}：
+
+欧几里得算法基于这样一个定理：两个整数  $ a $  和  $ b $  的最大公约数等于  $b$  和 \( a \mod b \) 的最大公约数，其中 \(
+a \mod b \) 是  $a$  除以  $b$  的余数。
+
+\begin{algorithm}
+	\caption{最大公约数}
+	\begin{algorithmic}[1]
+		\Function{Gcd}{$a, b$}
+		\While{b \neq 0}
+		\State $ temp = a$
+		\State $ a = b$
+		\State $ b = temp \mod b$
+		\EndWhile
+		\Return $a$
+		\EndFunction
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+	\caption{最小公倍数}
+	\begin{algorithmic}[1]
+		\Function{Lcm}{$a, b$}
+			\If{$a = 0 \text{ or } b = 0$}
+				\Return $0$
+			\EndIf
+			\Return $\left|\frac{a \times b}{\text{gcd}(a,b)}\right|$
+		\EndFunction
+	\end{algorithmic}
+\end{algorithm}
+
+\subsection{答案}
+232792560
