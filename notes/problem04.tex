@@ -1,0 +1,32 @@
+\section{最大回文积}
+\subsection{问题描述}
+\begin{tcolorbox}
+	一个回文数在两边读起来是一样的。由两个2位数相乘得到的最大回文数是9009 = 91 \times 99。
+
+	找出由两个3位数相乘得到的最大回文数。
+\end{tcolorbox}
+
+\subsection{算法}
+\begin{algorithm}
+	\caption{回文数判定}
+	\begin{algorithmic}[1]
+		\Function{IsPlindrome}{$N$}
+		\State 初始化数组 $digits$
+		\While{$N \neq 0 $}
+		\State $d \gets N \mod 10$
+		\State $将d推进digits末尾$
+		\EndWhile
+		\State $设置两个指针 l=digits.begin(), r = digits.end()$
+		\While{$l < r$}
+		\If{$*l \neq *r$}
+		\Return \textbf{false}
+		\EndIf
+		\State $++l$
+		\State $--r$
+		\EndWhile
+		\Return \textbf{true}
+		\EndFunction
+	\end{algorithmic}
+\end{algorithm}
+
+\subsection{答案}
