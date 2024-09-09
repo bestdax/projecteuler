@@ -24,3 +24,22 @@ bool dax::is_palindrome(unsigned long n)
 
 	return true;
 }
+
+unsigned long dax::gcd(unsigned long a, unsigned long b)
+{
+	while(b != 0)
+	{
+		auto temp = a;
+		a = b;
+		b = temp % b;
+	}
+
+	return a;
+}
+
+unsigned long dax::lcm(unsigned long a, unsigned long b)
+{
+	if(a == 0 || b == 0) return 0;
+
+	return a / dax::gcd(a, b) * b;
+}
