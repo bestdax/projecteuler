@@ -137,6 +137,8 @@
 		\State 将 n 推进 primes 数组中
 		\EndIf
 		\For{每个 \( primes \)中的素数 \( p \)}
+		\If{ n \times p > n} \State break \Comment{越界检查}
+		\EndIf
 		\State \(  {primeStatus[n \times p] \gets \textbf{false}}\)
 		\If{ \( p \mid n\)} \Comment{这一步是关键，如果p整除n，则中止循环。比如循环到 \( n=15
 		\)时，首先会将30标记为合数，然后是45，但是因为3整除15，所以就中止循环。这样就使得后面的60这些数只被它的最小质因数筛一次。}
