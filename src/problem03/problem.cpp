@@ -25,6 +25,8 @@ unsigned long Solution::greatest_prime_factor(unsigned long n)
 		if(n == 1) break;
 	}
 
+	if(n > 1) largest_prime = n;
+
 	return largest_prime;
 }
 
