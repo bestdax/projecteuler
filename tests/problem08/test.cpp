@@ -3,8 +3,8 @@
 
 Solution solution;
 
-TEST(eulerno, testname)
+TEST(euler08, largest_product)
 {
-
+  EXPECT_EQ(solution.largest_product(4), 5832);
 }
 
