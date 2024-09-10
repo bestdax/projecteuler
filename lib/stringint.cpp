@@ -86,7 +86,7 @@ std::string StringInt::to_string()
 	return s;
 }
 
-StringInt StringInt::operator+=(const StringInt& other)
+StringInt& StringInt::operator+=(const StringInt& other)
 {
 	*this = *this + other;
 	return *this;
@@ -133,4 +133,45 @@ StringInt StringInt::operator*(const StringInt& other) const
 	result.trim();
 
 	return result;
+}
+
+StringInt& StringInt::operator++()
+{
+	*this += 1;
+	return *this;
+}
+
+StringInt& StringInt::operator*=(const StringInt& other)
+{
+	*this = *this * other;
+	return *this;
+}
+
+StringInt StringInt::power(const StringInt& other) const
+{
+	if(*this == 0) return 0;
+
+	if(other == 0) return 1;
+
+	StringInt result{1};
+
+	for(StringInt i = 0; i != other; ++i)
+	{
+		result *= *this;
+	}
+
+	return result;
+
+}
+
+StringInt StringInt::sum_of_digits()
+{
+	StringInt sum;
+
+	for(auto& d : data)
+	{
+		sum += d - '0';
+	}
+
+	return sum;
 }

@@ -27,3 +27,14 @@ TEST(sint, multiply)
 	EXPECT_EQ(StringInt("333") * 0, 0);
 }
 
+TEST(sint, power)
+{
+	EXPECT_EQ(StringInt(0).power(1000), 0);
+	EXPECT_EQ(StringInt(13414).power(0), 1);
+	EXPECT_EQ(StringInt(2).power(10), 1024);
+}
+
+TEST(sint, sum_of_digits)
+{
+	EXPECT_EQ(StringInt(123456789).sum_of_digits(), 45);
+}

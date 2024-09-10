@@ -11,11 +11,14 @@ class StringInt
 		StringInt(const StringInt&);
 		void reverse();
 		StringInt operator+(const StringInt& other)const;
-		StringInt operator+=(const StringInt& other);
+		StringInt& operator+=(const StringInt& other);
+		StringInt& operator++();
 		bool operator==(const StringInt& other) const;
 		StringInt operator*(const StringInt& other) const;
+		StringInt& operator*=(const StringInt& other);
 		StringInt power(const StringInt& other) const;
 		std::string to_string();
+		StringInt sum_of_digits();
 
 	private:
 		void trim();
