@@ -1,0 +1,48 @@
+\section{标题}
+\subsection{网格中的路径}
+\begin{tcolorbox}
+	从一个 $2 \times 2$网格的左上角出发，只能向下与向右移动，到达有理解一共有6条路径。
+
+	\begin{center}
+		\begin{tikzpicture}
+			\draw (0, 0) grid +(2,2);
+			\draw[very thick, -Stealth, blue!50!green] (0, 2) -| (2, 0);
+		\end{tikzpicture}
+		\begin{tikzpicture}
+			\draw (0, 0) grid +(2,2);
+			\draw[very thick, -Stealth, blue!50!green] (0, 2) -| (1, 1) -| (2,0);
+		\end{tikzpicture}
+		\begin{tikzpicture}
+			\draw (0, 0) grid +(2,2);
+			\draw[very thick, -Stealth, blue!50!green] (0, 2) -| (1, 0) -- (2, 0);
+		\end{tikzpicture}
+
+		\begin{tikzpicture}
+			\draw (0, 0) grid +(2,2);
+			\draw[very thick, -Stealth, blue!50!green] (0, 2) |- (2, 0);
+		\end{tikzpicture}
+		\begin{tikzpicture}
+			\draw (0, 0) grid +(2,2);
+			\draw[very thick, -Stealth, blue!50!green] (0, 2) |- (1, 1) -| (2,0);
+		\end{tikzpicture}
+		\begin{tikzpicture}
+			\draw (0, 0) grid +(2,2);
+			\draw[very thick, -Stealth, blue!50!green] (0, 2) |- (1, 1) |- (2,0);
+		\end{tikzpicture}
+	\end{center}
+
+	在一个 $20 \times 20$ 的网格中，从左上角到右下角的路径，每次只能向右或向下移动一次。有多少条不同的路径从起点到终点？
+\end{tcolorbox}
+
+\subsection{算法}
+这道题目要用到动态规划来解，最上边的第一个节点都依赖于其左边的节点有多少路径，与最上边相似，最左边的节点都依赖其上面的节点，在这里最上边与最左边的节点的路径数都为1。其他节点都依赖于其上方与左边的节点的数量，因此可以写成下面的伪代码：
+\begin{algorithm}
+	\caption{网格路径数}
+	\begin{algorithmic}[1]
+	\State 初始化一个 $(N+1) \times (N+1)$的矩阵，第1行全部为1，第一列也全部为1
+	\State 遍历除第一行和第一列以外的节点，每个节点的值等于上方的值+左边的值
+	\end{algorithmic}
+\end{algorithm}
+
+
+\subsection{答案}
