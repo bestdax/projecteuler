@@ -3,8 +3,7 @@
 
 Solution solution;
 
-TEST(eulerno, testname)
+TEST(euler14, collatz_length)
 {
-
+	EXPECT_EQ(solution.collatz_length(13), 10);
 }
-
