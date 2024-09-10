@@ -11,6 +11,7 @@ class StringInt
 		void reverse();
 		StringInt operator+(const StringInt& other)const;
 		bool operator==(const StringInt& other) const;
+		std::string to_string();
 
 	private:
 		std::string data;

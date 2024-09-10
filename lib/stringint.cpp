@@ -68,3 +68,10 @@ bool StringInt::operator==(const StringInt& other) const
 {
 	return data == other.data;
 }
+
+std::string StringInt::to_string()
+{
+	std::string s(data);
+	std::reverse(s.begin(), s.end());
+	return s;
+}
