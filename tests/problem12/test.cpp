@@ -3,8 +3,7 @@
 
 Solution solution;
 
-TEST(eulerno, testname)
+TEST(euler12, count_divisors)
 {
-
+	EXPECT_EQ(solution.count_divisors(28), 6);
 }
-
