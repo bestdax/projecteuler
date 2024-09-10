@@ -3,8 +3,7 @@
 
 Solution solution;
 
-TEST(eulerno, testname)
+TEST(euler15, paths_in_grid)
 {
-
+	EXPECT_EQ(solution.paths_in_grid(2), 6);
 }
-
