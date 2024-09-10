@@ -6,7 +6,7 @@ if(BUILD_TESTING)
     RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     *.cpp)
   add_executable(${EXENAME} ${TESTFILES} ${LIBFILES})
-  target_link_libraries(${EXENAME} gtest_main)
+  target_link_libraries(${EXENAME} gtest_main numbertools)
   include(GoogleTest)
   gtest_discover_tests(${EXENAME})
 endif()
