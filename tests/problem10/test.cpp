@@ -3,8 +3,7 @@
 
 Solution solution;
 
-TEST(eulerno, testname)
+TEST(euler10, sum_of_primes)
 {
-
+	EXPECT_EQ(solution.sum_of_primes(10), 17);
 }
-
