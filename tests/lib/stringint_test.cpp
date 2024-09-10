@@ -19,3 +19,11 @@ TEST(sint, addition)
 	EXPECT_EQ(8 + StringInt("333"), 341);
 	EXPECT_EQ(888 + StringInt("333"), 1221);
 }
+
+TEST(sint, multiply)
+{
+	EXPECT_EQ(StringInt("333")* 5, 1665);
+	EXPECT_EQ(StringInt("333")* 44, 14652);
+	EXPECT_EQ(StringInt("333") * 0, 0);
+}
+

@@ -6,11 +6,21 @@ StringInt::StringInt(): data("0") {};
 StringInt::StringInt(std::string s): data(s)
 {
 	reverse();
+	trim();
 }
 
 StringInt::StringInt(uint64_t n): data(std::to_string(n))
 {
 	reverse();
+}
+
+StringInt::StringInt(const StringInt& other): data(other.data)
+{
+}
+
+void StringInt::trim()
+{
+	while(data.back() == '0') data.pop_back();
 }
 
 void StringInt::reverse()
@@ -74,4 +84,53 @@ std::string StringInt::to_string()
 	std::string s(data);
 	std::reverse(s.begin(), s.end());
 	return s;
+}
+
+StringInt StringInt::operator+=(const StringInt& other)
+{
+	*this = *this + other;
+	return *this;
+}
+
+StringInt StringInt::operator*(const StringInt& other) const
+{
+	if(*this == 0 || other == 0) return 0;
+
+	StringInt result;
+
+	unsigned carry{};
+
+	for(unsigned i = 0; i < other.data.size(); ++i)
+	{
+		StringInt temp(*this);
+
+		for(auto& d : temp.data)
+		{
+			d = (d - '0') * (other.data[i] - '0');
+
+			if(carry)
+			{
+				d += carry;
+				carry = 0;
+			}
+
+			carry = d / 10;
+			d = d % 10 + '0';
+		}
+
+		temp.data.insert(0, i, '0');
+
+		if(carry)
+		{
+			temp.data.push_back(carry + '0');
+			carry = 0;
+		}
+
+		result = result + temp;
+
+	}
+
+	result.trim();
+
+	return result;
 }
