@@ -1,0 +1,21 @@
+\section{名字记分}
+\subsection{问题描述}
+\begin{tcolorbox}
+
+给定一个超过五千个名字的文件，将这些名字按字母顺序排序。然后，对于每个名字，按以下步骤计算得分：
+
+\begin{enumerate}
+    \item 计算名字的字母值：将名字中每个字母的字母顺序（$A=1, B=2, ..., Z=26$）相加。例如，$COLIN$ 的字母值为 $3 + 15 + 12 + 9 + 14 = 53$。
+    \item 将名字的字母值乘以其在排序后的位置索引，得到名字的得分。例如，"COLIN" 在排序后是第938个名字，其得分为 $938 \times 53 = 49714$。
+\end{enumerate}
+\end{tcolorbox}
+
+\subsection{算法}
+\begin{enumerate}
+    \item 读取文件并去除名字的引号。
+    \item 按字母顺序对名字进行排序。
+    \item 对于每个名字，计算其字母值，并乘以其在排序中的位置，计算名字得分。
+    \item 将所有名字的得分相加，得到结果。
+\end{enumerate}
+
+\subsection{答案}
