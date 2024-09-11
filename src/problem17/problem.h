@@ -5,7 +5,7 @@
 class Solution
 {
 	public:
-		std::string say_number(unsigned n);
+		std::string say_number(long n);
 		unsigned count_char(std::string);
 		void answer();
 

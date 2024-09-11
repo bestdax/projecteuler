@@ -6,49 +6,44 @@ dax 2024-09-10 14:14:47
 */
 #include "problem.h"
 #include <vector>
+#include <iomanip>
 
-std::string Solution::say_number(unsigned n)
+std::string to_19[] = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
+                       "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen",
+                       "eighteen", "nineteen"
+                      };
+
+std::string divisor_names[] = {"", "thousand", "million", "billion", "trillion"};
+
+std::string tens[] = {"", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
+
+std::string Solution::say_number(long n)
 {
-	std::vector<std::string> to_19 =
+
+	if(n < 0) return "minus " + say_number(-n);
+
+	if(n < 20) return to_19[n];
+
+	if(n < 100) return tens[n / 10] + (n % 10 ? "-" + to_19[n % 10] : "");
+
+	if(n < 1000) return to_19[n / 100] + " hundred" + (n % 100 == 0 ? "" : " and " + say_number(n % 100));
+
+	std::string result;
+	std::vector<int> parts;
+
+	while(n)
 	{
-		"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
-		"eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen",
-		"eighteen", "nineteen"
-
-	};
-	std::vector<std::string> tens =
-	{
-		"twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"
-	};
-
-	std::string say;
-
-	unsigned s = n / 1000;
-	n %= 1000;
-
-	if(s) say += to_19[s - 1] + " thousand";
-
-	unsigned h = n / 100;
-	n %= 100;
-
-	if(h) say = say + (say.empty() ? "" : " ") + to_19[h - 1] + " hundred";
-
-	if(n && !say.empty()) say += " and ";
-
-	if(n)
-	{
-		if(n < 20) say += to_19[n - 1];
-		else
-		{
-			unsigned t = n / 10;
-			n %= 10;
-			say += tens[t - 2];
-
-			if(n) say = say + '-' + to_19[n - 1];
-		}
+		parts.push_back(n % 1000);
+		n /= 1000;
 	}
 
-	return say;
+	for(int i = 0; i < parts.size(); ++i)
+	{
+		result =  say_number(parts[i])  + (divisor_names[i].empty()? "": " " + divisor_names[i]) + (result.empty() ? "" : " " + result);
+	}
+
+	return result;
+
 }
 
 unsigned Solution::count_char(std::string s)
@@ -71,4 +66,5 @@ void Solution::answer()
 		count += count_char(say_number(i));
 
 	std::cout << "The answer is: " << count << std::endl;
+	std::cout << "The answer is: " << std::quoted(say_number(11341434342)) << std::endl;
 }
