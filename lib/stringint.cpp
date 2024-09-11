@@ -79,7 +79,7 @@ bool StringInt::operator==(const StringInt& other) const
 	return data == other.data;
 }
 
-std::string StringInt::to_string()
+std::string StringInt::to_string() const
 {
 	std::string s(data);
 	std::reverse(s.begin(), s.end());
@@ -164,7 +164,7 @@ StringInt StringInt::power(const StringInt& other) const
 
 }
 
-StringInt StringInt::sum_of_digits()
+StringInt StringInt::sum_of_digits() const
 {
 	StringInt sum;
 
@@ -174,4 +174,31 @@ StringInt StringInt::sum_of_digits()
 	}
 
 	return sum;
+}
+
+auto StringInt::operator<=>(const StringInt& other) const
+{
+	if(data.size() != other.data.size())
+		return data.size() <=> other.data.size();
+	else
+	{
+		for(unsigned i = data.size() - 1; i >= 0; --i)
+		{
+			if(data[i] != other.data[i])
+				return data[i] <=> other.data[i];
+		}
+	}
+	return std::strong_ordering::equal;
+}
+
+StringInt StringInt::factorial() const
+{
+	StringInt result(1);
+
+	for(StringInt i = 1; i <= *this; ++i)
+	{
+		result *= i;
+	}
+
+	return result;
 }

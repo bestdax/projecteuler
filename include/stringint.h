@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <compare>
 
 class StringInt
 {
@@ -17,8 +18,10 @@ class StringInt
 		StringInt operator*(const StringInt& other) const;
 		StringInt& operator*=(const StringInt& other);
 		StringInt power(const StringInt& other) const;
-		std::string to_string();
-		StringInt sum_of_digits();
+		std::string to_string() const;
+		StringInt sum_of_digits() const;
+		StringInt factorial() const;
+		auto operator<=>(const StringInt& other) const;
 
 	private:
 		void trim();
