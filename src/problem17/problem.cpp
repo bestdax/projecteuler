@@ -39,7 +39,12 @@ std::string Solution::say_number(long n)
 
 	for(int i = 0; i < parts.size(); ++i)
 	{
-		result =  say_number(parts[i])  + (divisor_names[i].empty()? "": " " + divisor_names[i]) + (result.empty() ? "" : " " + result);
+		// 如果分段为0则直接跳过
+		if(parts[i] == 0) continue;
+
+		// 如果分段不为零则调用say_number，然后接分段的名称，如果分段有名称就加个空格，最后接上后面的内容；
+		result =  say_number(parts[i]) + (divisor_names[i].empty() ? "" : " " + divisor_names[i])    +
+		          (result.empty() ? "" : " " + result);
 	}
 
 	return result;
@@ -66,5 +71,4 @@ void Solution::answer()
 		count += count_char(say_number(i));
 
 	std::cout << "The answer is: " << count << std::endl;
-	std::cout << "The answer is: " << std::quoted(say_number(11341434342)) << std::endl;
 }
