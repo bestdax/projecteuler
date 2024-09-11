@@ -1,7 +1,6 @@
 #include <stringint.h>
 #include <gtest/gtest.h>
 
-
 TEST(sint, init)
 {
 	StringInt a;
@@ -15,15 +14,15 @@ TEST(sint, init)
 
 TEST(sint, addition)
 {
-	EXPECT_EQ(StringInt("333")+5, 338);
+	EXPECT_EQ(StringInt("333") + 5, 338);
 	EXPECT_EQ(8 + StringInt("333"), 341);
 	EXPECT_EQ(888 + StringInt("333"), 1221);
 }
 
 TEST(sint, multiply)
 {
-	EXPECT_EQ(StringInt("333")* 5, 1665);
-	EXPECT_EQ(StringInt("333")* 44, 14652);
+	EXPECT_EQ(StringInt("333") * 5, 1665);
+	EXPECT_EQ(StringInt("333") * 44, 14652);
 	EXPECT_EQ(StringInt("333") * 0, 0);
 }
 
@@ -37,4 +36,9 @@ TEST(sint, power)
 TEST(sint, sum_of_digits)
 {
 	EXPECT_EQ(StringInt(123456789).sum_of_digits(), 45);
+}
+
+TEST(sint, factorial)
+{
+	EXPECT_EQ(StringInt(10).factorial(), 3628800);
 }
