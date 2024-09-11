@@ -1,0 +1,28 @@
+\section{标题}
+\subsection{问题描述}
+\begin{tcolorbox}
+在1901年1月1日到2000年12月31日的这段时间内，有多少个月的1号是星期天？已知：
+\begin{itemize}
+    \item 1900年1月1日是星期一；
+    \item 闰年规则为：如果年份能被4整除但不能被100整除，或者能被400整除，则该年为闰年；
+    \item 每月天数：
+    \begin{itemize}
+        \item 31天：1月、3月、5月、7月、8月、10月、12月；
+        \item 30天：4月、6月、9月、11月；
+        \item 28天：2月，闰年为29天。
+    \end{itemize}
+\end{itemize}
+\end{tcolorbox}
+
+\subsection{算法}
+先实现一个闰年判断的函数
+\begin{algorithm}
+	\caption{算法标题}
+	\begin{algorithmic}[1]
+		\If{$Y \mod 400 = 0$ or $(Y \mod 4 = 0$ and $Y \mod 100 \neq 0) $}
+		\Return \textbf{true}
+	\EndIf
+	\end{algorithmic}
+\end{algorithm}
+
+\subsection{答案}
