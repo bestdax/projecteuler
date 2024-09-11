@@ -1,5 +1,5 @@
 #include "problem.h"
-#include "timer.h"
+#include <utils.h>
 
 int main(int argc, char *argv[])
 {

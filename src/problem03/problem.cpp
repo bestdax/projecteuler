@@ -5,7 +5,7 @@ https://projecteuler.net/problem=3
 dax 2024-09-07 07:01:15
 */
 #include "problem.h"
-#include <numbertools.h>
+#include <prime.h>
 
 unsigned long Solution::greatest_prime_factor(unsigned long n)
 {

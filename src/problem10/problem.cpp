@@ -5,7 +5,7 @@ https://projecteuler.net/problem=10
 dax 2024-09-10 08:32:48
 */
 #include "problem.h"
-#include <numbertools.h>
+#include <prime.h>
 
 unsigned long Solution::sum_of_primes(unsigned long limit)
 {

@@ -6,7 +6,7 @@ dax 2024-09-11 15:54:50
 */
 #include "problem.h"
 #include <algorithm>
-#include <timer.h>
+#include <utils.h>
 
 bool Solution::next_permutation()
 {

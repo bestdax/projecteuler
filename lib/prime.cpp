@@ -1,4 +1,4 @@
-#include "numbertools.h"
+#include <prime.h>
 #include <cmath>
 
 bool dax::is_prime(unsigned long n)

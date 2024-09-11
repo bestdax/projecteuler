@@ -6,7 +6,7 @@ dax 2024-09-09 16:08:58
 */
 #include "problem.h"
 #include <cmath>
-#include <numbertools.h>
+#include <prime.h>
 
 unsigned long Solution::nth_prime(unsigned n)
 {

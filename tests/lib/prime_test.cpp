@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
-#include <numbertools.h>
-#include <timer.h>
+#include <prime.h>
+#include <utils.h>
 
 TEST(prime, is_prime)
 {
