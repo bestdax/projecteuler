@@ -23,11 +23,15 @@ void measure_exe_time(Function func)
 	std::cout << "Execution time: " << duration << std::endl;
 }
 
-template<typename T>
-void print(std::vector<T> vec, std::string delimiter = "\t")
+template<typename Container>
+void print(const Container &container, const std::string& delimiter = "\t")
 {
-	for(auto& element : vec)
-		std::cout << element << delimiter;
+	for(auto it = container.begin(); it != container.end(); ++it)
+	{
+		std::cout << *it;
+
+		if(it != container.end() - 1) std::cout << delimiter;
+	}
 
 	std::cout << std::endl;
 }
