@@ -21,7 +21,7 @@ class StringInt
 		std::string to_string() const;
 		StringInt sum_of_digits() const;
 		StringInt factorial() const;
-		auto operator<=>(const StringInt& other) const;
+		std::strong_ordering operator<=>(const StringInt& other) const;
 		StringInt length() const;
 
 	private:

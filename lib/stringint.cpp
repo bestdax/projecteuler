@@ -176,7 +176,7 @@ StringInt StringInt::sum_of_digits() const
 	return sum;
 }
 
-auto StringInt::operator<=>(const StringInt& other) const
+std::strong_ordering StringInt::operator<=>(const StringInt& other) const
 {
 	if(data.size() != other.data.size())
 		return data.size() <=> other.data.size();
