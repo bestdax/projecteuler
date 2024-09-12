@@ -182,7 +182,7 @@ std::strong_ordering StringInt::operator<=>(const StringInt& other) const
 		return data.size() <=> other.data.size();
 	else
 	{
-		for(unsigned i = data.size() - 1; i >= 0; --i)
+		for(std::size_t i = data.size(); i-- > 0; )
 		{
 			if(data[i] != other.data[i])
 				return data[i] <=> other.data[i];
