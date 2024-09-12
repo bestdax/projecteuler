@@ -22,6 +22,7 @@ class StringInt
 		StringInt sum_of_digits() const;
 		StringInt factorial() const;
 		auto operator<=>(const StringInt& other) const;
+		StringInt length() const;
 
 	private:
 		void trim();

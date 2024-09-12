@@ -188,6 +188,7 @@ auto StringInt::operator<=>(const StringInt& other) const
 				return data[i] <=> other.data[i];
 		}
 	}
+
 	return std::strong_ordering::equal;
 }
 
@@ -201,4 +202,9 @@ StringInt StringInt::factorial() const
 	}
 
 	return result;
+}
+
+StringInt StringInt::length() const
+{
+	return data.size();
 }
