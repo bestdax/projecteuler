@@ -10,6 +10,15 @@ BigUInt::BigUInt(const BigUInt& other)
 	data = other.data;
 }
 
+BigUInt::BigUInt(uint64_t num)
+{
+	while(num)
+	{
+		data.push_back(num % BASE);
+		num /= BASE;
+	}
+}
+
 BigUInt::BigUInt(std::string sn)
 {
 	// 如果为空则赋值为0
@@ -46,15 +55,15 @@ BigUInt::BigUInt(std::string sn)
 	{
 		for(int i = segments.size() - 1; i >= 0; --i)
 		{
-			segments[i] += remainder * SEG_BASE;
-			remainder = segments[i] % BASE;
-			segments[i] /= BASE;
+			uint64_t current_value = segments[i] + remainder * SEG_BASE;
+			remainder = current_value % BASE;
+			segments[i] = current_value / BASE;
 		}
 
 		data.push_back(remainder);
 		remainder = 0;
 
-		if(segments.back() == 0) segments.pop_back();
+		if(!segments.empty() && segments.back() == 0) segments.pop_back();
 	}
 
 	trim();
@@ -112,4 +121,28 @@ std::ostream& operator<<(std::ostream& os, const BigUInt& n)
 {
 	os << n.to_string();
 	return os;
+}
+
+bool BigUInt::operator==(const BigUInt& other) const
+{
+	return data == other.data;
+}
+
+BigUInt BigUInt::operator+(const BigUInt& other) const
+{
+	BigUInt result;
+
+	result.data.resize(std::max(data.size(), other.data.size()));
+	uint32_t carry{};
+
+	for(unsigned i = 0; i < result.data.size(); ++i)
+	{
+		result.data[i] = carry + (i < data.size() ? data[i] : 0) + (i < other.data.size() ? other.data[i] : 0);
+		carry = result.data[i] / BASE;
+		result.data[i] %= BASE;
+	}
+
+	if(carry) result.data.push_back(carry);
+
+	return result;
 }
