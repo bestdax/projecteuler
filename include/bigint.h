@@ -19,6 +19,7 @@ class BigUInt
 		BigUInt(const BigUInt &other);
 		std::string to_string() const;
 		BigUInt operator+(const BigUInt &other) const;
+		BigUInt operator*(const BigUInt &other) const;
 		bool operator==(const BigUInt &other) const;
 		friend std::ostream& operator<<(std::ostream& os, const BigUInt& n);
 };

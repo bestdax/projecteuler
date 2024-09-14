@@ -146,3 +146,25 @@ BigUInt BigUInt::operator+(const BigUInt& other) const
 
 	return result;
 }
+
+BigUInt BigUInt::operator*(const BigUInt& other) const
+{
+	BigUInt result;
+	result.data.resize(data.size() + other.data.size());
+
+	for(int i = 0; i < data.size(); ++i)
+	{
+		uint64_t carry = 0;
+
+		for(int j = 0; j < other.data.size() || carry; ++j)
+		{
+			uint64_t temp = result.data[i + j] + static_cast<uint64_t>(data[i]) *
+			                (j < other.data.size() ? other.data[j] : 0) + carry;
+			carry = temp / BASE;
+			result.data[i + j] = temp % BASE;
+		}
+	}
+
+	result.trim();
+	return result;
+}
