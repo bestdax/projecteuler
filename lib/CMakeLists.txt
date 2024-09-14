@@ -3,3 +3,4 @@
 add_library(prime SHARED prime.cpp)
 add_library(sint SHARED stringint.cpp)
 add_library(numutils SHARED numutils.cpp)
+add_library(bint SHARED bigint.cpp)
