@@ -168,3 +168,53 @@ BigUInt BigUInt::operator*(const BigUInt& other) const
 	result.trim();
 	return result;
 }
+
+std::strong_ordering BigUInt::operator<=>(const BigUInt&other) const
+{
+	if(data.size() != other.data.size()) return data.size() <=> other.data.size();
+	else
+	{
+		for(int i = data.size() - 1; i >= 0; --i)
+		{
+			if(data[i] != other.data[i])
+				return data[i] <=> other.data[i];
+		}
+
+		return std::strong_ordering::equal;
+	}
+
+}
+
+BigUInt& BigUInt::operator+=(const BigUInt &other)
+{
+	*this = *this + other;
+	return *this;
+}
+
+BigUInt& BigUInt::operator++()
+{
+	*this += 1;
+	return *this;
+}
+
+BigUInt& BigUInt::operator*=(const BigUInt &other)
+{
+	*this = *this * other;
+	return *this;
+}
+
+BigUInt BigUInt::power(const BigUInt &other) const
+{
+	if(other == 0) return 1;
+
+	if(*this == 0) return 0;
+
+	BigUInt result{1};
+
+	for(BigUInt i = 1; i <= other; ++i)
+	{
+		result *= *this;
+	}
+
+	return result;
+}
