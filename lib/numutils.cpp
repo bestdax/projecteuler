@@ -43,3 +43,21 @@ unsigned long dax::lcm(unsigned long a, unsigned long b)
 
 	return a / dax::gcd(a, b) * b;
 }
+
+bool dax::is_pandigital(unsigned n, bool include_zero = false)
+{
+	auto ns = std::to_string(n);
+	std::unordered_set<char> digits_set(ns.begin(), ns.end());
+
+	if(digits_set.size() != ns.size()) return false;
+
+	char max_digit = (include_zero ? ns.size() - 1 : ns.size()) + '0';
+
+	for(int i = 0; i < ns.size(); ++i)
+	{
+		if(ns[i] > max_digit) return false;
+	}
+
+	return true;
+
+}
