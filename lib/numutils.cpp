@@ -44,7 +44,7 @@ unsigned long dax::lcm(unsigned long a, unsigned long b)
 	return a / dax::gcd(a, b) * b;
 }
 
-bool dax::is_pandigital(unsigned n, bool include_zero = false)
+bool dax::is_pandigital(unsigned n, bool include_zero)
 {
 	auto ns = std::to_string(n);
 	std::unordered_set<char> digits_set(ns.begin(), ns.end());
