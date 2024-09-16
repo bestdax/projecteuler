@@ -1,0 +1,31 @@
+\section{Champernowne 常数}
+\subsection{问题描述}
+\begin{tcolorbox}
+
+	Champernowne 常数是通过将正整数序列连接起来构成的一个无限小数。例如：
+
+	\[
+		0.123456789101112131415161718192021\ldots
+	\]
+
+	这个小数包含了所有的正整数数字，依次排列。
+
+	给定 Champernowne 常数的第 \( n \) 位是指小数中第 \( n \) 位的数字。
+
+	求出下列位置上的数字的乘积：
+
+	\[
+		d_1 \times d_{10} \times d_{100} \times d_{1000} \times d_{10000} \times d_{100000} \times d_{1000000}
+	\]
+
+	其中 \( d_n \) 表示 Champernowne 常数中第 \( n \) 位的数字。
+\end{tcolorbox}
+
+\subsection{算法}
+\begin{enumerate}
+	\item 将$ n $ 循环减去 \( 9, 90 \times 2, 900 \times 3 \)直到 \( n \) 小于当前数字宽带的数字的总和。
+	\item 将 \( n \) 与当前的数字宽度求余，再加之前的所有数字即得到第 \( n \)位数对应的数 \( P \)
+	\item 将 \( P \) 与当前数字宽度求余即可取出相应的数字
+\end{enumerate}
+
+\subsection{答案}
