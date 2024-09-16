@@ -18,3 +18,7 @@ TEST(numutils, lcm)
 	EXPECT_EQ(dax::lcm(48, 18), 144);
 }
 
+TEST(numutils, factorial)
+{
+	EXPECT_EQ(dax::factorial(9), 362880);
+}
