@@ -61,3 +61,18 @@ bool dax::is_pandigital(unsigned n, bool include_zero)
 	return true;
 
 }
+
+unsigned long dax::factorial(unsigned n)
+{
+	if(n == 0) return 1;
+
+	unsigned f{1};
+
+	while(n)
+	{
+		f *= n;
+		--n;
+	}
+
+	return f;
+}
