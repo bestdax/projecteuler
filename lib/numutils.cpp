@@ -3,6 +3,8 @@
 
 bool dax::is_palindrome(unsigned long n, unsigned base)
 {
+	if(n == 0) return true;
+
 	std::vector<char> digits;
 
 	while(n != 0)
