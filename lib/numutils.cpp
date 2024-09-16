@@ -1,15 +1,15 @@
 #include <numutils.h>
 #include <vector>
 
-bool dax::is_palindrome(unsigned long n)
+bool dax::is_palindrome(unsigned long n, unsigned base)
 {
 	std::vector<char> digits;
 
 	while(n != 0)
 	{
-		char d = n % 10;
+		char d = n % base;
 		digits.push_back(d);
-		n /= 10;
+		n /= base;
 	}
 
 	auto l = digits.begin();
