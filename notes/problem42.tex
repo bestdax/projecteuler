@@ -1,0 +1,22 @@
+\section{编码三角形数}
+\subsection{问题描述}
+\begin{tcolorbox}
+	三角形数的生成公式为 $T_n = \frac{n(n+1)}{2}$，它的前十项是：
+
+	\begin{equation*}
+		1 , 3 , 6 , 10 , 15 , 21 , 28 , 36 , 45 , 55 , \cdots
+	\end{equation*}
+	给定一个单词的字母值，假设 $A=1, B=2, ..., Z=26$，则单词的字母值为所有字母对应数值的和。例如，单词 "SKY" 的字母值为
+	$19 + 11 + 25 = 55$，它恰好是一个三角形数。
+
+	在提供的\href{https://projecteuler.net/resources/documents/0042_words.txt}{文本文件}中包含了一系列单词，计算出其中有多少个单词的字母值是三角形数。
+\end{tcolorbox}
+\subsection{算法}
+\begin{enumerate}
+	\item 读取文件中的名字到数组
+	\item 根据名字最大长度并假设每个字母都是 $Z$，计算出最大的分数
+	\item 用三角形数公式生成能够覆盖最大名字分数的所有三角形数
+	\item 用每个名字的分法在生成的三角形数中查找
+\end{enumerate}
+
+\subsection{答案}
