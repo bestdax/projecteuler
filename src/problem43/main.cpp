@@ -9,6 +9,11 @@ int main(int argc, char *argv[])
 		solution.answer();
 	};
 
+	auto func2 = [&solution]()
+	{
+		solution.answer2();
+	};
 	measure_exe_time(func);
+	measure_exe_time(func2);
 	return 0;
 }
