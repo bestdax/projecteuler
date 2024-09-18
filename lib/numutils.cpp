@@ -78,3 +78,9 @@ unsigned long dax::factorial(unsigned n)
 
 	return f;
 }
+
+bool dax::is_pentagonal(unsigned long p)
+{
+	unsigned long  n = std::floor(std::sqrt(24 * p + 1) + 1) / 6;
+	return n * (3 * n - 1) / 2 == p;
+}

@@ -22,3 +22,8 @@ TEST(numutils, factorial)
 {
 	EXPECT_EQ(dax::factorial(9), 362880);
 }
+
+TEST(numutils, pentagonal)
+{
+	EXPECT_FALSE(dax::is_pentagonal(20242));
+}
