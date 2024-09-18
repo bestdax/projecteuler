@@ -8,11 +8,6 @@ dax 2024-09-18 14:51:32
 #include <numutils.h>
 #include <utils.h>
 
-Solution::Solution()
-{
-	pentagonals.reserve(1e6);
-}
-
 void Solution::next_pentagonal()
 {
 	++n;

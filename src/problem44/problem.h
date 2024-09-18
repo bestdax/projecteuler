@@ -9,7 +9,6 @@ class Solution
 		unsigned n {};
 
 	public:
-		Solution();
 		void next_pentagonal();
 		void answer();
 
