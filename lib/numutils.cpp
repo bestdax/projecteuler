@@ -82,5 +82,17 @@ unsigned long dax::factorial(unsigned n)
 bool dax::is_pentagonal(unsigned long p)
 {
 	double  n = (std::sqrt(24 * p + 1) + 1) / 6;
-	return n == long(n);
+	return n == static_cast<unsigned long>(n);
+}
+
+bool dax::is_triangle(unsigned long t)
+{
+	double  n = (std::sqrt(8 * t + 1) - 1) / 2;
+	return n == static_cast<unsigned long>(n);
+}
+
+bool dax::is_hexagonal(unsigned long h)
+{
+	double  n = (std::sqrt(8 * h + 1) + 1) / 4;
+	return n == static_cast<unsigned long>(n);
 }
