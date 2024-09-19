@@ -13,4 +13,5 @@ unsigned long factorial(unsigned);
 bool is_pentagonal(unsigned long);
 bool is_triangle(unsigned long);
 bool is_hexagonal(unsigned long);
+bool is_square(unsigned long);
 }

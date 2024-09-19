@@ -96,3 +96,9 @@ bool dax::is_hexagonal(unsigned long h)
 	double  n = (std::sqrt(8 * h + 1) + 1) / 4;
 	return n == static_cast<unsigned long>(n);
 }
+
+bool dax::is_square(unsigned long s)
+{
+	double n = std::sqrt(s);
+	return n == static_cast<unsigned long>(n);
+}
