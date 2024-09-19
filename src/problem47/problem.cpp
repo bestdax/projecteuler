@@ -27,6 +27,25 @@ unsigned Solution::count_distinct_prime_factors(unsigned long n)
 	return count;
 }
 
+void Solution::compute_prime_factors()
+{
+	for(unsigned i = 2; i <= limit; ++i)
+	{
+		if(is_prime[i])
+		{
+			++prime_factor_count[i];
+			unsigned j = 2;
+
+			while(i * j <= limit)
+			{
+				++prime_factor_count[i * j];
+				++j;
+			}
+
+		}
+	}
+}
+
 void Solution::answer()
 {
 	unsigned n = 2;
@@ -53,4 +72,23 @@ void Solution::answer()
 
 	}
 
+}
+
+void Solution::answer2()
+{
+	compute_prime_factors();
+
+	for(unsigned i = 2; i <= limit - 3; ++i)
+	{
+		if(
+		    prime_factor_count[i] == 4 &&
+		    prime_factor_count[i + 1] == 4 &&
+		    prime_factor_count[i + 2] == 4 &&
+		    prime_factor_count[i + 3] == 4
+		)
+		{
+			std::cout << "The answer is: " << i << std::endl;
+			return;
+		}
+	}
 }
