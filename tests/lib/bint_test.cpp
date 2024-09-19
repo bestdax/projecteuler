@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include <bigint.h>
+#include <stringint.h>
 
 TEST(bint, init)
 {
@@ -25,5 +26,7 @@ TEST(bint, multiply)
 
 TEST(bint, power)
 {
+	std::cout << BigUInt(17).power(1000) << std::endl;
+	std::cout << StringInt(17).power(1000) << std::endl;
 	EXPECT_EQ(BigUInt(2).power(3), 8);
 }

@@ -8,7 +8,7 @@ add_executable(bint_test bint_test.cpp
 target_link_libraries(prime_test gtest_main prime)
 target_link_libraries(stringint_test gtest_main sint)
 target_link_libraries(numutils_test gtest_main numutils)
-target_link_libraries(bint_test gtest_main bint)
+target_link_libraries(bint_test gtest_main bint sint)
 include(GoogleTest)
 gtest_discover_tests(prime_test)
 gtest_discover_tests(stringint_test)
