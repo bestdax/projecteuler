@@ -139,7 +139,7 @@ BigUInt BigUInt::operator+(const BigUInt& other) const
 	{
 		result.data[i] = carry + (i < data.size() ? data[i] : 0) + (i < other.data.size() ? other.data[i] : 0);
 		carry = result.data[i] >> 30;
-		result.data[i] = result.data[i] % (BASE - 1);
+		result.data[i] = result.data[i] % BASE;
 	}
 
 	if(carry) result.data.push_back(carry);
