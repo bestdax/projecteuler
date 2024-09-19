@@ -23,6 +23,6 @@ if(TESTNO_FOUND EQUAL -1)
 else()
   message(
     STATUS
-      "Skipping executable generation for ${TEST_FILE_PATH} because it contains 'testno'."
+      "Skipping executable generation for ${TEST_FILE_PATH} because it contains 'eulerno'."
   )
 endif()
