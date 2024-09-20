@@ -55,3 +55,36 @@ void Solution::answer()
 	}
 
 }
+
+// 滑动窗口解法
+void Solution::answer2()
+{
+	unsigned limit = 1e6;
+	auto primes = dax::sieve_of_euler(limit);
+	unsigned max_length{};
+	unsigned max_sum{};
+
+	// 外层循环控制窗口的起点
+	for(int i = 0; i < primes.size(); ++i)
+	{
+		unsigned current_sum = 0;
+
+		// 内层循环控制窗口的结束位置
+		for(int j = i; j < primes.size(); ++j)
+		{
+			current_sum += primes[j];
+
+			// 如果和超过limit就停止循环
+			if(current_sum > limit) break;
+
+			// 如果是新的长度并且和是质数就更新最大长度及其和
+			if(j - i + 1 > max_length && dax::is_prime_improved(current_sum))
+			{
+				max_length = j - i + 1;
+				max_sum = current_sum;
+			}
+		}
+	}
+
+	std::cout << "The answer is: " << max_sum << std::endl;
+}
