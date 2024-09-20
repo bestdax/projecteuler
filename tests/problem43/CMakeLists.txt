@@ -4,11 +4,11 @@ set(TEST_FILE_PATH "test.cpp")
 # 读取文件内容
 file(READ ${TEST_FILE_PATH} FILE_CONTENTS)
 
-# 检查文件中是否包含 "testno"
-string(FIND "${FILE_CONTENTS}" "eulerno" TESTNO_FOUND)
+# 检查文件中是否包含 "eulerno"
+string(FIND "${FILE_CONTENTS}" "eulerno" EULERNO_FOUND)
 
-# 如果没有找到 "testno"，则生成可执行文件
-if(TESTNO_FOUND EQUAL -1)
+# 如果没有找到 "eulerno"，则生成可执行文件
+if(EULERNO_FOUND EQUAL -1)
   if(BUILD_TESTING)
     get_filename_component(DIR_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME)
     set(EXENAME ${DIR_NAME}_test)
