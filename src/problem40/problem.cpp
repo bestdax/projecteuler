@@ -5,7 +5,6 @@ https://projecteuler.net/problem=40
 dax 2024-09-16 15:23:10
 */
 #include "problem.h"
-#include <iostream>
 
 unsigned Solution::get_nth_digit(unsigned long target_position)
 {
