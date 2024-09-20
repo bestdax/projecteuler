@@ -67,6 +67,9 @@ void Solution::answer2()
 	// 外层循环控制窗口的起点
 	for(int i = 0; i < primes.size(); ++i)
 	{
+		// 如何剩余素数的个数已经少于max_length，退出循环
+		if(primes.size() - i < max_length) break;
+
 		unsigned current_sum = 0;
 
 		// 内层循环控制窗口的结束位置
