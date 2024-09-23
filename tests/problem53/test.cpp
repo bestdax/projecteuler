@@ -3,8 +3,8 @@
 
 Solution solution;
 
-TEST(eulerno, testname)
+TEST(euler53, testname)
 {
-
+  EXPECT_EQ(solution.combination(23, 10), 1144066);
 }
 
