@@ -26,11 +26,16 @@ void measure_exe_time(Function func)
 template<typename Container>
 void print(const Container &container, const std::string& delimiter = "\t")
 {
-	for(auto it = container.begin(); it != container.end(); ++it)
-	{
-		std::cout << *it;
+	auto it = container.begin();
 
-		if(it != container.end() - 1) std::cout << delimiter;
+	if(it == container.end()) return;  // 如果容器为空，直接返回
+
+	std::cout << *it; // 打印第一个元素
+	++it;
+
+	for(; it != container.end(); ++it)
+	{
+		std::cout << delimiter << *it; // 打印后续元素
 	}
 
 	std::cout << std::endl;

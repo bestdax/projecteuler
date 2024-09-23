@@ -9,6 +9,8 @@ dax 2024-09-23 14:26:32
 #include <string>
 #include <algorithm>
 #include <unordered_set>
+#include <unordered_map>
+#include <utils.h>
 
 void Solution::answer()
 {
@@ -20,41 +22,46 @@ void Solution::answer()
 	{
 		if(is_prime[i])
 		{
-			unsigned count = 0;
-			// 转换为字符串以便后续处理
 			auto ns = std::to_string(i);
+			std::unordered_map<char, unsigned> digits_count;
+
+			for(const auto& c : ns)
+			{
+				++digits_count[c];
+			}
 
 			// 遍历每个数字
-			for(unsigned j = 0; j < ns.size() - 1; ++j)
+			for(const auto& [d, count] : digits_count)
 			{
-				auto it = std::find(ns.begin() + j + 1, ns.end(), ns[j]);
-				// 用searched_digits记录哪些数字查找过了以免重复查找
-				std::unordered_set<char> searched_digits;
+				// 用一个set来保存已经发现的素数
+				std::unordered_set<unsigned> found_primes;
+				found_primes.insert(i);
 
-				// 如果发现重复数字并且没有搜索过将数字添加到已搜索数字set里面
-				if(it != ns.end() && !searched_digits.contains(ns[j]))
+				// 保证只对有重复的数字进行替换
+				if(count > 1)
 				{
-					searched_digits.insert(ns[j]);
-
-					for(auto & c : std::string("0123456789"))
+					for(char c = '0'; c <= '9'; ++c)
 					{
+						// 跳过本身
+						if(d == c) continue;
+
 						std::string copy(ns);
-						std::replace(copy.begin(), copy.end(), ns[j], c);
+						std::replace(copy.begin(), copy.end(), d, c);
 
 						// 替换后数字不能为0打头，并且得是素数
-						if(!copy.starts_with('0') && is_prime[std::stoul(copy)]) ++count;
-
-						if(count == 8)
-						{
-							std::cout << "The answer is: " << i << std::endl;
-							return;
-						}
-
+						if(!copy.starts_with('0') && is_prime[std::stoul(copy)]) found_primes.insert(std::stoul(copy));
 					}
-
-					count = 0;
 				}
+
+				// 找到8个以后就退出
+				if(found_primes.size() == 8)
+				{
+					std::cout << "The answer is: " << i << std::endl;
+					return;
+				}
+
 			}
+
 		}
 	}
 }
