@@ -218,3 +218,26 @@ BigUInt BigUInt::power(const BigUInt &other) const
 
 	return result;
 }
+
+bool BigUInt::is_palindrome()
+{
+	auto ns = to_string();
+	auto l = ns.begin();
+	auto r = ns.end() - 1;
+
+	while(l < r)
+	{
+		if(*l != * r) return false;
+		++l;
+		--r;
+	}
+
+	return true;
+}
+
+BigUInt BigUInt::reverse() const
+{
+	auto ns = to_string();
+	std::reverse(ns.begin(), ns.end());
+	return BigUInt(ns);
+}

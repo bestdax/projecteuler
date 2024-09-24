@@ -30,3 +30,13 @@ TEST(bint, power)
 	std::cout << StringInt(17).power(1000) << std::endl;
 	EXPECT_EQ(BigUInt(2).power(3), 8);
 }
+
+TEST(bint, is_palindrome)
+{
+	EXPECT_TRUE(BigUInt(1122332211).is_palindrome());
+}
+
+TEST(bint, reverse)
+{
+	EXPECT_EQ(BigUInt(123).reverse(), 321);
+}

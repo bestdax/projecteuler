@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 #include <compare>
+#include <algorithm>
 
 class BigUInt
 {
@@ -27,5 +28,7 @@ class BigUInt
 		BigUInt power(const BigUInt &other) const;
 		bool operator==(const BigUInt &other) const;
 		std::strong_ordering operator<=>(const BigUInt &other) const;
+		bool is_palindrome();
+		BigUInt reverse() const;
 		friend std::ostream& operator<<(std::ostream& os, const BigUInt& n);
 };
