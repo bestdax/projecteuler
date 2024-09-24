@@ -36,5 +36,10 @@
 
 分子与分母每一次计算时都用最小公倍数来减小。
 
+第二种是用combination的另外一个递推公式：
+\begin{equation*}
+\binom{n}{r}=\binom{n-1}{r-1}+\binom{n-1}{r}
+\end{equation*}
+这个方法更高效和通用，也不会有溢出的风险。
 \subsection{答案}
 4075
