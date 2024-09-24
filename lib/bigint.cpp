@@ -76,6 +76,8 @@ void BigUInt::trim()
 	{
 		data.pop_back();
 	}
+
+	if(data.empty()) data.push_back(0);
 }
 
 std::string BigUInt::to_string() const
