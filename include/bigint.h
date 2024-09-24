@@ -4,6 +4,7 @@
 #include <iostream>
 #include <compare>
 #include <algorithm>
+#include <numeric>
 
 class BigUInt
 {
@@ -23,6 +24,9 @@ class BigUInt
 		BigUInt operator+(const BigUInt &other) const;
 		BigUInt& operator+=(const BigUInt &other);
 		BigUInt& operator++();
+		BigUInt operator-(const BigUInt &other) const;
+		BigUInt& operator-=(const BigUInt &other);
+		BigUInt& operator--();
 		BigUInt operator*(const BigUInt &other) const;
 		BigUInt& operator*=(const BigUInt &other);
 		BigUInt power(const BigUInt &other) const;
@@ -30,5 +34,6 @@ class BigUInt
 		std::strong_ordering operator<=>(const BigUInt &other) const;
 		bool is_palindrome();
 		BigUInt reverse() const;
+		BigUInt digital_sum() const;
 		friend std::ostream& operator<<(std::ostream& os, const BigUInt& n);
 };

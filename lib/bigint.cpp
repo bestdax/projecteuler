@@ -228,6 +228,7 @@ bool BigUInt::is_palindrome()
 	while(l < r)
 	{
 		if(*l != * r) return false;
+
 		++l;
 		--r;
 	}
@@ -240,4 +241,60 @@ BigUInt BigUInt::reverse() const
 	auto ns = to_string();
 	std::reverse(ns.begin(), ns.end());
 	return BigUInt(ns);
+}
+
+BigUInt BigUInt::operator-(const BigUInt& other) const
+{
+	if(*this < other)
+	{
+		throw std::invalid_argument("BigUInt不支持负数运算");
+	}
+
+	BigUInt result(*this);
+
+	bool borrow{false};
+
+	for(unsigned i = 0; i < data.size(); ++i)
+	{
+		auto subtractor = i < other.data.size() ? other.data[i] : 0;
+
+		if(borrow)
+		{
+			--result.data[i];
+			borrow = false;
+		}
+
+		if(result.data[i] > subtractor)
+		{
+			result.data[i] -= subtractor;
+		}
+		else
+		{
+			result.data[i] += BASE - subtractor;
+			borrow = true;
+		}
+	}
+
+	return result;
+}
+
+BigUInt& BigUInt::operator--()
+{
+	*this = *this - 1;
+	return *this;
+}
+
+BigUInt& BigUInt::operator-=(const BigUInt& other)
+{
+	*this = *this - other;
+	return *this;
+}
+
+BigUInt BigUInt::digital_sum() const
+{
+	BigUInt sum;
+	auto ns = to_string();
+	sum = std::accumulate(ns.begin(), ns.end(), 0);
+	sum -= '0' * ns.size();
+	return sum;
 }

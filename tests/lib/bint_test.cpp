@@ -40,3 +40,14 @@ TEST(bint, reverse)
 {
 	EXPECT_EQ(BigUInt(123).reverse(), 321);
 }
+
+TEST(bint, subtruct)
+{
+	EXPECT_EQ(BigUInt(123) - 49, 74);
+	EXPECT_EQ(BigUInt(1233333333333333333) - 4999999999999, 1233328333333333334);
+}
+
+TEST(bint, digital_sum)
+{
+	EXPECT_EQ(BigUInt(123).digital_sum(), 6);
+}
