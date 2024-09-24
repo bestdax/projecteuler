@@ -22,6 +22,7 @@ TEST(bint, multiply)
 {
 	EXPECT_EQ(BigUInt("9876543210123456789") * BigUInt("1234567890987654321"),
 	          BigUInt("12193263121170553265523548251112635269"));
+	EXPECT_EQ(BigUInt(4478554083) * 2 + 1855077841, 10812186007);
 }
 
 TEST(bint, power)
@@ -50,4 +51,9 @@ TEST(bint, subtruct)
 TEST(bint, digital_sum)
 {
 	EXPECT_EQ(BigUInt(123).digital_sum(), 6);
+}
+
+TEST(bint, length)
+{
+	EXPECT_EQ(BigUInt(123456789).length(), 9);
 }
