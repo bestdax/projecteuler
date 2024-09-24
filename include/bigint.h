@@ -27,7 +27,6 @@ class BigUInt
 		BigUInt operator-(const BigUInt &other) const;
 		BigUInt& operator-=(const BigUInt &other);
 		BigUInt& operator--();
-		BigUInt operator*(const BigUInt &other) const;
 		BigUInt& operator*=(const BigUInt &other);
 		BigUInt power(const BigUInt &other) const;
 		bool operator==(const BigUInt &other) const;
@@ -35,5 +34,9 @@ class BigUInt
 		bool is_palindrome();
 		BigUInt reverse() const;
 		BigUInt digital_sum() const;
+		BigUInt length() const;
 		friend std::ostream& operator<<(std::ostream& os, const BigUInt& n);
+		friend BigUInt operator*(const BigUInt& lhs, const BigUInt& rhs);
 };
+
+BigUInt operator*(const BigUInt& lhs, const BigUInt& rhs);

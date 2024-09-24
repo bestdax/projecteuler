@@ -147,28 +147,6 @@ BigUInt BigUInt::operator+(const BigUInt& other) const
 	return result;
 }
 
-BigUInt BigUInt::operator*(const BigUInt& other) const
-{
-	BigUInt result;
-	result.data.resize(data.size() + other.data.size());
-
-	for(int i = 0; i < data.size(); ++i)
-	{
-		uint64_t carry = 0;
-
-		for(int j = 0; j < other.data.size() || carry; ++j)
-		{
-			uint64_t temp = result.data[i + j] + static_cast<uint64_t>(data[i]) *
-			                (j < other.data.size() ? other.data[j] : 0) + carry;
-			carry = temp >> 30;
-			result.data[i + j] = temp &(BASE - 1) ;
-		}
-	}
-
-	result.trim();
-	return result;
-}
-
 std::strong_ordering BigUInt::operator<=>(const BigUInt&other) const
 {
 	if(data.size() != other.data.size()) return data.size() <=> other.data.size();
@@ -275,6 +253,7 @@ BigUInt BigUInt::operator-(const BigUInt& other) const
 		}
 	}
 
+	result.trim();
 	return result;
 }
 
@@ -297,4 +276,32 @@ BigUInt BigUInt::digital_sum() const
 	sum = std::accumulate(ns.begin(), ns.end(), 0);
 	sum -= '0' * ns.size();
 	return sum;
+}
+
+BigUInt BigUInt::length() const
+{
+	auto sn = to_string();
+	return sn.size();
+}
+
+BigUInt operator*(const BigUInt& lhs, const BigUInt& rhs)
+{
+	BigUInt result;
+	result.data.resize(lhs.data.size() + rhs.data.size());
+
+	for(int i = 0; i < lhs.data.size(); ++i)
+	{
+		uint64_t carry = 0;
+
+		for(int j = 0; j < rhs.data.size() || carry; ++j)
+		{
+			uint64_t temp = result.data[i + j] + static_cast<uint64_t>(lhs.data[i]) *
+			                (j < rhs.data.size() ? rhs.data[j] : 0) + carry;
+			carry = temp >> 30;
+			result.data[i + j] = temp &(BigUInt::BASE - 1) ;
+		}
+	}
+
+	result.trim();
+	return result;
 }
