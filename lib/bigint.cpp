@@ -17,6 +17,8 @@ BigUInt::BigUInt(uint64_t num)
 		data.push_back(num % BASE);
 		num /= BASE;
 	}
+
+	trim();
 }
 
 BigUInt::BigUInt(std::string sn)
@@ -72,12 +74,13 @@ BigUInt::BigUInt(std::string sn)
 
 void BigUInt::trim()
 {
-	while(data.back() == 0)
+	while(!data.empty() && data.back() == 0)
 	{
 		data.pop_back();
 	}
 
-	if(data.empty()) data.push_back(0);
+	if(data.empty())
+		data.push_back(0);
 }
 
 std::string BigUInt::to_string() const
@@ -183,17 +186,23 @@ BigUInt& BigUInt::operator*=(const BigUInt &other)
 	return *this;
 }
 
-BigUInt BigUInt::power(const BigUInt &other) const
+BigUInt BigUInt::power(const BigUInt &exponent) const
 {
-	if(other == 0) return 1;
+	if(exponent == 0) return 1;
 
 	if(*this == 0) return 0;
 
+	BigUInt exp(exponent);
 	BigUInt result{1};
+	BigUInt base(*this);
 
-	for(BigUInt i = 1; i <= other; ++i)
+	while(exp > 0)
 	{
-		result *= *this;
+		if(exp % 2 == 1)
+			result *= base;
+
+		base *= base;
+		exp /= 2;
 	}
 
 	return result;
@@ -306,4 +315,82 @@ BigUInt operator*(const BigUInt& lhs, const BigUInt& rhs)
 
 	result.trim();
 	return result;
+}
+
+BigUInt BigUInt::operator/(const BigUInt& other) const
+{
+	if(other == 0) std::invalid_argument("除数不能为零");
+
+	BigUInt quotient;
+	quotient.data.resize(data.size());
+	BigUInt remainder(*this);
+
+	BigUInt divisor(other);
+	BigUInt divisor_shifted;
+
+	unsigned long shift_count{};
+
+	while(remainder >= divisor_shifted)
+	{
+		divisor_shifted = divisor << shift_count;
+		++shift_count;
+	}
+
+	while(shift_count > 0)
+	{
+		divisor_shifted = divisor << (shift_count - 1);
+		unsigned l = 0;
+		unsigned r = BASE;
+
+		if(remainder > divisor_shifted)
+		{
+			while(l < r && r - l != 1)
+			{
+				auto mid = (l + r) / 2;
+
+				if(mid * divisor_shifted == remainder)
+				{
+					l = mid;
+					break;
+				}
+				else if(mid * divisor_shifted > remainder) r = mid;
+				else l = mid;
+
+			}
+
+			quotient.data[shift_count - 1] = l;
+
+			remainder.data.pop_back();
+
+		}
+
+		--shift_count;
+	}
+
+	quotient.trim();
+
+	return quotient;
+}
+
+BigUInt BigUInt::operator<<(unsigned long shift) const
+{
+	BigUInt result;
+	result.data.resize(shift + data.size());
+
+	for(unsigned long i = shift; i < result.data.size(); ++i)
+		result.data[i] = data[i - shift];
+
+	return result;
+}
+
+BigUInt& BigUInt::operator/=(const BigUInt& other)
+{
+	*this = *this / other;
+	return *this;
+}
+
+BigUInt BigUInt::operator%(const BigUInt& other) const
+{
+	auto quotient = *this / other;
+	return *this - quotient * other;
 }

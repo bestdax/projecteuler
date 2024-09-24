@@ -27,8 +27,8 @@ TEST(bint, multiply)
 
 TEST(bint, power)
 {
-	std::cout << BigUInt(17).power(1000) << std::endl;
-	std::cout << StringInt(17).power(1000) << std::endl;
+	// std::cout << BigUInt(17).power(1000) << std::endl;
+	// std::cout << StringInt(17).power(1000) << std::endl;
 	EXPECT_EQ(BigUInt(2).power(3), 8);
 }
 
@@ -56,4 +56,26 @@ TEST(bint, digital_sum)
 TEST(bint, length)
 {
 	EXPECT_EQ(BigUInt(123456789).length(), 9);
+}
+
+TEST(bint, leftshift)
+{
+	EXPECT_EQ(BigUInt(1) << 1, 1 << 30);
+}
+
+TEST(bint, division)
+{
+	EXPECT_EQ(BigUInt(1 << 30) / 2 , 1 << 29);
+	EXPECT_EQ(BigUInt(1233333333333333333) / 4999999999999, 246666);
+}
+
+TEST(bint, mod)
+{
+	EXPECT_EQ(BigUInt(123) % 2, 1);
+}
+
+TEST(bint, compare)
+{
+	EXPECT_TRUE(BigUInt(0) == 0);
+	EXPECT_TRUE(BigUInt(0) > 0);
 }
