@@ -1,0 +1,47 @@
+\section{扑克游戏}
+\subsection{问题描述}
+\begin{tcolorbox}[breakable]
+	在扑克牌游戏扑克（Poker）中，一手牌由五张牌组成，并且按照以下方式从低到高排序：
+
+	\begin{itemize}
+		\item \textbf{高牌（High Card）}：最大的一张牌。
+		\item \textbf{一对（One Pair）}：两张相同点数的牌。
+		\item \textbf{两对（Two Pairs）}：两个不同点数的对子。
+		\item \textbf{三条（Three of a Kind）}：三张相同点数的牌。
+		\item \textbf{顺子（Straight）}：五张连续点数的牌。
+		\item \textbf{同花（Flush）}：五张同花色的牌。
+		\item \textbf{葫芦（Full House）}：三张相同点数的牌加一对。
+		\item \textbf{四条（Four of a Kind）}：四张相同点数的牌。
+		\item \textbf{同花顺（Straight Flush）}：五张同花色且连续点数的牌。
+		\item \textbf{皇家同花顺（Royal Flush）}：10、J、Q、K、A同花色的牌。
+	\end{itemize}
+
+	牌的点数按照以下顺序从低到高排序：2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A。
+
+	如果两位玩家的手牌是同一种类型，则比较最大的一张牌。举例来说，成对的八（Pair of Eights）比成对的五（Pair of Fives）要大。如果两手牌中的最大牌相同，则比较次高的牌，依次类推。
+
+	考虑以下两位玩家的五手牌对决：
+
+	\[
+		\begin{array}{|c|c|c|c|}
+			\hline
+			\text{手牌} & \text{玩家1}          & \text{玩家2}          & \text{胜者}   \\
+			\hline
+			1           & \texttt{5H 5C 6S 7S KD} & \texttt{2C 3S 8S 8D TD} & \text{玩家2 } \\
+			2           & \texttt{5D 8C 9S JS AC} & \texttt{2C 5C 7D 8S QH} & \text{玩家1 } \\
+			3           & \texttt{2D 9C AS AH AC} & \texttt{3D 6D 7D TD QD} & \text{玩家2 } \\
+			4           & \texttt{4D 6S 9H QH QC} & \texttt{3D 6D 7H QD QS} & \text{玩家1 } \\
+			5           & \texttt{2H 2D 4C 4D 4S} & \texttt{3C 3D 3S 9S 9D} & \text{玩家1 } \\
+			\hline
+		\end{array}
+	\]
+
+    文件 \href{https://projecteuler.net/resources/documents/0054_poker.txt}{poker.txt} 包含1000局随机生成的牌局，每局包含两位玩家的十张牌（以空格分隔），前五张是玩家1的手牌，后五张是玩家2的手牌。可以假设所有的手牌均合法（无无效字符或重复卡牌），每位玩家的手牌无顺序，并且在每局游戏中有明确的胜者。
+
+	问题：玩家1赢得了多少局？
+
+\end{tcolorbox}
+
+\subsection{算法}
+
+\subsection{答案}
