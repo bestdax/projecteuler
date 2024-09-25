@@ -360,6 +360,9 @@ std::pair<BigUInt, BigUInt> BigUInt::divide(const BigUInt& other) const
 	// 如果两者相等则商为1，余数为0
 	if(*this == other) return {1, 0};
 
+	// 优化除数是2的情况
+	if(other == 2) return divide_by_two();
+
 	unsigned shift_count{};
 
 	// 计算最大对齐位移(+1)
@@ -413,4 +416,21 @@ std::pair<BigUInt, BigUInt> BigUInt::divide(const BigUInt& other) const
 	remainder.trim();
 
 	return {quotient, remainder};
+}
+
+std::pair<BigUInt, BigUInt> BigUInt::divide_by_two() const
+{
+	BigUInt quotient(*this);
+	uint32_t carry = 0;
+
+	for(int i = quotient.data.size() - 1; i >= 0; --i)
+	{
+		uint64_t current = quotient.data[i] + (carry ? BASE : 0);
+		quotient.data[i] = (current >> 1);
+		carry = current & 1;
+	}
+
+	quotient.trim();
+
+	return {quotient, carry};
 }

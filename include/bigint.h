@@ -26,6 +26,7 @@ class BigUInt
 		BigUInt& operator+=(const BigUInt &other);
 		BigUInt& operator++();
 		std::pair<BigUInt, BigUInt> divide(const BigUInt &other) const;
+		std::pair<BigUInt, BigUInt> divide_by_two() const;
 		BigUInt& operator/=(const BigUInt &other);
 		BigUInt operator%(const BigUInt &other) const;
 		BigUInt operator-(const BigUInt &other) const;
