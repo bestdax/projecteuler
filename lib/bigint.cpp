@@ -253,7 +253,7 @@ BigUInt BigUInt::operator-(const BigUInt& other) const
 			borrow = false;
 		}
 
-		if(result.data[i] > subtractor)
+		if(result.data[i] >= subtractor)
 		{
 			result.data[i] -= subtractor;
 		}
@@ -393,4 +393,68 @@ BigUInt BigUInt::operator%(const BigUInt& other) const
 {
 	auto quotient = *this / other;
 	return *this - quotient * other;
+}
+
+std::pair<BigUInt, BigUInt> BigUInt::divide(const BigUInt& other) const
+{
+	if(other == 0) std::invalid_argument("除数不能为零");
+
+	// 如果除数为1直接返回
+	if(other == 1) return {*this, 0};
+
+	// 如果被除数小于除数则商为0，余数为被除数
+	if(*this < other) return {0, *this};
+
+	// 如果两者相等则商为1，余数为0
+	if(*this == other) return {1, 0};
+
+	unsigned shift_count{};
+
+	// 计算最大对齐位移(+1)
+	while(other << shift_count < *this)
+		++shift_count;
+
+	BigUInt quotient;
+	quotient.data.resize(data.size());
+	BigUInt remainder(*this);
+	BigUInt divisor_shifted;
+	uint32_t quotient_seg{};
+
+	while(shift_count > 0)
+	{
+		divisor_shifted = other << (shift_count - 1);
+		uint32_t left = 0;
+		uint32_t right = BASE - 1;
+
+		while(left <= right)
+		{
+			uint32_t middle = (left + right) / 2;
+			BigUInt temp_product = middle * divisor_shifted;
+
+			// 如果可以整除提前退出；
+			if(temp_product == remainder)
+			{
+				quotient_seg = middle;
+				remainder = 0;
+				break;
+			}
+			else if(temp_product < remainder)
+			{
+				left = middle + 1;
+				quotient_seg = middle;
+			}
+			else right = middle - 1;
+		}
+
+		quotient.data[shift_count - 1] = quotient_seg;
+		remainder -= quotient_seg * divisor_shifted;
+
+		--shift_count;
+
+	}
+
+	quotient.trim();
+	remainder.trim();
+
+	return {quotient, remainder};
 }

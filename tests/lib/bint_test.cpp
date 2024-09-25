@@ -78,3 +78,9 @@ TEST(bint, compare)
 {
 	EXPECT_TRUE(BigUInt(0) == 0);
 }
+
+TEST(bint, divide)
+{
+	EXPECT_EQ(BigUInt(1233333333333333333).divide(4999999999999).first, 246666);
+	EXPECT_EQ(BigUInt(1233333333333333333).divide(4999999999999).second, 3333333579999);
+}
