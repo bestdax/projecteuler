@@ -302,7 +302,7 @@ BigUInt operator*(const BigUInt& lhs, const BigUInt& rhs)
 
 	for(int i = 0; i < lhs.data.size(); ++i)
 	{
-		uint64_t carry = 0;
+		uint32_t carry = 0;
 
 		for(int j = 0; j < rhs.data.size() || carry; ++j)
 		{
@@ -340,25 +340,25 @@ BigUInt BigUInt::operator/(const BigUInt& other) const
 	{
 		divisor_shifted = divisor << (shift_count - 1);
 		unsigned l = 0;
-		unsigned r = BASE;
+		unsigned r = BASE - 1;
+		unsigned quotient_seg{};
 
 		if(remainder > divisor_shifted)
 		{
-			while(l < r && r - l != 1)
+			while(l <= r)
 			{
 				auto mid = (l + r) / 2;
 
-				if(mid * divisor_shifted == remainder)
+				if(mid * divisor_shifted <= remainder)
 				{
-					l = mid;
-					break;
+					l = mid + 1;
+					quotient_seg = mid;
 				}
-				else if(mid * divisor_shifted > remainder) r = mid;
-				else l = mid;
+				else r = mid - 1;
 
 			}
 
-			quotient.data[shift_count - 1] = l;
+			quotient.data[shift_count - 1] = quotient_seg;
 
 			remainder.data.pop_back();
 

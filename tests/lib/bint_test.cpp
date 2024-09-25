@@ -77,5 +77,4 @@ TEST(bint, mod)
 TEST(bint, compare)
 {
 	EXPECT_TRUE(BigUInt(0) == 0);
-	EXPECT_TRUE(BigUInt(0) > 0);
 }
