@@ -26,7 +26,6 @@ class BigUInt
 		BigUInt& operator+=(const BigUInt &other);
 		BigUInt& operator++();
 		std::pair<BigUInt, BigUInt> divide(const BigUInt &other) const;
-		BigUInt operator/(const BigUInt &other) const;
 		BigUInt& operator/=(const BigUInt &other);
 		BigUInt operator%(const BigUInt &other) const;
 		BigUInt operator-(const BigUInt &other) const;
@@ -45,4 +44,5 @@ class BigUInt
 		friend BigUInt operator*(const BigUInt& lhs, const BigUInt& rhs);
 };
 
+BigUInt operator/(const BigUInt &lhs, const BigUInt &rhs);
 BigUInt operator*(const BigUInt& lhs, const BigUInt& rhs);

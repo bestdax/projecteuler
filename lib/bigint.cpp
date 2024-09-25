@@ -317,59 +317,11 @@ BigUInt operator*(const BigUInt& lhs, const BigUInt& rhs)
 	return result;
 }
 
-BigUInt BigUInt::operator/(const BigUInt& other) const
+BigUInt operator/(const BigUInt& lhs, const BigUInt& rhs)
 {
-	if(other == 0) std::invalid_argument("除数不能为零");
+	auto result = lhs.divide(rhs);
 
-	BigUInt quotient;
-	quotient.data.resize(data.size());
-	BigUInt remainder(*this);
-
-	BigUInt divisor(other);
-	BigUInt divisor_shifted;
-
-	unsigned long shift_count{};
-
-	while(remainder >= divisor_shifted)
-	{
-		divisor_shifted = divisor << shift_count;
-		++shift_count;
-	}
-
-	while(shift_count > 0)
-	{
-		divisor_shifted = divisor << (shift_count - 1);
-		unsigned l = 0;
-		unsigned r = BASE - 1;
-		unsigned quotient_seg{};
-
-		if(remainder > divisor_shifted)
-		{
-			while(l <= r)
-			{
-				auto mid = (l + r) / 2;
-
-				if(mid * divisor_shifted <= remainder)
-				{
-					l = mid + 1;
-					quotient_seg = mid;
-				}
-				else r = mid - 1;
-
-			}
-
-			quotient.data[shift_count - 1] = quotient_seg;
-
-			remainder.data.pop_back();
-
-		}
-
-		--shift_count;
-	}
-
-	quotient.trim();
-
-	return quotient;
+	return result.first;
 }
 
 BigUInt BigUInt::operator<<(unsigned long shift) const
@@ -391,8 +343,8 @@ BigUInt& BigUInt::operator/=(const BigUInt& other)
 
 BigUInt BigUInt::operator%(const BigUInt& other) const
 {
-	auto quotient = *this / other;
-	return *this - quotient * other;
+	auto result = divide(other);
+	return result.second;
 }
 
 std::pair<BigUInt, BigUInt> BigUInt::divide(const BigUInt& other) const
@@ -446,8 +398,12 @@ std::pair<BigUInt, BigUInt> BigUInt::divide(const BigUInt& other) const
 			else right = middle - 1;
 		}
 
+		if(remainder != 0)
+		{
+			remainder -= quotient_seg * divisor_shifted;
+		}
+
 		quotient.data[shift_count - 1] = quotient_seg;
-		remainder -= quotient_seg * divisor_shifted;
 
 		--shift_count;
 
