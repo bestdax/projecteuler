@@ -434,3 +434,8 @@ std::pair<BigUInt, BigUInt> BigUInt::divide_by_two() const
 
 	return {quotient, carry};
 }
+uint64_t BigUInt::toul() const
+{
+	if(*this <= std::numeric_limits<uint64_t>::max()) return std::stoul(to_string());
+	else throw std::overflow_error("数据溢出，最多只能64bit的整数");
+}
