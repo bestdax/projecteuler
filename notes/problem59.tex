@@ -1,0 +1,17 @@
+\section{XOR 解密}
+\subsection{问题描述}
+\begin{tcolorbox}
+
+	每个计算机上的字符都被分配了一个唯一的代码，优选标准是 ASCII（美国标准信息交换代码）。例如，大写字母 A = 65，星号 (*) = 42，小写字母 k = 107。
+
+	一种现代加密方法是将文本文件转换为 ASCII，然后将每个字节与来自密钥的给定值进行 XOR 操作。使用相同的加密密钥对密文进行操作，可以恢复明文。
+
+	你的任务是解密一段由三个小写字母组成的加密密钥生成的消息，并找出原始文本中 ASCII 值的总和。
+
+	请\href{https://projecteuler.net/resources/documents/0059_cipher.txt}{点击}下载文本。
+\end{tcolorbox}
+
+\subsection{算法}
+用异或生成文本，然后在文本中搜索\texttt{" the "}，要包括两边的空格。
+
+\subsection{答案}
