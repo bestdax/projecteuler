@@ -33,32 +33,32 @@ bool dax::is_prime_improved(unsigned long n)
 
 std::vector<bool> dax::sieve_of_eratosthenes(unsigned long n)
 {
-	std::vector<bool> prime_status(n + 1, true);
-	prime_status[0] = prime_status[1] = false;
+	std::vector<bool> is_prime(n + 1, true);
+	is_prime[0] = is_prime[1] = false;
 	unsigned long root = std::sqrt(n);
 
 	for(unsigned long i = 2; i <= root; ++i)
 	{
-		if(prime_status[i])
+		if(is_prime[i])
 		{
-			for(unsigned long j = i * i; j <= n; j += i)
-				prime_status[j] = false;
+			for(unsigned long multiple = i * i; multiple <= n; multiple += i)
+				is_prime[multiple] = false;
 		}
 	}
 
-	return prime_status;
+	return is_prime;
 }
 
 std::vector<unsigned long> dax::sieve_of_euler(unsigned long n)
 {
-	std::vector<bool> prime_status(n + 1, true);
-	prime_status[0] = prime_status[1] = false;
+	std::vector<bool> is_prime(n + 1, true);
+	is_prime[0] = is_prime[1] = false;
 	std::vector<unsigned long> primes;
 	primes.reserve(n / std::log(n));
 
 	for(unsigned long i = 2; i <= n; ++i)
 	{
-		if(prime_status[i]) primes.push_back(i);
+		if(is_prime[i]) primes.push_back(i);
 
 		if(i > n / 2) continue;
 
@@ -68,7 +68,7 @@ std::vector<unsigned long> dax::sieve_of_euler(unsigned long n)
 
 			if(composite > n) break;
 
-			prime_status[composite] = false;
+			is_prime[composite] = false;
 
 			if(i % p == 0) break;
 		}
