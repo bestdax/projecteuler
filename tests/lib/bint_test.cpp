@@ -65,7 +65,7 @@ TEST(bint, leftshift)
 
 TEST(bint, division)
 {
-	EXPECT_EQ(BigUInt(1 << 30) / 2 , 1 << 29);
+	EXPECT_EQ(BigUInt(1 << 30) / 2, 1 << 29);
 	EXPECT_EQ(BigUInt(1233333333333333333) / 4999999999999, 246666);
 }
 
@@ -83,4 +83,16 @@ TEST(bint, divide)
 {
 	EXPECT_EQ(BigUInt(1233333333333333333).divide(4999999999999).first, 246666);
 	EXPECT_EQ(BigUInt(1233333333333333333).divide(4999999999999).second, 3333333579999);
+}
+
+TEST(bint, prime)
+{
+	EXPECT_TRUE(BigUInt(11).is_prime());
+	EXPECT_TRUE(BigUInt(101).is_prime());
+}
+
+TEST(bint, sqrt)
+{
+	EXPECT_EQ(BigUInt(16).sqrt(), 4);
+	EXPECT_EQ(BigUInt(101).sqrt(), 10);
 }
