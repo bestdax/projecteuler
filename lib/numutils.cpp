@@ -102,3 +102,16 @@ bool dax::is_square(unsigned long s)
 	double n = std::sqrt(s);
 	return n == static_cast<unsigned long>(n);
 }
+
+unsigned long dax::concatenate(unsigned long a, unsigned long b)
+{
+	auto temp = b;
+
+	while(temp)
+	{
+		temp /= 10;
+		a *= 10;
+	}
+
+	return a + b;
+}

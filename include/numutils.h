@@ -14,4 +14,5 @@ bool is_pentagonal(unsigned long);
 bool is_triangle(unsigned long);
 bool is_hexagonal(unsigned long);
 bool is_square(unsigned long);
+unsigned long concatenate(unsigned long, unsigned long);
 }

@@ -27,3 +27,8 @@ TEST(numutils, pentagonal)
 {
 	EXPECT_FALSE(dax::is_pentagonal(20242));
 }
+
+TEST(numutils, concatenate)
+{
+	EXPECT_EQ(dax::concatenate(123, 456), 123456);
+}
