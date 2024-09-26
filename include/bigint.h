@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <numeric>
 #include <utility>
+#include <limits>
 
 template<typename T>
 class BigVector;
@@ -38,9 +39,11 @@ class BigUInt
 		BigUInt& operator--();
 		BigUInt& operator*=(const BigUInt &other);
 		BigUInt power(const BigUInt &other) const;
+		BigUInt sqrt() const;
 		bool operator==(const BigUInt &other) const;
 		std::strong_ordering operator<=>(const BigUInt &other) const;
 		bool is_palindrome();
+		bool is_prime();
 		BigUInt reverse() const;
 		BigUInt digital_sum() const;
 		BigUInt length() const;
@@ -51,6 +54,7 @@ class BigUInt
 		friend class BigVector;
 };
 
+BigVector<char> sieve_of_eratosthenes(const BigUInt& limit);
 BigUInt operator/(const BigUInt &lhs, const BigUInt &rhs);
 BigUInt operator*(const BigUInt& lhs, const BigUInt& rhs);
 

@@ -434,8 +434,78 @@ std::pair<BigUInt, BigUInt> BigUInt::divide_by_two() const
 
 	return {quotient, carry};
 }
+
+BigUInt BigUInt::sqrt() const
+{
+	BigUInt left = 1;
+	BigUInt right = *this;
+	BigUInt middle;
+	BigUInt root;
+
+	while(left <= right)
+	{
+		middle = (left + right) / 2;
+
+		BigUInt middle_square = middle * middle;
+
+		if(middle_square == *this)
+		{
+			root = middle;
+			break;
+		}
+		else if(middle_square < *this)
+		{
+			left = middle + 1;
+			root = middle;
+		}
+		else right = middle - 1;
+	}
+
+	return root;
+}
+
+bool BigUInt::is_prime()
+{
+	if(*this < 4) return *this > 1;
+
+	if(*this % 2 == 0 || *this % 3 == 0) return false;
+
+	BigUInt root = sqrt();
+
+	for(BigUInt i = 5; i <= root; i += 6)
+	{
+		if(*this % (i) == 0 or *this % (i + 2) == 0)
+			return false;
+	}
+
+	return true;
+}
+
 uint64_t BigUInt::toul() const
 {
 	if(*this <= std::numeric_limits<uint64_t>::max()) return std::stoul(to_string());
 	else throw std::overflow_error("数据溢出，最多只能64bit的整数");
+}
+
+BigVector<char> sieve_of_eratosthenes(const BigUInt& limit)
+{
+	BigVector<char> is_prime(limit + 1, true);
+	is_prime[0] = false;
+	is_prime[1] = false;
+
+	BigUInt root = limit.sqrt();
+
+	for(BigUInt i = 2; i <= root; ++i)
+	{
+		if(is_prime[i])
+		{
+
+			for(BigUInt multiple = i * i; multiple <= limit; multiple += i)
+			{
+				is_prime[multiple] = false;
+			}
+		}
+	}
+
+	return is_prime;
 }
