@@ -32,7 +32,7 @@ void Solution::find_groups(unsigned long start_node)
 
 		// 在当前节点对应的可连接素数中搜索
 		for(auto& p : group_map[last_elem])
-			if(p > last_elem && not node.contains(p)) // 不能在当前组中出现过，并且要比当前组最后一个元素大
+			if(p > last_elem) // 比当前组最后一个元素大
 			{
 				// 确认是否可以添加到当前组中
 				bool valid = true;
