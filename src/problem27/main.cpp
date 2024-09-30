@@ -13,6 +13,7 @@ int main(int argc, char *argv[])
 	{
 		solution.brutal_solution();
 	};
+
 	measure_exe_time(func);
 	measure_exe_time(func2);
 	return 0;
