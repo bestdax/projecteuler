@@ -6,7 +6,6 @@ dax 2024-09-26 12:49:33
 */
 #include "problem.h"
 #include <prime.h>
-#include <vector>
 #include <numutils.h>
 #include <numeric>
 #include <utils.h>
@@ -48,7 +47,7 @@ void Solution::find_groups(unsigned long start_node)
 
 				if(valid)
 				{
-					// 如何可以添加，复制一份，并添加当前素数后压入队列中
+					// 如果可以添加，复制一份，并添加当前素数后压入队列中
 					auto copy(node);
 					copy.insert(p);
 					queue.push(copy);
