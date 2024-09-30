@@ -2,43 +2,42 @@
 #include <iostream>
 #include <vector>
 #include <prime.h>
+#include <unordered_map>
+#include <queue>
 #include <unordered_set>
-#include <utility>
 #include <set>
-
-namespace std
-{
-template <>
-struct hash<std::pair<unsigned long, unsigned long>>
-{
-	size_t operator()(const std::pair<unsigned long, unsigned long> & p) const
-	{
-		std::size_t hash = 0;
-
-		size_t h1 = std::hash<unsigned long>()(p.first);
-		size_t h2 = std::hash<unsigned long>()(p.second);
-
-		hash = h1 ^ (h2 << 1);
-
-		return hash;
-	}
-};
-}
+#include <limits>
 
 class Solution
 {
 	private:
 		unsigned long limit;
-		std::vector<bool> is_prime;
-		std::vector<std::vector<unsigned long>> prime_groups;
-		std::unordered_set<std::pair<unsigned long, unsigned long>> group_set;
-	public:
-		Solution(): limit(1e4) {};
+		unsigned target_len{5};
+		std::vector<unsigned long> primes;
+		std::unordered_map<unsigned long, std::set<unsigned long>> group_map;
+		unsigned long min{std::numeric_limits<unsigned long>::max()};
+		std::set<unsigned long> target;
 
-		void init_groups();
+	public:
+		Solution(): limit(1e4)
+		{
+			primes = dax::sieve_of_euler(limit);
+			primes.erase(primes.begin()); //移除2
+			primes.erase(primes.begin() + 1); //移除5
+
+			for(unsigned i = 0; i < primes.size() - 1; ++i)
+				for(unsigned j = i + 1; j < primes.size(); ++j)
+				{
+					if(is_prime_pair(primes[i], primes[j]))
+					{
+						group_map[primes[i]].insert(primes[j]);
+						group_map[primes[j]].insert(primes[i]);
+					}
+				}
+		};
+
+		void find_groups(unsigned long start_node);
 
 		bool is_prime_pair(unsigned long a, unsigned long b);
-		bool is_prime_group(std::vector<unsigned long>);
 		void answer();
-
 };

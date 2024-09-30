@@ -16,68 +16,72 @@ bool Solution::is_prime_pair(unsigned long a, unsigned long b)
 	return dax::is_prime_improved(dax::concatenate(a, b)) && dax::is_prime_improved(dax::concatenate(b, a));
 }
 
-bool Solution::is_prime_group(std::vector<unsigned long> group)
+// 使用宽度优先策略(因为是要查找5个的最小值)
+void Solution::find_groups(unsigned long start_node)
 {
-	if(group.empty()) return true;
+	std::queue<std::set<unsigned long>> queue;
 
-	if(group.size() == 1 && dax::is_prime_improved(group.back())) return true;
+	queue.push({start_node});
 
-	for(unsigned i = 0; i < group.size() - 1; ++i)
-		for(unsigned j = i + 1; j < group.size(); ++j)
-		{
-			if(not group_set.contains({group[i], group[j]})) return false;
-		}
+	while(not queue.empty())
+	{
+		auto node = queue.front();
+		queue.pop();
 
-	return true;
-}
+		auto last_elem = *node.rbegin();
 
-void Solution::init_groups()
-{
-	for(unsigned long i = 3; i < limit; ++i)
-		for(unsigned long j = i + 1; j <= limit; ++j)
-		{
-			if(is_prime[i] && is_prime[j] && is_prime_pair(i, j))
+		// 在当前节点对应的可连接素数中搜索
+		for(auto& p : group_map[last_elem])
+			if(p > last_elem && not node.contains(p)) // 不能在当前组中出现过，并且要比当前组最后一个元素大
 			{
-				group_set.insert({i, j});
-				prime_groups.push_back({i, j});
+				// 确认是否可以添加到当前组中
+				bool valid = true;
+
+				for(auto& elem : node)
+				{
+					if(!group_map[elem].contains(p))
+					{
+						valid = false;
+						break;
+					}
+				}
+
+				if(valid)
+				{
+					// 如何可以添加，复制一份，并添加当前素数后压入队列中
+					auto copy(node);
+					copy.insert(p);
+					queue.push(copy);
+
+					// 判定是否找到目标
+					if(copy.size() == target_len)
+					{
+						auto sum = std::accumulate(copy.begin(), copy.end(), 0UL);
+
+						if(sum < min)
+						{
+							min = sum;
+							target = copy;
+						}
+					}
+				}
+
 			}
-		}
+
+	}
 }
 
 void Solution::answer()
 {
-	is_prime = dax::sieve_of_eratosthenes(limit);
-	init_groups();
-	std::set<unsigned long> sum_set;
 
-	for(unsigned loop = 0; loop < 3; ++loop)
+	for(auto&prime : primes)
 	{
-		std::vector<std::vector<unsigned long>> temp_groups;
+		find_groups(prime);
 
-		for(const auto& group : prime_groups)
-		{
-			for(unsigned long i = group.back() + 1; i <= limit; ++i)
-			{
-				if(is_prime[i])
-				{
-					auto copy(group);
-					copy.push_back(i);
-
-					if(is_prime_group(copy))
-					{
-						temp_groups.push_back(copy);
-						if(copy.size() == 5)
-						{
-							sum_set.insert(std::accumulate(copy.begin(), copy.end(), 0));
-						}
-					}
-
-				}
-			}
-		}
-
-		prime_groups = temp_groups;
+		if(prime > min) break;
 	}
 
-	std::cout << "The answer is: " << *sum_set.begin() << std::endl;
+	print(target);
+
+	std::cout << "The answer is: " << min << std::endl;
 }
