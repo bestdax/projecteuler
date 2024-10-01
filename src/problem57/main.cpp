@@ -9,6 +9,6 @@ int main(int argc, char *argv[])
 		solution.answer();
 	};
 
-	measure_exe_time(func);
+	measure_exe_time(&Solution::answer, &solution);
 	return 0;
 }
