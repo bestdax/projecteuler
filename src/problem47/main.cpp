@@ -4,17 +4,9 @@
 int main(int argc, char *argv[])
 {
 	Solution solution;
-	auto func = [&solution]()
-	{
-		solution.answer();
-	};
 
-	measure_exe_time(func);
-	auto func2 = [&solution]()
-	{
-		solution.answer2();
-	};
+	measure_exe_time(&Solution::answer, &solution);
 
-	measure_exe_time(func2);
+	measure_exe_time(&Solution::answer2, &solution);
 	return 0;
 }
