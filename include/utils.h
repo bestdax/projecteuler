@@ -2,6 +2,8 @@
 #include <iostream>
 #include <chrono>
 #include <vector>
+#include <type_traits>
+#include <iterator>
 
 template<typename Function, typename... Args>
 void measure_exe_time(Function func, Args... args)
@@ -23,8 +25,26 @@ void measure_exe_time(Function func)
 	std::cout << "Execution time: " << duration << std::endl;
 }
 
+template<typename T>
+struct is_container
+{
+	private:
+		template<typename U>
+		static auto test(int) -> decltype(
+		    std::begin(std::declval<U>()),
+		    std::end(std::declval<U>()),
+		    std::true_type()
+		);
+
+		template<typename>
+		static auto test(...) -> std::false_type;
+	public:
+		static constexpr bool value = decltype(test<T>(0))::value;
+};
+
 template<typename Container>
-void print(const Container &container, const std::string& delimiter = "\t")
+typename std::enable_if<is_container<Container>::value>::type
+print(const Container &container, const std::string& delimiter = "\t")
 {
 	auto it = container.begin();
 
@@ -39,4 +59,24 @@ void print(const Container &container, const std::string& delimiter = "\t")
 	}
 
 	std::cout << std::endl;
+}
+
+template<typename T>
+typename std::enable_if < !is_container<T>::value >::type
+print(const T& var)
+{
+	std::cout << var << std::endl;;
+}
+
+template<typename T, typename... Args>
+typename std::enable_if < !is_container<T>::value >::type
+print(const T& first, const Args... args)
+{
+	std::cout << first;
+
+	if constexpr(sizeof...(args) > 0)
+	{
+		std::cout << "\t"; // 添加默认分隔符
+		print(args...);
+	}
 }
