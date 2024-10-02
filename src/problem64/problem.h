@@ -2,6 +2,7 @@
 #include <cmath>
 #include <utils.h>
 #include <vector>
+#include <utility>
 #include <unordered_set>
 
 struct Remainder
@@ -18,14 +19,14 @@ struct Remainder
 namespace std
 {
 	template <>
-	struct hash<Remainder>
+	struct hash<std::pair<int, int>>
 	{
-		std::size_t operator()(const Remainder& r) const
+		std::size_t operator()(const std::pair<int, int> &p) const
 		{
-			std::size_t r1 = std::hash<int>()(r.numerator);
-			std::size_t r2 = std::hash<int>()(r.denominator);
+			std::size_t p1 = std::hash<int>()(p.first);
+			std::size_t p2 = std::hash<int>()(p.second);
 
-			return r1 ^ (r2 << 1);
+			return p1 ^ (p2 << 1);
 		}
 	};
 }
@@ -35,7 +36,7 @@ class SqrtCF
 {
 	private:
 		std::vector<int> coefficients;
-		std::unordered_set<Remainder> remainders;
+		std::unordered_set<std::pair<int, int>> remainders;
 	public:
 		SqrtCF(int);
 		int period();

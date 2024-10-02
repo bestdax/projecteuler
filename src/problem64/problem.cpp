@@ -14,24 +14,22 @@ SqrtCF::SqrtCF(int n)
 	if(root * root == n) return;
 
 	int coefficient = root;
-	Remainder remainder{-root, 1};
+	std::pair<int, int> pair{0, 1};
 
-	while(not remainders.contains(remainder))
+	while(not remainders.contains(pair))
 	{
-		remainders.insert(remainder);
+		remainders.insert(pair);
 		coefficients.push_back(coefficient);
 
 		// generate next item
-		coefficient = remainder.denominator / (std::sqrt(n) + remainder.numerator);
-		int denominator = n - remainder.numerator * remainder.numerator;
-		int numerator = remainder.denominator * -remainder.numerator - coefficient * denominator;
-		auto gcd = std::gcd(denominator, remainder.denominator);
-		numerator /= gcd;
-		denominator /= gcd;
-		remainder = Remainder{numerator, denominator};
+		std::pair<int, int> new_pair;
+		new_pair.first = coefficient * pair.second - pair.first;
+		new_pair.second = (n - new_pair.first * new_pair.first) / pair.second;
+
+		coefficient = (root + new_pair.first) / new_pair.second;
+		pair = new_pair;
 	}
 
-	coefficients.push_back(coefficient);
 }
 
 int SqrtCF::period()

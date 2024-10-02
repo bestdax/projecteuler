@@ -48,5 +48,14 @@
 \end{tcolorbox}
 
 \subsection{算法}
+平方根(无理数)的连分数递推公式如下：
+\begin{align*}
+	\sqrt{d} & = \langle a_0, \overline{a_1, a_2, \cdots, a_i} \rangle \\
+	a_0      & = \lfloor d \rfloor, c_0 = 0, q_0 = 1                   \\
+	c_{i+1}  & = a_iq_i - c_i                                          \\
+	q_{i+1}  & = \frac{d - c_i^2}{q_i}                                 \\
+	a_i      & = \left\lfloor \frac{\sqrt{d} + c_i}{q_i} \right\rfloor
+\end{align*}
 
 \subsection{答案}
+1322
