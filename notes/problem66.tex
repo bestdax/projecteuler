@@ -26,5 +26,13 @@
 \end{tcolorbox}
 
 \subsection{算法}
+首先用问题64中的方法生成连分数，然后用连分数渐近分数的递推公式解决这个问题：
+\begin{align*}
+	P_n     & = a_nP_{n-1} + P_{n-2} \\
+	Q_n     & = a_nQ_{n-1} + Q_{n-2} \\
+	P_{n-1} & = 1, P_{n-2} = 0       \\
+	Q_{n-1} & = 0, Q_{n-2} = 1
+\end{align*}
 
 \subsection{答案}
+661
