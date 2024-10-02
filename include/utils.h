@@ -37,19 +37,27 @@ template<typename Container>
 typename std::enable_if<is_container<Container>::value>::type
 print(const Container &container, const std::string& delimiter = "\t")
 {
-	auto it = container.begin();
-
-	if(it == container.end()) return;  // 如果容器为空，直接返回
-
-	std::cout << *it; // 打印第一个元素
-	++it;
-
-	for(; it != container.end(); ++it)
+	if constexpr(std::is_same<Container, std::string>::value)
 	{
-		std::cout << delimiter << *it; // 打印后续元素
+		std::cout << container << std::endl;
+	}
+	else
+	{
+		auto it = container.begin();
+
+		if(it == container.end()) return;  // 如果容器为空，直接返回
+
+		std::cout << *it; // 打印第一个元素
+		++it;
+
+		for(; it != container.end(); ++it)
+		{
+			std::cout << delimiter << *it; // 打印后续元素
+		}
+
+		std::cout << std::endl;
 	}
 
-	std::cout << std::endl;
 }
 
 template<typename T>
