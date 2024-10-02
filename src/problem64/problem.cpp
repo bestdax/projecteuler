@@ -5,7 +5,6 @@ https://projecteuler.net/problem=64
 dax 2024-10-01 20:00:05
 */
 #include "problem.h"
-#include <numeric>
 
 SqrtCF::SqrtCF(int n)
 {
