@@ -1,4 +1,4 @@
-\section[\lower{e}的连分数]{$e$的连分数}
+\section[e的连分数]{$e$的连分数}
 \subsection{问题描述}
 \begin{tcolorbox}[breakable]
 
@@ -42,5 +42,13 @@
 \end{tcolorbox}
 
 \subsection{算法}
+利用渐近分数的递推公式：
+\begin{align*}
+	P_n     & = a_nP_{n-1} + P_{n-2} \\
+	Q_n     & = a_nQ_{n-1} + Q_{n-2} \\
+	P_{n-1} & = 1, P_{n-2} = 0       \\
+	Q_{n-1} & = 0, Q_{n-2} = 1
+\end{align*}
 
 \subsection{答案}
+272
