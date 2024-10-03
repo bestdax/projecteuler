@@ -77,3 +77,39 @@ std::vector<unsigned long> dax::sieve_of_euler(unsigned long n)
 	return primes;
 
 }
+
+unsigned long dax::euler_phi(unsigned long n)
+{
+	if(n < 2) return 0;
+
+	auto is_prime = dax::sieve_of_eratosthenes(n);
+	if(is_prime[n]) return n - 1;
+
+	unsigned long phi{1};
+	unsigned long root = std::sqrt(n);
+
+
+
+	for(unsigned long i = 2; i <= n; ++i)
+	{
+		if(is_prime[i] && n % i == 0)
+		{
+			unsigned power{};
+
+			while(n % i == 0)
+			{
+				n /= i;
+				++power;
+			}
+
+			phi *= (i - 1);
+
+			for(unsigned p = 0; p < power - 1; ++p)
+			{
+				phi *= i;
+			}
+		}
+	}
+
+	return phi;
+}
