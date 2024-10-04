@@ -1,0 +1,55 @@
+\section{最大欧拉商数}
+\subsection{问题描述}
+\begin{tcolorbox}
+	\textbf{欧拉的欧拉函数} \(\phi(n)\)（有时也称为phi函数），定义为不超过 \(n\) 的正整数中与 \(n\) 互质的数的数量。例如，1、2、4、5、7 和 8 都小于或等于9且与9互质，所以 \(\phi(9)=6\)。
+
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			\(n\) & 互质数      & \(\phi(n)\) & \(n/\phi(n)\) \\
+			\hline
+			2     & 1           & 1           & 2             \\
+			3     & 1,2         & 2           & 1.5           \\
+			4     & 1,3         & 2           & 2             \\
+			5     & 1,2,3,4     & 4           & 1.25          \\
+			6     & 1,5         & 2           & 3             \\
+			7     & 1,2,3,4,5,6 & 6           & 1.1666...     \\
+			8     & 1,3,5,7     & 4           & 2             \\
+			9     & 1,2,4,5,7,8 & 6           & 1.5           \\
+			10    & 1,3,7,9     & 4           & 2.5           \\
+			\hline
+		\end{tabular}
+	\end{center}
+
+	可以看出，当 \(n=6\) 时，\(n/\phi(n)\) 在 \(n \leq 10\) 中达到最大值。
+
+	找出 \(n \leq \num{1000000}\) 时，\(n/\phi(n)\) 达到最大值的 \(n\)。
+\end{tcolorbox}
+
+\subsection{算法}
+欧拉函数求法
+\begin{align*}
+	\varphi (n) & =\varphi \left(\prod _{i=1}^{r}p_{i}^{k_{i}}\right)  \\
+	            & =\prod _{i=1}^{r}\varphi \left(p_{i}^{k_{i}}\right)
+	            & {\text{（ 积 性 ）}}                                 \\
+	            & =\prod _{i=1}^{r}p_{i}^{k_{i}-1}(p_{i}-1)
+	            & {\text{（ 质 数 幂 处 取 值 ）}}                     \\
+	            & =n\prod _{i=1}^{r}\left(1-{\frac {1}{p_{i}}}\right).
+\end{align*}
+
+但是这道题涉及到大量求解 \varphi 值的情况，所以需要用筛法来解决。
+
+在用欧拉线性筛法的过程，一个合数总是被其最小的质因子筛除，比如合数 \( c = n  \times p\)， \( p \)是   \( c
+\)的最小质因数。这时候可以分两种情况来讨论：
+\begin{enumerate}
+	\item \( n \)与 \( p \)互质，则 \( \varphi(c) = \varphi(p)\varphi(n) \)
+	\item \( n \equiv 0 \pmod{p} \)， 则 \( n \)包含了 \( c \)的所有质因子。根据欧拉函数的公式：
+	      \begin{align*}
+		      \varphi(c) & = c \sum_{i=1}^{r}(1 - \frac{1}{p_i}) \\
+		                 & = np \sum_{i=1}^{r}(1- \frac{1}{p_i}) \\
+		                 & = p \varphi(n)
+	      \end{align*}
+\end{enumerate}
+
+\subsection{答案}
+510510

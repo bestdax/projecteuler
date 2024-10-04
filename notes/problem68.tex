@@ -1,0 +1,129 @@
+\section{魔法五边形环}
+\subsection{问题描述}
+\begin{tcolorbox}[breakable]
+	考虑以下“魔法”三角形环，填充数字1到6，每条线之和为9。
+
+	按照顺时针方向，从数值最小的外部节点开始（例如本例中的 \( 4,3,2
+	\)），每个解都可以被唯一描述。例如，上述解可以由以下集合描述： \( 4,3,2; 6,2,1; 5,1,3 \)。
+
+	有可能完成环的总和有四种不同的值： \( 9、10、11 \)和 \( 12 \)。总共有八个解。
+
+	\begin{center}
+		\begin{tikzpicture}[every node/.style={shape=circle, draw}]
+			\coordinate(1) at (0,0);
+			\coordinate(2) at (2,0);
+			\coordinate(6) at (4,0);
+			\coordinate(3) at (60:2);
+			\coordinate(4) at ($(2)!2!(3)$);
+			\coordinate(5) at ($(3)!2!(1)$);
+			\node(n1) at (1) {1};
+			\node(n2) at (2) {2};
+			\node(n3) at (3) {3};
+			\node(n4) at (4) {4};
+			\node(n5) at (5) {5};
+			\node(n6) at (6) {6};
+			\draw (n1) -- (n2);
+			\draw (n2) -- (n3);
+			\draw (n3) -- (n4);
+			\draw (n2) -- (n6);
+			\draw (n3) -- (n1);
+			\draw (n1) -- (n5);
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{center}
+		\begin{tabular}{cc}
+			\textbf{Total} & \textbf{Solution Set} \\
+			9              & 4,2,3; 5,3,1; 6,1,2   \\
+			9              & 4,3,2; 6,2,1; 5,1,3   \\
+			10             & 2,3,5; 4,5,1; 6,1,3   \\
+			10             & 2,5,3; 6,3,1; 4,1,5   \\
+			11             & 1,4,6; 3,6,2; 5,2,4   \\
+			11             & 1,6,4; 5,4,2; 3,2,6   \\
+			12             & 1,5,6; 2,6,4; 3,4,5   \\
+			12             & 1,6,5; 3,5,4; 2,4,6   \\
+		\end{tabular}
+	\end{center}
+
+通过连接每个组，可以形成9位数字的字符串；对于一个三角形环，最大的字符串是$432621513$。
+
+使用数字1到10，并且根据排列，可以形成16位和17位的字符串。一个“魔法”五边形环的最大16位数字字符串是什么？
+
+	\begin{center}
+		\begin{tikzpicture}[every node/.style={shape=circle, draw, minimum height=0.7cm}]
+			\coordinate(1) at (0,0);
+			\coordinate(2) at (2,0);
+			\coordinate(3) at (4,0);
+			\coordinate(4) at ([xshift=2cm]72:2);
+			\coordinate(5) at ($(2)!2!(4)$);
+			\coordinate(6) at ($(4) + (144:2)$);
+			\coordinate(7) at ($(4)!2!(6)$);
+			\coordinate(8) at ($(6) + (216:2)$);
+			\coordinate(9) at ($(6)!2!(8)$);
+			\coordinate(10) at ($(8)!2!(1)$);
+			\node(n1) at (1) {};
+			\node(n2) at (2) {};
+			\node(n3) at (3) {};
+			\node(n4) at (4) {};
+			\node(n5) at (5) {};
+			\node(n6) at (6) {};
+			\node(n7) at (7) {};
+			\node(n8) at (8) {};
+			\node(n9) at (9) {};
+			\node(n10) at (10) {};
+			\draw (n1) -- (n2);
+			\draw (n2) -- (n3);
+			\draw (n2) -- (n4);
+			\draw (n4) -- (n5);
+			\draw (n4) -- (n6);
+			\draw (n6) -- (n7);
+			\draw (n6) -- (n8);
+			\draw (n8) -- (n9);
+			\draw (n8) -- (n1);
+			\draw (n10) -- (n1);
+		\end{tikzpicture}
+	\end{center}
+\end{tcolorbox}
+
+\subsection{算法}
+这道题做起来不难，但是却有点搞。所以如果10在内圈，则肯定会被使用2次，最终会形成17位的数字，所以只能是在外圈。
+
+可以尝试将1--5放在内圈，6--10在外圈，利用排列内圈的方式计算各个分支的和是不是等于14。可以打印出结果，结合图形手动计算出结果后再用代码拼出最后的答案。
+
+\subsection{答案}
+6531031914842725
+\begin{center}
+	\begin{tikzpicture}[every node/.style={shape=circle, draw, minimum height=0.7cm}]
+		\coordinate(1) at (0,0);
+		\coordinate(2) at (2,0);
+		\coordinate(3) at (4,0);
+		\coordinate(4) at ([xshift=2cm]72:2);
+		\coordinate(5) at ($(2)!2!(4)$);
+		\coordinate(6) at ($(4) + (144:2)$);
+		\coordinate(7) at ($(4)!2!(6)$);
+		\coordinate(8) at ($(6) + (216:2)$);
+		\coordinate(9) at ($(6)!2!(8)$);
+		\coordinate(10) at ($(8)!2!(1)$);
+		\node(n1) at (1) {3};
+		\node(n2) at (2) {5};
+		\node(n3) at (3) {6};
+		\node(n4) at (4) {2};
+		\node(n5) at (5) {7};
+		\node(n6) at (6) {4};
+		\node(n7) at (7) {8};
+		\node(n8) at (8) {1};
+		\node(n9) at (9) {9};
+		\node(n10) at (10) {10};
+		\draw (n1) -- (n2);
+		\draw (n2) -- (n3);
+		\draw (n2) -- (n4);
+		\draw (n4) -- (n5);
+		\draw (n4) -- (n6);
+		\draw (n6) -- (n7);
+		\draw (n6) -- (n8);
+		\draw (n8) -- (n9);
+		\draw (n8) -- (n1);
+		\draw (n10) -- (n1);
+	\end{tikzpicture}
+\end{center}
+

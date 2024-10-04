@@ -77,3 +77,80 @@ std::vector<unsigned long> dax::sieve_of_euler(unsigned long n)
 	return primes;
 
 }
+
+unsigned long dax::euler_phi(unsigned long n)
+{
+	if(n < 2) return 0;
+
+	auto is_prime = dax::sieve_of_eratosthenes(n);
+
+	if(is_prime[n]) return n - 1;
+
+	unsigned long phi{1};
+	unsigned long root = std::sqrt(n);
+
+	for(unsigned long i = 2; i <= n; ++i)
+	{
+		if(is_prime[i] && n % i == 0)
+		{
+			unsigned power{};
+
+			while(n % i == 0)
+			{
+				n /= i;
+				++power;
+			}
+
+			phi *= (i - 1);
+
+			for(unsigned p = 0; p < power - 1; ++p)
+			{
+				phi *= i;
+			}
+		}
+	}
+
+	return phi;
+}
+
+std::vector<unsigned long> dax::sieve_of_euler_phi(unsigned long limit)
+{
+
+	std::vector<bool> is_prime(limit + 1, true);
+	is_prime[0] = is_prime[1] = false;
+	std::vector<unsigned long> primes;
+	primes.reserve(limit / std::log(limit));
+	std::vector<unsigned long> phi_vec(limit + 1);
+
+	for(unsigned long i = 2; i <= limit; ++i)
+	{
+		if(is_prime[i])
+		{
+			primes.push_back(i);
+			phi_vec[i] = i - 1;
+		}
+
+		if(i > limit / 2) continue;
+
+		for(auto&p : primes)
+		{
+			auto composite = i * p;
+
+			if(composite > limit) break;
+
+			is_prime[composite] = false;
+
+			if(i % p == 0)
+			{
+				phi_vec[composite] = phi_vec[i] * p;
+				break;
+			}
+
+			phi_vec[composite] = phi_vec[i] * phi_vec[p];
+
+		}
+	}
+
+	return phi_vec;
+
+}

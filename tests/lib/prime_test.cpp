@@ -36,15 +36,17 @@ TEST(prime, is_prime_improved)
 void test_prime(unsigned long n)
 {
 	std::vector<bool> prime_status(n + 1, true);
+
 	for(unsigned long i = 0; i <= n; ++i)
 	{
-	 prime_status[i] = dax::is_prime(i);
+		prime_status[i] = dax::is_prime(i);
 	}
 }
 
 void test_prime_improved(unsigned long n)
 {
 	std::vector<bool> prime_status(n + 1, true);
+
 	for(unsigned long i = 1; i <= n; ++i)
 	{
 		prime_status[i] = dax::is_prime_improved(i);
@@ -65,4 +67,22 @@ TEST(prime, primer_timer)
 	}
 
 	// EXPECT_TRUE(dax::sieve_of_eratosthenes(1e6) == dax::sieve_of_euler(1e6));
+}
+
+TEST(prime, phi)
+{
+	EXPECT_EQ(dax::euler_phi(2), 1);
+	EXPECT_EQ(dax::euler_phi(3), 2);
+	EXPECT_EQ(dax::euler_phi(4), 2);
+	EXPECT_EQ(dax::euler_phi(5), 4);
+	EXPECT_EQ(dax::euler_phi(6), 2);
+	EXPECT_EQ(dax::euler_phi(7), 6);
+	EXPECT_EQ(dax::euler_phi(8), 4);
+	EXPECT_EQ(dax::euler_phi(9), 6);
+	EXPECT_EQ(dax::euler_phi(10), 4);
+}
+
+TEST(prime, phi_sieve)
+{
+	print(dax::sieve_of_euler_phi(10));
 }
