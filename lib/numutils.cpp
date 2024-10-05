@@ -115,3 +115,12 @@ unsigned long dax::concatenate(unsigned long a, unsigned long b)
 
 	return a + b;
 }
+
+bool dax::is_permutation(unsigned long n, unsigned long m)
+{
+	auto ns = std::to_string(n);
+	std::sort(ns.begin(), ns.end());
+	auto ms = std::to_string(m);
+	std::sort(ms.begin(), ms.end());
+	return ns == ms;
+}
