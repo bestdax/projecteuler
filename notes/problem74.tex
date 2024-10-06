@@ -1,0 +1,30 @@
+\section{数字阶乘链}
+\subsection{问题描述}
+\begin{tcolorbox}
+
+	数字 $145$ 以其性质而闻名，即其数字的阶乘之和等于其本身：
+	\[1! + 4! + 5! = 1 + 24 + 120 = 145.\]
+
+	也许不太为人所知的是 $169$，它产生了最长的数字链，这些数字链最终会回到 $169$；结果表明只有三个这样的循环存在：
+	\begin{align*}
+		169 & \rightarrow 363601 \rightarrow 1454 \rightarrow 169 \\
+		871 & \rightarrow 45361 \rightarrow 871                   \\
+		872 & \rightarrow 45362 \rightarrow 872
+	\end{align*}
+
+	不难证明，每一个起始数字最终都会陷入循环。例如，
+
+	\begin{align*}
+		69  & \rightarrow 363600 \rightarrow 1454 \rightarrow 169 \rightarrow 363601 (\rightarrow 1454) \\
+		78  & \rightarrow 45360 \rightarrow 871 \rightarrow 45361 (\rightarrow 871)                     \\
+		540 & \rightarrow 145 (\rightarrow 145)
+	\end{align*}
+
+	以 $69$ 作为起始数字，产生了一个包含五个不重复项的链，但是以一百万以下起始数字的最长不重复链包含六十项。
+
+	有多少个链，以一百万以下的起始数字，包含正好六十个不重复的项？
+\end{tcolorbox}
+
+\subsection{算法}
+
+\subsection{答案}
