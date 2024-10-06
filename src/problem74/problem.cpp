@@ -6,69 +6,79 @@ dax 2024-10-06 14:17:25
 */
 #include "problem.h"
 #include <numutils.h>
-#include <set>
-#include <unordered_map>
+#include <vector>
+#include <algorithm>
+
+Solution::Solution()
+{
+	digit_factorials.resize(10);
+
+	for(int i = 0; i < 10; ++i)
+		digit_factorials[i] = dax::factorial(i);
+}
+
+// 计算数字各个位数的阶乘和
+unsigned long Solution::factorial_sum_of_digits(unsigned long n)
+{
+	unsigned long sum = 0;
+
+	while(n > 0)
+	{
+		sum += digit_factorials[n % 10];
+		n /= 10;
+	}
+
+	return sum;
+}
 
 void Solution::answer()
 {
-	// 预先计算好数字0-9的阶乘
-	std::vector<unsigned>digit_factorial;
-
-	for(unsigned i = 0; i < 10; ++i)
-	{
-		digit_factorial.push_back(dax::factorial(i));
-	}
 
 	unsigned count{};
 
-	std::unordered_map<unsigned, unsigned long> factorials_map;
+	std::vector<int> chain_cache(1e6, -1);
 
-	for(unsigned i = 1; i < 1e6; ++i)
+	chain_cache[0] = 1;
+
+	const int target_chain_length = 60;
+	int result_count = 0;
+
+	// 遍历1到1e6的所有数字
+	for(unsigned long i = 1; i < 1e6; ++i)
 	{
-		std::unordered_map<unsigned, std::set<unsigned long>> chains_map;
-		chains_map[i].insert(i);
+		std::vector<unsigned long> visited_chain; // 记录当前链条访问过的数字
+		visited_chain.reserve(60);
+		unsigned long current = i;
+		int chain_length = 0;
 
-		auto number = i;
-
-		while(true)
+		// 生成链条，直到出现循环或缓存命中
+		while(std::find(visited_chain.begin(), visited_chain.end(), current) == visited_chain.end() &&
+		        chain_cache[current] == -1)
 		{
-			unsigned long chain_member{};
-
-			// 计算数字阶乘和
-			if(factorials_map[number])
-			{
-				chain_member = factorials_map[number];
-			}
-			else
-			{
-				while(number)
-				{
-					chain_member += digit_factorial[number % 10];
-					number /= 10;
-				}
-
-				factorials_map[number] = chain_member;
-
-			}
-
-			if(chains_map[i].contains(chain_member))
-			{
-				if(chains_map[i].size() == 60)
-				{
-					++count;
-					print(chains_map[i]);
-				}
-
-				break;
-			}
-			else
-			{
-				chains_map[i].insert(chain_member);
-				number = chain_member;
-			}
+			visited_chain.push_back(current); // 记录当前数字及其在链条中的位置
+			current = factorial_sum_of_digits(current); // 计算下一个数字
+			++chain_length;
 		}
 
+		// 如果当前数字命中了缓存，更新链长度
+		if(chain_cache[current] != -1)
+		{
+			chain_length += chain_cache[current]; // 累加缓存中的链长度
+		}
+
+		// 更新缓存链长度
+		for(auto num : visited_chain)
+		{
+			if(chain_cache[num] == -1)
+				chain_cache[num] = chain_length--; // 更新缓存：当前链条长度减去该数字的出现位置
+		}
+
+		// 检查链条长度是否为60
+		if(chain_cache[i] == target_chain_length)
+		{
+			++result_count;
+		}
 	}
 
-	print("The answer is:", count);
+	std::cout << "The answer is: " << result_count << std::endl; // 输出结果}
 }
