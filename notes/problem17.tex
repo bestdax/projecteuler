@@ -5,11 +5,11 @@
 
 	\begin{itemize}
 		\forcsvlist{\item}{
-		      1 = "one",
-		      2 = "two",
-		      3 = "three",
-		      4 = "four",
-		      5 = "five",
+			1 = \enquote{one},
+			2 = \enquote{two},
+			3 = \enquote{three},
+			4 = \enquote{four},
+			5 = \enquote{five},
 		      }
 	\end{itemize}
 	这些单词的字母数量为 3、3、5、4 和 4。因此，1 到 5 的数字单词一共有
@@ -23,14 +23,15 @@
 
 	115（one hundred and fifteen）包含 20 个字母。
 
-	注意：不计空格或连字符，"and" 是按规则包含在使用中的英文单词中。
+	注意：不计空格或连字符，\enquote{and} 是按规则包含在使用中的英文单词中。
 \end{tcolorbox}
 
 \subsection{算法}
 \begin{enumerate}
-	\item 准备数字到英文单词的映射表：我们需要将 1 到 19 的单词直接映射。对于整十数（20, 30, ..., 90），也要单独映射。然后为“hundred”（100）和“thousand”（1000）定义规则。
+	\item 准备数字到英文单词的映射表：我们需要将 1 到 19 的单词直接映射。对于整十数（20, 30, ...,
+		90），也要单独映射。然后为\enquote{hundred}（100）和\enquote{thousand}（1000）定义规则。
 	\item 分段处理数字：例如，对于 342，英文单词表示为 \textit{three hundred and forty-two}。我们可以将数字拆分为百位数、十位数、个位数，分别进行转换。
-	\item 处理特殊情况：例如 100 到 999 之间的数字，需要注意添加 "and"。
+	\item 处理特殊情况：例如 100 到 999 之间的数字，需要注意添加 \enquote{and}。
 	\item 统计字母数：统计所有数字转换成单词后的字母数量，不计空格和连字符。
 \end{enumerate}
 
