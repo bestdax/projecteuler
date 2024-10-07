@@ -5,59 +5,33 @@ https://projecteuler.net/problem=75
 dax 2024-10-06 16:48:09
 */
 #include "problem.h"
-#include <cmath>
-#include <numutils.h>
-#include <set>
+#include <unordered_map>
+#include <numeric>
 
 void Solution::answer()
 {
-	std::set<Triangle> right_triangles;
 	std::unordered_map<unsigned, unsigned> triangle_count;
 
 	unsigned length_limit = 1.5e6;
 
-	unsigned limit = (std::sqrt(length_limit * 2 - 1) - 1) / 2;
-	unsigned m = 1;
-	unsigned n = m + 1;
-
-	while(m <= limit)
+	for(unsigned m = 2; m * m < length_limit; ++m)
 	{
-		unsigned a = n * n - m * m;
-		unsigned b = 2 * m * n;
-		unsigned c = n * n + m * m;
-
-		if(a + b + c > length_limit)
+		for(unsigned n = m % 2 + 1; n < m; n += 2)
 		{
-			++m;
-			n = m + 1;
-			continue;
-		}
+			if(std::gcd(m, n) != 1) continue;
 
-		Triangle t{a < b ? a : b, a < b ? b : a, c};
-		unsigned k = 0;
+			unsigned a = m * m - n * n;
+			unsigned b = 2 * m * n;
+			unsigned c = m * m + n * n;
 
-		if(not right_triangles.contains(t))
-		{
-			while(true)
+			unsigned perimeter = a + b + c;
+
+			for(unsigned k = 1; k * perimeter <= length_limit; ++k)
 			{
-				++k;
-				auto copy(t);
-
-				copy.a *= k;
-				copy.b *= k;
-				copy.c *= k;
-
-				if(copy.perimeter() > length_limit) break;
-
-				if(not right_triangles.contains(copy))
-				{
-					right_triangles.insert(copy);
-					++triangle_count[copy.perimeter()];
-				}
+				++triangle_count[k * perimeter];
 			}
-		}
 
-		++n;
+		}
 	}
 
 	unsigned count{};
