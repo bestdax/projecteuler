@@ -6,6 +6,6 @@ class Solution
 {
 	public:
 		void answer();
-		BigUInt coin_partitions(unsigned n);
+		void answer2();
 
 };

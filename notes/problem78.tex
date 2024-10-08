@@ -1,24 +1,28 @@
 \section{硬币分堆问题}\label{sec:problem78}
 \subsection{问题描述}
 \begin{tcolorbox}
-\begin{itemize}
-    \item 让 $p(n)$ 表示将 $n$ 个硬币分割成堆的不同方式的数量。
-    \item 例如，5个硬币可以以7种不同的方式分割成堆，所以 $p(5) = 7$。
-    \item 列出5个硬币分割成堆的7种方式：
-    \begin{enumerate}
-        \item OOOOO
-        \item OOOOO \ O
-        \item OOO \ OO
-        \item OOO \ O \ O
-        \item OO \ OO \ O
-        \item OO \ O \ O \ O
-        \item O \ O \ O \ O \ O
-    \end{enumerate}
-    \item 找出最小的 $n$ 值，使得 $p(n)$ 可以被一百万整除。
-\end{itemize}
+	\begin{itemize}
+		\item 让 $p(n)$ 表示将 $n$ 个硬币分割成堆的不同方式的数量。
+		\item 例如，5个硬币可以以7种不同的方式分割成堆，所以 $p(5) = 7$。
+		\item 列出5个硬币分割成堆的7种方式：
+		      \begin{enumerate}
+			      \item OOOOO
+			      \item OOOOO \ O
+			      \item OOO \ OO
+			      \item OOO \ O \ O
+			      \item OO \ OO \ O
+			      \item OO \ O \ O \ O
+			      \item O \ O \ O \ O \ O
+		      \end{enumerate}
+		\item 找出最小的 $n$ 值，使得 $p(n)$ 可以被一百万整除。
+	\end{itemize}
 \end{tcolorbox}
 
 \subsection{算法}
+算法还是同\nameref{sec:problem76}、\nameref{sec:problem77}中一样，用动态规划法来解，但是需要注意的是 \( p(n) \)的值随着
+\( n \)的增大而急剧增大，所以需要处理溢出的问题。因为需要找到的 \( n \)使得 \( p(n) \)的值能够被 \( \num{1000000}
+\)整除，所以可以将 \( dp \)数组中的值都与 \( \num{1000000} \)取模，来解决溢出的问题。
 
-
+运行最快的算法是用递推公式，但是我对这个公式不理解，所以虽然效率高，却需要一定的数学知识为基础。
 \subsection{答案}
+55374

@@ -6,42 +6,78 @@ dax 2024-10-07 16:24:01
 */
 #include "problem.h"
 
-BigUInt Solution::coin_partitions(unsigned n)
+void Solution::answer()
 {
-	std::vector<BigUInt> dp(n + 1);
+
+	unsigned n = 60'000;
+	std::vector<unsigned> dp(n + 1);
 	dp[0] = 1;
 
 	for(unsigned pile = 1; pile <= n; ++pile)
+	{
 		for(unsigned i = pile; i <= n; ++i)
 		{
 			dp[i] += dp[i - pile];
+
+			dp[i] %= 1'000'000;
+
+			if(i == pile  && dp[i]  == 0)
+			{
+
+				{
+					print("The answer is:", pile);
+					return;
+				}
+
+			}
+
 		}
 
-	return dp.back();
+	}
+
 }
 
-void Solution::answer()
+void Solution::answer2()
 {
-	std::vector<std::vector<BigUInt>> dp;
-	unsigned coins = 0;
-	dp.push_back({1});
 
-	while(dp[coins].back() % 1e6 != 0)
+	std::vector<unsigned long> p{1};
+	unsigned long n = 1;
+
+	while(true)
 	{
-		++coins;
-		std::vector<BigUInt> row(coins + 1);
-		row[0] = 1;
-		dp.push_back(row);
+		long pn = 0;
+		unsigned long k = 1;
 
-		for(unsigned i = 1; i <= coins; ++i)
+		while(true)
 		{
-			dp[coins][i] = i == coins ? 1 : dp[coins-1][i] + dp[coins - 1][i - i];
+			unsigned long gk1 = k * (3 * k - 1) / 2;
+			unsigned long gk2 = k * (3 * k + 1) / 2;
+
+			if(gk1 > n and gk2 > n)
+				break;
+
+			int sign = k % 2 == 0 ? -1 : 1;
+
+			if(gk1 <= n)
+				pn += sign * p[n - gk1];
+
+			if(gk2 <= n)
+				pn += sign * p[n - gk2];
+
+			k += 1;
+
 		}
 
-		print(dp[coins]);
+		pn %= 1'000'000;
+		p.push_back(pn);
 
-		if(coins > 10) break;
+		if(pn == 0)
+		{
+			print("The answer is:", n);
+			return;
+		}
 
-		// print("The answer is:", coin_partitions(coins));
+		++n;
 	}
+
 }
