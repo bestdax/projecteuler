@@ -1,0 +1,28 @@
+\section{路径和：右下移动}\label{sec:problem81}
+\subsection{问题描述}
+\begin{tcolorbox}
+	在下面的 $5 \times 5$ 矩阵中，从左上角到右下角的最小路径和，只能向右和向下移动，用粗体红色表示，等于 2427。
+
+	\[
+		\begin{array}{ccccc}
+			\red{131} & 673      & 234       & 103       & 18        \\
+			\red{201} & \red{96} & \red{342} & 965       & 150       \\
+			630       & 803      & \red{746} & \red{422} & 111       \\
+			537       & 699      & 497       & \red{121} & 956       \\
+			805       & 732      & 524       & \red{37}  & \red{331} \\
+		\end{array}
+	\]
+
+	请找出在 \href{https://projecteuler.net/resources/documents/0081_matrix.txt}{matrix.txt}（右键并选择“另存为...”）中的 $80 \times 80$ 矩阵，从左上角到右下角的最小路径和，只能向右和向下移动。
+\end{tcolorbox}
+
+\subsection{算法}
+这道题还是用的动态规划法来解决，
+\begin{itemize}
+	\item 通过第一行(除出发点外)的路径都取决于其左方的值
+	\item 通过第一列(除出发点外)的路径都取决于其上方的值
+	\item 其他普通格子都取决于其左边与上面的值中小的一个
+\end{itemize}
+
+\subsection{答案}
+427337
