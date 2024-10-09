@@ -8,11 +8,10 @@ dax 2024-10-08 22:27:57
 #include <fstream>
 #include <filesystem>
 #include <sstream>
-#include <utility>
-#include <limits>
 
 void Solution::answer()
 {
+	// 读取矩阵
 	std::filesystem::path p = __FILE__;
 	p.replace_filename("0081_matrix.txt");
 	std::ifstream file(p);
@@ -33,34 +32,13 @@ void Solution::answer()
 		matrix.push_back(row);
 	}
 
-	std::pair<unsigned, unsigned> coordinate{0, 0};
-
-	unsigned long sum{matrix[0][0]};
-
-	while(coordinate.first < 80 && coordinate.second < 80)
-	{
-		unsigned below = std::numeric_limits<unsigned>::max();
-		unsigned right = std::numeric_limits<unsigned>::max();
-
-		if(coordinate.second < 79)
-			right = matrix[coordinate.first][coordinate.second + 1];
-
-		if(coordinate.first < 79)
-			below = matrix[coordinate.first + 1][coordinate.second];
-
-		if(right < below)
+	for(unsigned row = 0; row < 80; ++row)
+		for(unsigned col = 0; col < 80; ++ col)
 		{
-			sum += right;
-			++coordinate.second;
-		}
-		else
-		{
-			sum += below;
-			++coordinate.first;
+			if(row == 0 && col != 0) matrix[row][col] += matrix[row][col - 1];
+			else if(row != 0 && col == 0) matrix[row][col] += matrix[row - 1][col];
+			else if(row != 0 && col != 0) matrix[row][col] += std::min(matrix[row - 1][col], matrix[row][col - 1]);
 		}
 
-	}
-	sum -= std::numeric_limits<unsigned>::max();
-
-	print("The answer is:", sum);
+	print("The answer is:", matrix[79][79]);
 }
