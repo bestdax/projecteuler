@@ -81,5 +81,5 @@ print(const T& first, const Args... args)
 }
 
 // type definition
-using ulong = unsigned long;
-using uint = unsigned;
+using ulong = std::uint64_t;
+using uint = std::uint32_t;
