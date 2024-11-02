@@ -19,5 +19,30 @@
 \end{tcolorbox}
 
 \subsection{算法}
+\begin{enumerate}
+	\item 建模为图
+	      \begin{itemize}
+		      \item 将每个网格单元视为图中的节点，边的权重为相邻单元之间的数值。
+	      \end{itemize}
+	\item	初始化
+	      \begin{itemize}
+		      \item 创建一个距离数组 dist，初始值为无穷大（ \( \infty \)），用于存储从起点到每个节点的最短路径和。
+		      \item 将起点的距离设为其值，其他节点初始化为无穷大。
+		      \item 使用最小堆优先队列来存储节点和它们的路径和。
+	      \end{itemize}
+
+	\item	执行Dijkstra算法
+	      \begin{itemize}
+		      \item 从优先队列中取出路径和最小的节点，对其四个方向的相邻节点更新最短路径。
+		      \item 如果发现更短路径，则更新 dist 数组中的值，并将该节点加入队列。
+		      \item 继续处理直到找到到达右下角的最短路径和。
+	      \end{itemize}
+
+	\item	终止条件
+	      \begin{itemize}
+		      \item 当优先队列为空或访问到右下角的节点时，算法结束。
+	      \end{itemize}
+\end{enumerate}
 
 \subsection{答案}
+425185
