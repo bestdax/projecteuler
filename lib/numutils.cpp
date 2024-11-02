@@ -1,7 +1,7 @@
 #include <numutils.h>
 #include <vector>
 
-bool dax::is_palindrome(unsigned long n, unsigned base)
+bool dax::is_palindrome(ulong n, uint base)
 {
 	if(n == 0) return true;
 
@@ -27,7 +27,7 @@ bool dax::is_palindrome(unsigned long n, unsigned base)
 	return true;
 }
 
-unsigned long dax::gcd(unsigned long a, unsigned long b)
+ulong dax::gcd(ulong a, ulong b)
 {
 	while(b != 0)
 	{
@@ -39,14 +39,14 @@ unsigned long dax::gcd(unsigned long a, unsigned long b)
 	return a;
 }
 
-unsigned long dax::lcm(unsigned long a, unsigned long b)
+ulong dax::lcm(ulong a, ulong b)
 {
 	if(a == 0 || b == 0) return 0;
 
 	return a / dax::gcd(a, b) * b;
 }
 
-bool dax::is_pandigital(unsigned n, bool include_zero)
+bool dax::is_pandigital(uint n, bool include_zero)
 {
 	auto ns = std::to_string(n);
 	std::unordered_set<char> digits_set(ns.begin(), ns.end());
@@ -64,11 +64,11 @@ bool dax::is_pandigital(unsigned n, bool include_zero)
 
 }
 
-unsigned long dax::factorial(unsigned n)
+ulong dax::factorial(uint n)
 {
 	if(n == 0) return 1;
 
-	unsigned f{1};
+	uint f{1};
 
 	while(n)
 	{
@@ -79,31 +79,31 @@ unsigned long dax::factorial(unsigned n)
 	return f;
 }
 
-bool dax::is_pentagonal(unsigned long p)
+bool dax::is_pentagonal(ulong p)
 {
 	double  n = (std::sqrt(24 * p + 1) + 1) / 6;
-	return n == static_cast<unsigned long>(n);
+	return n == static_cast<ulong>(n);
 }
 
-bool dax::is_triangle(unsigned long t)
+bool dax::is_triangle(ulong t)
 {
 	double  n = (std::sqrt(8 * t + 1) - 1) / 2;
-	return n == static_cast<unsigned long>(n);
+	return n == static_cast<ulong>(n);
 }
 
-bool dax::is_hexagonal(unsigned long h)
+bool dax::is_hexagonal(ulong h)
 {
 	double  n = (std::sqrt(8 * h + 1) + 1) / 4;
-	return n == static_cast<unsigned long>(n);
+	return n == static_cast<ulong>(n);
 }
 
-bool dax::is_square(unsigned long s)
+bool dax::is_square(ulong s)
 {
 	double n = std::sqrt(s);
-	return n == static_cast<unsigned long>(n);
+	return n == static_cast<ulong>(n);
 }
 
-unsigned long dax::concatenate(unsigned long a, unsigned long b)
+ulong dax::concatenate(ulong a, ulong b)
 {
 	auto temp = b;
 
@@ -116,7 +116,7 @@ unsigned long dax::concatenate(unsigned long a, unsigned long b)
 	return a + b;
 }
 
-bool dax::is_permutation(unsigned long n, unsigned long m)
+bool dax::is_permutation(ulong n, ulong m)
 {
 	auto ns = std::to_string(n);
 	std::sort(ns.begin(), ns.end());

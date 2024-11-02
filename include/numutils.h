@@ -1,19 +1,20 @@
 #pragma once
+#include <utils.h>
 #include <unordered_set>
 #include <string>
 #include <cmath>
 
 namespace dax
 {
-	bool is_palindrome(unsigned long, unsigned base = 10);
-	unsigned long gcd(unsigned long, unsigned long);
-	unsigned long lcm(unsigned long, unsigned long);
-	bool is_pandigital(unsigned, bool include_zero = false);
-	unsigned long factorial(unsigned);
-	bool is_pentagonal(unsigned long);
-	bool is_triangle(unsigned long);
-	bool is_hexagonal(unsigned long);
-	bool is_square(unsigned long);
-	bool is_permutation(unsigned long, unsigned long);
-	unsigned long concatenate(unsigned long, unsigned long);
+	bool is_palindrome(ulong, uint base = 10);
+	ulong gcd(ulong, ulong);
+	ulong lcm(ulong, ulong);
+	bool is_pandigital(uint, bool include_zero = false);
+	ulong factorial(uint);
+	bool is_pentagonal(ulong);
+	bool is_triangle(ulong);
+	bool is_hexagonal(ulong);
+	bool is_square(ulong);
+	bool is_permutation(ulong, ulong);
+	ulong concatenate(ulong, ulong);
 }

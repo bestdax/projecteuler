@@ -10,7 +10,7 @@ BigUInt::BigUInt(const BigUInt& other)
 	data = other.data;
 }
 
-BigUInt::BigUInt(uint64_t num)
+BigUInt::BigUInt(ulong num)
 {
 	while(num)
 	{
@@ -41,7 +41,7 @@ BigUInt::BigUInt(std::string sn)
 	// 取9位是因为2^30=1'073'741'824，确保每个单段能够容得下
 	// 将每一段都分别与BASE取余(从高位开始)，余数乘以BASE后滚入下一位
 
-	std::vector<uint64_t> segments;
+	std::vector<ulong> segments;
 
 	for(int i = sn.size(); i  > 0; i -= SEG_LENGTH)
 	{
@@ -51,13 +51,13 @@ BigUInt::BigUInt(std::string sn)
 		segments.push_back(segment_value);
 	}
 
-	uint64_t remainder{};
+	ulong remainder{};
 
 	while(!segments.empty())
 	{
 		for(int i = segments.size() - 1; i >= 0; --i)
 		{
-			uint64_t current_value = segments[i] + remainder * SEG_BASE;
+			ulong current_value = segments[i] + remainder * SEG_BASE;
 			remainder = current_value % BASE;
 			segments[i] = current_value / BASE;
 		}
@@ -86,7 +86,7 @@ void BigUInt::trim()
 std::string BigUInt::to_string() const
 {
 	BigUInt copy(*this);
-	uint64_t remainder{};
+	ulong remainder{};
 	std::string sn;
 
 	while(!copy.data.empty())
@@ -94,7 +94,7 @@ std::string BigUInt::to_string() const
 		for(int i = copy.data.size() - 1; i >= 0; --i)
 		{
 			// 有可能会溢出，所以用64位的变量来暂存中间结果
-			uint64_t current_value{};
+			ulong current_value{};
 			current_value = copy.data[i] + remainder * BASE;
 			remainder = current_value % SEG_BASE;
 			copy.data[i] = current_value / SEG_BASE;
@@ -306,7 +306,7 @@ BigUInt operator*(const BigUInt& lhs, const BigUInt& rhs)
 
 		for(int j = 0; j < rhs.data.size() || carry; ++j)
 		{
-			uint64_t temp = result.data[i + j] + static_cast<uint64_t>(lhs.data[i]) *
+			ulong temp = result.data[i + j] + static_cast<ulong>(lhs.data[i]) *
 			                (j < rhs.data.size() ? rhs.data[j] : 0) + carry;
 			carry = temp >> 30;
 			result.data[i + j] = temp &(BigUInt::BASE - 1) ;
@@ -324,12 +324,12 @@ BigUInt operator/(const BigUInt& lhs, const BigUInt& rhs)
 	return result.first;
 }
 
-BigUInt BigUInt::operator<<(unsigned long shift) const
+BigUInt BigUInt::operator<<(ulong shift) const
 {
 	BigUInt result;
 	result.data.resize(shift + data.size());
 
-	for(unsigned long i = shift; i < result.data.size(); ++i)
+	for(ulong i = shift; i < result.data.size(); ++i)
 		result.data[i] = data[i - shift];
 
 	return result;
@@ -425,7 +425,7 @@ std::pair<BigUInt, BigUInt> BigUInt::divide_by_two() const
 
 	for(int i = quotient.data.size() - 1; i >= 0; --i)
 	{
-		uint64_t current = quotient.data[i] + (carry ? BASE : 0);
+		ulong current = quotient.data[i] + (carry ? BASE : 0);
 		quotient.data[i] = (current >> 1);
 		carry = current & 1;
 	}
@@ -481,9 +481,9 @@ bool BigUInt::is_prime()
 	return true;
 }
 
-uint64_t BigUInt::toul() const
+ulong BigUInt::toul() const
 {
-	if(*this <= std::numeric_limits<uint64_t>::max()) return std::stoul(to_string());
+	if(*this <= std::numeric_limits<ulong>::max()) return std::stoul(to_string());
 	else throw std::overflow_error("数据溢出，最多只能64bit的整数");
 }
 

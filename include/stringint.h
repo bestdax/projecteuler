@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <utils.h>
 #include <string>
 #include <compare>
 
@@ -8,7 +9,7 @@ class StringInt
 	public:
 		StringInt();
 		StringInt(std::string);
-		StringInt(uint64_t);
+		StringInt(ulong);
 		StringInt(const StringInt&);
 		void reverse();
 		StringInt operator+(const StringInt& other)const;
@@ -32,4 +33,4 @@ class StringInt
 };
 
 StringInt operator+(const std::string&, const StringInt&);
-StringInt operator+(uint64_t, const StringInt&);
+StringInt operator+(ulong, const StringInt&);

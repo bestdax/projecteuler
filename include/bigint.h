@@ -1,4 +1,5 @@
 #pragma once
+#include <utils.h>
 #include <vector>
 #include <string>
 #include <iostream>
@@ -14,12 +15,12 @@ class BigVector;
 class BigUInt
 {
 	private:
-		std::vector<uint32_t> data;
-		static const uint32_t BASE = 1 << 30;
-		static const uint32_t SEG_LENGTH = 9;
-		static const uint32_t SEG_BASE = 1e9;
+		std::vector<uint> data;
+		static const uint BASE = 1 << 30;
+		static const uint SEG_LENGTH = 9;
+		static const uint SEG_BASE = 1e9;
 		void trim();
-		uint32_t mod(uint32_t) const;
+		uint mod(uint) const;
 	public:
 		BigUInt();
 		BigUInt(std::string);
@@ -47,7 +48,7 @@ class BigUInt
 		BigUInt reverse() const;
 		BigUInt digital_sum() const;
 		BigUInt length() const;
-		BigUInt operator<<(unsigned long) const;
+		BigUInt operator<<(ulong) const;
 		friend std::ostream& operator<<(std::ostream& os, const BigUInt& n);
 		friend BigUInt operator*(const BigUInt& lhs, const BigUInt& rhs);
 		template<typename T>

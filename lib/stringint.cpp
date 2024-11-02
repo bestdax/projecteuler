@@ -42,7 +42,7 @@ StringInt StringInt::operator+(const StringInt& other) const
 	result.data.resize(std::max(data.size(), other.data.size()));
 	bool carry = false;
 
-	for(unsigned i = 0; i < result.data.size(); ++i)
+	for(uint i = 0; i < result.data.size(); ++i)
 	{
 		result.data[i] = (i < data.size() ? data[i] : '0') + (i < other.data.size() ? other.data[i] : '0') - '0';
 
@@ -98,9 +98,9 @@ StringInt StringInt::operator*(const StringInt& other) const
 
 	StringInt result;
 
-	unsigned carry{};
+	uint carry{};
 
-	for(unsigned i = 0; i < other.data.size(); ++i)
+	for(uint i = 0; i < other.data.size(); ++i)
 	{
 		StringInt temp(*this);
 
