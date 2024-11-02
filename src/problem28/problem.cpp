@@ -8,9 +8,9 @@ dax 2024-09-12 12:09:07
 
 void Solution::answer()
 {
-	unsigned long sum{1};
-	unsigned side = 1;
-	unsigned dnum = 1;
+	ulong sum{1};
+	uint side = 1;
+	uint dnum = 1;
 
 	while(side < 1001)
 	{

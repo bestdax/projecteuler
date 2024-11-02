@@ -9,16 +9,16 @@ dax 2024-09-11 08:38:23
 
 void Solution::answer()
 {
-	std::vector<unsigned> floating_row(matrix.back().size());
+	std::vector<uint> floating_row(matrix.back().size());
 
 	for(auto& row : matrix)
 	{
-		std::vector<unsigned> temprow(matrix.back().size());
+		std::vector<uint> temprow(matrix.back().size());
 
-		for(unsigned i = 0; i < row.size(); ++i)
+		for(uint i = 0; i < row.size(); ++i)
 		{
-			unsigned upper_left = i == 0 ? 0 : floating_row[i - 1];
-			unsigned upper_right = i == row.size() - 1 ? 0 : floating_row[i];
+			uint upper_left = i == 0 ? 0 : floating_row[i - 1];
+			uint upper_right = i == row.size() - 1 ? 0 : floating_row[i];
 			temprow[i] = std::max(upper_left, upper_right)  + row[i];
 		}
 

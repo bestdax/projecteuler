@@ -17,8 +17,8 @@ std::ostream& operator<<(std::ostream& os, const Polygon& polygon)
 Solution::Solution()
 {
 	// generate Polygon numbers
-	unsigned n = 1;
-	std::vector<unsigned> current_polygonals;
+	uint n = 1;
+	std::vector<uint> current_polygonals;
 
 	while(true)
 	{
@@ -26,7 +26,7 @@ Solution::Solution()
 
 		if(current_polygonals.front() > 10000) break;
 
-		for(unsigned i = 3; i < 9; ++i)
+		for(uint i = 3; i < 9; ++i)
 		{
 			if(current_polygonals[i - 3] > 999 && current_polygonals[i - 3] < 10000)
 				polygons.push_back({current_polygonals[i - 3], i});
@@ -46,7 +46,7 @@ Solution::Solution()
 		}
 }
 
-bool Solution::is_cyclic(unsigned a, unsigned b)
+bool Solution::is_cyclic(uint a, uint b)
 {
 	return a % 100 == b / 100;
 }
@@ -88,7 +88,7 @@ void Solution::answer()
 					if(new_chain.size() == 6 and is_cyclic(new_chain.back().number, new_chain.front().number))
 					{
 						print(new_chain);
-						unsigned sum{};
+						uint sum{};
 
 						for(const auto&poly : new_chain)
 						{

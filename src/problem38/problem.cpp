@@ -17,10 +17,10 @@ void Solution::answer()
 		// 每次循环从左边多取一个数字
 		for(int i = 1; i < 5; ++i)
 		{
-			unsigned first_seg = std::stoul(ns.substr(0, i));
+			uint first_seg = std::stoul(ns.substr(0, i));
 
 			auto seg_start_index = i;
-			unsigned n = 2;
+			uint n = 2;
 			std::string calculated_ns = std::to_string(first_seg);
 
 			while(calculated_ns.size() < ns.size())

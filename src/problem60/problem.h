@@ -1,4 +1,6 @@
 #pragma once
+#include <utils.h>
+#include <utils.h>
 #include <vector>
 #include <prime.h>
 #include <unordered_map>
@@ -10,12 +12,12 @@
 class Solution
 {
 	private:
-		unsigned long limit;
+		ulong limit;
 		unsigned target_len{5};
-		std::vector<unsigned long> primes;
-		std::unordered_map<unsigned long, std::set<unsigned long>> group_map;
-		unsigned long min{std::numeric_limits<unsigned long>::max()};
-		std::set<unsigned long> target;
+		std::vector<ulong> primes;
+		std::unordered_map<ulong, std::set<ulong>> group_map;
+		ulong min{std::numeric_limits<ulong>::max()};
+		std::set<ulong> target;
 
 	public:
 		Solution(): limit(1e4)
@@ -35,8 +37,8 @@ class Solution
 				}
 		};
 
-		void find_groups(unsigned long start_node);
+		void find_groups(ulong start_node);
 
-		bool is_prime_pair(unsigned long a, unsigned long b);
+		bool is_prime_pair(ulong a, ulong b);
 		void answer();
 };

@@ -1,9 +1,10 @@
 #pragma once
+#include <utils.h>
 
 class Solution
 {
 	public:
-		unsigned long nth_prime(unsigned n);
+		ulong nth_prime(uint n);
 		void answer();
 
 };

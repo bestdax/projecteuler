@@ -6,9 +6,9 @@ dax 2024-09-07 05:53:48
 */
 #include "problem.h"
 
-unsigned Solution::sum_of_even_fibonacci(unsigned limit)
+uint Solution::sum_of_even_fibonacci(uint limit)
 {
-	unsigned a = 1, b = 2, sum = 0;
+	uint a = 1, b = 2, sum = 0;
 
 	while(b <= limit)
 	{

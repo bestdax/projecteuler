@@ -27,9 +27,9 @@ Solution::Solution()
 
 }
 
-unsigned Solution::name_score(std::string& name)
+uint Solution::name_score(std::string& name)
 {
-	unsigned score{};
+	uint score{};
 
 	for(auto& c : name)
 		score += c - 64;
@@ -39,9 +39,9 @@ unsigned Solution::name_score(std::string& name)
 
 void Solution::answer()
 {
-	unsigned long sum{};
+	ulong sum{};
 
-	for(unsigned i = 0; i < names.size(); ++i)
+	for(uint i = 0; i < names.size(); ++i)
 	{
 		sum += (i + 1) * name_score(names[i]);
 	}

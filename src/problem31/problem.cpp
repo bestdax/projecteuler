@@ -14,7 +14,7 @@ void Solution::answer()
 {
 	for(auto& coin : coins)
 	{
-		for(unsigned i = coin; i <= 200; ++i)
+		for(uint i = coin; i <= 200; ++i)
 			dp[i] += dp[i - coin];
 	}
 

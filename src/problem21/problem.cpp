@@ -7,12 +7,12 @@ dax 2024-09-11 11:39:05
 #include "problem.h"
 #include <cmath>
 
-unsigned long  Solution::sum_of_proper_divisors(unsigned long n)
+ulong  Solution::sum_of_proper_divisors(ulong n)
 {
-	unsigned long sum{};
-	unsigned long root = std::sqrt(n);
+	ulong sum{};
+	ulong root = std::sqrt(n);
 
-	for(unsigned long i = 2; i <= root; ++i)
+	for(ulong i = 2; i <= root; ++i)
 	{
 		if(n % i == 0) sum += i + n / i;
 
@@ -25,9 +25,9 @@ unsigned long  Solution::sum_of_proper_divisors(unsigned long n)
 
 void Solution::answer()
 {
-	unsigned long sum{};
+	ulong sum{};
 
-	for(unsigned long a = 2; a < 1e4; ++a)
+	for(ulong a = 2; a < 1e4; ++a)
 	{
 		auto b = sum_of_proper_divisors(a);
 

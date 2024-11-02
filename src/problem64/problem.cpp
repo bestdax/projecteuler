@@ -38,7 +38,7 @@ int SqrtCF::period()
 
 void Solution::answer()
 {
-	unsigned count{};
+	uint count{};
 
 	for(int i = 1; i <= 10000; ++i)
 	{

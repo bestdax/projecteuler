@@ -1,10 +1,11 @@
 #pragma once
+#include <utils.h>
 #include <vector>
 
 class Solution
 {
 	private:
-		std::vector<unsigned long> pentagonals;
+		std::vector<ulong> pentagonals;
 		unsigned n {};
 
 	public:

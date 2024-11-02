@@ -9,9 +9,9 @@ dax 2024-09-16 11:03:11
 
 void Solution::answer()
 {
-	unsigned sum{};
+	uint sum{};
 
-	for(unsigned i = 0; i < 1e6; ++i)
+	for(uint i = 0; i < 1e6; ++i)
 	{
 		if(dax::is_palindrome(i) && dax::is_palindrome(i, 2))
 			sum += i;

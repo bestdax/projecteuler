@@ -9,17 +9,17 @@ dax 2024-09-24 15:53:55
 
 void Solution::answer()
 {
-	unsigned prime_count = 0;
-	unsigned diagonal_count = 1;
+	uint prime_count = 0;
+	uint diagonal_count = 1;
 
-	unsigned side = 1;
-	unsigned long diagonal{1};
+	uint side = 1;
+	ulong diagonal{1};
 
 	do
 	{
 		side += 2;
 
-		for(unsigned i = 0; i < 4; ++i)
+		for(uint i = 0; i < 4; ++i)
 		{
 			diagonal += side - 1;
 

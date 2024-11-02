@@ -11,11 +11,11 @@ Solution::Solution()
 	is_prime = dax::sieve_of_eratosthenes(1e6);
 }
 
-bool Solution::is_truncatable_prime(unsigned n)
+bool Solution::is_truncatable_prime(uint n)
 {
 	if(n < 10 || !is_prime[n]) return false;
 
-	unsigned base = 10;
+	uint base = 10;
 
 	while(n % base != n)
 	{
@@ -33,9 +33,9 @@ bool Solution::is_truncatable_prime(unsigned n)
 
 void Solution::answer()
 {
-	unsigned count{};
-	unsigned n = 10;
-	unsigned sum{};
+	uint count{};
+	uint n = 10;
+	uint sum{};
 
 	while(count != 11)
 	{

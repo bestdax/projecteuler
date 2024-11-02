@@ -10,9 +10,9 @@ dax 2024-10-07 15:55:13
 void Solution::answer()
 {
 
-	unsigned target = 10;
+	uint target = 10;
 	auto primes = dax::sieve_of_euler(100);
-	std::vector<unsigned long> dp(target + 1, 0);
+	std::vector<ulong> dp(target + 1, 0);
 	dp[0] = 1;
 
 	while(dp.back() <= 5000)
@@ -26,7 +26,7 @@ void Solution::answer()
 		{
 			if(prime > target) break;
 
-			for(unsigned i = prime; i <= target; ++i)
+			for(uint i = prime; i <= target; ++i)
 			{
 				dp[i] += dp[i - prime];
 			}

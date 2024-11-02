@@ -12,7 +12,7 @@ void Solution::answer()
 	BigUInt max{};
 
 	for(BigUInt a = 1; a < 100; ++a)
-		for(unsigned b = 1; b < 100; ++b)
+		for(uint b = 1; b < 100; ++b)
 		{
 			auto c = a.power(b);
 			auto digital_sum = c.digital_sum();

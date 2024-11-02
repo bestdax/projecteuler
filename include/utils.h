@@ -79,3 +79,7 @@ print(const T& first, const Args... args)
 		print(args...);
 	}
 }
+
+// type definition
+using ulong = unsigned long;
+using uint = unsigned;

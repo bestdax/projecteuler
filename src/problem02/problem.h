@@ -3,7 +3,7 @@
 class Solution
 {
 	public:
-		unsigned sum_of_even_fibonacci(unsigned limit);
+		uint sum_of_even_fibonacci(uint limit);
 		void answer();
 
 };

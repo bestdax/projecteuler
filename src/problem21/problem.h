@@ -1,9 +1,10 @@
 #pragma once
+#include <utils.h>
 
 class Solution
 {
 	public:
 		void answer();
-		unsigned long sum_of_proper_divisors(unsigned long n);
+		ulong sum_of_proper_divisors(ulong n);
 
 };

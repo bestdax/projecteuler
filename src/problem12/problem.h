@@ -1,10 +1,11 @@
 #pragma once
+#include <utils.h>
 
 class Solution
 {
 	public:
-		unsigned count_divisors(unsigned long);
-		unsigned long triangle_number(unsigned n);
+		uint count_divisors(ulong);
+		ulong triangle_number(uint n);
 		void answer();
 
 };

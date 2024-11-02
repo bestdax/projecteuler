@@ -14,9 +14,9 @@ Solution::Solution(): digital_powers(10)
 	}
 }
 
-unsigned Solution::digital_power_sum(unsigned n)
+uint Solution::digital_power_sum(uint n)
 {
-	unsigned sum{};
+	uint sum{};
 
 	while(n)
 	{
@@ -30,9 +30,9 @@ unsigned Solution::digital_power_sum(unsigned n)
 void Solution::answer()
 {
 
-	unsigned sum{};
+	uint sum{};
 
-	for(unsigned i = 2; i < 1e6; ++i)
+	for(uint i = 2; i < 1e6; ++i)
 	{
 		if(i == digital_power_sum(i))
 			sum += i;

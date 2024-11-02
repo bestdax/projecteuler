@@ -40,9 +40,9 @@ int SqrtCF::period()
 void Solution::answer()
 {
 	BigUInt maxp{};
-	unsigned maxd{};
+	uint maxd{};
 
-	for(unsigned d = 1; d <= 1000; ++d)
+	for(uint d = 1; d <= 1000; ++d)
 	{
 		SqrtCF cf(d);
 
@@ -51,8 +51,8 @@ void Solution::answer()
 			std::vector<BigUInt> P{0, 1};
 			std::vector<BigUInt> Q{1, 0};
 			BigUInt p, q;
-			unsigned i = 0;
-			unsigned ai = 0;
+			uint i = 0;
+			uint ai = 0;
 
 			while(p * p !=  d * q * q + 1)
 			{

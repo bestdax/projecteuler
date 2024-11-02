@@ -13,11 +13,11 @@ Solution::Solution()
 	is_prime = dax::sieve_of_eratosthenes(1e6);
 }
 
-bool Solution::is_circular_prime(unsigned n)
+bool Solution::is_circular_prime(uint n)
 {
 	if(!is_prime[n]) return false;
 
-	unsigned num_of_digits{};
+	uint num_of_digits{};
 	auto temp = n;
 
 	while(temp)
@@ -26,14 +26,14 @@ bool Solution::is_circular_prime(unsigned n)
 		++num_of_digits;
 	}
 
-	unsigned multiplier{1};
+	uint multiplier{1};
 
 	for(int i = 0; i < num_of_digits - 1; ++i)
 		multiplier *= 10;
 
 	auto circular = n;
 
-	for(unsigned i = 0; i < num_of_digits; ++i)
+	for(uint i = 0; i < num_of_digits; ++i)
 	{
 		circular = circular % 10 * multiplier + circular / 10;
 
@@ -46,9 +46,9 @@ bool Solution::is_circular_prime(unsigned n)
 
 void Solution::answer()
 {
-	unsigned count{};
+	uint count{};
 
-	for(unsigned i = 0; i < 1e6; ++i)
+	for(uint i = 0; i < 1e6; ++i)
 	{
 		if(is_circular_prime(i))
 			++count;

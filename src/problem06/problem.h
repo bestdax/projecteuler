@@ -1,9 +1,10 @@
 #pragma once
+#include <utils.h>
 
 class Solution
 {
 	public:
-		unsigned long sum_square_difference(unsigned n);
+		ulong sum_square_difference(uint n);
 		void answer();
 
 };

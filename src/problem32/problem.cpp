@@ -12,12 +12,12 @@ dax 2024-09-14 12:55:07
 
 void Solution::answer()
 {
-    unsigned total_sum = 0;
+    uint total_sum = 0;
     std::string digits = "123456789";
-    std::unordered_set<unsigned> unique_products;
+    std::unordered_set<uint> unique_products;
     
     // 可能的分割模式：{乘数1长度, 乘数2长度, 积的长度}
-    std::vector<std::vector<unsigned>> split_patterns = {
+    std::vector<std::vector<uint>> split_patterns = {
         {1, 4, 4},  // 1位乘数 和 4位乘数 得到 4位乘积
         {2, 3, 4}   // 2位乘数 和 3位乘数 得到 4位乘积
     };
@@ -25,11 +25,11 @@ void Solution::answer()
     do {
         for (const auto& pattern : split_patterns)
         {
-            unsigned pos = 0;
-            std::vector<unsigned> numbers;
+            uint pos = 0;
+            std::vector<uint> numbers;
 
             // 根据分割模式提取乘数和积
-            for (unsigned i = 0; i < pattern.size(); ++i)
+            for (uint i = 0; i < pattern.size(); ++i)
             {
                 // 提取对应长度的数字片段并转换为无符号整数
                 numbers.push_back(std::stoul(digits.substr(pos, pattern[i])));

@@ -6,14 +6,14 @@ dax 2024-09-09 15:51:28
 */
 #include "problem.h"
 
-unsigned long Solution::sum_square_difference(unsigned n)
+ulong Solution::sum_square_difference(uint n)
 {
-	unsigned long sum = n * (n + 1) / 2;
-	unsigned long square_of_sum = sum * sum;
+	ulong sum = n * (n + 1) / 2;
+	ulong square_of_sum = sum * sum;
 
-	unsigned long sum_of_square{};
+	ulong sum_of_square{};
 
-	for(unsigned i = 1; i <= n; ++i)
+	for(uint i = 1; i <= n; ++i)
 		sum_of_square += i * i;
 
 	return square_of_sum - sum_of_square;

@@ -22,7 +22,7 @@ void Solution::answer()
 	{
 		std::istringstream ss(line);
 		std::string ns;
-		std::vector<unsigned> row;
+		std::vector<uint> row;
 
 		while(std::getline(ss, ns, ','))
 		{
@@ -32,8 +32,8 @@ void Solution::answer()
 		matrix.push_back(row);
 	}
 
-	for(unsigned row = 0; row < 80; ++row)
-		for(unsigned col = 0; col < 80; ++ col)
+	for(uint row = 0; row < 80; ++row)
+		for(uint col = 0; col < 80; ++ col)
 		{
 			if(row == 0 && col != 0) matrix[row][col] += matrix[row][col - 1];
 			else if(row != 0 && col == 0) matrix[row][col] += matrix[row - 1][col];

@@ -6,15 +6,15 @@ dax 2024-09-09 16:57:49
 */
 #include "problem.h"
 
-unsigned long Solution::largest_product(unsigned n)
+ulong Solution::largest_product(uint n)
 {
-	unsigned long lp{};
+	ulong lp{};
 
 	for(auto it = ns.begin(); it < ns.end() - n; ++it)
 	{
-		unsigned long product{1};
+		ulong product{1};
 
-		for(unsigned i = 0; i < n; ++i)
+		for(uint i = 0; i < n; ++i)
 		{
 			// 如果遇到零则将it跳到这个位置并中断当前循环
 			if(*(it + i) == '0')

@@ -6,11 +6,11 @@ dax 2024-09-19 13:03:31
 */
 #include "problem.h"
 
-unsigned Solution::count_distinct_prime_factors(unsigned long n)
+uint Solution::count_distinct_prime_factors(ulong n)
 {
-	unsigned count{};
+	uint count{};
 
-	unsigned i = 2;
+	uint i = 2;
 
 	while(i <= n)
 	{
@@ -29,12 +29,12 @@ unsigned Solution::count_distinct_prime_factors(unsigned long n)
 
 void Solution::compute_prime_factors()
 {
-	for(unsigned i = 2; i <= limit; ++i)
+	for(uint i = 2; i <= limit; ++i)
 	{
 		if(is_prime[i])
 		{
 			++prime_factor_count[i];
-			unsigned j = 2;
+			uint j = 2;
 
 			while(i * j <= limit)
 			{
@@ -48,13 +48,13 @@ void Solution::compute_prime_factors()
 
 void Solution::answer()
 {
-	unsigned n = 2;
+	uint n = 2;
 
 	while(true)
 	{
 		bool found = true;
 
-		for(unsigned i = 0; i < 4; ++i)
+		for(uint i = 0; i < 4; ++i)
 		{
 			if(count_distinct_prime_factors(n + i) != 4)
 			{
@@ -78,7 +78,7 @@ void Solution::answer2()
 {
 	compute_prime_factors();
 
-	for(unsigned i = 2; i <= limit - 3; ++i)
+	for(uint i = 2; i <= limit - 3; ++i)
 	{
 		if(
 		    prime_factor_count[i] == 4 &&

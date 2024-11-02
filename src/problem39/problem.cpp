@@ -8,15 +8,15 @@ dax 2024-09-16 15:08:36
 
 void Solution::answer()
 {
-	unsigned max{};
-	unsigned max_p{};
+	uint max{};
+	uint max_p{};
 
-	for(unsigned p = 12; p <= 1000; ++p)
+	for(uint p = 12; p <= 1000; ++p)
 	{
-		unsigned count{};
+		uint count{};
 
-		for(unsigned a = 1; a < p / 2; ++a)
-			for(unsigned b = a; (p - a) / 2; ++b)
+		for(uint a = 1; a < p / 2; ++a)
+			for(uint b = a; (p - a) / 2; ++b)
 			{
 				auto c = p - a - b;
 

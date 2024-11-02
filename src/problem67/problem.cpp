@@ -19,14 +19,14 @@ void Solution::read_matrix()
 	std::ifstream file(p);
 
 	std::string line;
-	unsigned row = 0;
+	uint row = 0;
 
 	while(std::getline(file, line))
 	{
 		std::stringstream ss(line);
 
 		std::string sn;
-		unsigned column = 0;
+		uint column = 0;
 
 		while(ss >> sn)
 		{
@@ -43,16 +43,16 @@ void Solution::read_matrix()
 void Solution::answer()
 {
 	read_matrix();
-	std::vector<unsigned> floating_row(100);
+	std::vector<uint> floating_row(100);
 
-	for(unsigned i = 0; i < 100; ++i)
+	for(uint i = 0; i < 100; ++i)
 	{
-		std::vector<unsigned> temprow(100);
+		std::vector<uint> temprow(100);
 
-		for(unsigned j = 0; j <= i; ++j)
+		for(uint j = 0; j <= i; ++j)
 		{
-			unsigned upper_left = j == 0 ? 0 : floating_row[j - 1];
-			unsigned upper_right = i == j ? 0 : floating_row[j];
+			uint upper_left = j == 0 ? 0 : floating_row[j - 1];
+			uint upper_right = i == j ? 0 : floating_row[j];
 			temprow[j] = std::max(upper_left, upper_right)  + matrix[i][j];
 		}
 

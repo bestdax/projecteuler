@@ -11,6 +11,6 @@ dax 2024-10-05 16:25:40
 void Solution::answer()
 {
 	auto phi_vec = dax::sieve_of_euler_phi(1e6);
-	unsigned long sum = std::accumulate(phi_vec.begin(), phi_vec.end(), 0UL);
+	ulong sum = std::accumulate(phi_vec.begin(), phi_vec.end(), 0UL);
 	print("The answer is:", sum);
 }

@@ -11,7 +11,7 @@ dax 2024-09-19 12:02:05
 void Solution::answer()
 {
 	auto is_prime = dax::sieve_of_euler(1e5);
-	unsigned n = 9;
+	uint n = 9;
 
 	while(true)
 	{
@@ -23,11 +23,11 @@ void Solution::answer()
 
 		bool found = true;
 
-		for(unsigned i = 2; i < n; ++i)
+		for(uint i = 2; i < n; ++i)
 		{
 			if(is_prime[i])
 			{
-				unsigned remainder = n - i;
+				uint remainder = n - i;
 
 				if(remainder % 2 == 0 && dax::is_square(remainder / 2))
 				{

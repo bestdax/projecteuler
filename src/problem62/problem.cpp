@@ -12,8 +12,8 @@ dax 2024-10-01 18:28:36
 
 void Solution::answer()
 {
-	std::unordered_map<std::string, std::vector<unsigned long>> cubic_map;
-	unsigned long n = 0;
+	std::unordered_map<std::string, std::vector<ulong>> cubic_map;
+	ulong n = 0;
 
 	while(true)
 	{

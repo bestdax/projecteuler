@@ -9,13 +9,13 @@ dax 2024-10-07 16:24:01
 void Solution::answer()
 {
 
-	unsigned n = 60'000;
-	std::vector<unsigned> dp(n + 1);
+	uint n = 60'000;
+	std::vector<uint> dp(n + 1);
 	dp[0] = 1;
 
-	for(unsigned pile = 1; pile <= n; ++pile)
+	for(uint pile = 1; pile <= n; ++pile)
 	{
-		for(unsigned i = pile; i <= n; ++i)
+		for(uint i = pile; i <= n; ++i)
 		{
 			dp[i] += dp[i - pile];
 
@@ -40,18 +40,18 @@ void Solution::answer()
 void Solution::answer2()
 {
 
-	std::vector<unsigned long> p{1};
-	unsigned long n = 1;
+	std::vector<ulong> p{1};
+	ulong n = 1;
 
 	while(true)
 	{
 		long pn = 0;
-		unsigned long k = 1;
+		ulong k = 1;
 
 		while(true)
 		{
-			unsigned long gk1 = k * (3 * k - 1) / 2;
-			unsigned long gk2 = k * (3 * k + 1) / 2;
+			ulong gk1 = k * (3 * k - 1) / 2;
+			ulong gk2 = k * (3 * k + 1) / 2;
 
 			if(gk1 > n and gk2 > n)
 				break;

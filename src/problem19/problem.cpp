@@ -13,10 +13,10 @@ bool Solution::is_leap_year(int y)
 
 void Solution::answer()
 {
-	unsigned weekday = 1;
+	uint weekday = 1;
 
-	unsigned year = 1900;
-	unsigned count{};
+	uint year = 1900;
+	uint count{};
 
 	while(year <= 2000)
 	{

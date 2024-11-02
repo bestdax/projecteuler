@@ -10,21 +10,21 @@ dax 2024-09-16 09:12:37
 
 void Solution::answer()
 {
-	unsigned long sum{};
+	ulong sum{};
 
-	std::vector<unsigned> factorials(10);
+	std::vector<uint> factorials(10);
 
 	for(int i = 0; i < 10; ++i)
 	{
 		factorials[i] = dax::factorial(i);
 	}
 
-	unsigned limit = 7 * factorials[9];
+	uint limit = 7 * factorials[9];
 
-	for(unsigned long i = 3; i <= limit; ++i)
+	for(ulong i = 3; i <= limit; ++i)
 	{
-		unsigned long n = i;
-		unsigned digital_factorial_sum {};
+		ulong n = i;
+		uint digital_factorial_sum {};
 
 		while(n)
 		{

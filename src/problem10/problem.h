@@ -1,9 +1,10 @@
 #pragma once
+#include <utils.h>
 
 class Solution
 {
 	public:
-		unsigned long sum_of_primes(unsigned long);
+		ulong sum_of_primes(ulong);
 		void answer();
 
 };

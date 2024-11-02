@@ -9,12 +9,12 @@ dax 2024-09-09 11:32:14
 
 void Solution::answer()
 {
-	unsigned max_palindrome{};
+	uint max_palindrome{};
 
-	for(unsigned i = 100; i < 1000; ++i)
-		for(unsigned j = 100; j < 1000; ++j)
+	for(uint i = 100; i < 1000; ++i)
+		for(uint j = 100; j < 1000; ++j)
 		{
-			unsigned product = i * j;
+			uint product = i * j;
 
 			if(dax::is_palindrome(product) && product > max_palindrome)
 			{

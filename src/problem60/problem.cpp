@@ -10,15 +10,15 @@ dax 2024-09-26 12:49:33
 #include <numeric>
 #include <utils.h>
 
-bool Solution::is_prime_pair(unsigned long a, unsigned long b)
+bool Solution::is_prime_pair(ulong a, ulong b)
 {
 	return dax::is_prime_improved(dax::concatenate(a, b)) && dax::is_prime_improved(dax::concatenate(b, a));
 }
 
 // 使用宽度优先策略(因为是要查找5个的最小值)
-void Solution::find_groups(unsigned long start_node)
+void Solution::find_groups(ulong start_node)
 {
-	std::queue<std::set<unsigned long>> queue;
+	std::queue<std::set<ulong>> queue;
 
 	queue.push({start_node});
 

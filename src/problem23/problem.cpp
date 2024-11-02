@@ -15,14 +15,14 @@ Solution::Solution(): is_abundant(28124, false)
 	}
 }
 
-bool Solution::_is_abundant(unsigned n)
+bool Solution::_is_abundant(uint n)
 {
 	if(n < 2) return false;
 
-	unsigned sum{};
-	unsigned root = std::sqrt(n);
+	uint sum{};
+	uint root = std::sqrt(n);
 
-	for(unsigned i = 2; i <= root; ++i)
+	for(uint i = 2; i <= root; ++i)
 	{
 		if(n % i == 0) sum += i + n / i;
 	}
@@ -33,14 +33,14 @@ bool Solution::_is_abundant(unsigned n)
 
 }
 
-bool Solution::is_sum_of_two_abundants(unsigned n)
+bool Solution::is_sum_of_two_abundants(uint n)
 {
 	if(n < 24) return false;
 	else
 	{
 		auto middle = n / 2;
 
-		for(unsigned long i = 12; i <= middle; ++i)
+		for(ulong i = 12; i <= middle; ++i)
 		{
 			if(is_abundant[i] && is_abundant[n - i])return true;
 		}
@@ -51,9 +51,9 @@ bool Solution::is_sum_of_two_abundants(unsigned n)
 
 void Solution::answer()
 {
-	unsigned long sum{};
+	ulong sum{};
 
-	for(unsigned long i = 1; i <= 28123; ++i)
+	for(ulong i = 1; i <= 28123; ++i)
 	{
 		if(!is_sum_of_two_abundants(i)) sum += i;
 	}

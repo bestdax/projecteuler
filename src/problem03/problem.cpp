@@ -7,13 +7,13 @@ dax 2024-09-07 07:01:15
 #include "problem.h"
 #include <prime.h>
 
-unsigned long Solution::greatest_prime_factor(unsigned long n)
+ulong Solution::greatest_prime_factor(ulong n)
 {
 
 	auto prime_status = dax::sieve_of_eratosthenes(std::sqrt(n));
-	unsigned long largest_prime = 1;
+	ulong largest_prime = 1;
 
-	for(unsigned long i = 2; i <= n; ++i)
+	for(ulong i = 2; i <= n; ++i)
 	{
 		if(prime_status[i])
 		{

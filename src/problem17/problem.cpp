@@ -51,9 +51,9 @@ std::string Solution::say_number(long n)
 
 }
 
-unsigned Solution::count_char(std::string s)
+uint Solution::count_char(std::string s)
 {
-	unsigned count{};
+	uint count{};
 
 	for(auto&d : s)
 	{
@@ -65,7 +65,7 @@ unsigned Solution::count_char(std::string s)
 
 void Solution::answer()
 {
-	unsigned count{};
+	uint count{};
 
 	for(int i = 1; i <= 1000; ++i)
 		count += count_char(say_number(i));

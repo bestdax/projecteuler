@@ -9,8 +9,8 @@ dax 2024-09-14 14:30:04
 
 void Solution::answer()
 {
-    unsigned numerator_product = 1;
-    unsigned denominator_product = 1;
+    uint numerator_product = 1;
+    uint denominator_product = 1;
 
     for (int numerator = 10; numerator < 99; ++numerator) {
         for (int denominator = numerator + 1; denominator < 100; ++denominator) {

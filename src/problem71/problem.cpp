@@ -9,23 +9,23 @@ dax 2024-10-05 15:28:06
 #include <utility>
 #include <compare>
 
-std::strong_ordering operator<=>(const std::pair<unsigned, unsigned> &a, const std::pair<unsigned, unsigned>& b)
+std::strong_ordering operator<=>(const std::pair<uint, uint> &a, const std::pair<uint, uint>& b)
 {
 	return a.first * b.second <=> a.second * b.first;
 }
 
 void Solution::answer()
 {
-	std::pair<unsigned, unsigned> right_boundry{3, 7};
-	std::pair<unsigned, unsigned> next_to_right_boundry{0, 1};
+	std::pair<uint, uint> right_boundry{3, 7};
+	std::pair<uint, uint> next_to_right_boundry{0, 1};
 
-	for(unsigned denominator = 1; denominator <= 1e6; ++denominator)
+	for(uint denominator = 1; denominator <= 1e6; ++denominator)
 	{
 		int numerator = denominator * right_boundry.first / right_boundry.second;
 
 		do
 		{
-			std::pair<unsigned, unsigned> fraction{numerator, denominator};
+			std::pair<uint, uint> fraction{numerator, denominator};
 
 			if(fraction < next_to_right_boundry) break;
 

@@ -6,9 +6,9 @@ dax 2024-09-10 12:03:08
 */
 #include "problem.h"
 
-unsigned Solution::collatz_length(unsigned long n)
+uint Solution::collatz_length(ulong n)
 {
-	unsigned l{1};
+	uint l{1};
 
 	while(n != 1)
 	{
@@ -23,9 +23,9 @@ unsigned Solution::collatz_length(unsigned long n)
 
 void Solution::answer()
 {
-	unsigned max_length {};
-	unsigned number{};
-	for(unsigned i = 1; i < 1e6; ++i)
+	uint max_length {};
+	uint number{};
+	for(uint i = 1; i < 1e6; ++i)
 	{
 		auto l = collatz_length(i);
 		if(l > max_length)

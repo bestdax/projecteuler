@@ -14,7 +14,7 @@ PokerHand::PokerHand(std::vector<Card> incards)
 {
 	cards = incards;
 
-	std::unordered_map<Rank, unsigned> card_count;
+	std::unordered_map<Rank, uint> card_count;
 
 	for(auto & card : cards)
 	{
@@ -34,9 +34,9 @@ PokerHand::PokerHand(std::vector<Card> incards)
 	bool is_straight = true;
 	bool is_flush = true;
 
-	for(unsigned i = 0; i < 4; ++i)
+	for(uint i = 0; i < 4; ++i)
 	{
-		if(static_cast<unsigned>(cards[i].rank) - static_cast<unsigned>(cards[i + 1].rank) != 1)
+		if(static_cast<uint>(cards[i].rank) - static_cast<uint>(cards[i + 1].rank) != 1)
 			is_straight = false;
 
 		if(cards[i].suit != cards[i + 1].suit)
@@ -100,7 +100,7 @@ std::strong_ordering PokerHand::operator<=>(const PokerHand& other) const
 		return name <=> other.name;
 	else
 	{
-		for(unsigned i = 0; i < 5; ++i)
+		for(uint i = 0; i < 5; ++i)
 		{
 			if(cards[i].rank != other.cards[i].rank)
 				return cards[i].rank <=> other.cards[i].rank;
@@ -123,7 +123,7 @@ void Solution::read_hands()
 	std::string rank_str = "123456789TJQKA";
 	std::unordered_map<char, Rank> rankmap;
 
-	for(unsigned i = 0; i < rank_str.size(); ++i)
+	for(uint i = 0; i < rank_str.size(); ++i)
 	{
 		rankmap[rank_str[i]] = Rank(i);
 	}
@@ -131,7 +131,7 @@ void Solution::read_hands()
 	std::string suit_str = "DCHS";
 	std::unordered_map<char, Suit> suitmap;
 
-	for(unsigned i = 0; i < 4; ++i)
+	for(uint i = 0; i < 4; ++i)
 	{
 		suitmap[suit_str[i]] = Suit(i);
 	}
@@ -156,8 +156,8 @@ void Solution::read_hands()
 void Solution::answer()
 {
 	read_hands();
-	unsigned count{};
-	for(unsigned i = 0; i < hands.size(); i += 2)
+	uint count{};
+	for(uint i = 0; i < hands.size(); i += 2)
 	{
 		if(hands[i] > hands[i+1])
 			++count;

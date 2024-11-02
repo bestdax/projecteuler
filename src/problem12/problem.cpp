@@ -7,12 +7,12 @@ dax 2024-09-10 09:46:17
 #include "problem.h"
 #include <cmath>
 
-unsigned Solution::count_divisors(unsigned long n)
+uint Solution::count_divisors(ulong n)
 {
-	unsigned long root = std::sqrt(n);
-	unsigned count{};
+	ulong root = std::sqrt(n);
+	uint count{};
 
-	for(unsigned long i = 1; i <= root; ++i)
+	for(ulong i = 1; i <= root; ++i)
 	{
 		if(n % i == 0) count += 2;
 	}
@@ -22,15 +22,15 @@ unsigned Solution::count_divisors(unsigned long n)
 	return count;
 }
 
-unsigned long Solution::triangle_number(unsigned n)
+ulong Solution::triangle_number(uint n)
 {
 	return n * (n + 1) / 2;
 }
 
 void Solution::answer()
 {
-	unsigned count{1};
-	unsigned n{1}, triangle{1};
+	uint count{1};
+	uint n{1}, triangle{1};
 
 	while(count <= 500)
 	{

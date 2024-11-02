@@ -1,9 +1,10 @@
 #pragma once
+#include <utils.h>
 
 class Solution
 {
 	public:
-		unsigned long greatest_prime_factor(unsigned long);
+		ulong greatest_prime_factor(ulong);
 		void answer();
 
 };

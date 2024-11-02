@@ -10,23 +10,23 @@ dax 2024-10-06 16:48:09
 
 void Solution::answer()
 {
-	std::unordered_map<unsigned, unsigned> triangle_count;
+	std::unordered_map<uint, uint> triangle_count;
 
-	unsigned length_limit = 1.5e6;
+	uint length_limit = 1.5e6;
 
-	for(unsigned m = 2; m * m < length_limit; ++m)
+	for(uint m = 2; m * m < length_limit; ++m)
 	{
-		for(unsigned n = m % 2 + 1; n < m; n += 2)
+		for(uint n = m % 2 + 1; n < m; n += 2)
 		{
 			if(std::gcd(m, n) != 1) continue;
 
-			unsigned a = m * m - n * n;
-			unsigned b = 2 * m * n;
-			unsigned c = m * m + n * n;
+			uint a = m * m - n * n;
+			uint b = 2 * m * n;
+			uint c = m * m + n * n;
 
-			unsigned perimeter = a + b + c;
+			uint perimeter = a + b + c;
 
-			for(unsigned k = 1; k * perimeter <= length_limit; ++k)
+			for(uint k = 1; k * perimeter <= length_limit; ++k)
 			{
 				++triangle_count[k * perimeter];
 			}
@@ -34,7 +34,7 @@ void Solution::answer()
 		}
 	}
 
-	unsigned count{};
+	uint count{};
 
 	for(auto& [length, num] : triangle_count)
 	{

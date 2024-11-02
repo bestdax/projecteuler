@@ -8,8 +8,8 @@ dax 2024-09-09 17:30:05
 
 void Solution::answer()
 {
-	for(unsigned c = 334; c < 500; ++c)
-		for(unsigned a = 1; a < c; ++a)
+	for(uint c = 334; c < 500; ++c)
+		for(uint a = 1; a < c; ++a)
 		{
 			auto b = 1000 - a - c;
 

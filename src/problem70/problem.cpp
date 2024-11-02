@@ -11,7 +11,7 @@ dax 2024-10-05 08:51:07
 
 void Solution::answer()
 {
-	std::pair<unsigned long, unsigned long> min_totient{1, 0};
+	std::pair<ulong, ulong> min_totient{1, 0};
 	auto phi_vec = dax::sieve_of_euler_phi(1e7);
 
 	for(int i = 2; i < 1e7; ++i)

@@ -1,4 +1,5 @@
 #pragma once
+#include <utils.h>
 #include <vector>
 #include <prime.h>
 
@@ -14,7 +15,7 @@ class Solution
 		};
 
 		void compute_prime_factors();
-		unsigned count_distinct_prime_factors(unsigned long n);
+		unsigned count_distinct_prime_factors(ulong n);
 		void answer();
 		void answer2();
 

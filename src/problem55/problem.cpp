@@ -9,13 +9,13 @@ dax 2024-09-24 12:25:52
 
 void Solution::answer()
 {
-	unsigned count{};
+	uint count{};
 
-	for(unsigned i = 1; i < 1e4; ++i)
+	for(uint i = 1; i < 1e4; ++i)
 	{
 		BigUInt number(i);
 
-		for(unsigned j = 0; j < 50; ++j)
+		for(uint j = 0; j < 50; ++j)
 		{
 			number += number.reverse();
 

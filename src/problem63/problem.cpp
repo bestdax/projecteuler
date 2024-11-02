@@ -9,11 +9,11 @@ dax 2024-10-01 19:12:13
 
 void Solution::answer()
 {
-	unsigned count{};
+	uint count{};
 
 	for(BigUInt a = 1; a < 10; ++a)
 	{
-		unsigned exponent{1};
+		uint exponent{1};
 
 		while(a.power(exponent).length() == exponent)
 		{

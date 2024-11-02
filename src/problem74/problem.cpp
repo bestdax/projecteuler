@@ -18,9 +18,9 @@ Solution::Solution()
 }
 
 // 计算数字各个位数的阶乘和
-unsigned long Solution::factorial_sum_of_digits(unsigned long n)
+ulong Solution::factorial_sum_of_digits(ulong n)
 {
-	unsigned long sum = 0;
+	ulong sum = 0;
 
 	while(n > 0)
 	{
@@ -34,7 +34,7 @@ unsigned long Solution::factorial_sum_of_digits(unsigned long n)
 void Solution::answer()
 {
 
-	unsigned count{};
+	uint count{};
 
 	std::vector<int> chain_cache(1e6, -1);
 
@@ -44,11 +44,11 @@ void Solution::answer()
 	int result_count = 0;
 
 	// 遍历1到1e6的所有数字
-	for(unsigned long i = 1; i < 1e6; ++i)
+	for(ulong i = 1; i < 1e6; ++i)
 	{
-		std::vector<unsigned long> visited_chain; // 记录当前链条访问过的数字
+		std::vector<ulong> visited_chain; // 记录当前链条访问过的数字
 		visited_chain.reserve(60);
-		unsigned long current = i;
+		ulong current = i;
 		int chain_length = 0;
 
 		// 生成链条，直到出现循环或缓存命中

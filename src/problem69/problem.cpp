@@ -10,10 +10,10 @@ dax 2024-10-03 00:48:18
 
 void Solution::answer()
 {
-	std::pair<unsigned, unsigned> max_totient{0, 1};
+	std::pair<uint, uint> max_totient{0, 1};
 	auto phi_vec = dax::sieve_of_euler_phi(1e6);
 
-	for(unsigned i = 2; i <= 1e6; ++i)
+	for(uint i = 2; i <= 1e6; ++i)
 	{
 		auto phi = phi_vec[i];
 

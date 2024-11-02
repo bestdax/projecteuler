@@ -8,7 +8,7 @@ class Solution
 		std::vector<unsigned> digit_factorials;
 	public:
 		Solution();
-		unsigned long factorial_sum_of_digits(unsigned long n);
+		ulong factorial_sum_of_digits(ulong n);
 		void answer();
 
 };

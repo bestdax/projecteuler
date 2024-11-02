@@ -7,7 +7,7 @@ dax 2024-09-18 10:03:00
 #include "problem.h"
 #include <algorithm>
 
-void Solution::build_pandigit(std::string current_number, unsigned depth)
+void Solution::build_pandigit(std::string current_number, uint depth)
 {
 	if(current_number.front() == '0')
 		return;
@@ -38,7 +38,7 @@ void Solution::build_pandigit(std::string current_number, unsigned depth)
 
 void Solution::answer()
 {
-	unsigned long sum{};
+	ulong sum{};
 
 	do
 	{

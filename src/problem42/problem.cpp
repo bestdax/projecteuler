@@ -26,8 +26,8 @@ void Solution::read_names()
 void Solution::gen_triangles()
 {
 	auto limit = max_length * 26;
-	unsigned n = 1;
-	unsigned triangle = 1;
+	uint n = 1;
+	uint triangle = 1;
 
 	while(triangle < limit)
 	{
@@ -38,9 +38,9 @@ void Solution::gen_triangles()
 	}
 }
 
-unsigned Solution::name_score(std::string& name)
+uint Solution::name_score(std::string& name)
 {
-	unsigned score{};
+	uint score{};
 
 	for(auto&c : name)
 	{
@@ -55,7 +55,7 @@ void Solution::answer()
 	read_names();
 	gen_triangles();
 
-	unsigned count{};
+	uint count{};
 	for(auto& name: names)
 	{
 		if(triangles.contains(name_score(name)))

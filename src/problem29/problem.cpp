@@ -15,7 +15,7 @@ void Solution::answer()
 	std::vector<StringInt> powers;
 
 	for(StringInt a = 2; a <= 100; ++a)
-		for(unsigned b = 2; b <= 100; ++b)
+		for(uint b = 2; b <= 100; ++b)
 		{
 			powers.push_back(a.power(b));
 		}
@@ -33,7 +33,7 @@ void Solution::answer_bint()
 	std::vector<BigUInt> powers;
 
 	for(BigUInt a = 2; a <= 100; ++a)
-		for(unsigned b = 2; b <= 100; ++b)
+		for(uint b = 2; b <= 100; ++b)
 		{
 			powers.push_back(a.power(b));
 		}

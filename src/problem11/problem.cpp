@@ -8,10 +8,10 @@ dax 2024-09-10 08:48:37
 
 void Solution::answer()
 {
-	unsigned long max_product{1};
+	ulong max_product{1};
 
-	for(unsigned col = 0; col < 20; ++col)
-		for(unsigned row = 0; row < 20; ++row)
+	for(uint col = 0; col < 20; ++col)
+		for(uint row = 0; row < 20; ++row)
 		{
 			if(col < 17 && row < 17)
 			{

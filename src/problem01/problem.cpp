@@ -6,11 +6,11 @@ dax 2024-09-06 16:33:46
 */
 #include "problem.h"
 
-unsigned Solution::sum_of_multipliers(unsigned limit)
+uint Solution::sum_of_multipliers(uint limit)
 {
-	unsigned sum{};
+	uint sum{};
 
-	for(unsigned i = 1; i < limit; ++i)
+	for(uint i = 1; i < limit; ++i)
 	{
 		if(i % 3 == 0 || i % 5 == 0)
 			sum += i;

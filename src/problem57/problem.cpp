@@ -21,9 +21,9 @@ void Solution::answer()
 	denominators[1] = 0;
 	denominators[2] = 1;
 
-	unsigned count{};
+	uint count{};
 
-	for(unsigned i = 3; i < 1003; ++i)
+	for(uint i = 3; i < 1003; ++i)
 	{
 		numerators[i] = 2 * numerators[i - 1] + numerators[i - 2];
 		denominators[i] = 2 *  denominators[i - 1] + denominators[i - 2];

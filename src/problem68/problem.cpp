@@ -21,7 +21,7 @@ void Solution::answer()
 	{
 		std::string result;
 
-		for(unsigned i = 0; i < 5; ++i)
+		for(uint i = 0; i < 5; ++i)
 		{
 			auto sum = five_gon_ring[i] + five_gon_ring[i + 5] + (i == 4 ? five_gon_ring[0] : five_gon_ring[i + 1]);
 

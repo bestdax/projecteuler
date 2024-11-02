@@ -8,7 +8,7 @@ dax 2024-09-23 16:35:12
 #include <string>
 #include <algorithm>
 
-bool has_same_digits(unsigned long a, unsigned long b)
+bool has_same_digits(ulong a, ulong b)
 {
 	auto nsa = std::to_string(a);
 	std::sort(nsa.begin(), nsa.end());
@@ -21,11 +21,11 @@ bool has_same_digits(unsigned long a, unsigned long b)
 void Solution::answer()
 {
 
-	for(unsigned long n = 2; n < 1e6; ++n)
+	for(ulong n = 2; n < 1e6; ++n)
 	{
 		bool found = true;
 
-		for(unsigned i = 2; i < 6; ++i)
+		for(uint i = 2; i < 6; ++i)
 		{
 			if(!has_same_digits(n, n * i))
 			{

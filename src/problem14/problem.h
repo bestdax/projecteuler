@@ -1,9 +1,10 @@
 #pragma once
+#include <utils.h>
 
 class Solution
 {
 	public:
-		unsigned collatz_length(unsigned long n);
+		uint collatz_length(ulong n);
 		void answer();
 
 };

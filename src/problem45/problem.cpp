@@ -9,12 +9,12 @@ dax 2024-09-19 11:11:23
 
 void Solution::answer()
 {
-	unsigned n = 143;
+	uint n = 143;
 
 	while(true)
 	{
 		++n;
-		unsigned long h = n * (2 * n - 1);
+		ulong h = n * (2 * n - 1);
 
 		if(dax::is_triangle(h) && dax::is_pentagonal(h))
 		{

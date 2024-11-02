@@ -14,16 +14,16 @@ dax 2024-09-23 14:26:32
 
 void Solution::answer()
 {
-	unsigned limit = 1e6;
+	uint limit = 1e6;
 	auto is_prime = dax::sieve_of_eratosthenes(limit);
 
 	// 遍历素数
-	for(unsigned i = 56003; i <= limit; ++i)
+	for(uint i = 56003; i <= limit; ++i)
 	{
 		if(is_prime[i])
 		{
 			auto ns = std::to_string(i);
-			std::unordered_map<char, unsigned> digits_count;
+			std::unordered_map<char, uint> digits_count;
 
 			for(const auto& c : ns)
 			{
@@ -34,7 +34,7 @@ void Solution::answer()
 			for(const auto& [d, count] : digits_count)
 			{
 				// 用一个set来保存已经发现的素数
-				std::unordered_set<unsigned> found_primes;
+				std::unordered_set<uint> found_primes;
 				found_primes.insert(i);
 
 				// 保证只对有重复的数字进行替换

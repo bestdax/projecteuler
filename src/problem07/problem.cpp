@@ -8,13 +8,13 @@ dax 2024-09-09 16:08:58
 #include <cmath>
 #include <prime.h>
 
-unsigned long Solution::nth_prime(unsigned n)
+ulong Solution::nth_prime(uint n)
 {
-	unsigned a = n * (std::log(n) + std::log(std::log(n)));
+	uint a = n * (std::log(n) + std::log(std::log(n)));
 	auto prime_status = dax::sieve_of_eratosthenes(a);
-	unsigned count{};
+	uint count{};
 
-	for(unsigned i = 0; i <= prime_status.size(); ++i)
+	for(uint i = 0; i <= prime_status.size(); ++i)
 	{
 		if(prime_status[i]) ++count;
 

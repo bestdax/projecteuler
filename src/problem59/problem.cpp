@@ -28,7 +28,7 @@ std::string Solution::decript(std::string pass)
 {
 	std::string text;
 
-	for(unsigned i = 0; i < ciphered.size(); ++i)
+	for(uint i = 0; i < ciphered.size(); ++i)
 	{
 		text += ciphered[i] ^ pass[i % pass.size()];
 	}
@@ -40,7 +40,7 @@ bool Solution::next_pass()
 {
 	if(pass == "zzz") return false;
 
-	unsigned index = 0;
+	uint index = 0;
 
 	while(index < pass.size())
 	{
@@ -64,9 +64,9 @@ bool Solution::find_the_in_text(std::string text)
 	return false;
 }
 
-unsigned long Solution::ascii_sum(std::string text)
+ulong Solution::ascii_sum(std::string text)
 {
-	unsigned long sum{};
+	ulong sum{};
 
 	for(const auto& c : text)
 	{

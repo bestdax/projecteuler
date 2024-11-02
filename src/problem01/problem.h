@@ -3,7 +3,7 @@
 class Solution
 {
 	public:
-		unsigned sum_of_multipliers(unsigned limit);
+		uint sum_of_multipliers(uint limit);
 		void answer();
 
 };

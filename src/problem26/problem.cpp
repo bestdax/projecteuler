@@ -8,10 +8,10 @@ dax 2024-09-12 08:25:26
 #include <vector>
 #include <algorithm>
 
-unsigned Solution::unit_reciprocal_cycle(unsigned n)
+uint Solution::unit_reciprocal_cycle(uint n)
 {
-	std::vector<unsigned> numerators;
-	unsigned numerator = 1;
+	std::vector<uint> numerators;
+	uint numerator = 1;
 
 	while(true)
 	{
@@ -35,8 +35,8 @@ unsigned Solution::unit_reciprocal_cycle(unsigned n)
 
 void Solution::answer()
 {
-	unsigned max{};
-	unsigned number{};
+	uint max{};
+	uint number{};
 	for(int i = 2; i < 1000; ++i)
 	{
 		auto cycle = unit_reciprocal_cycle(i);
