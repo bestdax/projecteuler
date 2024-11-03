@@ -1,0 +1,61 @@
+\section{矩形计数}\label{sec:problem85}
+\subsection{问题描述}
+\begin{tcolorbox}
+通过仔细计算，可以发现一个 $3 \times 2$ 的矩形网格包含 18 个矩形：
+\vspace{1cm}
+
+\begin{tikzpicture}
+
+% 第一行
+% 左上：6个小矩形
+\begin{scope}[xshift=0cm, yshift=-4cm]
+    \draw[step=1cm, gray, dashed] (0,0) grid (3,2);
+    \draw[thick] (0,1) rectangle (1,2);
+    \node at (1.5, -0.5) {\textbf{6}};
+\end{scope}
+
+% 中上：4个小矩形
+\begin{scope}[xshift=4cm, yshift=-4cm]
+    \draw[step=1cm, gray, dashed] (0,0) grid (3,2);
+    \draw[thick] (0,1) rectangle (2,2);
+    \node at (1.5, -0.5) {\textbf{4}};
+\end{scope}
+
+% 右上：2个小矩形
+\begin{scope}[xshift=8cm, yshift=-4cm]
+    \draw[step=1cm, gray, dashed] (0,0) grid (3,2);
+    \draw[thick] (0,1) rectangle (3,2);
+    \node at (1.5, -0.5) {\textbf{2}};
+\end{scope}
+
+% 第二行
+% 左下：3个小矩形
+\begin{scope}[xshift=0cm, yshift=-8cm]
+    \draw[step=1cm, gray, dashed] (0,0) grid (3,2);
+    \draw[thick] (0,0) rectangle (1,2);
+    \node at (1.5, -0.5) {\textbf{3}};
+\end{scope}
+
+% 中下：2个小矩形
+\begin{scope}[xshift=4cm, yshift=-8cm]
+    \draw[step=1cm, gray, dashed] (0,0) grid (3,2);
+    \draw[thick] (0,0) rectangle (2,2);
+    \node at (1.5, -0.5) {\textbf{2}};
+\end{scope}
+
+% 右下：1个矩形
+\begin{scope}[xshift=8cm, yshift=-8cm]
+    \draw[step=1cm, gray, dashed] (0,0) grid (3,2);
+    \draw[thick] (0,0) rectangle (3,2);
+    \node at (1.5, -0.5) {\textbf{1}};
+\end{scope}
+
+\end{tikzpicture}
+
+虽然不存在恰好包含两百万个矩形的矩形网格，但请找出包含的矩形数量最接近两百万的网格的面积。
+\end{tcolorbox}
+
+\subsection{算法}
+
+
+\subsection{答案}
