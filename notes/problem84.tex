@@ -113,5 +113,13 @@
 \end{tcolorbox}
 
 \subsection{算法}
+\begin{enumerate}
+	\item	初始化棋盘和概率记录：创建一个map来记录每个格子被访问的次数。
+	\item	模拟玩家移动：使用双四面骰模拟玩家的移动，记录每个格子的访问次数。
+	\item	处理特殊格子：根据题目规则处理“Community Chest”、“Chance”、“Go to Jail”等特殊格子的效果。
+	\item	模拟回合：重复上述过程多次（比如10万轮），让玩家在棋盘上移动，从而收集足够多的数据来计算每个格子的访问概率。
+	\item	计算结果：每个格子的访问次数除以总回合数得到概率分布，并找出最可能停留的格子。
+\end{enumerate}
 
 \subsection{答案}
+101524
