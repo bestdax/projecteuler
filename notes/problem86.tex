@@ -1,0 +1,51 @@
+\section{标题}\label{sec:problem86}
+\subsection{问题描述}
+\begin{tcolorbox}
+一只蜘蛛 \( S \) 坐在一个尺寸为 \(6 \times 5 \times 3\) 的长方体房间的一个角落。一只苍蝇 \( F \) 坐在与之对角的角落。通过在房间表面移动，蜘蛛到苍蝇的最短“直线”距离为 10。
+
+\begin{center}
+    \begin{tikzpicture}
+        % Define coordinates for the cuboid vertices
+        \coordinate (A) at (0,0,0);  
+        \coordinate (B) at (6,0,0);
+        \coordinate (C) at (6,3,0);
+        \coordinate (D) at (0,3,0);
+        \coordinate (E) at (0,0,3);  
+        \coordinate (F) at (6,0,3);
+        \coordinate (G) at (6,3,3);  
+        \coordinate (H) at (0,3,3);
+
+        % Draw the cuboid edges
+        \draw[thick] (A) -- (B) -- (C) -- (D) -- cycle;  
+        \draw[thick] (E) -- (F) -- (G) -- (H) -- cycle;  
+        \draw[thick] (A) -- (E);
+        \draw[thick] (B) -- (F);
+        \draw[thick] (C) -- (G);
+        \draw[thick] (D) -- (H);
+
+        % Draw the path on the surface
+        \draw[very thick] (E) -- (2.4,0,0) -- (C);
+
+        % Label points
+        \filldraw[black] (E) circle (2pt) node[below left] {$S$};
+        \filldraw[black] (C) circle (2pt) node[above right] {$F$};
+        \node[below] at ($(E)!0.5!(F)$) {6};
+        \node[right] at ($(F)!0.5!(B)$) {5};
+        \node[right] at ($(B)!0.5!(C)$) {3};
+
+    \end{tikzpicture}
+\end{center}
+
+
+对于任意给定的长方体，可能存在多达三条“最短”路径候选，并且最短路径不一定是整数长度。
+
+已知，当 \( M = 100 \) 时，存在恰好 2060 个不同的长方体（忽略旋转），其整数维度最大为 \( M \times M \times M \)，且最短路径具有整数长度。这是使解的数量首次超过两千的最小 \( M \) 值；当 \( M = 99 \) 时，解的数量为 1975。
+
+求使解的数量首次超过一百万的最小 \( M \) 值。
+
+\end{tcolorbox}
+
+\subsection{算法}
+
+
+\subsection{答案}
