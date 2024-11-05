@@ -1,4 +1,4 @@
-\section{标题}\label{sec:problem86}
+\section{长方体最短路径}\label{sec:problem86}
 \subsection{问题描述}
 \begin{tcolorbox}
 一只蜘蛛 \( S \) 坐在一个尺寸为 \(6 \times 5 \times 3\) 的长方体房间的一个角落。一只苍蝇 \( F \) 坐在与之对角的角落。通过在房间表面移动，蜘蛛到苍蝇的最短“直线”距离为 10。
@@ -46,6 +46,8 @@
 \end{tcolorbox}
 
 \subsection{算法}
+为了解决该问题，我们逐步增加 \( M \) 的值，并统计满足整数路径条件的长方体数量，直到该数量达到目标值（1,000,000）。关键在于，对于任意满足 \( a \leq b \leq M \) 的长方体，其最短路径可以通过检查路径 \((a + b, M)\) 的平方和来确定。
 
 
 \subsection{答案}
+1818
