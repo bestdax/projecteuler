@@ -1,0 +1,30 @@
+\section{乘积和数}\label{sec:problem88}
+\subsection{问题描述}
+\begin{tcolorbox}
+	对于至少包含两个自然数的集合 ${a_1, a_2, \ldots, a_k}$，如果存在一个自然数 $N$ 满足以下条件：
+	\begin{equation*}
+		N = a_1 + a_2 + \cdots + a_k = a_1 \times a_2 \times \cdots \times a_k
+	\end{equation*}
+	则称 $N$ 为该集合的乘积和数。例如，6 可以表示为：
+	\begin{equation*}
+		6 = 1 + 2 + 3 = 1 \times 2 \times 3
+	\end{equation*}
+	对于给定大小的集合 $k$，我们称满足上述条件的最小 $N$ 为最小乘积和数。例如，对于 $k = 2, 3, 4, 5$ 和 $6$，最小乘积和数分别为：
+	\begin{align*}
+		k = 2: & \quad 4 = 2 \times 2 = 2 + 2                                                      \\
+		k = 3: & \quad 6 = 1 \times 2 \times 3 = 1 + 2 + 3                                         \\
+		k = 4: & \quad 8 = 1 \times 1 \times 2 \times 4 = 1 + 1 + 2 + 4                            \\
+		k = 5: & \quad 8 = 1 \times 1 \times 2 \times 2 \times 2 = 1 + 1 + 2 + 2 + 2               \\
+		k = 6: & \quad 12 = 1 \times 1 \times 1 \times 1 \times 2 \times 6 = 1 + 1 + 1 + 1 + 2 + 6
+	\end{align*}
+
+	因此，对于 $2 \leqslant k \leqslant 6$，所有最小乘积和数的和为 $4 + 6 + 8 + 12 = 30$。需要注意的是，8 在 $k = 4$ 和 $k = 5$ 的情况下都出现过，但在求和只计算一次。
+
+	实际上，对于 $2 \leqslant k \leqslant 12$，所有最小乘积和数的集合为 ${4, 6, 8, 12, 15, 16}$，其和为 61。
+
+	问题要求计算对于 $2 \leqslant k \leqslant 12000$，所有最小乘积和数的和。
+\end{tcolorbox}
+
+\subsection{算法}
+
+\subsection{答案}
